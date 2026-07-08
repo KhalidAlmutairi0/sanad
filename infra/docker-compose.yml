@@ -1,0 +1,164 @@
+name: sanad
+
+# SANAD local stack. `docker compose -f infra/docker-compose.yml up --build`.
+# All secrets come from infra/.env (copy from infra/.env.example). No secrets inline.
+
+x-postgres-env: &postgres-env
+  POSTGRES_USER: ${POSTGRES_SUPERUSER}
+  POSTGRES_PASSWORD: ${POSTGRES_SUPERUSER_PASSWORD}
+  POSTGRES_DB: ${POSTGRES_DB}
+  SANAD_MIGRATOR_USER: ${SANAD_MIGRATOR_USER}
+  SANAD_MIGRATOR_PASSWORD: ${SANAD_MIGRATOR_PASSWORD}
+  SANAD_APP_USER: ${SANAD_APP_USER}
+  SANAD_APP_PASSWORD: ${SANAD_APP_PASSWORD}
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      <<: *postgres-env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_SUPERUSER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # One-shot: create buckets + enable server-side encryption, then exit.
+  minio-init:
+    image: minio/mc:latest
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET_QUARANTINE: ${MINIO_BUCKET_QUARANTINE}
+      MINIO_BUCKET_SANITIZED: ${MINIO_BUCKET_SANITIZED}
+    command:
+      - |
+        set -e
+        mc alias set local http://minio:9000 "$$MINIO_ROOT_USER" "$$MINIO_ROOT_PASSWORD"
+        mc mb --ignore-existing "local/$$MINIO_BUCKET_QUARANTINE"
+        mc mb --ignore-existing "local/$$MINIO_BUCKET_SANITIZED"
+        mc encrypt set sse-s3 "local/$$MINIO_BUCKET_QUARANTINE" || true
+        mc encrypt set sse-s3 "local/$$MINIO_BUCKET_SANITIZED" || true
+        echo "buckets ready"
+
+  embedder:
+    build:
+      context: ..
+      dockerfile: apps/embedder/Dockerfile
+    environment:
+      EMBEDDER_MODEL: ${EMBEDDER_MODEL}
+      EMBEDDING_DIM: ${EMBEDDING_DIM}
+      HF_HOME: /model-cache
+    ports:
+      - "8081:8081"
+    volumes:
+      - model-cache:/model-cache
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8081/health').status==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+
+  # Runs migrations as the migrator role, then exits. Blocks api/worker startup.
+  migrate:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    env_file: .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["alembic", "upgrade", "head"]
+
+  api:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    env_file: .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "8000:8000"
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/api/v1/health').status==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  worker:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    env_file: .env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    # The worker executes the sanitizer as a bwrap subprocess; needs the sandbox mounted.
+    volumes:
+      - ../sandboxes/sanitizer:/sandboxes/sanitizer:ro
+    command: ["arq", "app.workers.main.WorkerSettings"]
+
+  web:
+    build:
+      context: ../apps/web
+      dockerfile: Dockerfile
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL}
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres-data:
+  minio-data:
+  model-cache:

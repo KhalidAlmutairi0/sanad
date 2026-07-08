@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (docs/style-guide.md). Light is default; .dark overrides. */
+:root {
+  --sanad-ink: #14110e;
+  --sanad-paper: #fbfaf7;
+  --sanad-surface: #ffffff;
+  --sanad-line: #e6e1d8;
+  --sanad-muted: #6b655c;
+
+  --sanad-orange: #e86a2c;
+  --sanad-orange-ink: #b44e18;
+  --sanad-orange-bg: #fceee4;
+
+  --sanad-critical: #b3261e;
+  --sanad-high: #c15613;
+  --sanad-medium: #8a6d1f;
+  --sanad-low: #5a6b4f;
+  --sanad-ok: #3f6b4e;
+}
+
+.dark {
+  --sanad-ink: #f5f1ea;
+  --sanad-paper: #0e0c0a;
+  --sanad-surface: #17130f;
+  --sanad-line: #2a2420;
+  --sanad-muted: #a29a8d;
+
+  --sanad-orange: #f2803e;
+  --sanad-orange-ink: #f8a66e;
+  --sanad-orange-bg: #2a1b10;
+}
+
+html {
+  background-color: var(--sanad-paper);
+  color: var(--sanad-ink);
+}
+
+body {
+  background-color: var(--sanad-paper);
+  color: var(--sanad-ink);
+  /* Arabic needs generous leading. */
+  line-height: 1.7;
+}
+
+/* Tabular figures for scores, fine amounts, dates. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
