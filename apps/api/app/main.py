@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.errors import SanadError, sanad_error_handler
-from app.routers import health
+from app.routers import auth, contracts, findings, health, idea_checks, internal
 
 API_PREFIX = "/api/v1"
 
@@ -23,3 +23,8 @@ app.add_middleware(
 app.add_exception_handler(SanadError, sanad_error_handler)
 
 app.include_router(health.router, prefix=API_PREFIX, tags=["health"])
+app.include_router(auth.router, prefix=API_PREFIX)
+app.include_router(contracts.router, prefix=API_PREFIX)
+app.include_router(findings.router, prefix=API_PREFIX)
+app.include_router(idea_checks.router, prefix=API_PREFIX)
+app.include_router(internal.router, prefix=API_PREFIX)

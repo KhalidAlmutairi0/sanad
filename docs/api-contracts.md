@@ -137,6 +137,10 @@ Res 200: `{ "download_url": string }`  (stacked bilingual annex)
 Req: `{ "idea_text": string }`  (treated as untrusted input)
 Res 202: `{ "id": uuid, "status": "submitted" }`
 
+### GET /idea-checks
+Paginated list of the deployment's idea checks (PM feature index page).
+Res 200: `{ "items": [ { "id", "status" } ], "total": int }`
+
 ### GET /idea-checks/{id}
 Res 200:
 ```json

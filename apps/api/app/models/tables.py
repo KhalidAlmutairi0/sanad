@@ -1,0 +1,192 @@
+"""ORM table definitions. Mirrors docs/database.md exactly."""
+from __future__ import annotations
+
+import datetime as dt
+import uuid
+
+from pgvector.sqlalchemy import Vector
+from sqlalchemy import (
+    Boolean,
+    Date,
+    DateTime,
+    ForeignKey,
+    Integer,
+    Numeric,
+    String,
+    Text,
+    func,
+)
+from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.core.db import Base
+
+EMBEDDING_DIM = 1024
+
+
+def _pk() -> Mapped[uuid.UUID]:
+    return mapped_column(UUID(as_uuid=True), primary_key=True, server_default=func.gen_random_uuid())
+
+
+def _created_at() -> Mapped[dt.datetime]:
+    return mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+
+class User(Base):
+    __tablename__ = "users"
+    id: Mapped[uuid.UUID] = _pk()
+    email: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    display_name: Mapped[str] = mapped_column(Text, nullable=False)
+    role: Mapped[str] = mapped_column(Text, nullable=False)
+    is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="true")
+    password_hash: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class Regulation(Base):
+    __tablename__ = "regulations"
+    id: Mapped[uuid.UUID] = _pk()
+    code: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    name_ar: Mapped[str] = mapped_column(Text, nullable=False)
+    name_en: Mapped[str] = mapped_column(Text, nullable=False)
+    authority: Mapped[str] = mapped_column(Text, nullable=False)
+    source_domain: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class RegulationVersion(Base):
+    """APPEND-ONLY. App role has INSERT+SELECT only (enforced by DB grant)."""
+
+    __tablename__ = "regulation_versions"
+    id: Mapped[uuid.UUID] = _pk()
+    regulation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("regulations.id"), nullable=False)
+    article_ref: Mapped[str] = mapped_column(Text, nullable=False)
+    article_text_ar: Mapped[str] = mapped_column(Text, nullable=False)
+    article_text_en: Mapped[str | None] = mapped_column(Text)
+    source_url: Mapped[str] = mapped_column(Text, nullable=False)
+    content_hash: Mapped[str] = mapped_column(Text, nullable=False)
+    fetched_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    effective_date: Mapped[dt.date | None] = mapped_column(Date)
+    supersedes_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("regulation_versions.id"))
+    verified_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(EMBEDDING_DIM))
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class Contract(Base):
+    __tablename__ = "contracts"
+    id: Mapped[uuid.UUID] = _pk()
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    uploaded_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    raw_object_key: Mapped[str] = mapped_column(Text, nullable=False)
+    sanitized_object_key: Mapped[str | None] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="uploaded")
+    readiness_score: Mapped[int | None] = mapped_column(Integer)
+    failure_reason: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[dt.datetime] = _created_at()
+    updated_at: Mapped[dt.datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+
+class Clause(Base):
+    __tablename__ = "clauses"
+    id: Mapped[uuid.UUID] = _pk()
+    contract_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("contracts.id"), nullable=False)
+    ordinal: Mapped[int] = mapped_column(Integer, nullable=False)
+    text_ar: Mapped[str | None] = mapped_column(Text)
+    text_en: Mapped[str | None] = mapped_column(Text)
+    embedding: Mapped[list[float] | None] = mapped_column(Vector(EMBEDDING_DIM))
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class Finding(Base):
+    """The citation gate: regulation_version_id is NOT NULL (DB-enforced)."""
+
+    __tablename__ = "findings"
+    id: Mapped[uuid.UUID] = _pk()
+    contract_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("contracts.id"), nullable=False)
+    clause_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("clauses.id"))
+    regulation_version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("regulation_versions.id"), nullable=False
+    )
+    title_ar: Mapped[str] = mapped_column(Text, nullable=False)
+    title_en: Mapped[str | None] = mapped_column(Text)
+    explanation_ar: Mapped[str | None] = mapped_column(Text)
+    explanation_en: Mapped[str | None] = mapped_column(Text)
+    severity: Mapped[str] = mapped_column(Text, nullable=False)
+    category: Mapped[str] = mapped_column(Text, nullable=False)
+    violation_cost_ar: Mapped[str | None] = mapped_column(Text)
+    violation_cost_min: Mapped[float | None] = mapped_column(Numeric)
+    violation_cost_max: Mapped[float | None] = mapped_column(Numeric)
+    review_status: Mapped[str] = mapped_column(Text, nullable=False, server_default="pending")
+    reviewed_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    reviewed_at: Mapped[dt.datetime | None] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class IdeaCheck(Base):
+    __tablename__ = "idea_checks"
+    id: Mapped[uuid.UUID] = _pk()
+    submitted_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    idea_text: Mapped[str] = mapped_column(Text, nullable=False)
+    report_ar: Mapped[str | None] = mapped_column(Text)
+    report_en: Mapped[str | None] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="submitted")
+    reviewed_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class IdeaCheckCitation(Base):
+    __tablename__ = "idea_check_citations"
+    idea_check_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("idea_checks.id"), primary_key=True
+    )
+    regulation_version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("regulation_versions.id"), primary_key=True
+    )
+
+
+class Obligation(Base):
+    __tablename__ = "obligations"
+    id: Mapped[uuid.UUID] = _pk()
+    regulation_version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("regulation_versions.id"), nullable=False
+    )
+    title_ar: Mapped[str] = mapped_column(Text, nullable=False)
+    title_en: Mapped[str | None] = mapped_column(Text)
+    owner_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    due_date: Mapped[dt.date | None] = mapped_column(Date)
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="open")
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class MonitoringEvent(Base):
+    __tablename__ = "monitoring_events"
+    id: Mapped[uuid.UUID] = _pk()
+    regulation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("regulations.id"), nullable=False)
+    new_version_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("regulation_versions.id")
+    )
+    change_type: Mapped[str | None] = mapped_column(Text)
+    detected_at: Mapped[dt.datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    impact_summary_ar: Mapped[str | None] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="detected")
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class AuditLog(Base):
+    """APPEND-ONLY. App role has INSERT+SELECT only (enforced by DB grant)."""
+
+    __tablename__ = "audit_log"
+    id: Mapped[uuid.UUID] = _pk()
+    actor: Mapped[str] = mapped_column(Text, nullable=False)
+    action: Mapped[str] = mapped_column(Text, nullable=False)
+    target: Mapped[str | None] = mapped_column(Text)
+    verdict: Mapped[str | None] = mapped_column(Text)
+    detail_json: Mapped[dict | None] = mapped_column(JSONB)
+    at: Mapped[dt.datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )

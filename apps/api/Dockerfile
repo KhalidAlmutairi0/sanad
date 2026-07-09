@@ -11,6 +11,8 @@ COPY apps/api/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY apps/api/ ./
+# Seed scripts + data (run via `docker compose run --rm api python scripts/seed_regulations.py`).
+COPY scripts/ /app/scripts/
 # Sanitizer sources are also copied so the worker can run extract.py inside bwrap.
 COPY sandboxes/sanitizer/ /sandboxes/sanitizer/
 

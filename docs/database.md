@@ -18,6 +18,7 @@ Two invariants are enforced at the schema level, not just in code:
 | display_name | text not null | |
 | role | text not null | enum: reviewer, sharia_board, admin, service |
 | is_active | bool not null default true | |
+| password_hash | text not null | bcrypt hash (architecture.md §7d); never returned by any API |
 | created_at | timestamptz | |
 
 ## regulations
@@ -61,6 +62,7 @@ DB grant: app role has INSERT + SELECT only. No UPDATE/DELETE.
 | sanitized_object_key | text | MinIO key, set after Sandbox A |
 | status | text not null | enum: uploaded, sanitizing, sanitized, extracting, reviewing, reviewed, failed |
 | readiness_score | int | 0–100, nullable until computed; reviewed findings only |
+| failure_reason | text | stable reason code when status=failed (architecture.md §7c); null otherwise |
 | created_at | timestamptz | |
 
 ## clauses

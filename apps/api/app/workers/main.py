@@ -9,6 +9,10 @@ from __future__ import annotations
 from arq.connections import RedisSettings
 
 from app.core.queue import redis_settings
+from app.workers.jobs.extract import extract_clauses
+from app.workers.jobs.findings import generate_findings
+from app.workers.jobs.idea import generate_idea_report_job
+from app.workers.jobs.sanitize import sanitize_contract
 
 
 async def startup(ctx: dict) -> None:
@@ -20,7 +24,8 @@ async def shutdown(ctx: dict) -> None:  # noqa: ARG001
 
 
 class WorkerSettings:
-    functions: list = []  # populated by deliverables 5, 6, 9
+    # Job types (architecture.md 7c).
+    functions = [sanitize_contract, extract_clauses, generate_findings, generate_idea_report_job]
     on_startup = startup
     on_shutdown = shutdown
     max_tries = 3

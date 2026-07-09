@@ -62,6 +62,8 @@ sanad/
 │       │   │   ├── scoring/          # Readiness Score (reviewed findings only)
 │       │   │   ├── extraction/       # clause segmentation over sanitized text
 │       │   │   ├── retrieval/        # pgvector search + embedder.py (multilingual-e5-large client)
+│       │   │   ├── sanitize/         # bwrap subprocess runner + content-type detection
+│       │   │   ├── analysis/         # LLM finding generation (index-based citations) + violation cost
 │       │   │   └── audit/            # audit_log writer (mandatory dependency)
 │       │   └── workers/              # arq (Redis) job consumers: sanitize, extract, findings, idea reports
 │       ├── alembic/                  # migrations
