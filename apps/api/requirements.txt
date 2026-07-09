@@ -13,6 +13,8 @@ arq==0.26.3
 minio==7.2.12
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
+# Pin bcrypt to a passlib-1.7.4-compatible release (4.1+ breaks passlib's backend probe).
+bcrypt==4.0.1
 python-multipart==0.0.20
 httpx==0.28.1
 anthropic==0.42.0

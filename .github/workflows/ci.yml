@@ -86,7 +86,8 @@ jobs:
       - name: Sanitizer no-network proof
         run: python -m pytest sandboxes/sanitizer/tests -v
       - name: Research-agent egress-denied proof
-        run: sudo -E python -m pytest sandboxes/research-agent/tests/test_egress_denied.py -v
+        # Use the same interpreter that has pytest (sudo's default python does not).
+        run: sudo -E "$(command -v python)" -m pytest sandboxes/research-agent/tests/test_egress_denied.py -v
 
   scans:
     name: Dependency + image scans

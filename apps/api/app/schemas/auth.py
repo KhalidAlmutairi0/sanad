@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import uuid
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 
 class LoginRequest(BaseModel):
-    email: EmailStr
+    # Plain str, not EmailStr: login only matches against the stored address, and EmailStr
+    # rejects reserved TLDs like `.local` (used by on-prem/demo accounts).
+    email: str
     password: str
 
 

@@ -81,9 +81,11 @@ async def test_arabic_text_round_trips_nfc_stable_hash(session: AsyncSession, us
     )
     session.add(rv)
     await session.flush()
-    session.expire(rv)
-    fetched = (
-        await session.execute(select(RegulationVersion).where(RegulationVersion.id == rv.id))
+    # Read the column value straight back from the DB (round-trip), not the cached ORM attr.
+    stored = (
+        await session.execute(
+            select(RegulationVersion.article_text_ar).where(RegulationVersion.id == rv.id)
+        )
     ).scalar_one()
-    assert fetched.article_text_ar == text
-    assert hashlib.sha256(fetched.article_text_ar.encode("utf-8")).hexdigest() == h
+    assert stored == text
+    assert hashlib.sha256(stored.encode("utf-8")).hexdigest() == h

@@ -19,6 +19,10 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-S
 	-- migration (so append-only INSERT+SELECT-only grants travel with the schema).
 	GRANT CONNECT ON DATABASE ${POSTGRES_DB} TO ${SANAD_APP_USER};
 	GRANT USAGE ON SCHEMA public TO ${SANAD_APP_USER};
+
+	-- pgvector requires superuser to CREATE EXTENSION; create it here (as the superuser)
+	-- so the non-superuser migrator's "CREATE EXTENSION IF NOT EXISTS vector" is a no-op.
+	CREATE EXTENSION IF NOT EXISTS vector;
 SQL
 
 echo "SANAD roles created: ${SANAD_MIGRATOR_USER}, ${SANAD_APP_USER}"

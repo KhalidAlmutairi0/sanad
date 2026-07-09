@@ -11,16 +11,30 @@ from collections.abc import AsyncIterator
 
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.pool import NullPool
 
-from app.core.db import engine
+from app.core.config import get_settings
 from app.core.security import create_access_token
 from app.models import Clause, Contract, Regulation, RegulationVersion, User
 
 
+@pytest_asyncio.fixture(autouse=True)
+async def _dispose_global_engine() -> AsyncIterator[None]:
+    # pytest-asyncio gives each test its own event loop; dispose the app's global engine
+    # afterwards so no pooled asyncpg connection is reused across loops (endpoints that hit
+    # /health use the global engine directly).
+    yield
+    from app.core.db import engine as app_engine
+
+    await app_engine.dispose()
+
+
 @pytest_asyncio.fixture
 async def session() -> AsyncIterator[AsyncSession]:
-    conn = await engine.connect()
+    # A dedicated NullPool engine per test binds every connection to the current loop.
+    eng = create_async_engine(get_settings().app_dsn, poolclass=NullPool)
+    conn = await eng.connect()
     trans = await conn.begin()
     # join_transaction_mode="create_savepoint" makes endpoint-level session.commit() operate
     # on a savepoint, so the outer rollback still undoes everything (isolated, even for code
@@ -32,6 +46,7 @@ async def session() -> AsyncIterator[AsyncSession]:
         await sess.close()
         await trans.rollback()
         await conn.close()
+        await eng.dispose()
 
 
 @pytest_asyncio.fixture
