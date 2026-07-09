@@ -5,13 +5,18 @@ bytes are written to a temp file with the right extension for the sandbox to bin
 """
 from __future__ import annotations
 
+import logging
 import os
 import subprocess
+import sys
 import zipfile
 from dataclasses import dataclass
 
+logger = logging.getLogger(__name__)
+
 SANITIZER_DIR = os.environ.get("SANITIZER_DIR", "/sandboxes/sanitizer")
 RUNNER = os.path.join(SANITIZER_DIR, "run_sanitizer.sh")
+EXTRACT = os.path.join(SANITIZER_DIR, "extract.py")
 
 # extract.py exit codes -> stable reason codes (api-contracts.md).
 _RC_REASON = {2: "unsupported_file_type", 3: "sanitize_failed", 4: "sanitize_failed", 124: "sanitize_timeout"}
@@ -22,6 +27,7 @@ class SanitizeResult:
     ok: bool
     text: str | None = None
     reason: str | None = None  # stable reason code when not ok
+    sandboxed: bool = True  # False when extraction ran in DEMO `direct` mode (no isolation)
 
 
 def detect_extension(data: bytes, path: str) -> str | None:
@@ -43,21 +49,28 @@ def detect_extension(data: bytes, path: str) -> str | None:
         return None
 
 
-def run_sanitizer(input_path: str, timeout_seconds: int) -> SanitizeResult:
-    """Run the sandbox on `input_path`. Returns clean text or a stable reason code.
+def run_sanitizer(input_path: str, timeout_seconds: int, *, mode: str = "sandboxed") -> SanitizeResult:
+    """Run extraction on `input_path`. Returns clean text or a stable reason code.
+
+    mode="sandboxed" (default): inside bubblewrap with no network (the real guarantee).
+    mode="direct" (DEMO ONLY): runs extract.py with no sandbox, for PaaS hosts without user
+    namespaces. This drops the containment guarantee; it is flagged on the result and audited.
 
     Timeout/error verdicts are terminal (the caller must NOT retry — a file that kills the
     sandbox is quarantined and flagged, architecture.md 7c)."""
+    sandboxed = mode != "direct"
+    if sandboxed:
+        cmd = ["bash", RUNNER, input_path]
+    else:
+        logger.warning("SANITIZER RUNNING UNSANDBOXED (SANITIZER_MODE=direct) — demo only, "
+                       "no network containment for %s", input_path)
+        cmd = [sys.executable, EXTRACT, input_path]
+
     try:
-        proc = subprocess.run(
-            ["bash", RUNNER, input_path],
-            capture_output=True,
-            text=True,
-            timeout=timeout_seconds + 5,  # outer guard; bwrap has its own `timeout`
-        )
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_seconds + 5)
     except subprocess.TimeoutExpired:
-        return SanitizeResult(ok=False, reason="sanitize_timeout")
+        return SanitizeResult(ok=False, reason="sanitize_timeout", sandboxed=sandboxed)
 
     if proc.returncode == 0:
-        return SanitizeResult(ok=True, text=proc.stdout)
-    return SanitizeResult(ok=False, reason=_RC_REASON.get(proc.returncode, "sanitize_failed"))
+        return SanitizeResult(ok=True, text=proc.stdout, sandboxed=sandboxed)
+    return SanitizeResult(ok=False, reason=_RC_REASON.get(proc.returncode, "sanitize_failed"), sandboxed=sandboxed)

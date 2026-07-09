@@ -58,7 +58,9 @@ async def sanitize_contract(ctx: dict, contract_id: str) -> str:
             typed_path = os.path.join(tmp_dir, f"raw.{ext}")
             os.rename(raw_path, typed_path)
 
-            result = run_sanitizer(typed_path, _settings.sanitizer_timeout_seconds)
+            result = run_sanitizer(
+                typed_path, _settings.sanitizer_timeout_seconds, mode=_settings.sanitizer_mode
+            )
             if not result.ok:
                 await _mark_failed(session, contract, result.reason or "sanitize_failed")
                 return result.reason or "sanitize_failed"
@@ -75,7 +77,11 @@ async def sanitize_contract(ctx: dict, contract_id: str) -> str:
             await write_audit(
                 session, actor=ACTOR_SANITIZER, action="sanitize_succeeded",
                 target=contract_id, verdict="allowed",
-                detail={"sanitized_object_key": sanitized_key, "chars": len(result.text or "")},
+                detail={
+                    "sanitized_object_key": sanitized_key,
+                    "chars": len(result.text or ""),
+                    "sandboxed": result.sandboxed,  # False in DEMO direct mode
+                },
             )
             await session.commit()
         finally:

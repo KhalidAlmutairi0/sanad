@@ -60,6 +60,10 @@ class Settings(BaseSettings):
     # Limits
     max_upload_mb: int = Field(default=50, alias="MAX_UPLOAD_MB")
     sanitizer_timeout_seconds: int = Field(default=60, alias="SANITIZER_TIMEOUT_SECONDS")
+    # sandboxed (default, requires bubblewrap + userns) | direct (DEMO ONLY: extraction runs
+    # WITHOUT the no-network sandbox, for PaaS hosts that forbid user namespaces). `direct`
+    # drops the containment guarantee (AGENTS.md #2) and is audited on every run.
+    sanitizer_mode: str = Field(default="sandboxed", alias="SANITIZER_MODE")
 
     def _dsn(self, user: str, password: str, driver: str) -> str:
         return (

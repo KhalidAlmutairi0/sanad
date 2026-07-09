@@ -16,7 +16,10 @@ COPY scripts/ /app/scripts/
 # Sanitizer sources are also copied so the worker can run extract.py inside bwrap.
 COPY sandboxes/sanitizer/ /sandboxes/sanitizer/
 
+RUN chmod +x /app/entrypoint.sh
+
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
 
 EXPOSE 8000
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Role selected by $ROLE (api|worker). compose overrides this per service.
+CMD ["/app/entrypoint.sh"]
