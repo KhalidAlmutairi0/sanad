@@ -13,7 +13,7 @@ function money(n: number | null): string | null {
   return n === null ? null : new Intl.NumberFormat("en-US").format(n);
 }
 
-export function FindingCard({ finding }: { finding: Finding }) {
+export function FindingCard({ finding, demo = false }: { finding: Finding; demo?: boolean }) {
   const { dict } = useApp();
   const router = useRouter();
   const [status, setStatus] = useState(finding.review_status);
@@ -21,6 +21,11 @@ export function FindingCard({ finding }: { finding: Finding }) {
   const [error, setError] = useState<string | null>(null);
 
   async function review(decision: "accepted" | "rejected") {
+    // Demo mode: update the UI only (no backend).
+    if (demo) {
+      setStatus(decision);
+      return;
+    }
     setBusy(true);
     setError(null);
     try {

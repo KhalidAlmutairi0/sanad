@@ -5,6 +5,7 @@ import { Header } from "@/components/ui/Header";
 import { UploadContract } from "@/components/contracts/UploadContract";
 import { StatusPill } from "@/components/contracts/StatusPill";
 import { ContractsHeading, EmptyState } from "./ui";
+import { isDemo, DEMO_CONTRACTS } from "@/lib/demo";
 import type { ContractListItem } from "@/types";
 
 interface ContractList {
@@ -13,12 +14,17 @@ interface ContractList {
 }
 
 export default async function ContractsPage() {
+  const demo = isDemo();
   let data: ContractList;
-  try {
-    data = await serverGet<ContractList>("/contracts");
-  } catch (e) {
-    if (e instanceof ApiRequestError && e.status === 401) redirect("/login");
-    throw e;
+  if (demo) {
+    data = { items: DEMO_CONTRACTS, total: DEMO_CONTRACTS.length };
+  } else {
+    try {
+      data = await serverGet<ContractList>("/contracts");
+    } catch (e) {
+      if (e instanceof ApiRequestError && e.status === 401) redirect("/login");
+      throw e;
+    }
   }
 
   return (
@@ -26,9 +32,11 @@ export default async function ContractsPage() {
       <Header />
       <main className="mx-auto max-w-6xl px-6 py-12">
         <ContractsHeading />
-        <div className="mt-8">
-          <UploadContract />
-        </div>
+        {!demo && (
+          <div className="mt-8">
+            <UploadContract />
+          </div>
+        )}
 
         {data.items.length === 0 ? (
           <EmptyState />
