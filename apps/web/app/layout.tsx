@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { IBM_Plex_Sans_Arabic, IBM_Plex_Mono } from "next/font/google";
+import { Providers, type Locale, type Theme } from "@/lib/i18n";
 import "./globals.css";
 
 // Self-hosted at build time (sovereignty: no runtime font CDN calls).
@@ -22,11 +24,23 @@ export const metadata: Metadata = {
   description: "منصة الامتثال السيادية — Zero Unsourced Findings",
 };
 
-// Arabic-first, RTL by default. English blocks switch dir at the block level.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const store = cookies();
+  const locale = (store.get("sanad_locale")?.value as Locale) || "ar";
+  const theme = (store.get("sanad_theme")?.value as Theme) || "light";
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
   return (
-    <html lang="ar" dir="rtl" className={`${plexArabic.variable} ${plexMono.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html
+      lang={locale}
+      dir={dir}
+      className={`${plexArabic.variable} ${plexMono.variable} ${theme === "dark" ? "dark" : ""}`}
+    >
+      <body className="font-sans antialiased">
+        <Providers initialLocale={locale} initialTheme={theme}>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }

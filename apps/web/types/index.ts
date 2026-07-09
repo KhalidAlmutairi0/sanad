@@ -1,0 +1,77 @@
+export type Role = "reviewer" | "sharia_board" | "admin" | "service";
+export type Severity = "critical" | "high" | "medium" | "low";
+export type ReviewStatus = "pending" | "accepted" | "rejected";
+export type ContractStatus =
+  | "uploaded"
+  | "sanitizing"
+  | "sanitized"
+  | "extracting"
+  | "reviewing"
+  | "reviewed"
+  | "failed";
+
+export interface UserPublic {
+  id: string;
+  display_name: string;
+  role: Role;
+}
+
+export interface Citation {
+  regulation_version_id: string;
+  regulation_code: string;
+  article_ref: string;
+  article_text_ar: string;
+  source_url: string;
+  effective_date: string | null;
+}
+
+export interface Finding {
+  id: string;
+  clause_id: string | null;
+  title_ar: string;
+  title_en: string | null;
+  explanation_ar: string | null;
+  explanation_en: string | null;
+  severity: Severity;
+  category: "regulatory" | "sharia";
+  violation_cost_ar: string | null;
+  violation_cost_min: number | null;
+  violation_cost_max: number | null;
+  review_status: ReviewStatus;
+  citation: Citation;
+}
+
+export interface Clause {
+  id: string;
+  ordinal: number;
+  text_ar: string | null;
+  text_en: string | null;
+}
+
+export interface FindingsSummary {
+  critical: number;
+  high: number;
+  medium: number;
+  low: number;
+  pending: number;
+}
+
+export interface ContractListItem {
+  id: string;
+  title: string;
+  status: ContractStatus;
+  readiness_score: number | null;
+  created_at: string;
+}
+
+export interface ContractDetail {
+  id: string;
+  title: string;
+  status: ContractStatus;
+  readiness_score: number | null;
+  findings_summary: FindingsSummary;
+}
+
+export interface ApiError {
+  error: { code: string; message_ar: string; message_en: string };
+}
