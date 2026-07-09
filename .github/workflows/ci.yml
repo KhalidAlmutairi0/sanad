@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  static:
+    name: Static invariants
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile all Python
+        run: find apps/api/app scripts sandboxes apps/api/tests -name '*.py' | xargs python -m py_compile
+      - name: Invariant — provider SDK only under services/llm
+        run: |
+          if grep -rEn "^\s*(from|import)\s+(anthropic|openai)\b" apps/api/app | grep -v "services/llm"; then
+            echo "provider SDK imported outside services/llm"; exit 1; fi
+      - name: Invariant — sandboxes never import apps
+        run: |
+          if grep -rEn "from app\.|import app\b" sandboxes; then
+            echo "sandboxes import apps"; exit 1; fi
+      - name: Invariant — no web storage of sensitive data
+        run: |
+          if grep -rEn "localStorage|sessionStorage" apps/web/app apps/web/components apps/web/lib | grep -v "no localStorage"; then
+            echo "web storage used"; exit 1; fi
+
+  backend:
+    name: Backend tests + coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare env
+        run: cp infra/.env.example infra/.env
+      - name: Start data services
+        run: docker compose -f infra/docker-compose.yml up -d --wait postgres redis minio
+      - name: Run migrations
+        run: docker compose -f infra/docker-compose.yml run --rm migrate
+      - name: Pytest + invariant-module coverage gate
+        run: |
+          docker compose -f infra/docker-compose.yml run --rm \
+            -e RUN_GOLDEN= api \
+            pytest -v \
+              --cov=app.services.citations --cov=app.services.scoring --cov=app.services.audit \
+              --cov-report=term-missing --cov-fail-under=85
+      - name: Tear down
+        if: always()
+        run: docker compose -f infra/docker-compose.yml down -v
+
+  frontend:
+    name: Frontend typecheck + build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Playwright public specs (soft)
+        continue-on-error: true
+        run: |
+          npx playwright install --with-deps chromium
+          npm run start & npx wait-on http://localhost:3000 || sleep 5
+          npx playwright test e2e/auth.spec.ts e2e/a11y.spec.ts --project=chromium
+
+  isolation:
+    name: Sandbox isolation (Linux)
+    runs-on: ubuntu-latest
+    continue-on-error: true  # kernel features vary by runner; tighten on a dedicated runner
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y bubblewrap nftables
+      - run: pip install pytest pypdf python-docx PyYAML
+      - name: Sanitizer no-network proof
+        run: python -m pytest sandboxes/sanitizer/tests -v
+      - name: Research-agent egress-denied proof
+        run: sudo -E python -m pytest sandboxes/research-agent/tests/test_egress_denied.py -v
+
+  scans:
+    name: Dependency + image scans
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: pip-audit
+        run: pip install pip-audit && pip-audit -r apps/api/requirements.txt || true
+      - name: npm audit
+        run: cd apps/web && npm audit --omit=dev || true
+      - name: Trivy filesystem scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: CRITICAL,HIGH
+          exit-code: "0"

@@ -1,0 +1,24 @@
+{
+  "note": "Golden regression set. Each case is a clause whose correct regulation coverage is known. Coverage = fraction of expected_codes cited by generated findings. Expand as the seed corpus grows.",
+  "min_coverage": 1.0,
+  "cases": [
+    {
+      "name": "cross-border data transfer",
+      "contract_text": "المادة 1: يحق للطرف الثاني نقل البيانات الشخصية للعملاء إلى خوادم خارج المملكة العربية السعودية ومعالجتها لدى جهات خارجية دون قيد.",
+      "expected_codes": ["PDPL"],
+      "expected_article_hint": "Article 29"
+    },
+    {
+      "name": "processing without consent",
+      "contract_text": "المادة 2: يجوز للشركة جمع ومعالجة البيانات الشخصية للمستخدمين لأي غرض تراه مناسباً دون الحاجة إلى موافقة أصحاب البيانات.",
+      "expected_codes": ["PDPL"],
+      "expected_article_hint": "Article 5"
+    },
+    {
+      "name": "excessive working hours",
+      "contract_text": "المادة 3: يلتزم الموظف بالعمل عشر ساعات يومياً ولمدة ستة أيام في الأسبوع دون احتساب ساعات إضافية.",
+      "expected_codes": ["LABOR"],
+      "expected_article_hint": "Article 98"
+    }
+  ]
+}
