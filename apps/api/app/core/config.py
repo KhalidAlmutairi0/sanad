@@ -33,6 +33,9 @@ class Settings(BaseSettings):
     minio_endpoint: str = Field(default="minio:9000", alias="MINIO_ENDPOINT")
     minio_public_endpoint: str = Field(default="localhost:9000", alias="MINIO_PUBLIC_ENDPOINT")
     minio_use_ssl: bool = Field(default=False, alias="MINIO_USE_SSL")
+    # Whether the browser-facing (public) MinIO endpoint uses TLS. Presigned URLs are signed
+    # for this endpoint so the Host header matches what the browser sends (SigV4).
+    minio_public_secure: bool = Field(default=False, alias="MINIO_PUBLIC_SECURE")
     minio_root_user: str = Field(default="", alias="MINIO_ROOT_USER")
     minio_root_password: str = Field(default="", alias="MINIO_ROOT_PASSWORD")
     bucket_quarantine: str = Field(default="sanad-quarantine", alias="MINIO_BUCKET_QUARANTINE")

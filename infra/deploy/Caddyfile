@@ -1,0 +1,15 @@
+# SANAD reverse proxy. Caddy fetches + renews TLS certs automatically (Let's Encrypt).
+# Two hostnames: the app, and MinIO (browsers PUT/GET uploads via presigned URLs, so MinIO
+# must be reachable over TLS at MINIO_DOMAIN). Point both DNS A records at the VM.
+
+{$DOMAIN} {
+	encode zstd gzip
+	# Next.js app (BFF handles the API server-side; the browser only talks to this origin).
+	reverse_proxy web:3000
+}
+
+{$MINIO_DOMAIN} {
+	encode zstd gzip
+	# Object storage for presigned upload/download URLs only.
+	reverse_proxy minio:9000
+}

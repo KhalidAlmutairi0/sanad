@@ -1,0 +1,40 @@
+# Production overlay. Use with the base file:
+#   docker compose -f infra/docker-compose.yml -f infra/docker-compose.prod.yml up -d
+#
+# Adds a Caddy reverse proxy (automatic TLS) in front of web + MinIO, and restart policies.
+# The base file publishes dev ports on the VM, but the firewall (bootstrap.sh) only allows
+# 80/443/22, so those ports are not reachable from the internet — Caddy is the only ingress.
+services:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [web, minio]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN}
+      MINIO_DOMAIN: ${MINIO_DOMAIN}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+  web:
+    restart: unless-stopped
+  api:
+    restart: unless-stopped
+  worker:
+    restart: unless-stopped
+  embedder:
+    restart: unless-stopped
+  postgres:
+    restart: unless-stopped
+  redis:
+    restart: unless-stopped
+  minio:
+    restart: unless-stopped
+
+volumes:
+  caddy-data:
+  caddy-config:
