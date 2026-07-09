@@ -1,0 +1,19 @@
+# Governed Research Agent egress allowlist (Sandbox B).
+# ONLY official regulator domains + the LLM API domain. Nothing else, ever.
+# The DNS watcher resolves these every 60s into the nftables @allowed_ips set.
+#
+# CDN-backed domains rotate IPs within minutes; that is exactly why this is a dynamic,
+# name-based allowlist refreshed on a timer, not a static IP list (validated 2026-07-08).
+
+resolver: 1.1.1.1          # DNS resolver reachable from inside the namespace
+refresh_seconds: 60
+
+domains:
+  # Regulators
+  - sama.gov.sa
+  - sdaia.gov.sa
+  - zatca.gov.sa
+  - hrsd.gov.sa
+  - laws.boe.gov.sa
+  # LLM API (only when LLM_PROVIDER routes egress through this sandbox)
+  - api.anthropic.com

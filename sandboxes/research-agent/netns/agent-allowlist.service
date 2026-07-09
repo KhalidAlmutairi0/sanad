@@ -1,0 +1,10 @@
+[Unit]
+Description=SANAD research-agent egress allowlist refresh (DNS watcher)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Adjust paths per deployment. Runs as root (needs netns + nft).
+Environment=AGENT_NS=agent-ns
+ExecStart=/opt/sanad/sandboxes/research-agent/netns/update_allowlist.sh
