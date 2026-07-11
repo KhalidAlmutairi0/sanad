@@ -177,6 +177,19 @@ class MonitoringEvent(Base):
     created_at: Mapped[dt.datetime] = _created_at()
 
 
+class Invite(Base):
+    __tablename__ = "invites"
+    id: Mapped[uuid.UUID] = _pk()
+    code: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    role: Mapped[str] = mapped_column(Text, nullable=False)
+    email: Mapped[str | None] = mapped_column(Text)
+    note: Mapped[str | None] = mapped_column(Text)
+    used: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
+    used_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    created_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
 class AuditLog(Base):
     """APPEND-ONLY. App role has INSERT+SELECT only (enforced by DB grant)."""
 

@@ -3,27 +3,23 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/lib/i18n";
-import { login } from "@/lib/api";
+import { register } from "@/lib/api";
 
-export function LoginForm({ demo = false }: { demo?: boolean }) {
+export function JoinForm() {
   const { dict, toggleLocale } = useApp();
   const router = useRouter();
-  const [email, setEmail] = useState("reviewer@sanad.local");
-  const [password, setPassword] = useState(demo ? "demo" : "");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    // Demo mode: no backend — go straight to the screens.
-    if (demo) {
-      router.push("/contracts");
-      return;
-    }
     setBusy(true);
     setError(false);
     try {
-      await login(email, password);
+      await register(email, password, code.trim());
       router.push("/contracts");
       router.refresh();
     } catch {
@@ -37,14 +33,21 @@ export function LoginForm({ demo = false }: { demo?: boolean }) {
       <div className="mx-auto w-full max-w-sm">
         <p className="text-label text-orange-ink">{dict.tagline}</p>
         <h1 className="mt-2 text-display font-bold">سَنَد</h1>
-        {demo && (
-          <p className="mt-2 rounded-chip bg-orange-bg px-3 py-1 text-caption text-orange-ink">
-            بيانات تجريبية للعرض فقط · Demo data, for preview only
-          </p>
-        )}
+        <p className="mt-4 text-h3 text-ink">{dict.join.title}</p>
         <form onSubmit={submit} className="mt-8 space-y-4">
           <label className="block">
-            <span className="text-label text-muted">{dict.login.email}</span>
+            <span className="text-label text-muted">{dict.join.code}</span>
+            <input
+              type="text"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              className="mt-1 w-full rounded-chip border border-line bg-surface px-4 py-3 text-body text-ink"
+              required
+              dir="ltr"
+            />
+          </label>
+          <label className="block">
+            <span className="text-label text-muted">{dict.join.email}</span>
             <input
               type="email"
               value={email}
@@ -55,28 +58,28 @@ export function LoginForm({ demo = false }: { demo?: boolean }) {
             />
           </label>
           <label className="block">
-            <span className="text-label text-muted">{dict.login.password}</span>
+            <span className="text-label text-muted">{dict.join.password}</span>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 w-full rounded-chip border border-line bg-surface px-4 py-3 text-body text-ink"
-              required={!demo}
+              required
               dir="ltr"
             />
           </label>
-          {error && <p className="text-label text-severity-critical">{dict.login.error}</p>}
+          {error && <p className="text-label text-severity-critical">{dict.join.error}</p>}
           <button
             type="submit"
             disabled={busy}
             className="w-full rounded-chip bg-orange px-6 py-3 text-label text-white disabled:opacity-50"
           >
-            {demo ? "دخول العرض · Enter demo" : dict.login.submit}
+            {dict.join.submit}
           </button>
         </form>
         <div className="mt-6 flex items-center justify-between">
-          <a href="/join" className="text-label text-orange-ink">
-            {dict.join.title}
+          <a href="/login" className="text-label text-orange-ink">
+            {dict.join.haveAccount}
           </a>
           <button type="button" onClick={toggleLocale} className="text-label text-muted">
             {dict.common.toggleLang}

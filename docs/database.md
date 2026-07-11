@@ -156,6 +156,24 @@ DB grant: INSERT + SELECT only.
 
 ---
 
+## invites
+Single-use registration codes issued by an admin. A code carries the role the new account gets, and may be bound to a specific email.
+| column | type | notes |
+|---|---|---|
+| id | uuid PK | |
+| code | text not null unique | `secrets.token_urlsafe(6)`; shared out-of-band |
+| role | text not null | CHECK reviewer / sharia_board / admin |
+| email | text | optional; if set, only that email may redeem it |
+| note | text | free-text label for the admin |
+| used | bool not null default false | flips true on successful register |
+| used_by | uuid FK → users.id | who redeemed it |
+| created_by | uuid FK → users.id | issuing admin |
+| created_at | timestamptz not null default now() | |
+
+DB grant: full CRUD (app marks codes used and lists them). Index on `code`.
+
+---
+
 ## Relationship summary
 
 ```

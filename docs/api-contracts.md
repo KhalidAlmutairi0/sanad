@@ -21,6 +21,12 @@ Breaking any contract here requires updating this doc in the same PR.
 Req: `{ "email": string, "password": string }`
 Res 200: `{ "token": string, "user": { "id", "display_name", "role" } }`
 
+### POST /auth/register
+Public. Redeem a single-use invite code to create an account, then auto-login.
+Req: `{ "email": string, "password": string, "code": string, "display_name"?: string }`
+Res 201: `{ "token": string, "user": { "id", "display_name", "role" } }`
+Errors: `validation_failed` if the code is unknown/used, bound to another email, the email already exists, or the password is shorter than 6 chars. Role is taken from the invite, never from the request. Marks the invite used and writes `user_registered` to the audit log.
+
 ---
 
 ## Contracts
@@ -212,6 +218,13 @@ Res 200: `{ "domains": [string] }`
 ### GET /admin/audit
 Query: `?actor=&action=&verdict=&from=&to=`
 Res 200: `{ "items": [ { "actor","action","target","verdict","detail_json","at" } ], "total": int }`
+
+### POST /admin/invites
+Admin only. Issue a single-use invite code. Req: `{ "role": "reviewer"|"sharia_board"|"admin", "email"?: string, "note"?: string }`
+Res 201: `{ "code","role","email","used","created_at" }`  (audit: `invite_created`)
+
+### GET /admin/invites
+Admin only. Res 200: `{ "items": [ { "code","role","email","used","created_at" } ] }`
 
 ---
 
