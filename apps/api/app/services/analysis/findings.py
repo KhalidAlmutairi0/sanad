@@ -14,6 +14,7 @@ from app.services.audit import write_audit
 from app.services.citations import create_finding_guarded
 from app.services.llm import LLMRequest, UntrustedBlock, get_llm
 from app.services.retrieval import Candidate, retrieve_candidates
+from app.services.settings import CONTRACTS_GUIDANCE_KEY, get_setting
 
 ACTOR_ANALYSIS = "analysis"
 _SEVERITIES = {"critical", "high", "medium", "low"}
@@ -21,18 +22,29 @@ _CATEGORIES = {"regulatory", "sharia"}
 # Beyond this cosine distance a candidate is treated as irrelevant (no forced finding).
 _RELEVANCE_MAX_DISTANCE = 0.42
 
-SYSTEM_PROMPT = (
+# EDITABLE by admins (persona + analytical intent). Stored guidance overrides this default.
+CONTRACTS_GUIDANCE_DEFAULT = (
     "You are a senior Saudi regulatory compliance analyst. You are given ONE contract "
     "clause and a numbered list of candidate regulation articles retrieved from a verified "
     "evidence cache. Decide whether the clause conflicts with, or fails to satisfy, any "
-    "candidate article. Rules: (1) Only cite a candidate by its given index. Never invent "
-    "an article, number, or citation. (2) If the clause raises no issue against any "
-    "candidate, return an empty JSON array. (3) Base every explanation strictly on the "
-    "cited article's text. (4) Output ONLY a JSON array, no prose. Each element: "
+    "candidate article."
+)
+
+# LOCKED machine contract — always appended, never editable. Enforces Zero Unsourced
+# Findings (cite by index, no invented citations) and the JSON schema the parser needs.
+CONTRACTS_CONTRACT = (
+    "Rules: (1) Only cite a candidate by its given index. Never invent an article, number, "
+    "or citation. (2) If the clause raises no issue against any candidate, return an empty "
+    "JSON array. (3) Base every explanation strictly on the cited article's text. (4) Output "
+    "ONLY a JSON array, no prose. Each element: "
     '{"candidate_index": int, "severity": "critical|high|medium|low", '
     '"category": "regulatory", "title_ar": str, "title_en": str, "explanation_ar": str, '
     '"explanation_en": str}. Arabic and English fields are separate, never mixed.'
 )
+
+
+def _compose_system_prompt(guidance: str) -> str:
+    return f"{guidance.strip()}\n\n{CONTRACTS_CONTRACT}"
 
 
 def _instruction(candidates: list[Candidate]) -> str:
@@ -105,6 +117,8 @@ async def generate_findings_for_contract(session: AsyncSession, contract_id: uui
     ).scalars().all()
 
     provider = get_llm()
+    guidance = await get_setting(session, CONTRACTS_GUIDANCE_KEY, CONTRACTS_GUIDANCE_DEFAULT)
+    system_prompt = _compose_system_prompt(guidance)
     total = 0
     for clause in clauses:
         clause_text = clause.text_ar or clause.text_en
@@ -115,7 +129,7 @@ async def generate_findings_for_contract(session: AsyncSession, contract_id: uui
             continue
 
         req = LLMRequest(
-            system_prompt=SYSTEM_PROMPT,
+            system_prompt=system_prompt,
             instruction=_instruction(candidates),
             untrusted_blocks=_untrusted_blocks(clause_text, candidates),
             offline_stub=_offline_stub(candidates),

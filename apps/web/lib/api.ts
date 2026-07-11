@@ -19,6 +19,16 @@ export async function apiPost<T>(path: string, body?: unknown): Promise<T> {
   return (await res.json()) as T;
 }
 
+export async function apiPut<T>(path: string, body?: unknown): Promise<T> {
+  const res = await fetch(`/api/backend${path}`, {
+    method: "PUT",
+    headers: { "content-type": "application/json" },
+    body: body === undefined ? undefined : JSON.stringify(body),
+  });
+  if (!res.ok) throw await toError(res);
+  return (await res.json()) as T;
+}
+
 export async function login(email: string, password: string): Promise<void> {
   const res = await fetch(`/api/login`, {
     method: "POST",

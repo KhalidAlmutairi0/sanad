@@ -119,6 +119,13 @@ export interface Invite {
   created_at: string;
 }
 
+export interface Prompts {
+  contracts_guidance: string;
+  idea_guidance: string;
+  contracts_contract: string | null;
+  idea_contract: string | null;
+}
+
 export interface AuditItem {
   actor: string;
   action: string;

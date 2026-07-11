@@ -13,6 +13,7 @@ from app.models.tables import (
     Obligation,
     Regulation,
     RegulationVersion,
+    Setting,
     User,
 )
 
@@ -28,5 +29,6 @@ __all__ = [
     "Obligation",
     "Regulation",
     "RegulationVersion",
+    "Setting",
     "User",
 ]
