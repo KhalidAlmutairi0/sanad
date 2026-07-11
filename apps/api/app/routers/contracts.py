@@ -71,7 +71,7 @@ async def signal_uploaded(
     try:
         stat = client.stat_object(_settings.bucket_quarantine, contract.raw_object_key)
     except Exception:
-        raise SanadError("not_found", "لم يُرفع الملف بعد", "No uploaded file found")
+        raise SanadError("not_found", "ما تم رفع الملف بعد", "No file uploaded yet")
     if stat.size > _settings.max_upload_mb * 1024 * 1024:
         contract.status = "failed"
         contract.failure_reason = "file_too_large"

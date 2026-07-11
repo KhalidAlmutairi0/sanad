@@ -39,7 +39,7 @@ export function LoginForm({ demo = false }: { demo?: boolean }) {
         <h1 className="mt-2 text-display font-bold">سَنَد</h1>
         {demo && (
           <p className="mt-2 rounded-chip bg-orange-bg px-3 py-1 text-caption text-orange-ink">
-            وضع العرض — بيانات توضيحية فقط · Demo mode — sample data only
+            بيانات تجريبية للعرض فقط · Demo data, for preview only
           </p>
         )}
         <form onSubmit={submit} className="mt-8 space-y-4">

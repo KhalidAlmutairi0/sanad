@@ -20,7 +20,7 @@ async def login(body: LoginRequest, session: AsyncSession = Depends(get_session)
     ).scalar_one_or_none()
     # Same error whether the email is unknown or the password is wrong (no user enumeration).
     if not user or not user.is_active or not verify_password(body.password, user.password_hash):
-        raise SanadError("unauthorized", "بيانات الدخول غير صحيحة", "Invalid credentials")
+        raise SanadError("unauthorized", "بيانات الدخول غير صحيحة", "Your email or password is incorrect")
     token = create_access_token(user_id=str(user.id), role=user.role)
     return LoginResponse(
         token=token,

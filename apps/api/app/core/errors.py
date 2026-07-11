@@ -11,18 +11,18 @@ from fastapi.responses import JSONResponse
 
 # Stable codes -> default bilingual messages. Never mix scripts on one line.
 ERROR_MESSAGES: dict[str, tuple[str, str]] = {
-    "unauthorized": ("يلزم تسجيل الدخول", "Authentication required"),
-    "forbidden": ("لا تملك صلاحية لهذا الإجراء", "You do not have permission for this action"),
-    "not_found": ("العنصر غير موجود", "Resource not found"),
-    "validation_failed": ("البيانات المدخلة غير صحيحة", "The submitted data is invalid"),
-    # Should never occur — a finding without a source is structurally impossible.
-    "citation_required": ("لا يمكن إنشاء ملاحظة بدون مصدر", "A finding cannot exist without a source"),
-    "sanitize_failed": ("تعذر تنقية الملف", "The file could not be sanitized"),
-    "sanitize_timeout": ("انتهت مهلة تنقية الملف", "File sanitization timed out"),
-    "file_too_large": ("حجم الملف يتجاوز الحد المسموح", "The file exceeds the maximum allowed size"),
-    "unsupported_file_type": ("نوع الملف غير مدعوم", "This file type is not supported"),
-    "egress_denied": ("تم رفض الاتصال الخارجي", "Outbound connection denied"),
-    "review_conflict": ("تمت مراجعة هذه الملاحظة مسبقًا", "This finding has already been reviewed"),
+    "unauthorized": ("تحتاج تسجّل دخول", "Please sign in"),
+    "forbidden": ("ما لك صلاحية لهذا الإجراء", "You don't have permission for this"),
+    "not_found": ("غير موجود", "Not found"),
+    "validation_failed": ("فيه بيانات غير صحيحة، راجعها", "Some fields aren't valid, please check them"),
+    # Should never occur; a finding without a source is structurally impossible.
+    "citation_required": ("ما يصير ملاحظة بدون مصدر", "A finding can't exist without a source"),
+    "sanitize_failed": ("ما قدرنا نفحص الملف", "We couldn't scan the file"),
+    "sanitize_timeout": ("فحص الملف طوّل وتوقف", "Scanning the file took too long"),
+    "file_too_large": ("حجم الملف أكبر من المسموح", "The file is over the size limit"),
+    "unsupported_file_type": ("نوع الملف غير مدعوم", "This file type isn't supported"),
+    "egress_denied": ("الاتصال الخارجي مرفوض", "Outbound connection blocked"),
+    "review_conflict": ("هذي الملاحظة تمت مراجعتها", "This finding was already reviewed"),
 }
 
 # Codes -> HTTP status.

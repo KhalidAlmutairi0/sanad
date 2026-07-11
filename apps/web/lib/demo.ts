@@ -15,14 +15,14 @@ export function isDemo(): boolean {
 export const DEMO_CONTRACTS: ContractListItem[] = [
   {
     id: "demo-1",
-    title: "اتفاقية معالجة بيانات — مزود سحابي",
+    title: "اتفاقية معالجة بيانات مع مزود سحابي",
     status: "reviewing",
     readiness_score: 60,
     created_at: "2026-07-01T09:00:00Z",
   },
   {
     id: "demo-2",
-    title: "عقد عمل — دوام كامل",
+    title: "عقد عمل دوام كامل",
     status: "reviewed",
     readiness_score: 82,
     created_at: "2026-06-24T13:30:00Z",
@@ -66,15 +66,15 @@ const DEMO_FINDINGS: Record<string, Finding[]> = {
     {
       id: "f1",
       clause_id: "c2",
-      title_ar: "نقل بيانات شخصية خارج المملكة دون ضوابط",
-      title_en: "Cross-border personal-data transfer without controls",
+      title_ar: "نقل بيانات العملاء خارج المملكة بدون ضوابط",
+      title_en: "Sending customer data outside the Kingdom without controls",
       explanation_ar:
-        "يسمح البند بنقل بيانات العملاء إلى خوادم خارج المملكة دون التحقق من مستوى الحماية، وهو ما تشترطه المادة 29 من نظام حماية البيانات الشخصية.",
+        "البند يسمح بنقل بيانات العملاء لخوادم خارج المملكة بدون التأكد من مستوى الحماية، وهذا يخالف اللي تشترطه المادة 29.",
       explanation_en:
-        "The clause permits transferring customer data outside the Kingdom without verifying an adequate level of protection, which PDPL Article 29 requires.",
+        "The clause lets customer data go to servers outside the Kingdom without checking the protection level, which is exactly what Article 29 requires.",
       severity: "critical",
       category: "regulatory",
-      violation_cost_ar: "غرامة لا تزيد على ثلاثة ملايين ريال",
+      violation_cost_ar: "غرامة تصل إلى 3 ملايين ريال",
       violation_cost_min: 0,
       violation_cost_max: 3000000,
       review_status: "accepted",
@@ -83,15 +83,15 @@ const DEMO_FINDINGS: Record<string, Finding[]> = {
     {
       id: "f2",
       clause_id: "c4",
-      title_ar: "إفشاء بيانات حساسة لأطراف ثالثة",
-      title_en: "Disclosure of sensitive data to third parties",
+      title_ar: "مشاركة بيانات حساسة مع أطراف خارجية",
+      title_en: "Sharing sensitive data with third parties",
       explanation_ar:
-        "يتيح البند مشاركة بيانات حساسة مع شركاء دون قيد، وهو ما ترتب عليه المادة 35 عقوبات جزائية.",
+        "البند يسمح بمشاركة بيانات حساسة مع الشركاء بدون أي حد، والمادة 35 تفرض على هذا عقوبات.",
       explanation_en:
-        "The clause allows sharing sensitive data with partners without limit; PDPL Article 35 attaches criminal penalties.",
+        "The clause allows sharing sensitive data with partners with no limits, and Article 35 attaches criminal penalties to that.",
       severity: "high",
       category: "regulatory",
-      violation_cost_ar: "السجن حتى سنتين وغرامة حتى ثلاثة ملايين ريال",
+      violation_cost_ar: "سجن يصل إلى سنتين وغرامة تصل إلى 3 ملايين ريال",
       violation_cost_min: 0,
       violation_cost_max: 3000000,
       review_status: "pending",
@@ -102,12 +102,12 @@ const DEMO_FINDINGS: Record<string, Finding[]> = {
     {
       id: "f3",
       clause_id: "c1",
-      title_ar: "ساعات عمل تتجاوز الحد النظامي",
-      title_en: "Working hours exceed the statutory limit",
+      title_ar: "ساعات عمل أكثر من الحد النظامي",
+      title_en: "Working hours are over the legal limit",
       explanation_ar:
-        "ينص العقد على عشر ساعات عمل يومياً، بينما تحدد المادة 98 من نظام العمل الحد بثماني ساعات يومياً.",
+        "العقد يحدد عشر ساعات عمل باليوم، والمادة 98 من نظام العمل تحدد السقف بثمان ساعات.",
       explanation_en:
-        "The contract sets ten working hours per day, while Labor Law Article 98 caps it at eight hours per day.",
+        "The contract sets ten working hours a day, while Labor Law Article 98 caps it at eight.",
       severity: "medium",
       category: "regulatory",
       violation_cost_ar: null,
@@ -167,9 +167,9 @@ export function demoRadarVerdict(id: string): "GO" | "REVIEW" | "STOP" {
 
 export const DEMO_IDEA_REPORT = {
   report_ar:
-    "الأنظمة المنطبقة: PDPL المادة 29؛ PDPL المادة 5.\nالمتطلبات: الحصول على موافقة صريحة من المستخدم قبل المعالجة، والتحقق من مستوى الحماية قبل أي نقل خارج المملكة.\nالمخاطر: نقل البيانات لمزود خارجي دون ضوابط يعرّض المنشأة لعقوبات.\nأسئلة مفتوحة: أين ستُخزَّن البيانات؟ هل تشمل بيانات حساسة؟",
+    "الأنظمة المنطبقة: نظام حماية البيانات الشخصية، المادة 29 والمادة 5.\nالمتطلبات: خذ موافقة واضحة من المستخدم قبل المعالجة، وتأكد من مستوى الحماية قبل أي نقل خارج المملكة.\nالمخاطر: نقل البيانات لمزود خارجي بدون ضوابط يعرّض المنشأة لعقوبات.\nأسئلة مفتوحة: أين ستُخزن البيانات؟ وهل فيها بيانات حساسة؟",
   report_en:
-    "Applicable regulations: PDPL Article 29; PDPL Article 5.\nRequirements: obtain explicit user consent before processing, and verify an adequate protection level before any cross-border transfer.\nRisks: transferring data to an external provider without controls exposes the entity to penalties.\nOpen questions: where will the data be stored? Does it include sensitive data?",
+    "Applicable regulations: PDPL Article 29 and Article 5.\nRequirements: get clear user consent before processing, and check the protection level before sending anything outside the Kingdom.\nRisks: sending data to an outside provider without controls puts the company at risk of penalties.\nOpen questions: where will the data live, and does it include sensitive data?",
   citations: [
     { regulation_version_id: "rv-pdpl-29", regulation_code: "PDPL", article_ref: "Article 29", source_url: CITE_PDPL_29.source_url },
     { regulation_version_id: "rv-pdpl-5", regulation_code: "PDPL", article_ref: "Article 5", source_url: CITE_PDPL_29.source_url },
