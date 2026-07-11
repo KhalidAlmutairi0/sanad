@@ -4,12 +4,16 @@
 
 {$DOMAIN} {
 	encode zstd gzip
+	# HSTS: after the first visit, browsers go straight to HTTPS and never try http://
+	# (covers subdomains like storage.* too, which are all HTTPS).
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	# Next.js app (BFF handles the API server-side; the browser only talks to this origin).
 	reverse_proxy web:3000
 }
 
 {$MINIO_DOMAIN} {
 	encode zstd gzip
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	# Object storage for presigned upload/download URLs only.
 	reverse_proxy minio:9000
 }
