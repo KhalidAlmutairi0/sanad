@@ -51,6 +51,9 @@ class Settings(BaseSettings):
     anthropic_api_key: str = Field(default="", alias="ANTHROPIC_API_KEY")
     selfhosted_llm_url: str = Field(default="", alias="SELFHOSTED_LLM_URL")
     selfhosted_llm_model: str = Field(default="", alias="SELFHOSTED_LLM_MODEL")
+    # API key for an OpenAI-compatible endpoint (OpenAI, Azure OpenAI, or a hosted gateway).
+    # Sent as a Bearer header. Lives only in the analysis/worker service env (AGENTS.md #7).
+    selfhosted_llm_api_key: str = Field(default="", alias="SELFHOSTED_LLM_API_KEY")
 
     # Auth
     jwt_secret: str = Field(default="", alias="JWT_SECRET")

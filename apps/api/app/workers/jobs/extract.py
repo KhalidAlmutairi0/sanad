@@ -44,7 +44,7 @@ async def extract_clauses(ctx: dict, contract_id: str) -> str:
                     )
                 )
         await write_audit(
-            session, actor=ACTOR_ANALYSIS_FALLBACK, action="clauses_extracted",
+            session, actor=ACTOR_ANALYSIS, action="clauses_extracted",
             target=contract_id, verdict="n-a", detail={"count": len(segments)},
         )
         await session.commit()

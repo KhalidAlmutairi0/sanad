@@ -17,5 +17,9 @@ def get_llm() -> LLMProvider:
     if s.llm_provider == "selfhosted":
         from app.services.llm.selfhosted_provider import SelfHostedProvider
 
-        return SelfHostedProvider(url=s.selfhosted_llm_url, model=s.selfhosted_llm_model)
+        return SelfHostedProvider(
+            url=s.selfhosted_llm_url,
+            model=s.selfhosted_llm_model,
+            api_key=s.selfhosted_llm_api_key,
+        )
     raise ValueError(f"Unknown LLM_PROVIDER: {s.llm_provider!r}")

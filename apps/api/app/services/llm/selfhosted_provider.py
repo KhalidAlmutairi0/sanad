@@ -17,9 +17,10 @@ from app.services.llm.base import LLMProvider, LLMRequest
 
 
 class SelfHostedProvider(LLMProvider):
-    def __init__(self, url: str | None, model: str | None) -> None:
+    def __init__(self, url: str | None, model: str | None, api_key: str | None = None) -> None:
         self._url = url or None
         self._model = model or "local"
+        self._api_key = api_key or None
 
     async def complete(self, req: LLMRequest) -> str:
         if self._url:
@@ -36,8 +37,13 @@ class SelfHostedProvider(LLMProvider):
                 {"role": "user", "content": req.render_user()},
             ],
         }
+        headers = {"Content-Type": "application/json"}
+        if self._api_key:
+            headers["Authorization"] = f"Bearer {self._api_key}"
         async with httpx.AsyncClient(timeout=120.0) as client:
-            resp = await client.post(f"{self._url.rstrip('/')}/chat/completions", json=payload)
+            resp = await client.post(
+                f"{self._url.rstrip('/')}/chat/completions", json=payload, headers=headers
+            )
             resp.raise_for_status()
             data = resp.json()
         return data["choices"][0]["message"]["content"]
