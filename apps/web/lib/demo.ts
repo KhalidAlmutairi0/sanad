@@ -2,10 +2,14 @@
 // sample data instead of calling the backend — no DB, no sandboxes, no LLM. For showing the
 // screens only; nothing here is a real compliance result.
 import type {
+  AuditItem,
   Clause,
   ContractDetail,
   ContractListItem,
+  EvidenceSearchItem,
   Finding,
+  MonitoringEvent,
+  Obligation,
 } from "@/types";
 
 export function isDemo(): boolean {
@@ -164,6 +168,57 @@ export function demoRadarVerdict(id: string): "GO" | "REVIEW" | "STOP" {
   if (accepted.some((f) => f.severity === "high" || f.severity === "medium")) return "REVIEW";
   return "GO";
 }
+
+const SRC = "https://sdaia.gov.sa/x";
+
+export const DEMO_OBLIGATIONS: Obligation[] = [
+  {
+    id: "o1", title_ar: "تعيين مسؤول حماية البيانات", title_en: "Appoint a Data Protection Officer",
+    owner_id: "u1", due_date: "2026-09-01", status: "open",
+    citation: { regulation_version_id: "rv1", regulation_code: "PDPL", article_ref: "Article 30", source_url: SRC },
+  },
+  {
+    id: "o2", title_ar: "سجل أنشطة المعالجة", title_en: "Processing activities record",
+    owner_id: null, due_date: null, status: "in_progress",
+    citation: { regulation_version_id: "rv2", regulation_code: "PDPL", article_ref: "Article 31", source_url: SRC },
+  },
+  {
+    id: "o3", title_ar: "عقود العمل وفق ساعات النظام", title_en: "Employment contracts within legal hours",
+    owner_id: "u2", due_date: "2026-08-15", status: "overdue",
+    citation: { regulation_version_id: "rv3", regulation_code: "LABOR", article_ref: "Article 98", source_url: SRC },
+  },
+];
+
+export const DEMO_EVENTS: MonitoringEvent[] = [
+  {
+    id: "e1", regulation_code: "PDPL", change_type: "amended",
+    detected_at: "2026-07-11T09:00:00Z", impact_summary_ar: "تعديل مقترح على المادة 29",
+    status: "detected", new_version_id: null,
+  },
+  {
+    id: "e2", regulation_code: "LABOR", change_type: "new_article",
+    detected_at: "2026-07-10T12:00:00Z", impact_summary_ar: "إضافة مادة جديدة", status: "verified",
+    new_version_id: "rvx",
+  },
+];
+
+export const DEMO_EVIDENCE: EvidenceSearchItem[] = [
+  { regulation_version_id: "rv1", regulation_code: "PDPL", article_ref: "Article 29",
+    snippet_ar: "يجوز لجهة التحكم نقل البيانات الشخصية إلى جهة خارج المملكة أو الإفصاح عنها وفق الضوابط التي تحددها اللوائح…", score: 0.91 },
+  { regulation_version_id: "rv2", regulation_code: "PDPL", article_ref: "Article 5",
+    snippet_ar: "لا يجوز معالجة البيانات الشخصية إلا بعد موافقة صاحبها وفقاً للأحوال والضوابط المنصوص عليها…", score: 0.83 },
+  { regulation_version_id: "rv3", regulation_code: "LABOR", article_ref: "Article 98",
+    snippet_ar: "لا يجوز تشغيل العامل تشغيلاً فعلياً أكثر من ثماني ساعات في اليوم الواحد…", score: 0.79 },
+];
+
+export const DEMO_AUDIT: AuditItem[] = [
+  { actor: "analysis", action: "score_computed", target: "demo-1", verdict: "n-a", detail_json: { score: 60 }, at: "2026-07-11T10:20:00Z" },
+  { actor: "u1", action: "finding_reviewed", target: "demo-1", verdict: "n-a", detail_json: { decision: "accepted" }, at: "2026-07-11T10:19:00Z" },
+  { actor: "research-agent", action: "agent_fetch", target: "sdaia.gov.sa", verdict: "allowed", detail_json: null, at: "2026-07-11T10:00:00Z" },
+  { actor: "research-agent", action: "egress_denied", target: "example.com", verdict: "denied", detail_json: { rule: "policy_drop" }, at: "2026-07-11T09:58:00Z" },
+];
+
+export const DEMO_ALLOWLIST = ["sama.gov.sa", "sdaia.gov.sa", "zatca.gov.sa", "hrsd.gov.sa", "laws.boe.gov.sa", "api.openai.com"];
 
 export const DEMO_IDEA_REPORT = {
   report_ar:

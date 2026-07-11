@@ -75,3 +75,47 @@ export interface ContractDetail {
 export interface ApiError {
   error: { code: string; message_ar: string; message_en: string };
 }
+
+export interface SourceCitation {
+  regulation_version_id: string;
+  regulation_code: string;
+  article_ref: string;
+  source_url: string;
+}
+
+export interface Obligation {
+  id: string;
+  title_ar: string;
+  title_en: string | null;
+  owner_id: string | null;
+  due_date: string | null;
+  status: "open" | "in_progress" | "met" | "overdue";
+  citation: SourceCitation;
+}
+
+export interface MonitoringEvent {
+  id: string;
+  regulation_code: string;
+  change_type: string | null;
+  detected_at: string;
+  impact_summary_ar: string | null;
+  status: "detected" | "verified" | "notified";
+  new_version_id: string | null;
+}
+
+export interface EvidenceSearchItem {
+  regulation_version_id: string;
+  regulation_code: string;
+  article_ref: string;
+  snippet_ar: string;
+  score: number;
+}
+
+export interface AuditItem {
+  actor: string;
+  action: string;
+  target: string | null;
+  verdict: string | null;
+  detail_json: Record<string, unknown> | null;
+  at: string;
+}

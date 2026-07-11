@@ -22,12 +22,24 @@ export function Header() {
           <Link href="/contracts" className="text-h2 font-bold text-ink">
             سَنَد
           </Link>
-          <nav className="flex items-center gap-6 text-label">
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-label">
             <Link href="/contracts" className="text-ink hover:text-orange-ink">
               {dict.nav.contracts}
             </Link>
             <Link href="/idea-check" className="text-ink hover:text-orange-ink">
               {dict.nav.ideaCheck}
+            </Link>
+            <Link href="/register" className="text-ink hover:text-orange-ink">
+              {dict.nav.register}
+            </Link>
+            <Link href="/monitoring" className="text-ink hover:text-orange-ink">
+              {dict.nav.monitoring}
+            </Link>
+            <Link href="/evidence" className="text-ink hover:text-orange-ink">
+              {dict.nav.evidence}
+            </Link>
+            <Link href="/admin" className="text-ink hover:text-orange-ink">
+              {dict.nav.admin}
             </Link>
           </nav>
         </div>
