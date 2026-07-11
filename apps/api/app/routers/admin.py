@@ -16,8 +16,17 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.deps import get_session, require_roles
+from app.core.errors import SanadError
 from app.models import AuditLog, Invite, User
+from app.services.analysis.findings import CONTRACTS_CONTRACT, CONTRACTS_GUIDANCE_DEFAULT
+from app.services.analysis.idea_report import IDEA_CONTRACT, IDEA_GUIDANCE_DEFAULT
 from app.services.audit import write_audit
+from app.services.settings import (
+    CONTRACTS_GUIDANCE_KEY,
+    IDEA_GUIDANCE_KEY,
+    get_setting,
+    set_setting,
+)
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
@@ -62,6 +71,20 @@ class InviteItem(BaseModel):
 
 class InviteList(BaseModel):
     items: list[InviteItem]
+
+
+class Prompts(BaseModel):
+    # Editable analyst guidance (persona + intent).
+    contracts_guidance: str
+    idea_guidance: str
+    # Read-only locked machine contract, shown so the admin sees what is always appended.
+    contracts_contract: str | None = None
+    idea_contract: str | None = None
+
+
+class PromptsUpdate(BaseModel):
+    contracts_guidance: str
+    idea_guidance: str
 
 
 def _read_allowlist() -> list[str]:
@@ -127,6 +150,42 @@ async def get_audit(
     )
 
 
+@router.get("/prompts", response_model=Prompts)
+async def get_prompts(
+    _: User = Depends(require_roles("admin")),
+    session: AsyncSession = Depends(get_session),
+) -> Prompts:
+    return Prompts(
+        contracts_guidance=await get_setting(session, CONTRACTS_GUIDANCE_KEY, CONTRACTS_GUIDANCE_DEFAULT),
+        idea_guidance=await get_setting(session, IDEA_GUIDANCE_KEY, IDEA_GUIDANCE_DEFAULT),
+        contracts_contract=CONTRACTS_CONTRACT,
+        idea_contract=IDEA_CONTRACT,
+    )
+
+
+@router.post("/prompts", response_model=Prompts)
+async def put_prompts(
+    body: PromptsUpdate,
+    user: User = Depends(require_roles("admin")),
+    session: AsyncSession = Depends(get_session),
+) -> Prompts:
+    contracts = body.contracts_guidance.strip()
+    idea = body.idea_guidance.strip()
+    if not contracts or not idea:
+        raise SanadError("validation_failed", "النص لا يمكن أن يكون فارغاً", "Guidance cannot be empty")
+    await set_setting(session, CONTRACTS_GUIDANCE_KEY, contracts, user.id)
+    await set_setting(session, IDEA_GUIDANCE_KEY, idea, user.id)
+    await write_audit(
+        session, actor=str(user.id), action="prompts_updated", verdict="n-a",
+        detail={"contracts_len": len(contracts), "idea_len": len(idea)},
+    )
+    await session.commit()
+    return Prompts(
+        contracts_guidance=contracts, idea_guidance=idea,
+        contracts_contract=CONTRACTS_CONTRACT, idea_contract=IDEA_CONTRACT,
+    )
+
+
 @router.post("/invites", response_model=InviteItem, status_code=201)
 async def create_invite(
     body: InviteCreate,
@@ -134,8 +193,6 @@ async def create_invite(
     session: AsyncSession = Depends(get_session),
 ) -> InviteItem:
     if body.role not in ("reviewer", "sharia_board", "admin"):
-        from app.core.errors import SanadError
-
         raise SanadError("validation_failed")
     invite = Invite(
         code=secrets.token_urlsafe(6),

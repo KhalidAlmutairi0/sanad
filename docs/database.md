@@ -174,6 +174,19 @@ DB grant: full CRUD (app marks codes used and lists them). Index on `code`.
 
 ---
 
+## settings
+Editable key/value app settings. Currently holds the admin-editable **analyst guidance** for the two analysis prompts (`contracts_guidance`, `idea_guidance`). Only the guidance/persona is stored here; the locked JSON+citation contract is appended in code and never editable, so a bad edit cannot break Zero Unsourced Findings.
+| column | type | notes |
+|---|---|---|
+| key | text PK | e.g. `contracts_guidance`, `idea_guidance` |
+| value | text not null | the guidance text |
+| updated_by | uuid FK → users.id | last admin who saved |
+| updated_at | timestamptz not null default now() | |
+
+DB grant: full CRUD (admin upserts guidance).
+
+---
+
 ## Relationship summary
 
 ```

@@ -219,6 +219,15 @@ Res 200: `{ "domains": [string] }`
 Query: `?actor=&action=&verdict=&from=&to=`
 Res 200: `{ "items": [ { "actor","action","target","verdict","detail_json","at" } ], "total": int }`
 
+### GET /admin/prompts
+Admin only. Returns the editable analyst guidance for both analyses plus the read-only locked contract that is always appended.
+Res 200: `{ "contracts_guidance": string, "idea_guidance": string, "contracts_contract": string, "idea_contract": string }`
+
+### POST /admin/prompts
+Admin only. Updates the editable guidance for both analyses (persona/intent only; the JSON+citation contract is fixed in code and cannot be changed). Empty guidance is rejected. Takes effect on the next analysis run. Audited as `prompts_updated`.
+Req: `{ "contracts_guidance": string, "idea_guidance": string }`
+Res 200: same shape as GET.
+
 ### POST /admin/invites
 Admin only. Issue a single-use invite code. Req: `{ "role": "reviewer"|"sharia_board"|"admin", "email"?: string, "note"?: string }`
 Res 201: `{ "code","role","email","used","created_at" }`  (audit: `invite_created`)

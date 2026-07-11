@@ -190,6 +190,18 @@ class Invite(Base):
     created_at: Mapped[dt.datetime] = _created_at()
 
 
+class Setting(Base):
+    """Editable key/value app settings (e.g. admin-editable prompt guidance)."""
+
+    __tablename__ = "settings"
+    key: Mapped[str] = mapped_column(Text, primary_key=True)
+    value: Mapped[str] = mapped_column(Text, nullable=False)
+    updated_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    updated_at: Mapped[dt.datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+
 class AuditLog(Base):
     """APPEND-ONLY. App role has INSERT+SELECT only (enforced by DB grant)."""
 

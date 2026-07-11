@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { Header } from "@/components/ui/Header";
 import { useApp } from "@/lib/i18n";
-import { apiGet, apiPost } from "@/lib/api";
+import { apiGet, apiPost, apiPut } from "@/lib/api";
 import { DEMO_ALLOWLIST, DEMO_AUDIT } from "@/lib/demo";
-import type { AuditItem, Invite, Role } from "@/types";
+import type { AuditItem, Invite, Prompts, Role } from "@/types";
 
 export function AdminView({ demo = false }: { demo?: boolean }) {
   const { dict } = useApp();
@@ -15,6 +15,8 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
   const [inviteRole, setInviteRole] = useState<Role>("reviewer");
   const [inviteEmail, setInviteEmail] = useState("");
   const [copied, setCopied] = useState<string | null>(null);
+  const [prompts, setPrompts] = useState<Prompts | null>(null);
+  const [promptsSaved, setPromptsSaved] = useState(false);
   const [forbidden, setForbidden] = useState(false);
   const [saved, setSaved] = useState(false);
   const [loading, setLoading] = useState(!demo);
@@ -25,6 +27,7 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
       apiGet<{ domains: string[] }>("/admin/allowlist").then((d) => setDomains(d.domains.join("\n"))),
       apiGet<{ items: AuditItem[] }>("/admin/audit?limit=25").then((d) => setAudit(d.items)),
       apiGet<{ items: Invite[] }>("/admin/invites").then((d) => setInvites(d.items)).catch(() => null),
+      apiGet<Prompts>("/admin/prompts").then((d) => setPrompts(d)).catch(() => null),
     ])
       .catch((e) => {
         if ((e as Error & { code?: string }).code === "forbidden") setForbidden(true);
@@ -35,7 +38,7 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
   async function save() {
     setSaved(false);
     const list = domains.split("\n").map((d) => d.trim()).filter(Boolean);
-    if (!demo) await apiPost("/admin/allowlist", { domains: list }).catch(() => null);
+    if (!demo) await apiPut("/admin/allowlist", { domains: list }).catch(() => null);
     setSaved(true);
   }
 
@@ -53,6 +56,20 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
     await navigator.clipboard.writeText(code).catch(() => null);
     setCopied(code);
     setTimeout(() => setCopied((c) => (c === code ? null : c)), 1500);
+  }
+
+  async function savePrompts() {
+    if (demo || !prompts) return;
+    setPromptsSaved(false);
+    const updated = await apiPost<Prompts>("/admin/prompts", {
+      contracts_guidance: prompts.contracts_guidance,
+      idea_guidance: prompts.idea_guidance,
+    }).catch(() => null);
+    if (updated) {
+      setPrompts(updated);
+      setPromptsSaved(true);
+      setTimeout(() => setPromptsSaved(false), 2500);
+    }
   }
 
   if (forbidden) {
@@ -77,6 +94,54 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
           <p className="mt-8 text-body text-muted">{dict.common.loading}</p>
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {prompts && (
+              <section className="rounded-card border border-line bg-surface p-6 lg:col-span-2">
+                <h2 className="text-h3 text-ink">{dict.admin.prompts}</h2>
+                <p className="mt-1 text-caption text-muted">{dict.admin.promptsHint}</p>
+                <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label className="text-label text-ink">{dict.admin.contractsGuidance}</label>
+                    <textarea
+                      value={prompts.contracts_guidance}
+                      onChange={(e) => setPrompts({ ...prompts, contracts_guidance: e.target.value })}
+                      rows={6}
+                      className="mt-2 w-full rounded-chip border border-line bg-paper p-3 text-body text-ink"
+                    />
+                    {prompts.contracts_contract && (
+                      <details className="mt-2">
+                        <summary className="cursor-pointer text-caption text-muted">{dict.admin.lockedContract}</summary>
+                        <p dir="ltr" className="mt-2 rounded-chip bg-orange-bg p-3 text-caption text-orange-ink">
+                          {prompts.contracts_contract}
+                        </p>
+                      </details>
+                    )}
+                  </div>
+                  <div>
+                    <label className="text-label text-ink">{dict.admin.ideaGuidance}</label>
+                    <textarea
+                      value={prompts.idea_guidance}
+                      onChange={(e) => setPrompts({ ...prompts, idea_guidance: e.target.value })}
+                      rows={6}
+                      className="mt-2 w-full rounded-chip border border-line bg-paper p-3 text-body text-ink"
+                    />
+                    {prompts.idea_contract && (
+                      <details className="mt-2">
+                        <summary className="cursor-pointer text-caption text-muted">{dict.admin.lockedContract}</summary>
+                        <p dir="ltr" className="mt-2 rounded-chip bg-orange-bg p-3 text-caption text-orange-ink">
+                          {prompts.idea_contract}
+                        </p>
+                      </details>
+                    )}
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center gap-3">
+                  <button onClick={savePrompts} className="rounded-chip bg-orange px-6 py-2 text-label text-white">
+                    {dict.admin.save}
+                  </button>
+                  {promptsSaved && <span className="text-label text-severity-ok">{dict.admin.promptsSaved}</span>}
+                </div>
+              </section>
+            )}
             <section className="rounded-card border border-line bg-surface p-6">
               <h2 className="text-h3 text-ink">{dict.admin.allowlist}</h2>
               <p className="mt-1 text-caption text-muted">{dict.admin.allowlistHint}</p>

@@ -13,18 +13,30 @@ from app.services.audit import ACTOR_ANALYSIS, write_audit
 from app.services.citations import resolve_citation
 from app.services.llm import LLMRequest, UntrustedBlock, get_llm
 from app.services.retrieval import Candidate, retrieve_candidates
+from app.services.settings import IDEA_GUIDANCE_KEY, get_setting
 
 _RELEVANCE_MAX_DISTANCE = 0.5
 
-SYSTEM_PROMPT = (
+# EDITABLE by admins (persona + analytical intent). Stored guidance overrides this default.
+IDEA_GUIDANCE_DEFAULT = (
     "You are a Saudi regulatory compliance analyst. A product manager describes a feature "
     "idea. Using ONLY the numbered candidate articles from the verified evidence cache, "
     "produce a compliance report with four sections: applicable regulations, requirements, "
-    "risks, open questions. Every substantive claim must reference a candidate by index. "
-    "Never invent an article or citation. Output ONLY JSON: "
+    "risks, open questions."
+)
+
+# LOCKED machine contract — always appended, never editable. Enforces cite-by-index and the
+# JSON schema the pipeline needs (no hallucinated sources).
+IDEA_CONTRACT = (
+    "Every substantive claim must reference a candidate by index. Never invent an article or "
+    "citation. Output ONLY JSON: "
     '{"report_ar": str, "report_en": str, "cited_indices": [int]}. report_ar is a full '
     "Arabic report; report_en is a full English report; never mix scripts within a line."
 )
+
+
+def _compose_system_prompt(guidance: str) -> str:
+    return f"{guidance.strip()}\n\n{IDEA_CONTRACT}"
 
 
 def _instruction(candidates: list[Candidate]) -> str:
@@ -72,8 +84,9 @@ async def generate_idea_report(session: AsyncSession, idea_check_id: uuid.UUID) 
         await session.commit()
         return 0
 
+    guidance = await get_setting(session, IDEA_GUIDANCE_KEY, IDEA_GUIDANCE_DEFAULT)
     req = LLMRequest(
-        system_prompt=SYSTEM_PROMPT,
+        system_prompt=_compose_system_prompt(guidance),
         instruction=_instruction(candidates),
         untrusted_blocks=[UntrustedBlock(source="pm_idea", content=idea.idea_text)]
         + [UntrustedBlock(source=f"candidate_article_{i}", content=c.article_text_ar) for i, c in enumerate(candidates)],
