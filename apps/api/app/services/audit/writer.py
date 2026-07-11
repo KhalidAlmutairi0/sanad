@@ -26,6 +26,8 @@ ACTIONS = {
     "idea_check_submitted",
     "idea_report_generated",
     "idea_check_reviewed",
+    "obligation_assigned",
+    "kit_exported",
     "agent_fetch",
     "egress_denied",
     "allowlist_updated",

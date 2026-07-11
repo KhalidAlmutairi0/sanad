@@ -7,22 +7,30 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import case, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.config import get_settings
 from app.core.deps import get_current_user, get_session, require_roles
 from app.core.errors import SanadError
-from app.models import Contract, Finding, Regulation, RegulationVersion, User
+from app.core.storage import get_minio, presigned_get
+from app.models import Clause, Contract, Finding, Regulation, RegulationVersion, User
 from app.schemas.findings import (
     Citation,
     ExplainResponse,
     FindingItem,
     FindingList,
+    KitExportRequest,
+    KitExportResponse,
+    KitResponse,
     RadarKiller,
     RadarResponse,
     ReviewRequest,
     ReviewResponse,
 )
+from app.services.analysis.kit import generate_explanation, generate_kit
 from app.services.audit import write_audit
 from app.services.scoring import compute_readiness_score
 from app.services.scoring.score import compute_radar
+
+_settings = get_settings()
 
 router = APIRouter(tags=["findings"])
 
@@ -103,9 +111,13 @@ async def explain_finding(
     if not row:
         raise SanadError("not_found")
     f, rv, code = row
+    # Regenerate a plain-language explanation strictly from the cited article.
+    gen = await generate_explanation(
+        article_text=rv.article_text_ar, code=code, article_ref=rv.article_ref, title=f.title_ar
+    )
     return ExplainResponse(
-        explanation_ar=f.explanation_ar,
-        explanation_en=f.explanation_en,
+        explanation_ar=gen.get("explanation_ar") or f.explanation_ar,
+        explanation_en=gen.get("explanation_en") or f.explanation_en,
         citation=_citation(rv, code),
     )
 
@@ -180,3 +192,112 @@ async def contract_radar(
             RadarKiller(finding_id=f.id, title_ar=f.title_ar, severity=f.severity, citation=_citation(rv, code))
         )
     return RadarResponse(verdict=radar["verdict"], killers=killers)
+
+
+async def _finding_row(session: AsyncSession, finding_id: uuid.UUID):
+    return (
+        await session.execute(
+            select(Finding, RegulationVersion, Regulation.code)
+            .join(RegulationVersion, RegulationVersion.id == Finding.regulation_version_id)
+            .join(Regulation, Regulation.id == RegulationVersion.regulation_id)
+            .where(Finding.id == finding_id)
+        )
+    ).first()
+
+
+async def _clause_text(session: AsyncSession, clause_id: uuid.UUID | None) -> str:
+    if not clause_id:
+        return ""
+    clause = await session.get(Clause, clause_id)
+    return (clause.text_ar or clause.text_en or "") if clause else ""
+
+
+@router.get("/findings/{finding_id}/kit", response_model=KitResponse)
+async def finding_kit(
+    finding_id: uuid.UUID,
+    _: User = Depends(require_roles("reviewer", "admin")),
+    session: AsyncSession = Depends(get_session),
+) -> KitResponse:
+    row = await _finding_row(session, finding_id)
+    if not row:
+        raise SanadError("not_found")
+    f, rv, code = row
+    if not (f.review_status == "accepted" and f.severity in ("critical", "high")):
+        raise SanadError("validation_failed",
+                         "ملف التفاوض يُنشأ فقط للملاحظات المقبولة عالية الخطورة",
+                         "Negotiation Kit is only for accepted high or critical findings")
+    kit = await generate_kit(
+        clause_text=await _clause_text(session, f.clause_id),
+        article_text=rv.article_text_ar, code=code, article_ref=rv.article_ref,
+    )
+    return KitResponse(
+        redrafted_clause_ar=kit.get("redrafted_clause_ar", ""),
+        redrafted_clause_en=kit.get("redrafted_clause_en", ""),
+        justification_letter_ar=kit.get("justification_letter_ar", ""),
+        justification_letter_en=kit.get("justification_letter_en", ""),
+        citation=_citation(rv, code),
+    )
+
+
+def _build_annex(kit: dict, code: str, article_ref: str, fmt: str) -> tuple[bytes, str, str]:
+    """Return (bytes, content_type, extension). Stacked bilingual annex."""
+    if fmt == "docx":
+        import io
+
+        from docx import Document
+        from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+        doc = Document()
+        doc.add_heading("ملحق التفاوض · Negotiation Annex", level=1)
+        doc.add_paragraph(f"{code} {article_ref}")
+        for ar_head, ar_key, en_head, en_key in [
+            ("الصياغة المقترحة", "redrafted_clause_ar", "Redrafted clause", "redrafted_clause_en"),
+            ("خطاب التبرير", "justification_letter_ar", "Justification", "justification_letter_en"),
+        ]:
+            h = doc.add_heading(ar_head, level=2); h.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            p = doc.add_paragraph(kit.get(ar_key, "")); p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            doc.add_heading(en_head, level=2)
+            doc.add_paragraph(kit.get(en_key, ""))
+        buf = io.BytesIO(); doc.save(buf)
+        return buf.getvalue(), "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "docx"
+
+    # pdf not rendered on-box; return a plain-text annex (stacked bilingual).
+    text = (
+        f"ملحق التفاوض · {code} {article_ref}\n\n"
+        f"الصياغة المقترحة:\n{kit.get('redrafted_clause_ar','')}\n\n"
+        f"Redrafted clause:\n{kit.get('redrafted_clause_en','')}\n\n"
+        f"خطاب التبرير:\n{kit.get('justification_letter_ar','')}\n\n"
+        f"Justification:\n{kit.get('justification_letter_en','')}\n"
+    )
+    return text.encode("utf-8"), "text/plain; charset=utf-8", "txt"
+
+
+@router.post("/findings/{finding_id}/kit/export", response_model=KitExportResponse)
+async def finding_kit_export(
+    finding_id: uuid.UUID,
+    body: KitExportRequest,
+    user: User = Depends(require_roles("reviewer", "admin")),
+    session: AsyncSession = Depends(get_session),
+) -> KitExportResponse:
+    import io
+
+    row = await _finding_row(session, finding_id)
+    if not row:
+        raise SanadError("not_found")
+    f, rv, code = row
+    kit = await generate_kit(
+        clause_text=await _clause_text(session, f.clause_id),
+        article_text=rv.article_text_ar, code=code, article_ref=rv.article_ref,
+    )
+    fmt = body.format if body.format in ("docx", "pdf") else "docx"
+    data, content_type, ext = _build_annex(kit, code, rv.article_ref, fmt)
+    key = f"{f.contract_id}/kits/{finding_id}.{ext}"
+    get_minio().put_object(
+        _settings.bucket_sanitized, key, io.BytesIO(data), length=len(data), content_type=content_type
+    )
+    await write_audit(
+        session, actor=str(user.id), action="kit_exported", target=str(finding_id),
+        verdict="n-a", detail={"format": fmt, "key": key},
+    )
+    await session.commit()
+    return KitExportResponse(download_url=presigned_get(_settings.bucket_sanitized, key))

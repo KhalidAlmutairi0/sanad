@@ -63,3 +63,19 @@ class RadarKiller(BaseModel):
 class RadarResponse(BaseModel):
     verdict: str  # GO | REVIEW | STOP
     killers: list[RadarKiller]
+
+
+class KitResponse(BaseModel):
+    redrafted_clause_ar: str
+    redrafted_clause_en: str
+    justification_letter_ar: str
+    justification_letter_en: str
+    citation: Citation
+
+
+class KitExportRequest(BaseModel):
+    format: str = "docx"  # docx | pdf
+
+
+class KitExportResponse(BaseModel):
+    download_url: str
