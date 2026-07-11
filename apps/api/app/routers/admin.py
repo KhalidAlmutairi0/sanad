@@ -6,6 +6,8 @@ from __future__ import annotations
 import datetime as dt
 import os
 import pathlib
+import secrets
+import uuid
 
 import yaml
 from fastapi import APIRouter, Depends, Query
@@ -14,7 +16,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.deps import get_session, require_roles
-from app.models import AuditLog, User
+from app.models import AuditLog, Invite, User
 from app.services.audit import write_audit
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -42,6 +44,24 @@ class AuditItem(BaseModel):
 class AuditPage(BaseModel):
     items: list[AuditItem]
     total: int
+
+
+class InviteCreate(BaseModel):
+    role: str = "reviewer"  # reviewer | sharia_board | admin
+    email: str | None = None
+    note: str | None = None
+
+
+class InviteItem(BaseModel):
+    code: str
+    role: str
+    email: str | None
+    used: bool
+    created_at: dt.datetime
+
+
+class InviteList(BaseModel):
+    items: list[InviteItem]
 
 
 def _read_allowlist() -> list[str]:
@@ -104,4 +124,41 @@ async def get_audit(
             for r in rows
         ],
         total=total,
+    )
+
+
+@router.post("/invites", response_model=InviteItem, status_code=201)
+async def create_invite(
+    body: InviteCreate,
+    user: User = Depends(require_roles("admin")),
+    session: AsyncSession = Depends(get_session),
+) -> InviteItem:
+    if body.role not in ("reviewer", "sharia_board", "admin"):
+        from app.core.errors import SanadError
+
+        raise SanadError("validation_failed")
+    invite = Invite(
+        code=secrets.token_urlsafe(6),
+        role=body.role,
+        email=(body.email.strip().lower() if body.email else None),
+        note=body.note,
+        created_by=user.id,
+    )
+    session.add(invite)
+    await write_audit(
+        session, actor=str(user.id), action="invite_created", verdict="n-a",
+        detail={"role": body.role, "email": invite.email},
+    )
+    await session.commit()
+    return InviteItem(code=invite.code, role=invite.role, email=invite.email, used=False, created_at=invite.created_at)
+
+
+@router.get("/invites", response_model=InviteList)
+async def list_invites(
+    _: User = Depends(require_roles("admin")),
+    session: AsyncSession = Depends(get_session),
+) -> InviteList:
+    rows = (await session.execute(select(Invite).order_by(Invite.created_at.desc()))).scalars().all()
+    return InviteList(
+        items=[InviteItem(code=i.code, role=i.role, email=i.email, used=i.used, created_at=i.created_at) for i in rows]
     )

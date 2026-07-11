@@ -28,6 +28,15 @@ export async function login(email: string, password: string): Promise<void> {
   if (!res.ok) throw await toError(res);
 }
 
+export async function register(email: string, password: string, code: string): Promise<void> {
+  const res = await fetch(`/api/register`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email, password, code }),
+  });
+  if (!res.ok) throw await toError(res);
+}
+
 export async function logout(): Promise<void> {
   await fetch(`/api/logout`, { method: "POST" });
 }

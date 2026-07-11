@@ -111,6 +111,14 @@ export interface EvidenceSearchItem {
   score: number;
 }
 
+export interface Invite {
+  code: string;
+  role: Role;
+  email: string | null;
+  used: boolean;
+  created_at: string;
+}
+
 export interface AuditItem {
   actor: string;
   action: string;
