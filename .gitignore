@@ -33,3 +33,7 @@ out/
 minio-data/
 postgres-data/
 model-cache/
+
+# scratch / assets
+image*.png
+*.zip
