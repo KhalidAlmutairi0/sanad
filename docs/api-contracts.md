@@ -4,7 +4,7 @@ Base: `/api/v1`. Auth: Bearer JWT. All responses JSON. Errors: `{ "error": { "co
 
 **Pagination (all list endpoints):** query `?limit=` (default 25, max 100) and `?offset=` (default 0); responses include `"total": int`. 
 
-**Error codes (stable, used in `error.code`):** `unauthorized`, `forbidden`, `not_found`, `validation_failed`, `citation_required` (attempt to create a finding without a source — should never occur, logged as an incident), `sanitize_failed`, `sanitize_timeout`, `file_too_large`, `unsupported_file_type`, `egress_denied`, `review_conflict`.
+**Error codes (stable, used in `error.code`):** `unauthorized`, `forbidden`, `not_found`, `validation_failed`, `citation_required` (attempt to create a finding without a source — should never occur, logged as an incident), `sanitize_failed`, `sanitize_timeout`, `file_too_large`, `unsupported_file_type`, `egress_denied`, `review_conflict`, `rate_limited` (429; too many auth attempts from one IP).
 
 **Upload constraints:** accepted types pdf, docx, txt; max 50 MB; anything else → 422 `unsupported_file_type` / 413 `file_too_large` before touching the sanitizer.
 
@@ -20,6 +20,7 @@ Breaking any contract here requires updating this doc in the same PR.
 ### POST /auth/login
 Req: `{ "email": string, "password": string }`
 Res 200: `{ "token": string, "user": { "id", "display_name", "role" } }`
+Rate limit: 5 requests/minute per client IP (X-Forwarded-For behind the proxy); the 6th returns 429 `rate_limited`.
 
 ### POST /auth/register
 Public. Redeem a single-use invite code to create an account, then auto-login.
