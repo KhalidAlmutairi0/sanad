@@ -28,9 +28,9 @@ services:
     restart: unless-stopped
     # The upload sanitizer runs extraction inside bubblewrap with NO network (--unshare-net).
     # bubblewrap needs to create user/net/mount namespaces and pivot_root; the default Docker
-    # seccomp + AppArmor profiles block those, so bwrap can't build the jail and the app falls
-    # back to SANITIZER_MODE=direct (no containment). These options let bwrap build the jail so
-    # the sanitizer is genuinely sandboxed in production. Scope: this is the worker service
+    # seccomp + AppArmor profiles block those, so bwrap can't build the jail and the app would
+    # fall back to the unsandboxed direct mode (no containment). These options let bwrap build
+    # the jail so the sanitizer is genuinely sandboxed in production. Scope: worker service
     # only; untrusted upload code executes INSIDE bwrap, never in the worker itself. Verified
     # isolated on the VM (only `lo`, DNS + outbound TCP blocked) via run_sanitizer.sh --probe.
     cap_add:
