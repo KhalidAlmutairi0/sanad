@@ -1,5 +1,7 @@
-from __future__ import annotations
-
+# NOTE: no `from __future__ import annotations` here. slowapi's @limiter.limit wraps the
+# endpoint, and FastAPI then cannot resolve stringized body annotations against this module's
+# globals — it would mis-read `body: LoginRequest` as a query param (422). Real annotations
+# keep the Pydantic body working under the rate-limit decorator.
 from fastapi import APIRouter, Depends, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
