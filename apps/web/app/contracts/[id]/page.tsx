@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import { serverGet, ApiRequestError } from "@/lib/server-api";
 import { Header } from "@/components/ui/Header";
 import { ReviewWorkspace } from "@/components/review/ReviewWorkspace";
-import { isDemo, demoContractDetail, demoClauses, demoFindings, demoRadarVerdict } from "@/lib/demo";
 import type { Clause, ContractDetail, Finding } from "@/types";
 
 interface RadarResp {
@@ -11,23 +10,6 @@ interface RadarResp {
 
 export default async function ContractReviewPage({ params }: { params: { id: string } }) {
   const { id } = params;
-
-  if (isDemo()) {
-    return (
-      <div className="min-h-screen">
-        <Header />
-        <main className="mx-auto max-w-6xl px-6 py-12">
-          <ReviewWorkspace
-            contract={demoContractDetail(id)}
-            clauses={demoClauses(id)}
-            findings={demoFindings(id)}
-            verdict={demoRadarVerdict(id)}
-            demo
-          />
-        </main>
-      </div>
-    );
-  }
 
   try {
     const [contract, clausesRes, findingsRes, radar] = await Promise.all([

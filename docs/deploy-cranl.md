@@ -1,4 +1,9 @@
-# deploy-cranl.md — SANAD demo on CranL (for-show)
+# deploy-cranl.md — SANAD demo on CranL (DEPRECATED)
+
+> DEPRECATED (2026-07-12). The fake-data demo mode this guide relied on has been removed
+> (it fabricated findings/scores and violated AGENTS.md "no quick demo mode"). CranL also
+> cannot run the isolation sandboxes. Do not use this path; deploy on a Linux VM per
+> `docs/deploy.md`. Kept only for historical reference.
 
 > DEMO deployment. CranL runs standard (unprivileged) containers, so the two isolation
 > sandboxes do NOT run here: the upload sanitizer runs in `SANITIZER_MODE=direct` (no

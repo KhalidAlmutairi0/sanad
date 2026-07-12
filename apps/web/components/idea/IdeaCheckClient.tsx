@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/ui/Header";
 import { useApp } from "@/lib/i18n";
 import { apiGet, apiPost } from "@/lib/api";
-import { DEMO_IDEA_REPORT } from "@/lib/demo";
 
 interface IdeaCitation {
   regulation_version_id: string;
@@ -20,7 +19,7 @@ interface IdeaDetail {
   citations: IdeaCitation[];
 }
 
-export function IdeaCheckClient({ demo = false }: { demo?: boolean }) {
+export function IdeaCheckClient() {
   const { dict } = useApp();
   const [idea, setIdea] = useState("");
   const [busy, setBusy] = useState(false);
@@ -34,15 +33,6 @@ export function IdeaCheckClient({ demo = false }: { demo?: boolean }) {
     if (idea.trim().length < 10) return;
     setBusy(true);
     setDetail(null);
-
-    if (demo) {
-      // No backend — show the sample cited report after a short "generating" beat.
-      setTimeout(() => {
-        setDetail({ id: "demo", status: "generated", ...DEMO_IDEA_REPORT });
-        setBusy(false);
-      }, 900);
-      return;
-    }
 
     const created = await apiPost<{ id: string }>("/idea-checks", { idea_text: idea });
     timer.current = setInterval(async () => {

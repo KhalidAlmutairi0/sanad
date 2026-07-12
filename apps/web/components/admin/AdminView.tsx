@@ -4,13 +4,12 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/ui/Header";
 import { useApp } from "@/lib/i18n";
 import { apiGet, apiPost, apiPut } from "@/lib/api";
-import { DEMO_ALLOWLIST, DEMO_AUDIT } from "@/lib/demo";
 import type { AuditItem, Invite, Prompts, Role } from "@/types";
 
-export function AdminView({ demo = false }: { demo?: boolean }) {
+export function AdminView() {
   const { dict } = useApp();
-  const [domains, setDomains] = useState<string>(demo ? DEMO_ALLOWLIST.join("\n") : "");
-  const [audit, setAudit] = useState<AuditItem[]>(demo ? DEMO_AUDIT : []);
+  const [domains, setDomains] = useState<string>("");
+  const [audit, setAudit] = useState<AuditItem[]>([]);
   const [invites, setInvites] = useState<Invite[]>([]);
   const [inviteRole, setInviteRole] = useState<Role>("reviewer");
   const [inviteEmail, setInviteEmail] = useState("");
@@ -19,10 +18,9 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
   const [promptsSaved, setPromptsSaved] = useState(false);
   const [forbidden, setForbidden] = useState(false);
   const [saved, setSaved] = useState(false);
-  const [loading, setLoading] = useState(!demo);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (demo) return;
     Promise.all([
       apiGet<{ domains: string[] }>("/admin/allowlist").then((d) => setDomains(d.domains.join("\n"))),
       apiGet<{ items: AuditItem[] }>("/admin/audit?limit=25").then((d) => setAudit(d.items)),
@@ -33,17 +31,16 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
         if ((e as Error & { code?: string }).code === "forbidden") setForbidden(true);
       })
       .finally(() => setLoading(false));
-  }, [demo]);
+  }, []);
 
   async function save() {
     setSaved(false);
     const list = domains.split("\n").map((d) => d.trim()).filter(Boolean);
-    if (!demo) await apiPut("/admin/allowlist", { domains: list }).catch(() => null);
+    await apiPut("/admin/allowlist", { domains: list }).catch(() => null);
     setSaved(true);
   }
 
   async function generateInvite() {
-    if (demo) return;
     const body = { role: inviteRole, email: inviteEmail.trim() || null };
     const created = await apiPost<Invite>("/admin/invites", body).catch(() => null);
     if (created) {
@@ -59,7 +56,7 @@ export function AdminView({ demo = false }: { demo?: boolean }) {
   }
 
   async function savePrompts() {
-    if (demo || !prompts) return;
+    if (!prompts) return;
     setPromptsSaved(false);
     const updated = await apiPost<Prompts>("/admin/prompts", {
       contracts_guidance: prompts.contracts_guidance,
