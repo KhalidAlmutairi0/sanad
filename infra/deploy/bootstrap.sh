@@ -43,4 +43,15 @@ else
   echo "  -> place the repo at /opt/sanad, then re-run this step (see docs/deploy.md)"
 fi
 
-echo "[5/5] done. Next: docs/deploy.md — fill infra/.env, then docker compose up."
+echo "[5/6] nightly backups: install the systemd timer (Postgres dump + MinIO objects)"
+if [[ -f /opt/sanad/infra/deploy/sanad-backup.service ]]; then
+  cp /opt/sanad/infra/deploy/sanad-backup.{service,timer} /etc/systemd/system/
+  chmod +x /opt/sanad/infra/deploy/backup.sh
+  systemctl daemon-reload
+  systemctl enable --now sanad-backup.timer
+  echo "  -> enabled sanad-backup.timer (02:30 UTC daily). Set BACKUP_REMOTE in infra/.env for offsite."
+else
+  echo "  -> place the repo at /opt/sanad, then re-run this step (see docs/deploy.md)"
+fi
+
+echo "[6/6] done. Next: docs/deploy.md — fill infra/.env, then docker compose up."

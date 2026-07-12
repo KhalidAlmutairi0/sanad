@@ -1,0 +1,10 @@
+[Unit]
+Description=SANAD nightly backup (Postgres dump + MinIO objects)
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+# Load the deployment env so POSTGRES_DB / BACKUP_REMOTE etc. are available.
+EnvironmentFile=-/opt/sanad/infra/.env
+ExecStart=/opt/sanad/infra/deploy/backup.sh
