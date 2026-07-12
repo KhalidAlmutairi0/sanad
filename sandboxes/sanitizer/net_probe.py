@@ -21,14 +21,12 @@ PUBLIC_TARGETS = [("1.1.1.1", 443), ("8.8.8.8", 53), ("93.184.216.34", 80)]
 
 
 def _interfaces_only_loopback() -> bool:
-    # Without a network namespace's external interfaces, only loopback should resolve.
-    try:
-        infos = socket.getaddrinfo(socket.gethostname(), None)
-    except socket.gaierror:
-        return True  # cannot even resolve own hostname -> no usable network
-    for info in infos:
-        addr = info[4][0]
-        if not (addr.startswith("127.") or addr == "::1"):
+    # Enumerate the ACTUAL interfaces present in this network namespace. An isolated
+    # (--unshare-net) namespace has only loopback. This inspects real kernel interfaces
+    # rather than resolving the hostname, which would read a bind-mounted /etc/hosts and
+    # false-positive on the container's own IP when the sandbox is nested inside Docker.
+    for _index, name in socket.if_nameindex():
+        if name != "lo":
             return False
     return True
 

@@ -34,6 +34,7 @@ Threat: the uploaded file itself (malicious macro, parser exploit, zip bomb, emb
 - Output contract: **plain text only** — no macros, scripts, embedded objects, or formatting survive.
 - Prompt-injection strings in the text are NOT removed here (that is impossible to do reliably at this layer). They pass through and are neutralized at the prompt layer by untrusted-data tagging. This sandbox's job is containment, not content understanding.
 - Implementation: bubblewrap. This is the production isolation for v1 (validated working). Firecracker is an optional post-v1 hardening path, not required now.
+- **Running bwrap inside Docker:** the default Docker seccomp + AppArmor profiles block the namespace and `pivot_root` syscalls bwrap needs, so the worker container is granted `cap_add: [SYS_ADMIN, NET_ADMIN]` and `security_opt: [seccomp=unconfined, apparmor=unconfined]` (see `infra/docker-compose.prod.yml`). These privileges apply to the **worker service only**; untrusted upload code executes strictly *inside* the bwrap jail, never in the worker. The no-network guarantee is verified on the host with `run_sanitizer.sh --probe` (only `lo`, DNS and outbound TCP both fail). `SANITIZER_MODE=direct` is forbidden in production by a startup guard (`workers/main.py`).
 
 ### Sandbox B — Governed Research Agent
 Threat: an internet-connected agent is an exfiltration channel and an attack surface.
