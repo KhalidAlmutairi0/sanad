@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/ui/Header";
 import { useApp } from "@/lib/i18n";
 import { apiGet, apiPost } from "@/lib/api";
-import { DEMO_EVENTS } from "@/lib/demo";
 import type { MonitoringEvent } from "@/types";
 
-function VerifyForm({ eventId, demo, onDone }: { eventId: string; demo: boolean; onDone: () => void }) {
+function VerifyForm({ eventId, onDone }: { eventId: string; onDone: () => void }) {
   const { dict } = useApp();
   const [articleRef, setArticleRef] = useState("");
   const [text, setText] = useState("");
@@ -17,11 +16,9 @@ function VerifyForm({ eventId, demo, onDone }: { eventId: string; demo: boolean;
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
-    if (!demo) {
-      await apiPost(`/monitoring/events/${eventId}/verify`, {
-        regulation_version: { article_ref: articleRef, article_text_ar: text, source_url: source },
-      }).catch(() => null);
-    }
+    await apiPost(`/monitoring/events/${eventId}/verify`, {
+      regulation_version: { article_ref: articleRef, article_text_ar: text, source_url: source },
+    }).catch(() => null);
     onDone();
   }
 
@@ -43,24 +40,23 @@ function VerifyForm({ eventId, demo, onDone }: { eventId: string; demo: boolean;
   );
 }
 
-export function MonitoringView({ demo = false }: { demo?: boolean }) {
+export function MonitoringView() {
   const { dict } = useApp();
-  const [items, setItems] = useState<MonitoringEvent[]>(demo ? DEMO_EVENTS : []);
-  const [loading, setLoading] = useState(!demo);
+  const [items, setItems] = useState<MonitoringEvent[]>([]);
+  const [loading, setLoading] = useState(true);
   const [openId, setOpenId] = useState<string | null>(null);
 
   function load() {
-    if (demo) return;
     apiGet<{ items: MonitoringEvent[] }>("/monitoring/events")
       .then((d) => setItems(d.items))
       .finally(() => setLoading(false));
   }
-  useEffect(load, [demo]);
+  useEffect(load, []);
 
   function markVerified(id: string) {
     setItems((xs) => xs.map((e) => (e.id === id ? { ...e, status: "verified" } : e)));
     setOpenId(null);
-    if (!demo) load();
+    load();
   }
 
   return (
@@ -97,7 +93,7 @@ export function MonitoringView({ demo = false }: { demo?: boolean }) {
                     <span className="text-label text-severity-ok">{dict.monitoring.verified}</span>
                   )}
                 </div>
-                {openId === e.id && <VerifyForm eventId={e.id} demo={demo} onDone={() => markVerified(e.id)} />}
+                {openId === e.id && <VerifyForm eventId={e.id} onDone={() => markVerified(e.id)} />}
               </div>
             ))}
           </div>

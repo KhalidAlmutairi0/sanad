@@ -5,7 +5,6 @@ import { Header } from "@/components/ui/Header";
 import { SourceChip } from "@/components/findings/SourceChip";
 import { useApp } from "@/lib/i18n";
 import { apiGet } from "@/lib/api";
-import { DEMO_OBLIGATIONS } from "@/lib/demo";
 import type { Obligation } from "@/types";
 
 const TONE: Record<Obligation["status"], string> = {
@@ -15,17 +14,16 @@ const TONE: Record<Obligation["status"], string> = {
   overdue: "text-severity-critical",
 };
 
-export function RegisterView({ demo = false }: { demo?: boolean }) {
+export function RegisterView() {
   const { dict } = useApp();
-  const [items, setItems] = useState<Obligation[]>(demo ? DEMO_OBLIGATIONS : []);
-  const [loading, setLoading] = useState(!demo);
+  const [items, setItems] = useState<Obligation[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (demo) return;
     apiGet<{ items: Obligation[] }>("/obligations")
       .then((d) => setItems(d.items))
       .finally(() => setLoading(false));
-  }, [demo]);
+  }, []);
 
   return (
     <div className="min-h-screen">

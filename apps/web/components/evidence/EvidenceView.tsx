@@ -5,10 +5,9 @@ import { Header } from "@/components/ui/Header";
 import { SourceChip } from "@/components/findings/SourceChip";
 import { useApp } from "@/lib/i18n";
 import { apiGet } from "@/lib/api";
-import { DEMO_EVIDENCE } from "@/lib/demo";
 import type { EvidenceSearchItem } from "@/types";
 
-export function EvidenceView({ demo = false }: { demo?: boolean }) {
+export function EvidenceView() {
   const { dict } = useApp();
   const [q, setQ] = useState("");
   const [items, setItems] = useState<EvidenceSearchItem[] | null>(null);
@@ -18,12 +17,6 @@ export function EvidenceView({ demo = false }: { demo?: boolean }) {
     e.preventDefault();
     if (q.trim().length < 2) return;
     setBusy(true);
-    if (demo) {
-      const needle = q.trim();
-      setItems(DEMO_EVIDENCE.filter((i) => i.snippet_ar.includes(needle) || i.regulation_code.includes(needle)) || DEMO_EVIDENCE);
-      setBusy(false);
-      return;
-    }
     const d = await apiGet<{ items: EvidenceSearchItem[] }>(`/evidence/search?q=${encodeURIComponent(q)}`);
     setItems(d.items);
     setBusy(false);

@@ -11,10 +11,9 @@ interface Props {
   clauses: Clause[];
   findings: Finding[];
   verdict: "GO" | "REVIEW" | "STOP";
-  demo?: boolean;
 }
 
-export function ReviewWorkspace({ contract, clauses, findings, verdict, demo = false }: Props) {
+export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props) {
   const { dict } = useApp();
 
   return (
@@ -51,7 +50,7 @@ export function ReviewWorkspace({ contract, clauses, findings, verdict, demo = f
           ) : (
             <div className="space-y-4">
               {findings.map((f) => (
-                <FindingCard key={f.id} finding={f} demo={demo} />
+                <FindingCard key={f.id} finding={f} />
               ))}
             </div>
           )}
