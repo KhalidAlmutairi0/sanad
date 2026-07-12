@@ -28,6 +28,14 @@ jobs:
         run: |
           if grep -rEn "localStorage|sessionStorage" apps/web/app apps/web/components apps/web/lib | grep -v "no localStorage"; then
             echo "web storage used"; exit 1; fi
+      - name: Invariant — no committed config runs the sanitizer unsandboxed
+        run: |
+          if grep -rInE "SANITIZER_MODE\s*[:=]\s*[\"']?direct" infra | grep -viE "\.example|DEMO"; then
+            echo "a committed infra config sets SANITIZER_MODE=direct"; exit 1; fi
+      - name: Invariant — LLM host not in the default regulator allowlist
+        run: |
+          if grep -rEn "api\.(openai|anthropic)\.com" apps/api/app/routers/admin.py; then
+            echo "LLM host present in the default regulator allowlist"; exit 1; fi
 
   backend:
     name: Backend tests + coverage

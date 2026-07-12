@@ -31,9 +31,12 @@ from app.services.settings import (
 router = APIRouter(prefix="/admin", tags=["admin"])
 
 ALLOWLIST_PATH = pathlib.Path(os.environ.get("ALLOWLIST_PATH", "/app/data/allowlist.yaml"))
+# Regulator domains ONLY. The LLM API is NOT here: model egress goes through its own
+# governed path, never the research-agent regulator allowlist. Adding a foreign LLM host
+# here would let the research agent reach it, breaking the sovereignty boundary.
 DEFAULT_DOMAINS = [
     "sama.gov.sa", "sdaia.gov.sa", "zatca.gov.sa", "hrsd.gov.sa",
-    "laws.boe.gov.sa", "api.openai.com",
+    "laws.boe.gov.sa",
 ]
 
 

@@ -68,6 +68,10 @@ class Settings(BaseSettings):
     # drops the containment guarantee (AGENTS.md #2) and is audited on every run.
     sanitizer_mode: str = Field(default="sandboxed", alias="SANITIZER_MODE")
 
+    @property
+    def is_production(self) -> bool:
+        return self.app_env.strip().lower() in ("production", "prod")
+
     def _dsn(self, user: str, password: str, driver: str) -> str:
         return (
             f"postgresql+{driver}://{user}:{password}"
