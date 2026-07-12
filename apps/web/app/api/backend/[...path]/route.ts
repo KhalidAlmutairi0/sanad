@@ -8,6 +8,7 @@ const BASE = (process.env.API_BASE_URL ?? "http://api:8000") + "/api/v1";
 // session token as a Bearer header server-side. No business logic here.
 async function forward(req: Request, path: string[]) {
   const token = cookies().get(SESSION_COOKIE)?.value;
+  const fwd = req.headers.get("x-forwarded-for");
   const url = new URL(req.url);
   const target = `${BASE}/${path.join("/")}${url.search}`;
   const init: RequestInit = {
@@ -15,6 +16,8 @@ async function forward(req: Request, path: string[]) {
     headers: {
       "content-type": "application/json",
       ...(token ? { authorization: `Bearer ${token}` } : {}),
+      // Propagate the real client IP for backend rate limiting / audit (Caddy sets it).
+      ...(fwd ? { "x-forwarded-for": fwd } : {}),
     },
     cache: "no-store",
   };
