@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the SANAD backup nightly
+
+[Timer]
+# Every day at 02:30 UTC, with catch-up if the VM was off at the scheduled time.
+OnCalendar=*-*-* 02:30:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target

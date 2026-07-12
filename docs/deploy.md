@@ -68,8 +68,32 @@ sudo systemctl enable --now agent-allowlist.timer   # refreshes the nftables all
 - [ ] Demo password rotated; real reviewer/admin users created.
 - [ ] TLS valid on both domains; only 22/80/443 open.
 - [ ] Corpus seeded and each article human-verified against the official gazette.
-- [ ] Backups scheduled for the `postgres-data` and `minio-data` volumes.
+- [x] Backups scheduled: `sanad-backup.timer` runs `infra/deploy/backup.sh` nightly (Postgres dump + MinIO objects, 14-day rotation). Installed by `bootstrap.sh` step 5.
+- [ ] `BACKUP_REMOTE` set in `infra/.env` (offsite rclone target) — local-only backups do not survive VM loss.
+- [ ] Restore drill completed at least once (see below).
 - [ ] MinIO server-side encryption confirmed on both buckets.
+
+### Backup & restore
+
+Backups land in `/var/backups/sanad` (`db-<ts>.sql.gz`, `minio-<ts>.tar.gz`). Verify the timer:
+
+```bash
+systemctl list-timers | grep sanad-backup
+sudo /opt/sanad/infra/deploy/backup.sh   # run once on demand
+```
+
+Restore drill (do this once before go-live; use a scratch DB, do not overwrite prod):
+
+```bash
+# Postgres: restore the latest dump into a throwaway database and compare row counts.
+gunzip -c /var/backups/sanad/db-<ts>.sql.gz \
+  | docker compose exec -T postgres psql -U postgres -d postgres -c "CREATE DATABASE sanad_restore" -
+gunzip -c /var/backups/sanad/db-<ts>.sql.gz \
+  | docker compose exec -T postgres psql -U postgres -d sanad_restore
+docker compose exec -T postgres psql -U postgres -d sanad_restore \
+  -c "select count(*) from regulation_versions; select count(*) from findings; select count(*) from audit_log;"
+# Compare against the same counts in the live `sanad` DB, then: DROP DATABASE sanad_restore;
+```
 
 ## Wiring a real LLM later (no redeploy of app code)
 
