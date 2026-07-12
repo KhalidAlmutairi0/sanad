@@ -209,7 +209,8 @@ Res 200: `{ "items": [ { "regulation_version_id","regulation_code","article_ref"
 ## Admin — agent allowlist & audit
 
 ### GET /admin/allowlist
-Res 200: `{ "domains": ["sama.gov.sa","sdaia.gov.sa","zatca.gov.sa","hrsd.gov.sa","<llm-api-domain>"] }`
+Res 200: `{ "domains": ["sama.gov.sa","sdaia.gov.sa","zatca.gov.sa","hrsd.gov.sa","laws.boe.gov.sa"] }`
+Regulator domains only. The LLM API host is deliberately NOT in this list; model egress uses its own governed path, never the research-agent regulator allowlist.
 
 ### PUT /admin/allowlist
 Req: `{ "domains": [string] }`  (change triggers watcher refresh; audit-logged)
