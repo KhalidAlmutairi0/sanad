@@ -3,8 +3,10 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from slowapi.errors import RateLimitExceeded
 
 from app.core.errors import SanadError, sanad_error_handler
+from app.core.ratelimit import limiter, rate_limit_handler
 from app.routers import (
     admin,
     auth,
@@ -31,6 +33,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, rate_limit_handler)
 app.add_exception_handler(SanadError, sanad_error_handler)
 
 app.include_router(health.router, prefix=API_PREFIX, tags=["health"])

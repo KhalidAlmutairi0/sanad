@@ -7,8 +7,9 @@ from __future__ import annotations
 
 import datetime as dt
 import uuid
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Iterator
 
+import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
@@ -17,6 +18,18 @@ from sqlalchemy.pool import NullPool
 from app.core.config import get_settings
 from app.core.security import create_access_token
 from app.models import Clause, Contract, Regulation, RegulationVersion, User
+
+
+@pytest.fixture(autouse=True)
+def _disable_rate_limit() -> Iterator[None]:
+    # Auth rate limiting is keyed by client IP; every in-process test shares one IP, so leave
+    # it off by default and let the dedicated rate-limit test opt back in.
+    from app.core.ratelimit import limiter
+
+    prev = limiter.enabled
+    limiter.enabled = False
+    yield
+    limiter.enabled = prev
 
 
 @pytest_asyncio.fixture(autouse=True)

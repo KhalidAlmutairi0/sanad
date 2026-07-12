@@ -23,6 +23,7 @@ ERROR_MESSAGES: dict[str, tuple[str, str]] = {
     "unsupported_file_type": ("نوع الملف غير مدعوم", "This file type isn't supported"),
     "egress_denied": ("الاتصال الخارجي مرفوض", "Outbound connection blocked"),
     "review_conflict": ("هذي الملاحظة تمت مراجعتها", "This finding was already reviewed"),
+    "rate_limited": ("محاولات كثيرة، جرّب بعد شوي", "Too many attempts, please try again shortly"),
 }
 
 # Codes -> HTTP status.
@@ -38,6 +39,7 @@ STATUS_MAP: dict[str, int] = {
     "unsupported_file_type": 422,
     "egress_denied": 403,
     "review_conflict": 409,
+    "rate_limited": 429,
 }
 
 

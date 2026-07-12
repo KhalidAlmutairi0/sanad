@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -8,6 +8,7 @@ from pydantic import BaseModel
 
 from app.core.deps import get_session
 from app.core.errors import SanadError
+from app.core.ratelimit import limiter
 from app.core.security import create_access_token, hash_password, verify_password
 from app.models import Invite, User
 from app.schemas.auth import LoginRequest, LoginResponse, UserPublic
@@ -24,7 +25,8 @@ class RegisterRequest(BaseModel):
 
 
 @router.post("/login", response_model=LoginResponse)
-async def login(body: LoginRequest, session: AsyncSession = Depends(get_session)) -> LoginResponse:
+@limiter.limit("5/minute")
+async def login(request: Request, body: LoginRequest, session: AsyncSession = Depends(get_session)) -> LoginResponse:
     user = (
         await session.execute(select(User).where(User.email == str(body.email)))
     ).scalar_one_or_none()
@@ -39,7 +41,8 @@ async def login(body: LoginRequest, session: AsyncSession = Depends(get_session)
 
 
 @router.post("/register", response_model=LoginResponse, status_code=201)
-async def register(body: RegisterRequest, session: AsyncSession = Depends(get_session)) -> LoginResponse:
+@limiter.limit("5/minute")
+async def register(request: Request, body: RegisterRequest, session: AsyncSession = Depends(get_session)) -> LoginResponse:
     email = body.email.strip().lower()
     invite = (
         await session.execute(select(Invite).where(Invite.code == body.code, Invite.used == False))  # noqa: E712
