@@ -1,0 +1,69 @@
+# SAMA Rules on Outsourcing (قواعد الإسناد) — the most contract-relevant SAMA document:
+# it dictates the mandatory provisions of a bank's outsourcing contracts.
+#
+# STATUS: SCAFFOLD. Clause numbers + topics fetched from the SAMA rulebook (accurate for
+# navigation). `article_text_ar` is a PLACEHOLDER, not the rule. At verification, replace
+# each with the VERBATIM Arabic text from source_url and set verified: true + initials.
+# The ingester refuses anything still verified: false. `topic` (English) is a nav aid only.
+
+regulation:
+  code: SAMA-OUTS
+  name_ar: قواعد الإسناد
+  name_en: Rules on Outsourcing
+  authority: SAMA
+  source_domain: rulebook.sama.gov.sa
+
+articles:
+  - {article_ref: "Clause 1",  topic: "Introduction: outsourcing risk exposure (strategic, reputation, compliance, financial, operational)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 2",  topic: "Supersedes prior SAMA outsourcing regulations (2008, 2017)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 3",  topic: "Definitions (banking agent, customer/financial data, material outsourcing, third-party, overseas)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 4",  topic: "Level of application: banks under Banking Control Law, branches and subsidiaries", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 5",  topic: "Scope: all outsourcing with domestic and foreign service providers", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 6",  topic: "Insourcing contracts exempt", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 7",  topic: "Excluded activities (market data, clearing/settlement, correspondent banking, utilities)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 8",  topic: "Outsourcing must not reduce depositor protection or regulatory compliance", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 9",  topic: "Cannot outsource services listed in Agent Banking Regulation Article 19", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 10", topic: "Written 'no objection' from SAMA required for material outsourcing", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 11", topic: "Board retains ultimate responsibility for outsourcing", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 12", topic: "Board must approve outsourcing policy with risk management framework", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 13", topic: "Notify SAMA of breaches in outsourcing arrangements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 14", topic: "Annual outsourcing activity report within 30 business days", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 15", topic: "Policy must cover minimum requirements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 16", topic: "Assessment of outsourcing options (business case, due diligence, contingency)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 17", topic: "Selection must be conflict-free; affiliations declared to SAMA", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 18", topic: "Written agreement: 16 minimum provisions (SLAs, audit, termination, liability, confidentiality, subcontracting, data access)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 19", topic: "Contract renewal/termination/early exit; subcontracting material outsourcing needs approval", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 20", topic: "Contract must grant SAMA access to documentation and accounting records", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 21", topic: "Saudi Arabia preferably specified as legal jurisdiction", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 22", topic: "Customer complaint resolution mechanism required", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 23", topic: "Material outsourcing: SAMA no-objection 15 days (domestic) / 30 days (foreign) before start", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 24", topic: "Comply with confidentiality requirements and Banking Control Law Article 19", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 25", topic: "Safeguards for customer and financial data integrity and confidentiality", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 26", topic: "On termination, sensitive data retrieved or destroyed; exceptions reported to SAMA", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 27", topic: "Internal structure to control/monitor/manage outsourcing with reporting", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 28", topic: "Account for additional costs of changing providers or insourcing", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 29", topic: "Comprehensive risk review at inception and renewal", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 30", topic: "Due diligence proportional to nature; retain supervision expertise", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 31", topic: "Business continuity not compromised; contingency plan per material outsourcing", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 32", topic: "BCP documents alternate provider availability / insourcing procedures", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 33", topic: "SAMA unrestricted access to outsourcing records (Banking Control Law Art. 17-18)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 34", topic: "SAMA access to data at third-party premises; auditors exercise access rights", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 35", topic: "Sufficient resources; regular third-party contact and SLA monitoring", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 36", topic: "Immediately report breaches/violations/adverse developments to SAMA", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 37", topic: "Report material outsourcing termination to SAMA with transition arrangements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 38", topic: "Internal audit of material outsourced activities; reports to Board/Audit Committee", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 39", topic: "SAMA may request external expert assessment of risk management", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 40", topic: "Outsourcing register: reference, function, material designation, data handling, third-party details", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 41", topic: "Overseas outsourcing: foreign economic/political/legal risks; data confidentiality", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 42", topic: "Overseas outsourcing requires SAMA no-objection + legal opinion on access rights", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 43", topic: "Foreign bank branches: book KSA business locally unless SAMA agrees", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 44", topic: "Foreign branches: local staffing for control and SAMA compliance", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 45", topic: "Key functions (decisions, compliance, AML/CFT) cannot be outsourced", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 46", topic: "Outsourced head office/group operations annually audited; findings to SAMA", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 47", topic: "Other regulators' reports on outsourcing submitted to SAMA", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 48", topic: "Foreign branch outsourcing must not constrain SAMA supervision", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 49", topic: "Foreign branches: good risk practices (policies, due diligence, BCP, monitoring)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 50", topic: "Foreign branches outsourcing customer data to head office: SLA, consent, encryption, logging", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 51", topic: "Third-party already contracted by head office: letter of comfort requirements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 52", topic: "SAMA may impose additional expectations / revoke risky arrangements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}
+  - {article_ref: "Clause 53", topic: "Foreign branches comply with all requirements for unrelated third-party arrangements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/rules-outsourcing", verified: false}

@@ -10,7 +10,7 @@ human reconciles it against the live page. Status: `todo` / `fetching` / `drafte
 |---|---|---|---|
 | 1 | Saudi Central Bank Law | SAMA_central_bank_law.yaml | todo |
 | 2 | Saudi Arabian Monetary Law | SAMA_monetary_law.yaml | todo |
-| 3 | Banking Control Law | SAMA_banking_control_law.yaml | fetching |
+| 3 | Banking Control Law | SAMA_banking_control_law.yaml | drafted (26 arts, scaffold) |
 | 4 | Implementation Rules for Banking Control Law | SAMA_banking_control_impl.yaml | todo |
 | 5 | Finance Companies Control Law | SAMA_finance_companies_law.yaml | todo |
 | 6 | Implementing Regulation of the Finance Companies Control Law | SAMA_finance_companies_impl.yaml | todo |
@@ -28,6 +28,14 @@ human reconciles it against the live page. Status: `todo` / `fetching` / `drafte
 | 18 | Implementing Regulations (Combating Terrorist Crimes and Financing) | SAMA_cft_impl.yaml | todo |
 | 19 | Systemically Important Financial Institutions | SAMA_sifi.yaml | todo |
 | 20 | Close-out Netting and related Collateral Arrangements Regulation | SAMA_closeout_netting.yaml | todo |
+
+## Cross-sector (category 1362) — contract-relevant, prioritized
+
+| Document | file | status |
+|---|---|---|
+| Rules on Outsourcing | SAMA_outsourcing.yaml | drafted (53 clauses, scaffold) |
+| Consumer Protection and Financial Conduct | SAMA_consumer_protection.yaml | todo |
+| Cyber Security Framework | SAMA_csf.yaml | todo |
 
 ## Remaining categories (to enumerate)
 
