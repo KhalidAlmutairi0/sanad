@@ -53,7 +53,13 @@ def _yaml_files(path: pathlib.Path) -> list[pathlib.Path]:
 
 
 async def _embed(texts: list[str]) -> list[list[float]]:
-    return await embed_texts(texts, input_type="passage")
+    # Batch so a large regulation (e.g. Labor Law, 247 articles) doesn't time out the
+    # embedder in one request. Order is preserved.
+    batch = 16
+    out: list[list[float]] = []
+    for i in range(0, len(texts), batch):
+        out.extend(await embed_texts(texts[i:i + batch], input_type="passage"))
+    return out
 
 
 async def main() -> int:
