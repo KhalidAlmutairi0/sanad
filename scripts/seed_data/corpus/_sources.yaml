@@ -1,0 +1,16 @@
+# Tracked official-gazette laws. The update checker re-fetches each, re-parses, and reports
+# any article whose verbatim text changed vs the committed corpus (the "news"). All sources
+# are on laws.boe.gov.sa, whose robots.txt permits law pages with a 10s crawl-delay.
+sources:
+  - code: PDPL
+    name_ar: نظام حماية البيانات الشخصية
+    name_en: Personal Data Protection Law
+    authority: SDAIA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    corpus_file: PDPL.yaml
+  - code: LABOR
+    name_ar: نظام العمل
+    name_en: Labor Law
+    authority: MHRSD
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1
+    corpus_file: LABOR.yaml
