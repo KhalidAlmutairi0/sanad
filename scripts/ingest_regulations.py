@@ -48,7 +48,8 @@ FETCH_NAME = "Official Gazette Fetch"
 def _yaml_files(path: pathlib.Path) -> list[pathlib.Path]:
     if path.is_file():
         return [path]
-    return sorted(p for p in path.glob("*.yaml") if p.name != "README.md")
+    # Skip meta files (e.g. _sources.yaml, _MANIFEST) — they aren't regulation specs.
+    return sorted(p for p in path.glob("*.yaml") if not p.name.startswith("_"))
 
 
 async def _embed(texts: list[str]) -> list[list[float]]:
