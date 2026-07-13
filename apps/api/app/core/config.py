@@ -47,7 +47,9 @@ class Settings(BaseSettings):
 
     # Retrieval reranking (PLAN.md P1.6): fetch a wide cosine net, LLM-rerank to top-k.
     rerank_enabled: bool = Field(default=True, alias="RERANK_ENABLED")
-    rerank_fetch_k: int = Field(default=20, alias="RERANK_FETCH_K")
+    # Wide net: at 1600+ articles the on-point article often ranks 50-100 by cosine (other-law
+    # collisions), so the net must be wide for recall; the reranker then restores precision.
+    rerank_fetch_k: int = Field(default=100, alias="RERANK_FETCH_K")
 
     # LLM (behind services/llm only)
     llm_provider: str = Field(default="selfhosted", alias="LLM_PROVIDER")

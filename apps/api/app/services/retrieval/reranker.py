@@ -21,15 +21,21 @@ RERANK_SYSTEM = (
     "every index exactly once."
 )
 
-# Each candidate article is truncated to this many chars for the ranking prompt (enough to
-# judge relevance without blowing context on 20 long articles).
-_SNIPPET = 500
+# Per-candidate snippet length for the ranking prompt. Shrinks as the net grows so a wide
+# net (needed for recall at corpus scale) still fits comfortably in context.
+def _snippet_len(n: int) -> int:
+    if n <= 25:
+        return 500
+    if n <= 60:
+        return 300
+    return 200
 
 
 def _instruction(candidates: list[Candidate]) -> str:
+    snip = _snippet_len(len(candidates))
     lines = ["Candidate articles (rank by relevance to the clause in the untrusted-data block):"]
     for i, c in enumerate(candidates):
-        text = " ".join(c.article_text_ar.split())[:_SNIPPET]
+        text = " ".join(c.article_text_ar.split())[:snip]
         lines.append(f"[{i}] {c.regulation_code} {c.article_ref}: {text}")
     return "\n".join(lines)
 
@@ -56,8 +62,15 @@ async def rerank(query_text: str, candidates: list[Candidate], *, top_n: int) ->
         instruction=_instruction(candidates),
         untrusted_blocks=[UntrustedBlock(source="contract_clause", content=query_text)],
         offline_stub={"ranking": list(range(len(candidates)))},  # cosine order when no model
-        max_tokens=200,
+        # Output is a JSON list of every index; ~8 tokens/index plus headroom so a wide net
+        # is never truncated (which would break JSON parsing).
+        max_tokens=max(256, len(candidates) * 8 + 64),
     )
-    result = await get_llm().complete_json(req)
-    ranking = result.get("ranking", []) if isinstance(result, dict) else []
+    try:
+        result = await get_llm().complete_json(req)
+        ranking = result.get("ranking", []) if isinstance(result, dict) else []
+    except ValueError:
+        # Model returned unparseable output — fall back to cosine order rather than fail the
+        # whole retrieval. Rerank is a precision boost, not a correctness requirement.
+        ranking = []
     return _apply_ranking(candidates, ranking)[:top_n]
