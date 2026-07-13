@@ -61,7 +61,16 @@ def parse_articles(html: str) -> list[dict]:
         text = " ".join(node.text_content().split())
         if ref and text:
             articles.append({"article_ref": ref, "article_text_ar": text})
-    return articles
+    # Some laws render an article and a later amendment-history block under the same ref.
+    # Keep the first occurrence (the current article text); drop the trailing duplicate.
+    seen: set[str] = set()
+    deduped: list[dict] = []
+    for a in articles:
+        if a["article_ref"] in seen:
+            continue
+        seen.add(a["article_ref"])
+        deduped.append(a)
+    return deduped
 
 
 def main() -> int:
