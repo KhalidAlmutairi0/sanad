@@ -48,13 +48,11 @@ bwrap_common=(
   --setenv HOME /tmp
 )
 
-apply_limits() {
-  ulimit -v "$MEM_KB" || true   # address space
-  ulimit -t "$CPU_SEC" || true  # CPU seconds
-  ulimit -f 0 2>/dev/null || true  # no file writes to disk (tmpfs-only via bind is ro)
-}
-export -f apply_limits
-export MEM_KB CPU_SEC
+# rlimits are applied INSIDE the sandbox via a literal command string (below), not an exported
+# shell function: bwrap's --clearenv wipes exported functions and env vars, so the values must
+# be baked in by the outer shell before bwrap runs. File writes are bounded, not forbidden, so
+# OCR (poppler/tesseract) can use tmpfs scratch (RAM, no disk, no network) — containment holds.
+LIMITS="ulimit -v ${MEM_KB} 2>/dev/null; ulimit -t ${CPU_SEC} 2>/dev/null; ulimit -f 1048576 2>/dev/null"
 
 if [[ "${1:-}" == "--probe" ]]; then
   # Prove isolation: attempt DNS + outbound TCP; succeed (exit 0) ONLY if all attempts fail.
@@ -66,10 +64,13 @@ INPUT="${1:?usage: run_sanitizer.sh <input_file>}"
 [[ -f "$INPUT" ]] || { echo "input not found: $INPUT" >&2; exit 3; }
 
 EXT="${INPUT##*.}"
-SANDBOX_INPUT="/input/raw.${EXT}"   # fixed read-only path inside the sandbox
+# Bind the raw file inside the /tmp tmpfs. bwrap can only mount over dirs that already exist
+# on the read-only root (it cannot mkdir a new top-level mountpoint there), and /tmp does —
+# so the input lives under it, alongside OCR scratch. Distinct name avoids collisions.
+SANDBOX_INPUT="/tmp/sanad-raw.${EXT}"
 
 # Bind the raw file read-only at a fixed in-sandbox path; run extraction under rlimits.
 exec timeout "$TIMEOUT" "${bwrap_common[@]}" \
   --ro-bind "$INPUT" "$SANDBOX_INPUT" \
-  bash -c 'apply_limits; exec /usr/local/bin/python /sandboxes/sanitizer/extract.py "$1"' \
+  bash -c "${LIMITS}; exec /usr/local/bin/python /sandboxes/sanitizer/extract.py \"\$1\"" \
   _ "$SANDBOX_INPUT"
