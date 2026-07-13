@@ -19,7 +19,14 @@ export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props)
   return (
     <div>
       <div className="flex flex-col items-center justify-between gap-8 border-b border-line pb-8 sm:flex-row">
-        <h1 className="text-h1 font-semibold text-ink">{contract.title}</h1>
+        <div>
+          <h1 className="text-h1 font-semibold text-ink">{contract.title}</h1>
+          {contract.ocr_used && (
+            <span className="mt-2 inline-block rounded-chip bg-orange-bg px-3 py-1 text-caption text-orange-ink">
+              {dict.review.ocrDocument}
+            </span>
+          )}
+        </div>
         <div className="flex items-center gap-12">
           <RadarPill verdict={verdict} />
           <ReadinessDial score={contract.readiness_score} label={dict.review.reviewedOnly} />

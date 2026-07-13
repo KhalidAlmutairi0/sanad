@@ -71,6 +71,17 @@ export interface ContractDetail {
   status: ContractStatus;
   readiness_score: number | null;
   findings_summary: FindingsSummary;
+  ocr_used?: boolean;
+}
+
+export interface CorpusItem {
+  code: string;
+  name_ar: string;
+  authority: string;
+  articles: number;
+  official_fetch: number;
+  human_verified: number;
+  last_reconciled_at: string | null;
 }
 
 export interface ApiError {

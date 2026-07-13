@@ -1,8 +1,11 @@
 FROM python:3.12-slim
 
 # bubblewrap: the sanitizer worker executes extraction inside a bwrap sandbox.
+# tesseract-ocr (+ Arabic data) and poppler-utils: offline OCR fallback for scanned PDFs.
+# All run with no network, so the sandbox's containment guarantee is preserved.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends bubblewrap \
+    && apt-get install -y --no-install-recommends \
+        bubblewrap tesseract-ocr tesseract-ocr-ara tesseract-ocr-eng poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

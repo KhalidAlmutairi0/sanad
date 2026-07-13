@@ -51,6 +51,7 @@ Res 200:
   "title": "string",
   "status": "reviewed",
   "readiness_score": 72,
+  "ocr_used": false,
   "findings_summary": { "critical": 1, "high": 3, "medium": 5, "low": 2, "pending": 0 }
 }
 ```
@@ -221,6 +222,9 @@ Res 200: `{ "domains": [string] }`
 ### GET /admin/audit
 Query: `?actor=&action=&verdict=&from=&to=`
 Res 200: `{ "items": [ { "actor","action","target","verdict","detail_json","at" } ], "total": int }`
+
+### GET /admin/corpus
+Admin only. Corpus coverage + freshness. Res 200: `{ "items": [ { "code","name_ar","authority","articles","official_fetch","human_verified","last_reconciled_at" } ], "total_articles": int }`
 
 ### GET /admin/prompts
 Admin only. Returns the editable analyst guidance for both analyses plus the read-only locked contract that is always appended.

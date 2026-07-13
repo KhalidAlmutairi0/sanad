@@ -31,6 +31,7 @@ The regulatory bodies/frameworks. Reference data.
 | name_en | text not null | |
 | authority | text not null | issuing body |
 | source_domain | text not null | e.g. sdaia.gov.sa |
+| last_reconciled_at | timestamptz | when this regulation was last fetched/checked vs its source (staleness) |
 
 ## regulation_versions  (APPEND-ONLY, immutable evidence cache)
 The heart of Zero Unsourced Findings. Never updated or deleted.
@@ -64,6 +65,7 @@ DB grant: app role has INSERT + SELECT only. No UPDATE/DELETE.
 | status | text not null | enum: uploaded, sanitizing, sanitized, extracting, reviewing, reviewed, failed |
 | readiness_score | int | 0–100, nullable until computed; reviewed findings only |
 | failure_reason | text | stable reason code when status=failed (architecture.md §7c); null otherwise |
+| ocr_used | bool not null default false | the PDF had no text layer and was OCR'd (noisier text; surfaced as a badge) |
 | created_at | timestamptz | |
 
 ## clauses
