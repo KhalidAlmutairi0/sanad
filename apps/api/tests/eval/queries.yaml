@@ -1,0 +1,43 @@
+# Retrieval gold set: clause-style queries (paraphrased, NOT verbatim article text) mapped to
+# the article that should be retrieved. `expect_ref` matches by substring on article_ref.
+# Used by retrieval_eval.py to measure hit@k. Starter set — expand and founder-spot-check
+# (PLAN.md P1.5). Labels verified against the fetched verbatim text.
+queries:
+  # PDPL (verified labels)
+  - q: "نقل بيانات العملاء الشخصية إلى خوادم خارج المملكة ومعالجتها لدى طرف خارجي"
+    expect_code: PDPL
+    expect_ref: "التاسعة والعشرون"
+  - q: "جمع ومعالجة البيانات الشخصية دون الحصول على موافقة صاحبها"
+    expect_code: PDPL
+    expect_ref: "الخامسة"
+  - q: "حق صاحب البيانات في الوصول إلى بياناته وتصحيحها وطلب إتلافها"
+    expect_code: PDPL
+    expect_ref: "الرابعة"
+  - q: "الإفصاح عن البيانات الشخصية للغير والحالات المسموح بها"
+    expect_code: PDPL
+    expect_ref: "عشرة"
+  - q: "معالجة البيانات الحساسة مثل البيانات الصحية والعرقية"
+    expect_code: PDPL
+    expect_ref: "الحادية والعشرون"
+  - q: "الاحتفاظ بالبيانات الشخصية ومدة حفظها وإتلافها بعد انتهاء الغرض"
+    expect_code: PDPL
+    expect_ref: "الثامنة عشرة"
+  - q: "الإخطار عن حوادث تسرب أو إفشاء البيانات الشخصية"
+    expect_code: PDPL
+    expect_ref: "العشرون"
+
+  # Labor Law
+  - q: "ساعات العمل اليومية القصوى للعامل في اليوم الواحد"
+    expect_code: LABOR
+    expect_ref: "الثامنة"  # working-hours provisions
+  - q: "مكافأة نهاية الخدمة المستحقة للعامل عند انتهاء العقد"
+    expect_code: LABOR
+    expect_ref: "الرابعة والثمانون"
+  - q: "إجازة سنوية مدفوعة الأجر للعامل"
+    expect_code: LABOR
+    expect_ref: "بعد المائة"  # annual-leave article (Art 109 region)
+
+  # Payments
+  - q: "فصل أموال العملاء عن أموال مزود خدمة المدفوعات"
+    expect_code: PAYMENTS
+    expect_ref: ""  # any Payments article (segregation) — code-level check
