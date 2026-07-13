@@ -1,0 +1,54 @@
+# Anti-Financial Fraud and Breach of Trust Law (نظام مكافحة الاحتيال المالي وخيانة الأمانة) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: FRAUD
+  name_ar: نظام مكافحة الاحتيال المالي وخيانة الأمانة
+  name_en: Anti-Financial Fraud and Breach of Trust Law
+  authority: Public Prosecution
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: يعاقب بالسجن مدة لا تتجاوز (سبع) سنوات، وبغرامة مالية لا تزيد على (خمسة) ملايين ريال، أو بإحدى هاتين العقوبتين؛ كل من استولى على مال للغير دون وجه حق بارتكابه فعلاً (أو أكثر) ينطوي على استخدام أيٍّ من طرق الاحتيال، بما فيها الكذب، أو الخداع، أو الإيهام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: يعاقب بالسجن مدة لا تتجاوز (خمس) سنوات، وبغرامة مالية لا تزيد على (ثلاثة) ملايين ريال، أو بإحدى هاتين العقوبتين؛ كل من استولى دون وجه حق على مال سُلّم إليه بحكم عمله أو على ســبيل الأمانة، أو الشــراكة، أو الوديعــة، أو الإعارة، أو الإجـارة، أو الرهن، أو الوكالة، أو تصرف فيه بسوء نية، أو أحدث به ضرراً عمداً، وذلك في غير المال العام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: يعاقب كل من حرض غيره، على ارتكاب أي من الجرائم المنصوص عليها في هذا النظام، أو اتفق معه، أو ساعده؛ إذا وقعت الجريمة بناء على هذا التحريض أو الاتفاق أو المساعدة، بما لا يتجاوز الحد الأعلى للعقوبة المقررة لها، ويعاقب بما لا يتجاوز نصف الحد الأعلى للعقوبة المقررة لها إذا لم تقع الجريمة الأصلية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: يعاقب كل من شرع في القيام بأي من الجرائم المنصوص عليها في هذا النظام بما لا يتجاوز نصف الحد الأعلى للعقوبة المقررة على الجريمة التامة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: 'لا تقل العقوبات المحكوم بها عن نصف حدها الأعلى -المقرر في هذا النظام- ولا تتجاوز ضعفه، وذلك في أي من الحالتين الآتيتين: إذا ارتكبت الجريمة من خلال عصابة منظمة. حالة العود.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: دون إخلال بحق الغير حسن النية، تُصادر بحكم قضائي الأدوات والآلات المستخدمة في ارتكاب أي من الجرائم المنصوص عليها في هذا النظام، وكذلك المتحصلات المتحققة من ارتكابها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يجوز تضمين الحكم الصادر بالعقوبة النص على نشر ملخصه على نفقة المحكوم عليه في صحيفة -أو أكثر- من الصحف التي تصدر في مقر إقامته، فإن لم تكن في مقر إقامته صحيفة ففي أقرب منطقة له، أو نشره في أي وسيلة أخرى مناسبة، وذلك بحسب نوع الجريمة المرتكبة وجسامتها وتأثيرها، على أن يكون النشر بعد أن يكتسب الحكم الصفة النهائية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: للمحكمة المختصة أن تعفي من العقوبات المنصوص عليها في هذا النظام كل من بادر من الجناة بإبلاغ السلطة المختصة بالجريمة قبل العلم بها وقبل وقوع الضرر، وإن كان الإبلاغ بعد العلم بالجريمة تعيّن للإعفاء أن يكون من شأن الإبلاغ ضبط باقي الجناة في حال تعددهم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: إذا شكل أي من الأفعال المشار إليها في المادتين (الأولى) و(الثانية) من هذا النظام؛ جريمة بموجب أنظمة أخرى؛ فتطبق العقوبة الأشد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: تتولى النيابة العامة التحقيق، والادعاء أمام المحكمة المختصة بالفصل في الجرائم الواردة في هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: يعمل بهذا النظام بعد مضي (تسعين) يوماً من تاريخ نشره في الجريدة الرسمية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+  verified: false

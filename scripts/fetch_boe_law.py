@@ -73,6 +73,30 @@ def parse_articles(html: str) -> list[dict]:
     return deduped
 
 
+def write_corpus(url: str, code: str, name_ar: str, name_en: str, authority: str,
+                 out: str, source_domain: str = "laws.boe.gov.sa", html: str | None = None) -> int:
+    """Fetch (or parse local html) and write one regulation's corpus YAML. Returns article count."""
+    page = html if html is not None else fetch(url)
+    articles = parse_articles(page)
+    if not articles:
+        raise RuntimeError(f"{code}: no articles parsed — page structure may have changed")
+    doc = {
+        "regulation": {"code": code, "name_ar": name_ar, "name_en": name_en,
+                       "authority": authority, "source_domain": source_domain},
+        "articles": [
+            {"article_ref": a["article_ref"], "article_text_ar": a["article_text_ar"],
+             "source_url": url, "verified": False}
+            for a in articles
+        ],
+    }
+    with open(out, "w", encoding="utf-8") as f:
+        f.write(f"# {name_en} ({name_ar}) — fetched VERBATIM from {source_domain}.\n")
+        f.write("# Parsed from the official gazette; verified: false until a human confirms each\n")
+        f.write("# article against source_url (AGENTS.md #5). Not fabricated.\n")
+        yaml.safe_dump(doc, f, allow_unicode=True, sort_keys=False, width=1000)
+    return len(articles)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("url")
@@ -85,41 +109,16 @@ def main() -> int:
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
-    if args.html:
-        html = open(args.html, encoding="utf-8").read()
-    else:
+    html = open(args.html, encoding="utf-8").read() if args.html else None
+    if html is None:
         time.sleep(CRAWL_DELAY_SECONDS)  # honor robots Crawl-delay
-        html = fetch(args.url)
-
-    articles = parse_articles(html)
-    if not articles:
-        print("No articles parsed — the page structure may have changed.", file=sys.stderr)
+    try:
+        n = write_corpus(args.url, args.code, args.name_ar, args.name_en, args.authority,
+                         args.out, args.source_domain, html)
+    except RuntimeError as e:
+        print(str(e), file=sys.stderr)
         return 1
-
-    doc = {
-        "regulation": {
-            "code": args.code,
-            "name_ar": args.name_ar,
-            "name_en": args.name_en,
-            "authority": args.authority,
-            "source_domain": args.source_domain,
-        },
-        "articles": [
-            {
-                "article_ref": a["article_ref"],
-                "article_text_ar": a["article_text_ar"],
-                "source_url": args.url,
-                "verified": False,  # human gate: confirm against source before citing
-            }
-            for a in articles
-        ],
-    }
-    with open(args.out, "w", encoding="utf-8") as f:
-        f.write(f"# {args.name_en} ({args.name_ar}) — fetched VERBATIM from {args.source_domain}.\n")
-        f.write("# Text is parsed from the official gazette page; verified: false until a human\n")
-        f.write("# confirms each article against source_url (AGENTS.md #5). Not fabricated.\n")
-        yaml.safe_dump(doc, f, allow_unicode=True, sort_keys=False, width=1000)
-    print(f"Wrote {len(articles)} articles to {args.out}")
+    print(f"Wrote {n} articles to {args.out}")
     return 0
 
 

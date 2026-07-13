@@ -1,6 +1,7 @@
-# Tracked official-gazette laws. The update checker re-fetches each, re-parses, and reports
-# any article whose verbatim text changed vs the committed corpus (the "news"). All sources
-# are on laws.boe.gov.sa, whose robots.txt permits law pages with a 10s crawl-delay.
+# Tracked official-gazette laws (laws.boe.gov.sa — robots permits law pages, 10s crawl-delay).
+# Drives both the batch fetcher (scripts/fetch_all_laws.py) and the update checker
+# (scripts/check_law_updates.py). Every law here is fetched VERBATIM; ingested as
+# official_fetch until human-reviewed.
 sources:
   - code: PDPL
     name_ar: نظام حماية البيانات الشخصية
@@ -14,3 +15,75 @@ sources:
     authority: MHRSD
     url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/08381293-6388-48e2-8ad2-a9a700f2aa94/1
     corpus_file: LABOR.yaml
+  - code: PAYMENTS
+    name_ar: نظام المدفوعات وخدماتها
+    name_en: Law of Payments and Payment Services
+    authority: SAMA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/c4af9503-d0f4-4d07-a7c3-add500a67d0c/1
+    corpus_file: PAYMENTS.yaml
+  - code: AML
+    name_ar: نظام مكافحة غسل الأموال
+    name_en: Anti-Money Laundering Law
+    authority: Public Prosecution / SAMA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/4a8842df-9cd1-4ee7-bf97-a9a700f180d4/1
+    corpus_file: AML.yaml
+  - code: CFT
+    name_ar: نظام مكافحة جرائم الإرهاب وتمويله
+    name_en: Law on Combating Terrorism Crimes and its Financing
+    authority: Public Prosecution
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/57694209-3eed-46c7-a5d8-a9ed012761d4/1
+    corpus_file: CFT.yaml
+  - code: FRAUD
+    name_ar: نظام مكافحة الاحتيال المالي وخيانة الأمانة
+    name_en: Anti-Financial Fraud and Breach of Trust Law
+    authority: Public Prosecution
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/905e11b3-4d66-496c-9c1b-ad240106367f/1
+    corpus_file: FRAUD.yaml
+  - code: CREDIT
+    name_ar: نظام المعلومات الائتمانية
+    name_en: Credit Information Law
+    authority: SAMA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/63dc01a6-fc5c-4600-9171-a9a700f2d222/1
+    corpus_file: CREDIT.yaml
+  - code: FINCOS
+    name_ar: نظام مراقبة شركات التمويل
+    name_en: Finance Companies Control Law
+    authority: SAMA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f53c97f5-d253-4828-89d4-a9a700f2d829/1
+    corpus_file: FINCOS.yaml
+  - code: BCL
+    name_ar: نظام مراقبة البنوك
+    name_en: Banking Control Law
+    authority: SAMA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8f70dc63-dd9a-4734-9216-a9a700f2c78c/1
+    corpus_file: BCL.yaml
+  - code: REFIN
+    name_ar: نظام التمويل العقاري
+    name_en: Real Estate Finance Law
+    authority: SAMA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/88254f6b-0311-4ed2-be96-a9a700f2d6f2/1
+    corpus_file: REFIN.yaml
+  - code: SIFI
+    name_ar: نظام معالجة المنشآت المالية المهمة
+    name_en: Resolution of Systemically Important Financial Institutions Law
+    authority: SAMA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/82b804f6-0075-47c2-a772-acc4002f8b3e/1
+    corpus_file: SIFI.yaml
+  - code: ETRANS
+    name_ar: نظام التعاملات الإلكترونية
+    name_en: Electronic Transactions Law
+    authority: CST
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6f509360-2c39-4358-ae2a-a9a700f2ed16/1
+    corpus_file: ETRANS.yaml
+  - code: COMPANIES
+    name_ar: نظام الشركات
+    name_en: Companies Law
+    authority: Ministry of Commerce
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/a8376aea-1bc3-49d4-9027-aed900b555af/1
+    corpus_file: COMPANIES.yaml
+  - code: CIVIL
+    name_ar: نظام المعاملات المدنية
+    name_en: Civil Transactions Law
+    authority: Ministry of Justice
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/655fdb42-8c96-422b-b8c4-b04f0095c94c/1
+    corpus_file: CIVIL.yaml
