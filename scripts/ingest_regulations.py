@@ -39,6 +39,10 @@ DEFAULT_DIR = pathlib.Path(__file__).resolve().parent / "seed_data" / "corpus"
 VERIFIER_EMAIL = os.environ.get("CORPUS_VERIFIER_EMAIL", "corpus-verifier@sanad.local")
 VERIFIER_NAME = os.environ.get("CORPUS_VERIFIER_NAME", "Corpus Verifier")
 VERIFIER_PASSWORD = os.environ.get("SEED_DEFAULT_PASSWORD", "sanad-dev-password")
+# Distinct system account for official-fetch ingestion — never a human, so verified_by is
+# honest: official_fetch rows are attributed to the fetch service, not a person.
+FETCH_EMAIL = "official-fetch@sanad.local"
+FETCH_NAME = "Official Gazette Fetch"
 
 
 def _yaml_files(path: pathlib.Path) -> list[pathlib.Path]:
@@ -56,6 +60,10 @@ async def main() -> int:
     parser.add_argument("path", nargs="?", default=str(DEFAULT_DIR))
     parser.add_argument("--dry-run", action="store_true",
                         help="Parse + validate + count only; no DB writes, no embeddings")
+    parser.add_argument("--trust-official-source", action="store_true",
+                        help="Ingest verbatim-fetched articles under the 'official_fetch' tier "
+                             "even if verified: false (owner-policy trust of the official gazette). "
+                             "Rows are labeled official_fetch so the UI shows them as auto-fetched.")
     args = parser.parse_args()
 
     root = pathlib.Path(args.path)
@@ -90,21 +98,28 @@ async def main() -> int:
         print(f"TOTAL: {total_v} verified / {total_a} total ready to ingest")
         return 0
 
+    tier = "official_fetch" if args.trust_official_source else "human_verified"
+    email = FETCH_EMAIL if args.trust_official_source else VERIFIER_EMAIL
+    name = FETCH_NAME if args.trust_official_source else VERIFIER_NAME
+
     async with SessionLocal() as session:
         verifier = (
-            await session.execute(select(User).where(User.email == VERIFIER_EMAIL))
+            await session.execute(select(User).where(User.email == email))
         ).scalar_one_or_none()
         if verifier is None:
-            verifier = User(email=VERIFIER_EMAIL, display_name=VERIFIER_NAME, role="admin",
+            verifier = User(email=email, display_name=name, role="service",
                             password_hash=hash_password(VERIFIER_PASSWORD))
             session.add(verifier)
             await session.flush()
 
         all_stats: list[IngestStats] = []
         for reg in regs:
-            stats = await ingest_regulation(session, reg, verifier_id=verifier.id, embed_fn=_embed)
+            stats = await ingest_regulation(session, reg, verifier_id=verifier.id,
+                                            embed_fn=_embed, tier=tier)
             all_stats.append(stats)
         await session.commit()
+
+    print(f"Tier: {tier}")
 
     print("Ingest complete:")
     print(summarize(all_stats))

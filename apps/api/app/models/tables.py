@@ -69,6 +69,10 @@ class RegulationVersion(Base):
     effective_date: Mapped[dt.date | None] = mapped_column(Date)
     supersedes_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("regulation_versions.id"))
     verified_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    # human_verified (a person reconciled the text) | official_fetch (parsed verbatim from the
+    # official gazette, not yet human-reviewed). Surfaced on citations so auto-fetched text is
+    # visibly labeled.
+    verification_tier: Mapped[str] = mapped_column(Text, nullable=False, server_default="human_verified")
     embedding: Mapped[list[float] | None] = mapped_column(Vector(EMBEDDING_DIM))
     created_at: Mapped[dt.datetime] = _created_at()
 
