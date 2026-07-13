@@ -1,0 +1,112 @@
+# PDPL — Personal Data Protection Law (نظام حماية البيانات الشخصية)
+# Royal Decree M/19 (1443H), amended by M/148 (1444H). Authority: SDAIA.
+#
+# STATUS: SCAFFOLD. Every article below is verified: false. The `article_text_ar` field is a
+# PLACEHOLDER, not the law. During verification, replace each placeholder with the VERBATIM
+# official Arabic text from the source_url, then set verified: true + your initials. The
+# ingester refuses anything still verified: false, so nothing here can be cited until a human
+# has reconciled it. English `topic` notes are navigation aids only, not legal text.
+
+regulation:
+  code: PDPL
+  name_ar: نظام حماية البيانات الشخصية
+  name_en: Personal Data Protection Law
+  authority: SDAIA
+  source_domain: laws.boe.gov.sa
+
+articles:
+  - article_ref: "المادة الأولى"
+    topic: "Definitions (personal data, processing, controller, processor, sensitive data, etc.)"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الثانية"
+    topic: "Scope of application; extraterritorial reach; exclusions"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الرابعة"
+    topic: "Rights of the data subject (to be informed, access, correction, deletion)"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الخامسة"
+    topic: "Lawful basis: consent required to process personal data; exceptions"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة السادسة"
+    topic: "Conditions where consent is not a prerequisite for processing"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الحادية عشرة"
+    topic: "Purpose limitation; collection directly from the data subject; exceptions"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الثانية عشرة"
+    topic: "Privacy policy: contents that must be disclosed before collection"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الخامسة عشرة"
+    topic: "Data subject's right to withdraw consent"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الثامنة عشرة"
+    topic: "Data retention and destruction obligations"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة التاسعة عشرة"
+    topic: "Security measures to protect personal data"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة العشرون"
+    topic: "Data breach notification to the competent authority and data subjects"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الحادية والعشرون"
+    topic: "Processing of sensitive personal data"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الخامسة والعشرون"
+    topic: "Processing for marketing; use of contact data"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة التاسعة والعشرون"
+    topic: "Transfer of personal data outside the Kingdom; conditions and safeguards"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة الخامسة والثلاثون"
+    topic: "Penalty: disclosure of sensitive data (imprisonment and/or fine)"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false
+
+  - article_ref: "المادة السادسة والثلاثون"
+    topic: "Penalty: unlawful transfer of data outside the Kingdom (fine range)"
+    article_text_ar: "«يُستبدل بالنص الرسمي للمادة من المصدر»"
+    source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b7cfae89-828e-4994-b167-adaa00e37188/1
+    verified: false

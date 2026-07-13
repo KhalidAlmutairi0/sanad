@@ -1,0 +1,42 @@
+# Banking Control Law (نظام مراقبة البنوك) — SAMA.
+#
+# STATUS: SCAFFOLD. Article numbers + topics are fetched from the SAMA rulebook and are
+# accurate for navigation. `article_text_ar` is a PLACEHOLDER, NOT the law. During
+# verification, replace each with the VERBATIM Arabic text from source_url and set
+# verified: true + initials. The ingester refuses anything still verified: false.
+# `topic` (English) is a navigation aid only, never citation text.
+
+regulation:
+  code: SAMA-BCL
+  name_ar: نظام مراقبة البنوك
+  name_en: Banking Control Law
+  authority: SAMA
+  source_domain: rulebook.sama.gov.sa
+
+articles:
+  - {article_ref: "Article 1",  topic: "Definitions (Bank, Banking Business, National/Foreign Bank, SAMA, Invested Capital)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 2",  topic: "Licence required to carry on banking business; exceptions", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 3",  topic: "Licence applications; national bank requirements (JSC, min capital)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 4",  topic: "Recognition of previously issued licences", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 5",  topic: "Restriction on use of the word 'Bank'", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 6",  topic: "Deposit liabilities ceiling vs reserves and capital", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 7",  topic: "Statutory deposit and liquidity reserve requirements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 8",  topic: "Single-borrower loan limit (25%/50% of reserves+capital)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 9",  topic: "Prohibited lending (own shares, board/related unsecured credit)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 10", topic: "Prohibited activities (trade, commercial interests, real estate)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 11", topic: "SAMA approval required (capital, merger, foreign shares, branches)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 12", topic: "Board membership limited to one bank; director approvals", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 13", topic: "Statutory reserve: 25% of net profits until equals capital", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 14", topic: "Appointment of auditors; annual reports to SAMA", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 15", topic: "Monthly financial statement and annual audited accounts to SAMA", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 16", topic: "SAMA power to issue general prudential rules", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 17", topic: "SAMA power to request information", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 18", topic: "SAMA inspection of books and accounts", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 19", topic: "Confidentiality of information obtained under the Law", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 20", topic: "SAMA publication of combined statements", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 21", topic: "Exceptional exemptions by the Minister of Finance", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 22", topic: "Corrective measures and licence revocation for non-compliance", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 23", topic: "Penalties (imprisonment/fines by article violated)", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 24", topic: "Personal responsibility of chairman/directors/managers", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 25", topic: "Adjudication committee for contraventions", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
+  - {article_ref: "Article 26", topic: "Effective date", article_text_ar: "«النص الرسمي»", source_url: "https://rulebook.sama.gov.sa/en/banking-control-law", verified: false}
