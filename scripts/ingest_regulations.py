@@ -48,11 +48,18 @@ FETCH_NAME = "Official Gazette Fetch"
 def _yaml_files(path: pathlib.Path) -> list[pathlib.Path]:
     if path.is_file():
         return [path]
-    return sorted(p for p in path.glob("*.yaml") if p.name != "README.md")
+    # Skip meta files (e.g. _sources.yaml, _MANIFEST) — they aren't regulation specs.
+    return sorted(p for p in path.glob("*.yaml") if not p.name.startswith("_"))
 
 
 async def _embed(texts: list[str]) -> list[list[float]]:
-    return await embed_texts(texts, input_type="passage")
+    # Batch so a large regulation (e.g. Labor Law, 247 articles) doesn't time out the
+    # embedder in one request. Order is preserved.
+    batch = 16
+    out: list[list[float]] = []
+    for i in range(0, len(texts), batch):
+        out.extend(await embed_texts(texts[i:i + batch], input_type="passage"))
+    return out
 
 
 async def main() -> int:
