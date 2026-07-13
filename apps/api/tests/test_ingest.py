@@ -87,3 +87,19 @@ def test_validate_flags_verified_without_initials() -> None:
     reg.articles[0].verified_by_initials = None
     errors = validate_regulation(reg)
     assert any("verified_by_initials" in e for e in errors)
+
+
+@pytest.mark.asyncio
+async def test_official_fetch_tier_ingests_unverified(session) -> None:
+    # Under official_fetch, verified: false articles ARE ingested and tagged official_fetch.
+    reg = _reg()  # Article 1 verified, Article 2 not
+    verifier = await _verifier(session)
+    stats = await ingest_regulation(
+        session, reg, verifier_id=verifier.id, embed_fn=_stub_embed, tier="official_fetch"
+    )
+    assert stats.inserted == 2  # both articles, despite Article 2 being verified: false
+    assert stats.skipped_unverified == 0
+    rows = [r for r in (await session.execute(select(RegulationVersion))).scalars()
+            if r.verified_by == verifier.id]
+    assert len(rows) == 2
+    assert all(r.verification_tier == "official_fetch" for r in rows)

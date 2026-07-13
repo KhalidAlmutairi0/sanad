@@ -23,6 +23,7 @@ export interface Citation {
   article_text_ar: string;
   source_url: string;
   effective_date: string | null;
+  verification_tier: "human_verified" | "official_fetch";
 }
 
 export interface Finding {

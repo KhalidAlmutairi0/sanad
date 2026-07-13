@@ -38,6 +38,11 @@ export function CitationChip({ citation }: { citation: Citation }) {
             </button>
           </div>
           <p className="whitespace-pre-wrap text-body leading-8 text-ink">{citation.article_text_ar}</p>
+          {citation.verification_tier === "official_fetch" && (
+            <p className="mt-3 rounded-chip bg-orange-bg px-3 py-2 text-caption text-orange-ink">
+              {dict.review.autoFetched}
+            </p>
+          )}
           <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-line pt-3 text-caption text-muted">
             {citation.effective_date && (
               <span className="tabular">

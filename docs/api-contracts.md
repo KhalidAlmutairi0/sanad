@@ -84,7 +84,8 @@ Res 200:
         "article_ref": "Article 29",
         "article_text_ar": "string",
         "source_url": "string",
-        "effective_date": "2023-09-14"
+        "effective_date": "2023-09-14",
+        "verification_tier": "human_verified"
       }
     }
   ]

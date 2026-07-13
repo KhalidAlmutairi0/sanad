@@ -54,6 +54,7 @@ const ar = {
     explanation: "الشرح",
     reviewedOnly: "الملاحظات المراجَعة فقط",
     radar: "رادار العوائق",
+    autoFetched: "هذا النص مسحوب آلياً من المصدر الرسمي ولم تتم مراجعته بشرياً بعد.",
   },
   severity: { critical: "حرجة", high: "عالية", medium: "متوسطة", low: "منخفضة" },
   verdict: { GO: "جاهز", REVIEW: "للمراجعة", STOP: "توقف" },

@@ -56,6 +56,7 @@ const en: Dict = {
     explanation: "Explanation",
     reviewedOnly: "reviewed findings only",
     radar: "Deal-breaker radar",
+    autoFetched: "Auto-fetched from the official source, not yet human-reviewed.",
   },
   severity: { critical: "Critical", high: "High", medium: "Medium", low: "Low" },
   verdict: { GO: "Ready", REVIEW: "Review", STOP: "Stop" },

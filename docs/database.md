@@ -46,7 +46,8 @@ The heart of Zero Unsourced Findings. Never updated or deleted.
 | fetched_at | timestamptz not null | |
 | effective_date | date | when the article takes effect |
 | supersedes_id | uuid FK → regulation_versions | previous version this replaces (null if first) |
-| verified_by | uuid FK → users not null | human gate — no row without a verifier |
+| verified_by | uuid FK → users not null | who/what attested the text (a human, or the official-fetch service account) |
+| verification_tier | text not null | `human_verified` \| `official_fetch` (CHECK). Default `human_verified`. Surfaced on citations so auto-fetched text is labeled. See AGENTS.md #5. |
 | embedding | vector(1024) | pgvector, for retrieval |
 
 Indexes: ivfflat on `embedding`; btree on `(regulation_id, article_ref)`.

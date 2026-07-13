@@ -49,6 +49,7 @@ def _citation(rv: RegulationVersion, code: str) -> Citation:
         article_text_ar=rv.article_text_ar,
         source_url=rv.source_url,
         effective_date=rv.effective_date,
+        verification_tier=rv.verification_tier,
     )
 
 

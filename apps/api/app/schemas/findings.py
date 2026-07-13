@@ -15,6 +15,8 @@ class Citation(BaseModel):
     article_text_ar: str
     source_url: str
     effective_date: dt.date | None
+    # human_verified | official_fetch — so the UI can flag auto-fetched (not human-reviewed) text.
+    verification_tier: str = "human_verified"
 
 
 class FindingItem(BaseModel):

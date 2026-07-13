@@ -151,16 +151,28 @@ async def ingest_regulation(
     *,
     verifier_id: uuid.UUID,
     embed_fn: EmbedFn,
+    tier: str = "human_verified",
 ) -> IngestStats:
-    """Insert the verified, not-yet-present articles of one regulation. Does NOT commit;
-    the caller owns the transaction boundary."""
+    """Insert the not-yet-present articles of one regulation. Does NOT commit; the caller owns
+    the transaction boundary.
+
+    tier='human_verified' (default): only articles marked verified: true are inserted — the
+    strict human gate. tier='official_fetch': articles fetched verbatim from the official
+    gazette are inserted even though verified: false, recorded as official_fetch provenance
+    (owner-policy trust of the official source). The distinction is stored on the row so the
+    UI can label auto-fetched citations.
+    """
+    if tier not in ("human_verified", "official_fetch"):
+        raise ValueError(f"unknown tier: {tier}")
     stats = IngestStats(code=reg.code)
     row = await _get_or_create_regulation(session, reg)
     present = await _existing_hashes(session, row.id)
 
     to_insert: list[tuple[CorpusArticle, str]] = []
     for art in reg.articles:
-        if not art.verified:
+        # In human_verified mode the gate requires an explicit human tick; in official_fetch
+        # mode the official-source provenance is the trust basis, so verified: false is fine.
+        if tier == "human_verified" and not art.verified:
             stats.skipped_unverified += 1
             continue
         text_ar = " ".join(art.article_text_ar.split())
@@ -187,12 +199,13 @@ async def ingest_regulation(
                 fetched_at=now,
                 effective_date=art.effective_date,
                 verified_by=verifier_id,
+                verification_tier=tier,
                 embedding=embedding,
             )
         )
         await write_audit(
             session, actor=ACTOR_CORPUS, action="regulation_version_ingested", verdict="n-a",
-            detail={"code": reg.code, "article_ref": art.article_ref,
+            detail={"code": reg.code, "article_ref": art.article_ref, "tier": tier,
                     "verified_by_initials": art.verified_by_initials},
         )
         stats.inserted += 1
