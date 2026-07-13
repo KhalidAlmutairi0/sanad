@@ -45,6 +45,10 @@ class Settings(BaseSettings):
     embedder_url: str = Field(default="http://embedder:8081", alias="EMBEDDER_URL")
     embedding_dim: int = Field(default=1024, alias="EMBEDDING_DIM")
 
+    # Retrieval reranking (PLAN.md P1.6): fetch a wide cosine net, LLM-rerank to top-k.
+    rerank_enabled: bool = Field(default=True, alias="RERANK_ENABLED")
+    rerank_fetch_k: int = Field(default=20, alias="RERANK_FETCH_K")
+
     # LLM (behind services/llm only)
     llm_provider: str = Field(default="selfhosted", alias="LLM_PROVIDER")
     llm_model: str = Field(default="claude-sonnet-4-20250514", alias="LLM_MODEL")

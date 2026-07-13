@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.config import get_settings
 from app.models import Regulation, RegulationVersion
 from app.services.retrieval.embedder import embed_texts
 
@@ -30,7 +31,18 @@ async def retrieve_candidates(
     *,
     k: int = 5,
     regulation_code: str | None = None,
+    rerank_enabled: bool | None = None,
 ) -> list[Candidate]:
+    """Retrieve the top-k regulation articles for a query.
+
+    When reranking is on (config `rerank_enabled`, default true), a wider cosine net of
+    `rerank_fetch_k` candidates is retrieved and an LLM reorders them by direct relevance,
+    then the top k are returned — precision that raw cosine loses at corpus scale.
+    """
+    settings = get_settings()
+    use_rerank = settings.rerank_enabled if rerank_enabled is None else rerank_enabled
+    fetch_k = max(k, settings.rerank_fetch_k) if use_rerank else k
+
     [query_vec] = await embed_texts([query_text], input_type="query")
 
     distance = RegulationVersion.embedding.cosine_distance(query_vec).label("distance")
@@ -39,13 +51,13 @@ async def retrieve_candidates(
         .join(Regulation, Regulation.id == RegulationVersion.regulation_id)
         .where(RegulationVersion.embedding.isnot(None))
         .order_by(distance)
-        .limit(k)
+        .limit(fetch_k)
     )
     if regulation_code:
         stmt = stmt.where(Regulation.code == regulation_code)
 
     rows = (await session.execute(stmt)).all()
-    return [
+    candidates = [
         Candidate(
             regulation_version_id=rv.id,
             regulation_code=code,
@@ -58,3 +70,8 @@ async def retrieve_candidates(
         )
         for rv, code, dist in rows
     ]
+    if use_rerank and len(candidates) > 1:
+        from app.services.retrieval.reranker import rerank
+
+        return await rerank(query_text, candidates, top_n=k)
+    return candidates[:k]

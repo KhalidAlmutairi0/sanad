@@ -82,6 +82,7 @@ Timer → agent (B) fetches allowlisted regulator pages → differ detects chang
 
 - Single interface `services/llm/` — provider-swappable per deployment: Anthropic/OpenAI API (through Sandbox-B-style governed egress) or fully self-hosted model (air-gapped option).
 - System prompts are code-reviewed artifacts. Untrusted content is delimited and labeled; models are instructed to treat it as data.
+- **Retrieval reranking:** cosine over e5 embeddings fetches a wide net (`RERANK_FETCH_K`, default 20); an LLM reranks by direct relevance to the clause and returns the top-k. At 1600+ articles raw cosine ranks broadly-similar articles above the precisely-applicable one; reranking recovers precision. The clause is untrusted (wrapped via the LLM gateway); the offline stub returns cosine order so no-model runs stay deterministic. Toggle `RERANK_ENABLED`.
 
 ## 7b. Embeddings (decision)
 
