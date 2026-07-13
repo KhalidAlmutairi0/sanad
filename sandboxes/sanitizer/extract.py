@@ -32,11 +32,37 @@ def _clean(text: str) -> str:
     return "\n".join(lines).strip()
 
 
+# A digital PDF yields a real text layer; a scanned (image) PDF yields almost nothing from
+# pypdf. Below this many non-space characters we treat the PDF as scanned and OCR it.
+_SCANNED_TEXT_THRESHOLD = 80
+_OCR_DPI = 200
+_OCR_MAX_PAGES = 40  # bound work under the sandbox timeout/rlimits
+
+
+def _ocr_pdf(path: pathlib.Path) -> str:
+    """OCR a scanned PDF with Tesseract (ara+eng), fully offline. Runs inside the no-network
+    sandbox — tesseract + poppler need no network, so the containment guarantee holds."""
+    from pdf2image import convert_from_path
+    import pytesseract
+
+    images = convert_from_path(str(path), dpi=_OCR_DPI, first_page=1, last_page=_OCR_MAX_PAGES)
+    pages = []
+    for img in images:
+        pages.append(pytesseract.image_to_string(img, lang="ara+eng"))
+    # Signal to the wrapper that OCR was used (kept off stdout, which is the clean text).
+    sys.stderr.write("OCR_USED\n")
+    return "\n".join(pages)
+
+
 def _extract_pdf(path: pathlib.Path) -> str:
     from pypdf import PdfReader
 
     reader = PdfReader(str(path))
-    return "\n".join((page.extract_text() or "") for page in reader.pages)
+    text = "\n".join((page.extract_text() or "") for page in reader.pages)
+    if len(text.replace(" ", "").strip()) < _SCANNED_TEXT_THRESHOLD:
+        # No usable text layer → scanned document. Fall back to OCR.
+        return _ocr_pdf(path)
+    return text
 
 
 def _extract_docx(path: pathlib.Path) -> str:

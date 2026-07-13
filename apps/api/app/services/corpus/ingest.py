@@ -166,6 +166,9 @@ async def ingest_regulation(
         raise ValueError(f"unknown tier: {tier}")
     stats = IngestStats(code=reg.code)
     row = await _get_or_create_regulation(session, reg)
+    # Mark this regulation as reconciled now: a fetch/check against the source just ran, even
+    # if nothing new was inserted (staleness tracking, PLAN.md P1.8).
+    row.last_reconciled_at = dt.datetime.now(dt.timezone.utc)
     present = await _existing_hashes(session, row.id)
 
     to_insert: list[tuple[CorpusArticle, str]] = []

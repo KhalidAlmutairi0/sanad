@@ -51,6 +51,7 @@ class Regulation(Base):
     name_en: Mapped[str] = mapped_column(Text, nullable=False)
     authority: Mapped[str] = mapped_column(Text, nullable=False)
     source_domain: Mapped[str] = mapped_column(Text, nullable=False)
+    last_reconciled_at: Mapped[dt.datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[dt.datetime] = _created_at()
 
 
@@ -87,6 +88,7 @@ class Contract(Base):
     status: Mapped[str] = mapped_column(Text, nullable=False, server_default="uploaded")
     readiness_score: Mapped[int | None] = mapped_column(Integer)
     failure_reason: Mapped[str | None] = mapped_column(Text)
+    ocr_used: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
     created_at: Mapped[dt.datetime] = _created_at()
     updated_at: Mapped[dt.datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now()

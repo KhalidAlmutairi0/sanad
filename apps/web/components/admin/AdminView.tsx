@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/ui/Header";
 import { useApp } from "@/lib/i18n";
 import { apiGet, apiPost, apiPut } from "@/lib/api";
-import type { AuditItem, Invite, Prompts, Role } from "@/types";
+import type { AuditItem, CorpusItem, Invite, Prompts, Role } from "@/types";
 
 export function AdminView() {
   const { dict } = useApp();
   const [domains, setDomains] = useState<string>("");
   const [audit, setAudit] = useState<AuditItem[]>([]);
   const [invites, setInvites] = useState<Invite[]>([]);
+  const [corpus, setCorpus] = useState<CorpusItem[]>([]);
   const [inviteRole, setInviteRole] = useState<Role>("reviewer");
   const [inviteEmail, setInviteEmail] = useState("");
   const [copied, setCopied] = useState<string | null>(null);
@@ -26,6 +27,7 @@ export function AdminView() {
       apiGet<{ items: AuditItem[] }>("/admin/audit?limit=25").then((d) => setAudit(d.items)),
       apiGet<{ items: Invite[] }>("/admin/invites").then((d) => setInvites(d.items)).catch(() => null),
       apiGet<Prompts>("/admin/prompts").then((d) => setPrompts(d)).catch(() => null),
+      apiGet<{ items: CorpusItem[] }>("/admin/corpus").then((d) => setCorpus(d.items)).catch(() => null),
     ])
       .catch((e) => {
         if ((e as Error & { code?: string }).code === "forbidden") setForbidden(true);
@@ -91,6 +93,45 @@ export function AdminView() {
           <p className="mt-8 text-body text-muted">{dict.common.loading}</p>
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {corpus.length > 0 && (
+              <section className="rounded-card border border-line bg-surface p-6 lg:col-span-2">
+                <div className="flex items-baseline justify-between">
+                  <h2 className="text-h3 text-ink">{dict.admin.corpus}</h2>
+                  <span className="text-caption text-muted">
+                    {corpus.reduce((s, c) => s + c.articles, 0)} {dict.admin.articles}
+                  </span>
+                </div>
+                <div className="mt-4 max-h-[40vh] overflow-auto">
+                  <table className="w-full text-label">
+                    <thead>
+                      <tr className="border-b border-line text-caption text-muted">
+                        <th className="px-3 py-2 text-start font-medium">{dict.admin.regulation}</th>
+                        <th className="px-3 py-2 text-start font-medium">{dict.admin.authority}</th>
+                        <th className="px-3 py-2 text-end font-medium">{dict.admin.articles}</th>
+                        <th className="px-3 py-2 text-end font-medium">{dict.admin.reconciled}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {corpus.map((c) => (
+                        <tr key={c.code} className="border-b border-line last:border-0">
+                          <td className="px-3 py-2 text-ink">{c.name_ar}</td>
+                          <td className="px-3 py-2 text-caption text-muted">{c.authority}</td>
+                          <td className="px-3 py-2 text-end tabular text-ink" style={{ fontFamily: "var(--font-plex-mono)" }}>
+                            {c.articles}
+                            {c.official_fetch > 0 && (
+                              <span className="ms-2 text-caption text-orange-ink">{dict.admin.autoTag}</span>
+                            )}
+                          </td>
+                          <td className="px-3 py-2 text-end text-caption text-muted">
+                            {c.last_reconciled_at ? c.last_reconciled_at.slice(0, 10) : "—"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
             {prompts && (
               <section className="rounded-card border border-line bg-surface p-6 lg:col-span-2">
                 <h2 className="text-h3 text-ink">{dict.admin.prompts}</h2>

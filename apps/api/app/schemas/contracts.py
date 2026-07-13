@@ -47,6 +47,7 @@ class ContractDetail(BaseModel):
     status: str
     readiness_score: int | None
     findings_summary: FindingsSummary
+    ocr_used: bool = False
 
 
 class ClauseItem(BaseModel):

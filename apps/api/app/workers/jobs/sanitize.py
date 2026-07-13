@@ -74,6 +74,7 @@ async def sanitize_contract(ctx: dict, contract_id: str) -> str:
             )
             contract.sanitized_object_key = sanitized_key
             contract.status = "sanitized"
+            contract.ocr_used = result.ocr_used
             await write_audit(
                 session, actor=ACTOR_SANITIZER, action="sanitize_succeeded",
                 target=contract_id, verdict="allowed",
@@ -81,6 +82,7 @@ async def sanitize_contract(ctx: dict, contract_id: str) -> str:
                     "sanitized_object_key": sanitized_key,
                     "chars": len(result.text or ""),
                     "sandboxed": result.sandboxed,  # False in DEMO direct mode
+                    "ocr_used": result.ocr_used,  # scanned PDF → OCR text (noisier)
                 },
             )
             await session.commit()

@@ -17,7 +17,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.deps import get_session, require_roles
 from app.core.errors import SanadError
-from app.models import AuditLog, Invite, User
+from app.models import AuditLog, Invite, Regulation, RegulationVersion, User
 from app.services.analysis.findings import CONTRACTS_CONTRACT, CONTRACTS_GUIDANCE_DEFAULT
 from app.services.analysis.idea_report import IDEA_CONTRACT, IDEA_GUIDANCE_DEFAULT
 from app.services.audit import write_audit
@@ -74,6 +74,21 @@ class InviteItem(BaseModel):
 
 class InviteList(BaseModel):
     items: list[InviteItem]
+
+
+class CorpusItem(BaseModel):
+    code: str
+    name_ar: str
+    authority: str
+    articles: int
+    official_fetch: int
+    human_verified: int
+    last_reconciled_at: dt.datetime | None
+
+
+class CorpusList(BaseModel):
+    items: list[CorpusItem]
+    total_articles: int
 
 
 class Prompts(BaseModel):
@@ -151,6 +166,38 @@ async def get_audit(
         ],
         total=total,
     )
+
+
+@router.get("/corpus", response_model=CorpusList)
+async def get_corpus(
+    _: User = Depends(require_roles("admin")),
+    session: AsyncSession = Depends(get_session),
+) -> CorpusList:
+    """Corpus coverage + freshness: per-regulation article counts, verification-tier split,
+    and when each was last reconciled against its official source (PLAN.md P1.8)."""
+    tier_ct = func.count(RegulationVersion.id)
+    rows = (
+        await session.execute(
+            select(
+                Regulation.code, Regulation.name_ar, Regulation.authority,
+                Regulation.last_reconciled_at,
+                tier_ct.label("articles"),
+                func.count(RegulationVersion.id).filter(
+                    RegulationVersion.verification_tier == "official_fetch").label("of"),
+                func.count(RegulationVersion.id).filter(
+                    RegulationVersion.verification_tier == "human_verified").label("hv"),
+            )
+            .join(RegulationVersion, RegulationVersion.regulation_id == Regulation.id)
+            .group_by(Regulation.id)
+            .order_by(tier_ct.desc())
+        )
+    ).all()
+    items = [
+        CorpusItem(code=r.code, name_ar=r.name_ar, authority=r.authority, articles=r.articles,
+                   official_fetch=r.of, human_verified=r.hv, last_reconciled_at=r.last_reconciled_at)
+        for r in rows
+    ]
+    return CorpusList(items=items, total_articles=sum(i.articles for i in items))
 
 
 @router.get("/prompts", response_model=Prompts)
