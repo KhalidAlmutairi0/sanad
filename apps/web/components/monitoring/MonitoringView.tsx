@@ -1,18 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Header } from "@/components/ui/Header";
-import { useApp } from "@/lib/i18n";
+import { AppLayout, Button, MonoChip } from "@/components/design/Shared";
 import { apiGet, apiPost } from "@/lib/api";
 import type { MonitoringEvent } from "@/types";
 
+const CHANGE_AR: Record<string, string> = { new_article: "مادة جديدة", amended: "تعديل", repealed: "إلغاء" };
+
 function VerifyForm({ eventId, onDone }: { eventId: string; onDone: () => void }) {
-  const { dict } = useApp();
   const [articleRef, setArticleRef] = useState("");
   const [text, setText] = useState("");
   const [source, setSource] = useState("https://sdaia.gov.sa/");
   const [busy, setBusy] = useState(false);
-
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
@@ -21,84 +20,74 @@ function VerifyForm({ eventId, onDone }: { eventId: string; onDone: () => void }
     }).catch(() => null);
     onDone();
   }
-
   return (
-    <form onSubmit={submit} className="mt-3 grid gap-2 rounded-chip border border-line bg-paper p-3">
-      <input value={articleRef} onChange={(e) => setArticleRef(e.target.value)} required
-        placeholder="Article 29" dir="ltr"
-        className="rounded-chip border border-line bg-surface px-3 py-2 text-label text-ink" />
-      <textarea value={text} onChange={(e) => setText(e.target.value)} required rows={2}
-        placeholder="نص المادة المحدّث"
-        className="rounded-chip border border-line bg-surface px-3 py-2 text-label text-ink" />
-      <div className="flex justify-end">
-        <button type="submit" disabled={busy}
-          className="rounded-chip bg-orange px-4 py-2 text-label text-white disabled:opacity-50">
-          {dict.monitoring.verify}
-        </button>
-      </div>
+    <form onSubmit={submit} className="mt-4 grid gap-2 rounded-lg border border-border bg-background p-4">
+      <input value={articleRef} onChange={(e) => setArticleRef(e.target.value)} required placeholder="المادة" dir="rtl"
+        className="rounded-md border border-border bg-card px-3 py-2 text-[13px] outline-none focus:border-primary" />
+      <textarea value={text} onChange={(e) => setText(e.target.value)} required rows={2} placeholder="نص المادة المحدّث" dir="rtl"
+        className="rounded-md border border-border bg-card px-3 py-2 text-[13px] outline-none focus:border-primary" />
+      <div className="flex justify-end"><Button type="submit" disabled={busy} className="h-9 px-4 text-[13px]">تأكيد التحقق</Button></div>
     </form>
   );
 }
 
 export function MonitoringView() {
-  const { dict } = useApp();
   const [items, setItems] = useState<MonitoringEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [openId, setOpenId] = useState<string | null>(null);
 
   function load() {
-    apiGet<{ items: MonitoringEvent[] }>("/monitoring/events")
-      .then((d) => setItems(d.items))
-      .finally(() => setLoading(false));
+    apiGet<{ items: MonitoringEvent[] }>("/monitoring/events").then((d) => setItems(d.items)).finally(() => setLoading(false));
   }
   useEffect(load, []);
 
-  function markVerified(id: string) {
-    setItems((xs) => xs.map((e) => (e.id === id ? { ...e, status: "verified" } : e)));
-    setOpenId(null);
-    load();
-  }
-
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="mx-auto max-w-reading px-6 py-12">
-        <h1 className="text-h1 font-semibold text-ink">{dict.monitoring.title}</h1>
+    <AppLayout>
+      <div className="max-w-[800px] mx-auto space-y-8">
+        <div className="flex items-center justify-between border-b border-border pb-6">
+          <div>
+            <h1 className="text-2xl font-bold mb-2">رصد التحديثات التنظيمية</h1>
+            <p className="text-[15px] text-muted-foreground">متابعة منتظمة للمصادر الرسمية، مع تقييم أثر كل تحديث على سجل التزاماتك.</p>
+          </div>
+          <div className="bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded-lg flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-[13px] font-mono">متابعة مستمرة</span>
+          </div>
+        </div>
+
         {loading ? (
-          <p className="mt-8 text-body text-muted">{dict.common.loading}</p>
+          <div className="py-16 text-center text-muted-foreground">جاري التحميل…</div>
         ) : items.length === 0 ? (
-          <p className="mt-12 rounded-card border border-dashed border-line p-12 text-center text-body text-muted">
-            {dict.monitoring.empty}
-          </p>
+          <div className="py-16 text-center text-muted-foreground">ما فيه تغييرات مرصودة حتى الآن.</div>
         ) : (
-          <div className="mt-8 divide-y divide-line rounded-card border border-line bg-surface">
-            {items.map((e) => (
-              <div key={e.id} className="px-6 py-4">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-body text-ink">
-                      {e.regulation_code}
-                      {e.change_type ? ` · ${dict.monitoring.changeTypes[e.change_type as keyof typeof dict.monitoring.changeTypes] ?? e.change_type}` : ""}
-                    </p>
-                    <p className="mt-1 text-caption text-muted">{e.impact_summary_ar}</p>
+          <div className="space-y-6">
+            {items.map((e) => {
+              const isNew = e.status === "detected";
+              return (
+                <div key={e.id} className={`bg-card border ${isNew ? "border-primary/50" : "border-border"} p-6 rounded-xl relative group`}>
+                  {isNew && <div className="absolute top-0 right-6 -translate-y-1/2 bg-background px-2 text-[10px] font-mono text-primary border border-primary/30 rounded">NEW</div>}
+                  <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center mb-4">
+                    <div className="flex items-center gap-3">
+                      <span className="font-bold text-[15px]">{e.regulation_code}</span>
+                      {e.change_type && (<><span className="w-1 h-1 rounded-full bg-border" /><span className="text-[13px] text-muted-foreground">{CHANGE_AR[e.change_type] ?? e.change_type}</span></>)}
+                    </div>
+                    <span className="text-[13px] text-muted-foreground font-mono">{e.detected_at?.slice(0, 10)}</span>
                   </div>
-                  {e.status === "detected" ? (
-                    <button
-                      onClick={() => setOpenId(openId === e.id ? null : e.id)}
-                      className="rounded-chip border border-severity-high px-4 py-2 text-label text-severity-high"
-                    >
-                      {dict.monitoring.verify}
-                    </button>
-                  ) : (
-                    <span className="text-label text-severity-ok">{dict.monitoring.verified}</span>
-                  )}
+                  <p className="text-[15px] text-muted-foreground mb-6 leading-relaxed">{e.impact_summary_ar}</p>
+                  <div className="flex justify-end">
+                    {isNew ? (
+                      <Button variant="primary" className="h-9 px-4 text-[13px]" onClick={() => setOpenId(openId === e.id ? null : e.id)}>تحقّق من الأثر</Button>
+                    ) : (
+                      <span className="text-[13px] text-primary font-mono">تم التحقق</span>
+                    )}
+                  </div>
+                  {openId === e.id && <VerifyForm eventId={e.id} onDone={() => { setOpenId(null); load(); }} />}
                 </div>
-                {openId === e.id && <VerifyForm eventId={e.id} onDone={() => markVerified(e.id)} />}
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
-      </main>
-    </div>
+      </div>
+    </AppLayout>
   );
 }

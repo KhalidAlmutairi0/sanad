@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import localFont from "next/font/local";
-import { IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, IBM_Plex_Mono } from "next/font/google";
 import { Providers, type Locale, type Theme } from "@/lib/i18n";
 import "./globals.css";
 
-// Thmanyah (خط ثمانية) — self-hosted (sovereignty: no runtime font CDN calls).
-// One master maps to the whole weight range, so nothing is faux-bolded: typographic
-// hierarchy comes from SIZE, not weight. Var name kept as --font-plex-arabic so the
-// design tokens that reference it keep working.
-const thmanyah = localFont({
-  src: [{ path: "./fonts/thmanyah-sans-regular.otf", weight: "100 900", style: "normal" }],
+// IBM Plex Sans Arabic + Mono (the sanadscreen design). Self-hosted at build by next/font
+// (no runtime CDN calls — sovereignty-safe). Var names kept so tokens/tailwind resolve.
+const plexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-plex-arabic",
   display: "swap",
 });
@@ -37,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang={locale}
       dir={dir}
-      className={`${thmanyah.variable} ${plexMono.variable} ${theme === "dark" ? "dark" : ""}`}
+      className={`${plexArabic.variable} ${plexMono.variable} ${theme === "dark" ? "dark" : ""}`}
     >
       <body className="font-sans antialiased">
         <Providers initialLocale={locale} initialTheme={theme}>

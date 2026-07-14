@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/lib/i18n";
 import { login } from "@/lib/api";
+import { Button } from "@/components/design/Shared";
 
 export function LoginForm() {
-  const { dict, toggleLocale } = useApp();
+  const { toggleLocale, locale } = useApp();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,51 +30,39 @@ export function LoginForm() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-reading flex-col justify-center px-6">
-      <div className="mx-auto w-full max-w-sm">
-        <p className="text-label text-orange-ink">{dict.tagline}</p>
-        <h1 className="mt-2 text-display font-bold">سَنَد</h1>
-        <form onSubmit={submit} className="mt-8 space-y-4">
-          <label className="block">
-            <span className="text-label text-muted">{dict.login.email}</span>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-chip border border-line bg-surface px-4 py-3 text-body text-ink"
-              required
-              dir="ltr"
-            />
-          </label>
-          <label className="block">
-            <span className="text-label text-muted">{dict.login.password}</span>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-chip border border-line bg-surface px-4 py-3 text-body text-ink"
-              required
-              dir="ltr"
-            />
-          </label>
-          {error && <p className="text-label text-severity-critical">{dict.login.error}</p>}
-          <button
-            type="submit"
-            disabled={busy}
-            className="w-full rounded-chip bg-orange px-6 py-3 text-label text-white disabled:opacity-50"
-          >
-            {dict.login.submit}
-          </button>
-        </form>
-        <div className="mt-6 flex items-center justify-between">
-          <a href="/join" className="text-label text-orange-ink">
-            {dict.join.title}
-          </a>
-          <button type="button" onClick={toggleLocale} className="text-label text-muted">
-            {dict.common.toggleLang}
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center bg-background relative overflow-hidden p-6">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="w-full max-w-[420px] bg-card border border-border rounded-xl p-8 shadow-2xl relative z-10">
+        <div className="flex justify-between items-start mb-10">
+          <Link href="/" className="flex flex-col">
+            <span className="font-bold text-2xl leading-none">سند</span>
+            <span className="font-mono text-xs text-muted-foreground leading-none mt-1">SANAD</span>
+          </Link>
+          <button onClick={toggleLocale} className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors border border-border px-2 py-1 rounded">
+            {locale === "ar" ? "EN" : "ع"}
           </button>
         </div>
+        <form onSubmit={submit} className="space-y-5">
+          <div className="space-y-2">
+            <label className="text-[13px] font-medium text-muted-foreground block">البريد الإلكتروني المؤسسي</label>
+            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-background border border-border rounded-md px-4 py-2.5 text-[15px] outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-left font-mono"
+              dir="ltr" placeholder="name@bank.sa" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-[13px] font-medium text-muted-foreground block">كلمة المرور</label>
+            <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-background border border-border rounded-md px-4 py-2.5 text-[15px] outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-left font-mono"
+              dir="ltr" placeholder="••••••••" />
+          </div>
+          {error && <p className="text-[13px] text-destructive">بيانات الدخول غير صحيحة</p>}
+          <Button type="submit" disabled={busy} className="w-full mt-2">{busy ? "جارٍ الدخول…" : "تسجيل الدخول"}</Button>
+        </form>
+        <div className="mt-8 pt-6 border-t border-border text-center text-[15px]">
+          <span className="text-muted-foreground">ليس لديك حساب؟ </span>
+          <Link href="/join" className="text-primary hover:underline font-medium">إنشاء حساب بدعوة</Link>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }

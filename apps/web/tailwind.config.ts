@@ -8,22 +8,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "var(--sanad-ink)",
-        paper: "var(--sanad-paper)",
-        surface: "var(--sanad-surface)",
-        line: "var(--sanad-line)",
-        muted: "var(--sanad-muted)",
-        orange: {
-          DEFAULT: "var(--sanad-orange)",
-          ink: "var(--sanad-orange-ink)",
-          bg: "var(--sanad-orange-bg)",
-        },
+        // shadcn-style semantic tokens (the sanadscreen design's classes) → CSS vars.
+        background: "var(--bg)",
+        foreground: "var(--ink)",
+        border: "var(--line)",
+        input: "var(--line)",
+        ring: "var(--gold)",
+        card: { DEFAULT: "var(--card-bg)", foreground: "var(--ink)" },
+        popover: { DEFAULT: "var(--card-bg)", foreground: "var(--ink)" },
+        primary: { DEFAULT: "var(--gold)", foreground: "#FFFFFF" },
+        secondary: { DEFAULT: "var(--muted-bg)", foreground: "var(--ink)" },
+        muted: { DEFAULT: "var(--muted-bg)", foreground: "var(--muted-text)" },
+        accent: { DEFAULT: "var(--orange-bg)", foreground: "var(--gold)" },
+        destructive: { DEFAULT: "var(--sev-red)", foreground: "#FFFFFF" },
+        sharia: "var(--sharia)",
+        // Back-compat keys for not-yet-ported pages.
+        ink: "var(--ink)", paper: "var(--bg)", surface: "var(--card-bg)", line: "var(--line)",
+        orange: { DEFAULT: "var(--gold)", ink: "var(--gold-ink)", bg: "var(--orange-bg)" },
         severity: {
-          critical: "var(--sanad-critical)",
-          high: "var(--sanad-high)",
-          medium: "var(--sanad-medium)",
-          low: "var(--sanad-low)",
-          ok: "var(--sanad-ok)",
+          critical: "var(--sev-red)", high: "var(--sev-amber)", medium: "#8a6d1f",
+          low: "#5a6b4f", ok: "var(--sharia)",
         },
       },
       fontFamily: {
@@ -44,7 +48,10 @@ const config: Config = {
         "1": "4px", "2": "8px", "3": "12px", "4": "16px",
         "6": "24px", "8": "32px", "12": "48px", "16": "64px",
       },
-      borderRadius: { card: "8px", chip: "6px" },
+      borderRadius: {
+        card: "8px", chip: "6px",
+        lg: "var(--radius)", md: "8px", sm: "6px", xl: "12px",
+      },
       maxWidth: { reading: "820px" },
     },
   },

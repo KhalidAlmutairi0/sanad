@@ -1,10 +1,10 @@
 "use client";
 
-import { useApp } from "@/lib/i18n";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { apiPost } from "@/lib/api";
+import { DealBreakerPill, ReadinessGauge, MonoChip, FindingCard } from "@/components/design/Shared";
 import type { Clause, ContractDetail, Finding } from "@/types";
-import { ReadinessDial } from "@/components/score/ReadinessDial";
-import { FindingCard } from "@/components/findings/FindingCard";
-import { RadarPill } from "./RadarPill";
 
 interface Props {
   contract: ContractDetail;
@@ -13,55 +13,88 @@ interface Props {
   verdict: "GO" | "REVIEW" | "STOP";
 }
 
+function sevOf(s: string): "red" | "amber" | "muted" {
+  if (s === "critical") return "red";
+  if (s === "high" || s === "medium") return "amber";
+  return "muted";
+}
+
 export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props) {
-  const { dict } = useApp();
+  const router = useRouter();
+  const [items, setItems] = useState<Finding[]>(findings);
+
+  async function review(id: string, decision: "accepted" | "rejected") {
+    setItems((xs) => xs.map((f) => (f.id === id ? { ...f, review_status: decision } : f)));
+    await apiPost(`/findings/${id}/review`, { decision }).catch(() => null);
+    router.refresh();
+  }
+
+  // Which clauses carry a finding (for highlighting the text pane).
+  const clauseSev = new Map<string, "red" | "amber" | "muted">();
+  for (const f of items) {
+    if (f.clause_id) {
+      const cur = clauseSev.get(f.clause_id);
+      const s = sevOf(f.severity);
+      if (!cur || (s === "red" && cur !== "red")) clauseSev.set(f.clause_id, s);
+    }
+  }
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-between gap-8 border-b border-line pb-8 sm:flex-row">
-        <div>
-          <h1 className="text-h1 font-semibold text-ink">{contract.title}</h1>
-          {contract.ocr_used && (
-            <span className="mt-2 inline-block rounded-chip bg-orange-bg px-3 py-1 text-caption text-orange-ink">
-              {dict.review.ocrDocument}
-            </span>
-          )}
+    <div className="flex flex-col min-h-[calc(100vh-9rem)]">
+      <div className="flex items-center justify-between border-b border-border pb-6 mb-6 shrink-0 flex-wrap gap-4">
+        <div className="flex items-center gap-4 flex-wrap">
+          <h1 className="text-2xl font-bold">{contract.title}</h1>
+          <MonoChip className="text-muted-foreground">{contract.ocr_used ? "مستند ممسوح · OCR" : "مستند رقمي"}</MonoChip>
+          <DealBreakerPill state={verdict} />
         </div>
-        <div className="flex items-center gap-12">
-          <RadarPill verdict={verdict} />
-          <ReadinessDial score={contract.readiness_score} label={dict.review.reviewedOnly} />
-        </div>
+        <ReadinessGauge value={contract.readiness_score ?? 0} className="scale-90 origin-right" />
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
-        {/* Contract pane */}
-        <section>
-          <h2 className="mb-4 text-h3 text-muted">{dict.review.contractPane}</h2>
-          <div className="max-h-[70vh] space-y-4 overflow-y-auto rounded-card border border-line bg-surface p-6">
-            {clauses.map((c) => (
-              <p key={c.id} dir={c.text_ar ? "rtl" : "ltr"} className="text-body leading-8 text-ink">
-                <span className="me-2 text-caption text-muted tabular">{c.ordinal}.</span>
-                {c.text_ar ?? c.text_en}
-              </p>
-            ))}
+      <div className="flex flex-col md:flex-row gap-6 flex-1 min-h-0">
+        {/* Contract text */}
+        <div className="w-full md:w-1/2 bg-card border border-border rounded-xl p-6 overflow-y-auto">
+          <div className="space-y-5 text-[15px] leading-[2]">
+            {clauses.length === 0 && <p className="text-muted-foreground">لا يوجد نص مستخرج.</p>}
+            {clauses.map((c) => {
+              const sev = clauseSev.get(c.id);
+              const box = sev === "red"
+                ? "p-4 -mx-4 rounded-lg bg-primary/5 border border-primary/30"
+                : sev === "amber"
+                ? "p-4 -mx-4 rounded-lg bg-[#D4812A]/5 border border-[#D4812A]/30"
+                : "";
+              const numColor = sev === "red" ? "text-primary" : sev === "amber" ? "text-[#D4812A]" : "text-muted-foreground";
+              return (
+                <div key={c.id} className={`flex gap-4 ${box}`} dir={c.text_ar ? "rtl" : "ltr"}>
+                  <span className={`font-mono mt-1 ${numColor}`}>{c.ordinal}.</span>
+                  <p>{c.text_ar ?? c.text_en}</p>
+                </div>
+              );
+            })}
           </div>
-        </section>
+        </div>
 
-        {/* Findings pane */}
-        <section>
-          <h2 className="mb-4 text-h3 text-muted">{dict.review.findingsPane}</h2>
-          {findings.length === 0 ? (
-            <p className="rounded-card border border-dashed border-line p-12 text-center text-body text-muted">
-              {dict.review.noFindings}
-            </p>
-          ) : (
-            <div className="space-y-4">
-              {findings.map((f) => (
-                <FindingCard key={f.id} finding={f} />
-              ))}
+        {/* Findings */}
+        <div className="w-full md:w-1/2 overflow-y-auto ps-2 space-y-4">
+          {items.length === 0 ? (
+            <div className="bg-card border border-dashed border-border rounded-xl p-12 text-center text-muted-foreground">
+              ما فيه ملاحظات على هذا العقد.
             </div>
+          ) : (
+            items.map((f) => (
+              <FindingCard
+                key={f.id}
+                id={f.citation.regulation_code}
+                severity={sevOf(f.severity)}
+                text={f.title_ar}
+                source={`${f.citation.regulation_code} · ${f.citation.article_ref}`}
+                showActions={f.review_status === "pending"}
+                onAccept={() => review(f.id, "accepted")}
+                onReject={() => review(f.id, "rejected")}
+                className={f.review_status !== "pending" ? "opacity-60" : ""}
+              />
+            ))
           )}
-        </section>
+        </div>
       </div>
     </div>
   );

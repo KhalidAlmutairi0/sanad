@@ -2,50 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens (docs/style-guide.md). Light is default; .dark overrides. */
+/* SANAD design tokens (from the sanadscreen design). Light default; .dark overrides.
+   Var names match the design's markup so ported components resolve directly. */
 :root {
-  --sanad-ink: #14110e;
-  --sanad-paper: #fbfaf7;
-  --sanad-surface: #ffffff;
-  --sanad-line: #e6e1d8;
-  --sanad-muted: #6b655c;
+  --bg: #FBFAF7;
+  --card-bg: #FFFFFF;
+  --muted-bg: #F4EFE7;
+  --line: #E6E1D8;
+  --ink: #14110E;
+  --muted-text: #6B655C;
+  --gold: #E86A2C;          /* the orange accent (kept as --gold for design compat) */
+  --gold-ink: #B44E18;
+  --orange-bg: #FCEEE4;
+  --sharia: #2F7D5B;
+  --sev-red: #B3261E;
+  --sev-amber: #C15613;
+  --radius: 10px;
 
-  --sanad-orange: #e86a2c;
-  --sanad-orange-ink: #b44e18;
-  --sanad-orange-bg: #fceee4;
-
-  --sanad-critical: #b3261e;
-  --sanad-high: #c15613;
-  --sanad-medium: #8a6d1f;
-  --sanad-low: #5a6b4f;
-  --sanad-ok: #3f6b4e;
+  /* Back-compat aliases for not-yet-ported pages (mapped to the new palette). */
+  --sanad-paper: var(--bg); --sanad-surface: var(--card-bg); --sanad-ink: var(--ink);
+  --sanad-line: var(--line); --sanad-muted: var(--muted-text);
+  --sanad-orange: var(--gold); --sanad-orange-ink: var(--gold-ink); --sanad-orange-bg: var(--orange-bg);
+  --sanad-critical: var(--sev-red); --sanad-high: var(--sev-amber); --sanad-medium: #8a6d1f;
+  --sanad-low: #5a6b4f; --sanad-ok: var(--sharia);
 }
 
 .dark {
-  --sanad-ink: #f5f1ea;
-  --sanad-paper: #0e0c0a;
-  --sanad-surface: #17130f;
-  --sanad-line: #2a2420;
-  --sanad-muted: #a29a8d;
-
-  --sanad-orange: #f2803e;
-  --sanad-orange-ink: #f8a66e;
-  --sanad-orange-bg: #2a1b10;
+  --bg: #0E0C0A;
+  --card-bg: #17130F;
+  --muted-bg: #221B15;
+  --line: #2A2420;
+  --ink: #F5F1EA;
+  --muted-text: #A29A8D;
+  --gold: #F2803E;
+  --gold-ink: #F8A66E;
+  --orange-bg: #2A1B10;
 }
 
-html {
-  background-color: var(--sanad-paper);
-  color: var(--sanad-ink);
+@layer base {
+  * { border-color: var(--line); }
+  html { background-color: var(--bg); color: var(--ink); overflow-x: hidden; }
+  body {
+    background-color: var(--bg); color: var(--ink);
+    font-family: var(--font-plex-arabic), "IBM Plex Sans", sans-serif;
+    font-size: 17px; line-height: 1.8; -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,h4,h5,h6 { font-weight: 700; line-height: 1.3; }
+  .font-mono { font-family: var(--font-plex-mono), monospace; font-feature-settings: "tnum","ss01"; }
 }
 
-body {
-  background-color: var(--sanad-paper);
-  color: var(--sanad-ink);
-  /* Arabic needs generous leading. */
-  line-height: 1.7;
+@layer utilities {
+  .tabular { font-variant-numeric: tabular-nums; }
+  .tnum { font-feature-settings: "tnum"; }
+  .fade-in-slide { animation: fadeInSlide 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .dash-draw { stroke-dasharray: 100; stroke-dashoffset: 100; animation: dashDraw 1s ease-out forwards; }
+  .hover-glow { transition: box-shadow 0.3s ease; }
+  .hover-glow:hover { box-shadow: 0 0 20px rgba(232,106,44,0.15); }
+  .text-caption { font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 1.5; }
+  .bg-gradient-orange { background: linear-gradient(135deg,#E86A2C 0%,#F2803E 100%); }
+  .bg-gradient-hero { background: linear-gradient(180deg,#FDF5EF 0%,#FBFAF7 45%); }
+  .bg-gradient-cta { background: linear-gradient(135deg,#FCEEE4 0%,#FBFAF7 60%); }
+  .label-chip { font-family: var(--font-plex-arabic), sans-serif; font-size: 13px; font-weight: 500; line-height: 1.4; }
+  .scan-beam {
+    position: absolute; left: 0; right: 0; height: 2px; background: var(--gold);
+    box-shadow: 0 0 8px var(--gold), 0 0 20px color-mix(in srgb, var(--gold) 40%, transparent);
+    animation: scanDown 2.6s ease-in-out forwards; z-index: 10; pointer-events: none;
+  }
+  .progress-countdown { width: 100%; animation: progressShrink 5s linear forwards; }
 }
 
-/* Tabular figures for scores, fine amounts, dates. */
-.tabular {
-  font-variant-numeric: tabular-nums;
+@keyframes fadeInSlide { 0%{opacity:0;transform:translateX(24px)} 100%{opacity:1;transform:translateX(0)} }
+@keyframes dashDraw { 0%{stroke-dashoffset:100} 100%{stroke-dashoffset:0} }
+@keyframes fadeIn { 0%{opacity:0} 100%{opacity:1} }
+@keyframes scanDown { 0%{top:0;opacity:0} 8%{opacity:1} 92%{opacity:1} 100%{top:100%;opacity:0} }
+@keyframes progressShrink { 0%{width:100%} 100%{width:0%} }
+.hero-panel { position: relative; overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-slide { animation: fadeIn 0.4s ease forwards; }
+  .dash-draw { animation: none; stroke-dashoffset: 0; }
 }
