@@ -96,8 +96,10 @@ sanad/
 │   └── deploy/                       # on-prem install scripts per customer
 │
 └── scripts/
-    ├── seed_regulations.py           # initial PDPL/Labor Law corpus load (human-verified)
-    └── demo_contract.py
+    ├── fetch_boe_law.py              # fetch + parse one gazette law → corpus YAML
+    ├── fetch_all_laws.py             # batch-fetch every law in the registry
+    ├── ingest_regulations.py         # load the corpus into the evidence cache
+    └── check_law_updates.py          # monitor sources for changes ("the news")
 ```
 
 ## Rules encoded by this layout
