@@ -50,10 +50,10 @@ docker compose -f infra/docker-compose.yml up --build
 First boot pulls the embedding model (multilingual-e5-large); the `embedder` service is
 slow on cold start (a few minutes) and has a long healthcheck start period.
 
-Then seed the evidence cache (small, real, human-verified PDPL + Labor Law corpus):
+Then load the evidence cache (verbatim corpus fetched from the official gazette):
 
 ```bash
-docker compose -f infra/docker-compose.yml run --rm api python scripts/seed_regulations.py
+docker compose -f infra/docker-compose.yml run --rm -e PYTHONPATH=/app api python scripts/ingest_regulations.py --trust-official-source
 ```
 
 Open http://localhost:3000 and sign in:
@@ -138,7 +138,7 @@ Playwright specs), the Linux sandbox isolation suites, and dependency/image scan
   slice and tests work with no external model; every downstream invariant still runs. Set
   `LLM_PROVIDER=anthropic` (+ key) or point `SELFHOSTED_LLM_URL` at an on-prem model.
 - **Seed corpus:** small and real, but each article must be reconciled against the official
-  gazette by a human verifier before production (see `scripts/seed_data/regulations.yaml`).
+  gazette by a human verifier before production (see `scripts/seed_data/corpus/`).
 - **Production cgroups:** the sanitizer uses rlimits + timeout locally; wrap it in
   `systemd-run --scope -p MemoryMax=… -p CPUQuota=…` for true cgroup caps on servers.
 - **Firecracker is out of scope** for v1. Namespaces + nftables + bubblewrap is the

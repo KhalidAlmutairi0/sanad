@@ -51,7 +51,7 @@ the API is reached server-side through the BFF. Health from the VM:
 ```bash
 COMPOSE="docker compose -f infra/docker-compose.yml -f infra/docker-compose.prod.yml"
 $COMPOSE run --rm migrate
-$COMPOSE run --rm api python scripts/seed_regulations.py   # human-verified corpus
+$COMPOSE run --rm -e PYTHONPATH=/app api python scripts/ingest_regulations.py --trust-official-source   # verbatim gazette corpus
 # Change the seeded demo password, or create real users, before go-live.
 ```
 
