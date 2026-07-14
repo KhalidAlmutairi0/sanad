@@ -62,6 +62,13 @@
   .bg-gradient-orange { background: linear-gradient(135deg,#E86A2C 0%,#F2803E 100%); }
   .bg-gradient-hero { background: linear-gradient(180deg,#FDF5EF 0%,#FBFAF7 45%); }
   .bg-gradient-cta { background: linear-gradient(135deg,#FCEEE4 0%,#FBFAF7 60%); }
+  .label-chip { font-family: var(--font-plex-arabic), sans-serif; font-size: 13px; font-weight: 500; line-height: 1.4; }
+  .scan-beam {
+    position: absolute; left: 0; right: 0; height: 2px; background: var(--gold);
+    box-shadow: 0 0 8px var(--gold), 0 0 20px color-mix(in srgb, var(--gold) 40%, transparent);
+    animation: scanDown 2.6s ease-in-out forwards; z-index: 10; pointer-events: none;
+  }
+  .progress-countdown { width: 100%; animation: progressShrink 5s linear forwards; }
 }
 
 @keyframes fadeInSlide { 0%{opacity:0;transform:translateX(24px)} 100%{opacity:1;transform:translateX(0)} }

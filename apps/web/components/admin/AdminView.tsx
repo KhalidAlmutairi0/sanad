@@ -1,14 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Header } from "@/components/ui/Header";
-import { useApp } from "@/lib/i18n";
+import { AppLayout, Button, MonoChip } from "@/components/design/Shared";
 import { apiGet, apiPost, apiPut } from "@/lib/api";
 import type { AuditItem, CorpusItem, Invite, Prompts, Role } from "@/types";
 
+const ROLE_AR: Record<string, string> = { reviewer: "مراجع", sharia_board: "هيئة شرعية", admin: "مشرف" };
+
+function Card({ title, hint, children, wide = false }: { title: string; hint?: string; children: React.ReactNode; wide?: boolean }) {
+  return (
+    <section className={`bg-card border border-border rounded-xl p-6 ${wide ? "lg:col-span-2" : ""}`}>
+      <h2 className="text-lg font-bold">{title}</h2>
+      {hint && <p className="mt-1 text-[13px] text-muted-foreground">{hint}</p>}
+      {children}
+    </section>
+  );
+}
+
 export function AdminView() {
-  const { dict } = useApp();
-  const [domains, setDomains] = useState<string>("");
+  const [domains, setDomains] = useState("");
   const [audit, setAudit] = useState<AuditItem[]>([]);
   const [invites, setInvites] = useState<Invite[]>([]);
   const [corpus, setCorpus] = useState<CorpusItem[]>([]);
@@ -29,9 +39,7 @@ export function AdminView() {
       apiGet<Prompts>("/admin/prompts").then((d) => setPrompts(d)).catch(() => null),
       apiGet<{ items: CorpusItem[] }>("/admin/corpus").then((d) => setCorpus(d.items)).catch(() => null),
     ])
-      .catch((e) => {
-        if ((e as Error & { code?: string }).code === "forbidden") setForbidden(true);
-      })
+      .catch((e) => { if ((e as Error & { code?: string }).code === "forbidden") setForbidden(true); })
       .finally(() => setLoading(false));
   }, []);
 
@@ -43,12 +51,8 @@ export function AdminView() {
   }
 
   async function generateInvite() {
-    const body = { role: inviteRole, email: inviteEmail.trim() || null };
-    const created = await apiPost<Invite>("/admin/invites", body).catch(() => null);
-    if (created) {
-      setInvites((prev) => [created, ...prev]);
-      setInviteEmail("");
-    }
+    const created = await apiPost<Invite>("/admin/invites", { role: inviteRole, email: inviteEmail.trim() || null }).catch(() => null);
+    if (created) { setInvites((prev) => [created, ...prev]); setInviteEmail(""); }
   }
 
   async function copyCode(code: string) {
@@ -64,221 +68,162 @@ export function AdminView() {
       contracts_guidance: prompts.contracts_guidance,
       idea_guidance: prompts.idea_guidance,
     }).catch(() => null);
-    if (updated) {
-      setPrompts(updated);
-      setPromptsSaved(true);
-      setTimeout(() => setPromptsSaved(false), 2500);
-    }
+    if (updated) { setPrompts(updated); setPromptsSaved(true); setTimeout(() => setPromptsSaved(false), 2500); }
   }
+
+  const inputCls = "rounded-md border border-border bg-background px-3 py-2 text-[14px] outline-none focus:border-primary";
 
   if (forbidden) {
     return (
-      <div className="min-h-screen">
-        <Header />
-        <main className="mx-auto max-w-reading px-6 py-12">
-          <p className="rounded-card border border-line bg-surface p-8 text-body text-muted">
+      <AppLayout>
+        <div className="max-w-[700px] mx-auto py-16">
+          <p className="rounded-xl border border-border bg-card p-8 text-[15px] text-muted-foreground text-center">
             هذه الصفحة للمشرفين فقط. سجّل الدخول بحساب مشرف.
           </p>
-        </main>
-      </div>
+        </div>
+      </AppLayout>
     );
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="mx-auto max-w-6xl px-6 py-12">
-        <h1 className="text-h1 font-semibold text-ink">{dict.admin.title}</h1>
+    <AppLayout>
+      <div className="space-y-8">
+        <div className="border-b border-border pb-6">
+          <h1 className="text-2xl font-bold mb-1">الإدارة</h1>
+          <p className="text-[13px] text-muted-foreground font-mono">ADMIN CONSOLE</p>
+        </div>
+
         {loading ? (
-          <p className="mt-8 text-body text-muted">{dict.common.loading}</p>
+          <p className="py-16 text-center text-muted-foreground">جاري التحميل…</p>
         ) : (
-          <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {corpus.length > 0 && (
-              <section className="rounded-card border border-line bg-surface p-6 lg:col-span-2">
-                <div className="flex items-baseline justify-between">
-                  <h2 className="text-h3 text-ink">{dict.admin.corpus}</h2>
-                  <span className="text-caption text-muted">
-                    {corpus.reduce((s, c) => s + c.articles, 0)} {dict.admin.articles}
-                  </span>
+              <Card title="مخزون الأنظمة" wide>
+                <div className="flex items-center justify-between mt-2">
+                  <span className="text-[13px] text-muted-foreground font-mono">{corpus.reduce((s, c) => s + c.articles, 0)} مادة</span>
                 </div>
-                <div className="mt-4 max-h-[40vh] overflow-auto">
-                  <table className="w-full text-label">
-                    <thead>
-                      <tr className="border-b border-line text-caption text-muted">
-                        <th className="px-3 py-2 text-start font-medium">{dict.admin.regulation}</th>
-                        <th className="px-3 py-2 text-start font-medium">{dict.admin.authority}</th>
-                        <th className="px-3 py-2 text-end font-medium">{dict.admin.articles}</th>
-                        <th className="px-3 py-2 text-end font-medium">{dict.admin.reconciled}</th>
+                <div className="mt-4 max-h-[40vh] overflow-auto rounded-lg border border-border">
+                  <table className="w-full text-[14px] text-right">
+                    <thead className="bg-background/50 border-b border-border text-muted-foreground text-[13px] sticky top-0">
+                      <tr>
+                        <th className="px-3 py-2 font-normal">النظام</th>
+                        <th className="px-3 py-2 font-normal">الجهة</th>
+                        <th className="px-3 py-2 font-normal text-left">المواد</th>
+                        <th className="px-3 py-2 font-normal text-left">آخر مطابقة</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="divide-y divide-border">
                       {corpus.map((c) => (
-                        <tr key={c.code} className="border-b border-line last:border-0">
-                          <td className="px-3 py-2 text-ink">{c.name_ar}</td>
-                          <td className="px-3 py-2 text-caption text-muted">{c.authority}</td>
-                          <td className="px-3 py-2 text-end tabular text-ink" style={{ fontFamily: "var(--font-plex-mono)" }}>
+                        <tr key={c.code}>
+                          <td className="px-3 py-2">{c.name_ar}</td>
+                          <td className="px-3 py-2 text-muted-foreground">{c.authority}</td>
+                          <td className="px-3 py-2 text-left font-mono tnum">
                             {c.articles}
-                            {c.official_fetch > 0 && (
-                              <span className="ms-2 text-caption text-orange-ink">{dict.admin.autoTag}</span>
-                            )}
+                            {c.official_fetch > 0 && <span className="ms-2 text-[11px] text-primary">AUTO</span>}
                           </td>
-                          <td className="px-3 py-2 text-end text-caption text-muted">
-                            {c.last_reconciled_at ? c.last_reconciled_at.slice(0, 10) : "—"}
-                          </td>
+                          <td className="px-3 py-2 text-left text-[13px] text-muted-foreground font-mono">{c.last_reconciled_at ? c.last_reconciled_at.slice(0, 10) : "—"}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-              </section>
+              </Card>
             )}
+
             {prompts && (
-              <section className="rounded-card border border-line bg-surface p-6 lg:col-span-2">
-                <h2 className="text-h3 text-ink">{dict.admin.prompts}</h2>
-                <p className="mt-1 text-caption text-muted">{dict.admin.promptsHint}</p>
+              <Card title="توجيهات النماذج" hint="نص إرشادي إضافي يُضاف إلى تعليمات التحليل. العقد الأساسي مقفل ولا يُعدّل." wide>
                 <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div>
-                    <label className="text-label text-ink">{dict.admin.contractsGuidance}</label>
-                    <textarea
-                      value={prompts.contracts_guidance}
-                      onChange={(e) => setPrompts({ ...prompts, contracts_guidance: e.target.value })}
-                      rows={6}
-                      className="mt-2 w-full rounded-chip border border-line bg-paper p-3 text-body text-ink"
-                    />
+                    <label className="text-[14px] font-medium">توجيه اختبار العقود</label>
+                    <textarea value={prompts.contracts_guidance} onChange={(e) => setPrompts({ ...prompts, contracts_guidance: e.target.value })} rows={6}
+                      className={`mt-2 w-full ${inputCls}`} dir="rtl" />
                     {prompts.contracts_contract && (
                       <details className="mt-2">
-                        <summary className="cursor-pointer text-caption text-muted">{dict.admin.lockedContract}</summary>
-                        <p dir="ltr" className="mt-2 rounded-chip bg-orange-bg p-3 text-caption text-orange-ink">
-                          {prompts.contracts_contract}
-                        </p>
+                        <summary className="cursor-pointer text-[13px] text-muted-foreground">العقد المقفل</summary>
+                        <p dir="ltr" className="mt-2 rounded-md bg-background p-3 text-[12px] text-muted-foreground font-mono">{prompts.contracts_contract}</p>
                       </details>
                     )}
                   </div>
                   <div>
-                    <label className="text-label text-ink">{dict.admin.ideaGuidance}</label>
-                    <textarea
-                      value={prompts.idea_guidance}
-                      onChange={(e) => setPrompts({ ...prompts, idea_guidance: e.target.value })}
-                      rows={6}
-                      className="mt-2 w-full rounded-chip border border-line bg-paper p-3 text-body text-ink"
-                    />
+                    <label className="text-[14px] font-medium">توجيه فحص الفكرة</label>
+                    <textarea value={prompts.idea_guidance} onChange={(e) => setPrompts({ ...prompts, idea_guidance: e.target.value })} rows={6}
+                      className={`mt-2 w-full ${inputCls}`} dir="rtl" />
                     {prompts.idea_contract && (
                       <details className="mt-2">
-                        <summary className="cursor-pointer text-caption text-muted">{dict.admin.lockedContract}</summary>
-                        <p dir="ltr" className="mt-2 rounded-chip bg-orange-bg p-3 text-caption text-orange-ink">
-                          {prompts.idea_contract}
-                        </p>
+                        <summary className="cursor-pointer text-[13px] text-muted-foreground">العقد المقفل</summary>
+                        <p dir="ltr" className="mt-2 rounded-md bg-background p-3 text-[12px] text-muted-foreground font-mono">{prompts.idea_contract}</p>
                       </details>
                     )}
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-3">
-                  <button onClick={savePrompts} className="rounded-chip bg-orange px-6 py-2 text-label text-white">
-                    {dict.admin.save}
-                  </button>
-                  {promptsSaved && <span className="text-label text-severity-ok">{dict.admin.promptsSaved}</span>}
+                  <Button onClick={savePrompts} className="h-9 px-5 text-[14px]">حفظ</Button>
+                  {promptsSaved && <span className="text-[14px] text-primary">تم الحفظ</span>}
                 </div>
-              </section>
+              </Card>
             )}
-            <section className="rounded-card border border-line bg-surface p-6">
-              <h2 className="text-h3 text-ink">{dict.admin.allowlist}</h2>
-              <p className="mt-1 text-caption text-muted">{dict.admin.allowlistHint}</p>
-              <textarea
-                value={domains}
-                onChange={(e) => setDomains(e.target.value)}
-                rows={8}
-                dir="ltr"
-                className="mt-4 w-full rounded-chip border border-line bg-paper p-3 text-label text-ink"
-                style={{ fontFamily: "var(--font-plex-mono)" }}
-              />
-              <div className="mt-3 flex items-center gap-3">
-                <button onClick={save} className="rounded-chip bg-orange px-6 py-2 text-label text-white">
-                  {dict.admin.save}
-                </button>
-                {saved && <span className="text-label text-severity-ok">{dict.admin.saved}</span>}
-              </div>
-            </section>
 
-            <section className="rounded-card border border-line bg-surface p-6">
-              <h2 className="text-h3 text-ink">{dict.admin.invites}</h2>
-              <p className="mt-1 text-caption text-muted">{dict.admin.invitesHint}</p>
+            <Card title="النطاقات المسموح بها" hint="نطاقات البريد المسموح لها بالتسجيل، نطاق في كل سطر.">
+              <textarea value={domains} onChange={(e) => setDomains(e.target.value)} rows={8} dir="ltr"
+                className={`mt-4 w-full font-mono ${inputCls}`} />
+              <div className="mt-3 flex items-center gap-3">
+                <Button onClick={save} className="h-9 px-5 text-[14px]">حفظ</Button>
+                {saved && <span className="text-[14px] text-primary">تم الحفظ</span>}
+              </div>
+            </Card>
+
+            <Card title="دعوات المستخدمين" hint="أنشئ رمز دعوة لعضو جديد وحدد صلاحيته.">
               <div className="mt-4 flex flex-wrap items-end gap-3">
                 <label className="flex flex-col gap-1">
-                  <span className="text-caption text-muted">{dict.admin.role}</span>
-                  <select
-                    value={inviteRole}
-                    onChange={(e) => setInviteRole(e.target.value as Role)}
-                    className="rounded-chip border border-line bg-paper px-3 py-2 text-label text-ink"
-                  >
-                    <option value="reviewer">{dict.admin.roles.reviewer}</option>
-                    <option value="sharia_board">{dict.admin.roles.sharia_board}</option>
-                    <option value="admin">{dict.admin.roles.admin}</option>
+                  <span className="text-[13px] text-muted-foreground">الصلاحية</span>
+                  <select value={inviteRole} onChange={(e) => setInviteRole(e.target.value as Role)} className={inputCls}>
+                    <option value="reviewer">مراجع</option>
+                    <option value="sharia_board">هيئة شرعية</option>
+                    <option value="admin">مشرف</option>
                   </select>
                 </label>
                 <label className="flex min-w-[12rem] flex-1 flex-col gap-1">
-                  <span className="text-caption text-muted">{dict.admin.emailOptional}</span>
-                  <input
-                    type="email"
-                    dir="ltr"
-                    value={inviteEmail}
-                    onChange={(e) => setInviteEmail(e.target.value)}
-                    className="rounded-chip border border-line bg-paper px-3 py-2 text-label text-ink"
-                  />
+                  <span className="text-[13px] text-muted-foreground">البريد (اختياري)</span>
+                  <input type="email" dir="ltr" value={inviteEmail} onChange={(e) => setInviteEmail(e.target.value)} className={inputCls} />
                 </label>
-                <button onClick={generateInvite} className="rounded-chip bg-orange px-6 py-2 text-label text-white">
-                  {dict.admin.generate}
-                </button>
+                <Button onClick={generateInvite} className="h-10 px-5 text-[14px]">إنشاء</Button>
               </div>
               <div className="mt-4 max-h-[40vh] overflow-y-auto">
                 {invites.map((inv) => (
-                  <div key={inv.code} className="flex items-center justify-between gap-4 border-b border-line py-3 last:border-0">
+                  <div key={inv.code} className="flex items-center justify-between gap-4 border-b border-border py-3 last:border-0">
                     <div className="min-w-0">
-                      <code dir="ltr" className="text-label text-ink" style={{ fontFamily: "var(--font-plex-mono)" }}>
-                        {inv.code}
-                      </code>
-                      <p className="truncate text-caption text-muted">
-                        {dict.admin.roles[inv.role as keyof typeof dict.admin.roles] ?? inv.role}
-                        {inv.email ? ` · ${inv.email}` : ""}
-                      </p>
+                      <code dir="ltr" className="text-[14px] font-mono">{inv.code}</code>
+                      <p className="truncate text-[13px] text-muted-foreground">{ROLE_AR[inv.role] ?? inv.role}{inv.email ? ` · ${inv.email}` : ""}</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className={`text-caption ${inv.used ? "text-muted" : "text-severity-ok"}`}>
-                        {inv.used ? dict.admin.used : dict.admin.unused}
-                      </span>
+                      <span className={`text-[13px] ${inv.used ? "text-muted-foreground" : "text-primary"}`}>{inv.used ? "مُستخدم" : "متاح"}</span>
                       {!inv.used && (
-                        <button onClick={() => copyCode(inv.code)} className="rounded-chip border border-line px-3 py-1 text-caption text-ink">
-                          {copied === inv.code ? dict.admin.copied : dict.admin.copy}
+                        <button onClick={() => copyCode(inv.code)} className="rounded-md border border-border px-3 py-1 text-[13px] hover:bg-border transition-colors">
+                          {copied === inv.code ? "نُسخ" : "نسخ"}
                         </button>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-            </section>
+            </Card>
 
-            <section className="rounded-card border border-line bg-surface p-6">
-              <h2 className="text-h3 text-ink">{dict.admin.audit}</h2>
+            <Card title="سجل التدقيق">
               <div className="mt-4 max-h-[60vh] overflow-y-auto">
                 {audit.map((a, i) => (
-                  <div key={i} className="flex items-center justify-between gap-4 border-b border-line py-3 last:border-0">
+                  <div key={i} className="flex items-center justify-between gap-4 border-b border-border py-3 last:border-0">
                     <div className="min-w-0">
-                      <p className="truncate text-label text-ink">{a.action}</p>
-                      <p className="truncate text-caption text-muted">{a.target ?? ""}</p>
+                      <p className="truncate text-[14px]">{a.action}</p>
+                      <p className="truncate text-[13px] text-muted-foreground">{a.target ?? ""}</p>
                     </div>
-                    <span
-                      className={`text-label ${
-                        a.verdict === "denied" ? "text-severity-critical" : a.verdict === "allowed" ? "text-severity-ok" : "text-muted"
-                      }`}
-                    >
-                      {a.verdict}
-                    </span>
+                    <span className={`text-[13px] font-mono ${a.verdict === "denied" ? "text-destructive" : a.verdict === "allowed" ? "text-primary" : "text-muted-foreground"}`}>{a.verdict}</span>
                   </div>
                 ))}
               </div>
-            </section>
+            </Card>
           </div>
         )}
-      </main>
-    </div>
+      </div>
+    </AppLayout>
   );
 }

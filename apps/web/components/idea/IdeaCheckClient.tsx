@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Header } from "@/components/ui/Header";
-import { useApp } from "@/lib/i18n";
+import { AppLayout, Button, SourceChip } from "@/components/design/Shared";
 import { apiGet, apiPost } from "@/lib/api";
 
 interface IdeaCitation {
@@ -20,7 +19,6 @@ interface IdeaDetail {
 }
 
 export function IdeaCheckClient() {
-  const { dict } = useApp();
   const [idea, setIdea] = useState("");
   const [busy, setBusy] = useState(false);
   const [detail, setDetail] = useState<IdeaDetail | null>(null);
@@ -33,7 +31,6 @@ export function IdeaCheckClient() {
     if (idea.trim().length < 10) return;
     setBusy(true);
     setDetail(null);
-
     const created = await apiPost<{ id: string }>("/idea-checks", { idea_text: idea });
     timer.current = setInterval(async () => {
       const d = await apiGet<IdeaDetail>(`/idea-checks/${created.id}`);
@@ -46,69 +43,53 @@ export function IdeaCheckClient() {
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="mx-auto max-w-reading px-6 py-12">
-        <h1 className="text-h1 font-semibold text-ink">{dict.ideaCheck.title}</h1>
+    <AppLayout>
+      <div className="max-w-[800px] mx-auto space-y-8">
+        <div>
+          <h1 className="text-2xl font-bold mb-2">فحص الفكرة</h1>
+          <p className="text-[15px] text-muted-foreground">اكتب فكرتك بكلام واضح لنحلّلها أمام الأنظمة واللوائح قبل أن تبدأ بالتنفيذ.</p>
+        </div>
 
-        <form onSubmit={submit} className="mt-8">
-          <label className="block">
-            <span className="text-label text-muted">{dict.ideaCheck.prompt}</span>
-            <textarea
-              value={idea}
-              onChange={(e) => setIdea(e.target.value)}
-              rows={5}
-              className="mt-2 w-full rounded-card border border-line bg-surface p-4 text-body leading-8 text-ink"
-              required
-            />
-          </label>
-          <button
-            type="submit"
-            disabled={busy || idea.trim().length < 10}
-            className="mt-4 rounded-chip bg-orange px-6 py-3 text-label text-white disabled:opacity-50"
-          >
-            {busy ? dict.ideaCheck.generating : dict.ideaCheck.submit}
-          </button>
+        <form onSubmit={submit} className="space-y-4">
+          <textarea value={idea} onChange={(e) => setIdea(e.target.value)}
+            placeholder="مثال: تطبيق إقراض رقمي للأفراد يعتمد على بيانات بديلة من الجوال لتقييم الجدارة الائتمانية، وتخزين البيانات في سحابة خارج المملكة..."
+            className="w-full h-40 bg-card border border-border rounded-xl p-4 text-[15px] leading-relaxed resize-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
+          <div className="flex justify-end">
+            <Button type="submit" disabled={busy || idea.trim().length < 10}>{busy ? "جاري الفحص…" : "أرسل للفحص"}</Button>
+          </div>
         </form>
 
-        {!detail && !busy && <p className="mt-12 text-body text-muted">{dict.ideaCheck.empty}</p>}
+        {busy && (
+          <div className="bg-card border border-border p-12 rounded-xl flex flex-col items-center justify-center">
+            <div className="w-12 h-12 border-4 border-border border-t-primary rounded-full animate-spin mb-4" />
+            <p className="text-muted-foreground font-mono text-[13px]">جاري استخراج السياق والمطابقة…</p>
+          </div>
+        )}
+
+        {!detail && !busy && (
+          <div className="py-16 text-center text-muted-foreground">أرسل فكرة وبتوصلك مراجعة امتثال مع مصادرها.</div>
+        )}
 
         {detail && (
-          <section className="mt-12 rounded-card border border-line bg-surface p-8">
-            <h2 className="text-h3 text-muted">{dict.ideaCheck.report}</h2>
-            {detail.report_ar && (
-              <p dir="rtl" className="mt-4 whitespace-pre-wrap text-body leading-8 text-ink">
-                {detail.report_ar}
-              </p>
-            )}
-            {detail.report_en && (
-              <p dir="ltr" className="mt-6 whitespace-pre-wrap border-t border-line pt-6 text-body leading-8 text-muted">
-                {detail.report_en}
-              </p>
-            )}
+          <div className="space-y-6">
+            <div className="bg-card border border-border p-6 rounded-xl">
+              <h3 className="font-bold mb-4">التقرير</h3>
+              {detail.report_ar && <p dir="rtl" className="whitespace-pre-wrap text-[15px] leading-[1.9] text-foreground">{detail.report_ar}</p>}
+              {detail.report_en && <p dir="ltr" className="whitespace-pre-wrap text-[14px] leading-[1.7] text-muted-foreground mt-6 pt-6 border-t border-border">{detail.report_en}</p>}
+            </div>
             {detail.citations.length > 0 && (
-              <div className="mt-8 border-t border-line pt-6">
-                <h3 className="mb-3 text-label text-orange-ink">{dict.ideaCheck.citations}</h3>
-                <ul className="space-y-2">
+              <div className="bg-card border border-border p-6 rounded-xl">
+                <h3 className="font-bold mb-4">المصادر</h3>
+                <div className="flex flex-wrap gap-3">
                   {detail.citations.map((c) => (
-                    <li key={c.regulation_version_id}>
-                      <a
-                        href={c.source_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 rounded-chip border border-orange px-3 py-1 text-label text-orange-ink hover:bg-orange-bg"
-                      >
-                        <span aria-hidden>◆</span>
-                        {c.regulation_code} {c.article_ref}
-                      </a>
-                    </li>
+                    <SourceChip key={c.regulation_version_id} text={`${c.regulation_code} · ${c.article_ref}`} />
                   ))}
-                </ul>
+                </div>
               </div>
             )}
-          </section>
+          </div>
         )}
-      </main>
-    </div>
+      </div>
+    </AppLayout>
   );
 }

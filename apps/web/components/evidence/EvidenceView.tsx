@@ -1,14 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Header } from "@/components/ui/Header";
-import { SourceChip } from "@/components/findings/SourceChip";
-import { useApp } from "@/lib/i18n";
+import { AppLayout, Button, MonoChip } from "@/components/design/Shared";
 import { apiGet } from "@/lib/api";
 import type { EvidenceSearchItem } from "@/types";
 
 export function EvidenceView() {
-  const { dict } = useApp();
   const [q, setQ] = useState("");
   const [items, setItems] = useState<EvidenceSearchItem[] | null>(null);
   const [busy, setBusy] = useState(false);
@@ -17,48 +14,54 @@ export function EvidenceView() {
     e.preventDefault();
     if (q.trim().length < 2) return;
     setBusy(true);
-    const d = await apiGet<{ items: EvidenceSearchItem[] }>(`/evidence/search?q=${encodeURIComponent(q)}`);
-    setItems(d.items);
-    setBusy(false);
+    try {
+      const d = await apiGet<{ items: EvidenceSearchItem[] }>(`/evidence/search?q=${encodeURIComponent(q)}`);
+      setItems(d.items);
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="mx-auto max-w-reading px-6 py-12">
-        <h1 className="text-h1 font-semibold text-ink">{dict.evidence.title}</h1>
-        <form onSubmit={search} className="mt-8 flex gap-3">
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder={dict.evidence.prompt}
-            className="flex-1 rounded-chip border border-line bg-surface px-4 py-3 text-body text-ink"
-          />
-          <button type="submit" disabled={busy} className="rounded-chip bg-orange px-6 py-3 text-label text-white disabled:opacity-50">
-            {dict.evidence.search}
-          </button>
+    <AppLayout>
+      <div className="max-w-[1000px] mx-auto space-y-8">
+        <div>
+          <h1 className="text-2xl font-bold mb-2">مخزن الأدلة</h1>
+          <p className="text-[15px] text-muted-foreground">ابحث في جميع الأنظمة واللوائح المالية المخزّنة، مع فهمٍ سياقي للمصطلحات المترادفة.</p>
+        </div>
+
+        <form onSubmit={search} className="flex gap-4">
+          <input type="text" value={q} onChange={(e) => setQ(e.target.value)}
+            placeholder="ابحث في الأنظمة والمواد... (مثال: مدة الاحتفاظ ببيانات العملاء)"
+            className="flex-1 bg-card border border-border rounded-lg px-4 py-3 text-[15px] outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
+          <Button type="submit" disabled={busy} className="px-8">{busy ? "…" : "بحث"}</Button>
         </form>
 
         {items === null ? (
-          <p className="mt-12 text-body text-muted">{dict.evidence.empty}</p>
+          <div className="py-24 text-center text-muted-foreground">اكتب كلمة للبحث في المواد النظامية المخزّنة.</div>
         ) : items.length === 0 ? (
-          <p className="mt-12 text-body text-muted">{dict.evidence.noResults}</p>
+          <div className="py-24 text-center text-muted-foreground">ما فيه نتائج.</div>
         ) : (
-          <div className="mt-8 space-y-4">
-            {items.map((i) => (
-              <article key={i.regulation_version_id} className="rounded-card border border-line bg-surface p-6">
-                <div className="flex items-center justify-between gap-4">
-                  <SourceChip citation={{ regulation_code: i.regulation_code, article_ref: i.article_ref, source_url: "#" }} />
-                  <span className="tabular text-caption text-muted" style={{ fontFamily: "var(--font-plex-mono)" }}>
-                    {dict.evidence.score} {Math.round(i.score * 100)}%
-                  </span>
+          <div className="space-y-4">
+            <div className="text-[13px] text-muted-foreground font-mono mb-6">FOUND {items.length} RESULTS</div>
+            {items.map((res) => (
+              <div key={res.regulation_version_id} className="bg-card border border-border p-6 rounded-xl hover:border-primary/50 transition-colors group">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[13px] font-bold text-foreground">{res.regulation_code}</span>
+                    <MonoChip>{res.article_ref}</MonoChip>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] text-muted-foreground font-mono">MATCH</span>
+                    <span className={`font-mono text-[13px] ${res.score > 0.9 ? "text-primary" : "text-foreground"}`}>{Math.round(res.score * 100)}%</span>
+                  </div>
                 </div>
-                <p dir="rtl" className="mt-3 text-body leading-8 text-ink">{i.snippet_ar}</p>
-              </article>
+                <p dir="rtl" className="text-[15px] leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">{res.snippet_ar}</p>
+              </div>
             ))}
           </div>
         )}
-      </main>
-    </div>
+      </div>
+    </AppLayout>
   );
 }

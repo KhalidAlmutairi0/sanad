@@ -1,68 +1,70 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Header } from "@/components/ui/Header";
-import { SourceChip } from "@/components/findings/SourceChip";
-import { useApp } from "@/lib/i18n";
+import { AppLayout, SourceChip } from "@/components/design/Shared";
 import { apiGet } from "@/lib/api";
 import type { Obligation } from "@/types";
 
-const TONE: Record<Obligation["status"], string> = {
-  open: "text-muted",
-  in_progress: "text-severity-high",
-  met: "text-severity-ok",
-  overdue: "text-severity-critical",
+const STATUS: Record<Obligation["status"], { label: string; cls: string }> = {
+  open: { label: "مفتوح", cls: "border-muted-foreground text-muted-foreground" },
+  in_progress: { label: "قيد التنفيذ", cls: "border-[#D4812A] text-[#D4812A]" },
+  met: { label: "مكتمل", cls: "border-primary text-primary" },
+  overdue: { label: "متأخر", cls: "border-destructive text-destructive" },
 };
 
 export function RegisterView() {
-  const { dict } = useApp();
   const [items, setItems] = useState<Obligation[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    apiGet<{ items: Obligation[] }>("/obligations")
-      .then((d) => setItems(d.items))
-      .finally(() => setLoading(false));
+    apiGet<{ items: Obligation[] }>("/obligations").then((d) => setItems(d.items)).finally(() => setLoading(false));
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="mx-auto max-w-6xl px-6 py-12">
-        <h1 className="text-h1 font-semibold text-ink">{dict.register.title}</h1>
-        {loading ? (
-          <p className="mt-8 text-body text-muted">{dict.common.loading}</p>
-        ) : items.length === 0 ? (
-          <p className="mt-12 rounded-card border border-dashed border-line p-12 text-center text-body text-muted">
-            {dict.register.empty}
-          </p>
-        ) : (
-          <div className="mt-8 overflow-x-auto rounded-card border border-line bg-surface">
-            <table className="w-full text-label">
-              <thead>
-                <tr className="border-b border-line text-muted">
-                  <th className="px-6 py-3 text-start font-medium">{dict.register.obligation}</th>
-                  <th className="px-6 py-3 text-start font-medium">{dict.register.source}</th>
-                  <th className="px-6 py-3 text-start font-medium">{dict.register.due}</th>
-                  <th className="px-6 py-3 text-start font-medium">{dict.register.status}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((o) => (
-                  <tr key={o.id} className="border-b border-line last:border-0">
-                    <td className="px-6 py-4 text-body text-ink">{o.title_ar}</td>
-                    <td className="px-6 py-4"><SourceChip citation={o.citation} /></td>
-                    <td className="px-6 py-4 tabular text-muted" style={{ fontFamily: "var(--font-plex-mono)" }}>
-                      {o.due_date ?? "—"}
-                    </td>
-                    <td className={`px-6 py-4 ${TONE[o.status]}`}>{dict.register.statuses[o.status]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+    <AppLayout>
+      <div className="space-y-6 flex flex-col min-h-[calc(100vh-9rem)]">
+        <div className="flex items-center justify-between border-b border-border pb-6 shrink-0">
+          <div>
+            <h1 className="text-2xl font-bold mb-1">سجل الالتزامات التنظيمية</h1>
+            <p className="text-[13px] text-muted-foreground font-mono">{items.length} ACTIVE OBLIGATIONS</p>
           </div>
-        )}
-      </main>
-    </div>
+        </div>
+
+        <div className="bg-card border border-border rounded-xl overflow-hidden flex-1 flex flex-col min-h-0">
+          {loading ? (
+            <div className="p-12 text-center text-muted-foreground">جاري التحميل…</div>
+          ) : items.length === 0 ? (
+            <div className="p-12 text-center text-muted-foreground">ما فيه التزامات مسجّلة حتى الآن.</div>
+          ) : (
+            <div className="overflow-auto flex-1">
+              <table className="w-full text-sm text-right">
+                <thead className="bg-background/50 border-b border-border text-muted-foreground text-[13px] sticky top-0 z-10">
+                  <tr>
+                    <th className="p-4 font-normal min-w-[300px]">الالتزام</th>
+                    <th className="p-4 font-normal whitespace-nowrap">الموعد</th>
+                    <th className="p-4 font-normal whitespace-nowrap">الحالة</th>
+                    <th className="p-4 font-normal whitespace-nowrap">المصدر</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {items.map((o) => (
+                    <tr key={o.id} className="hover:bg-background/30 transition-colors group">
+                      <td className="p-4 leading-relaxed group-hover:text-primary transition-colors">{o.title_ar}</td>
+                      <td className="p-4 align-top pt-5 text-muted-foreground font-mono tnum">{o.due_date ?? "—"}</td>
+                      <td className="p-4 align-top pt-5">
+                        <span className={`px-2 py-1 text-[11px] rounded border ${STATUS[o.status].cls}`}>{STATUS[o.status].label}</span>
+                      </td>
+                      <td className="p-4 align-top pt-5">
+                        <SourceChip text={`${o.citation.regulation_code} · ${o.citation.article_ref}`} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </div>
+    </AppLayout>
   );
 }

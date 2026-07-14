@@ -37,3 +37,6 @@ model-cache/
 # scratch / assets
 image*.png
 *.zip
+
+# Replit design source (ported into apps/web)
+sanadscreen/
