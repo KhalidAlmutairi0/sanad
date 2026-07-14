@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { serverGet, ApiRequestError } from "@/lib/server-api";
-import { Header } from "@/components/ui/Header";
+import { AppLayout } from "@/components/design/Shared";
 import { ReviewWorkspace } from "@/components/review/ReviewWorkspace";
 import type { Clause, ContractDetail, Finding } from "@/types";
 
@@ -20,17 +20,14 @@ export default async function ContractReviewPage({ params }: { params: { id: str
     ]);
 
     return (
-      <div className="min-h-screen">
-        <Header />
-        <main className="mx-auto max-w-6xl px-6 py-12">
-          <ReviewWorkspace
-            contract={contract}
-            clauses={clausesRes.items}
-            findings={findingsRes.items}
-            verdict={radar.verdict}
-          />
-        </main>
-      </div>
+      <AppLayout>
+        <ReviewWorkspace
+          contract={contract}
+          clauses={clausesRes.items}
+          findings={findingsRes.items}
+          verdict={radar.verdict}
+        />
+      </AppLayout>
     );
   } catch (e) {
     if (e instanceof ApiRequestError && e.status === 401) redirect("/login");
