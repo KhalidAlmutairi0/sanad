@@ -90,12 +90,14 @@ jobs:
         with:
           python-version: "3.12"
       - run: sudo apt-get update && sudo apt-get install -y bubblewrap nftables
-      - run: pip install pytest pypdf python-docx PyYAML
+      - run: pip install pytest pypdf python-docx PyYAML lxml
       - name: Sanitizer no-network proof
         run: python -m pytest sandboxes/sanitizer/tests -v
       - name: Research-agent egress-denied proof
         # Use the same interpreter that has pytest (sudo's default python does not).
         run: sudo -E "$(command -v python)" -m pytest sandboxes/research-agent/tests/test_egress_denied.py -v
+      - name: Monitoring fetch/diff pure-logic tests (spec #4)
+        run: python -m pytest scripts/tests -v
 
   scans:
     name: Dependency + image scans

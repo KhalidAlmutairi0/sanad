@@ -1,0 +1,5 @@
+# Deps for the monitoring detection scripts (spec #4).
+# After install, fetch the browser binary once:  python -m playwright install chromium
+lxml>=5.2
+PyYAML>=6.0
+playwright>=1.44
