@@ -68,6 +68,13 @@ export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props)
         <ReadinessGauge value={contract.readiness_score ?? 0} className="scale-90 origin-right" />
       </div>
 
+      {contract.low_ocr_confidence && (
+        <div className="flex items-center gap-2 text-[13px] text-[#B4842F] bg-[#B4842F]/8 border border-[#B4842F]/25 rounded-lg px-4 py-2.5 mb-6 shrink-0">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span className="font-medium">استُخرج هذا العقد من مسح ضوئي منخفض الجودة — تحقّق من النص مقابل المستند الأصلي.</span>
+        </div>
+      )}
+
       <div className="flex flex-col md:flex-row gap-6 flex-1 min-h-0">
         {/* Contract text — independently scrollable */}
         <div className="w-full md:w-1/2 bg-card border border-border rounded-xl p-6 md:overflow-y-auto">

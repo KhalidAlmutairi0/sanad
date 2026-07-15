@@ -29,6 +29,7 @@ class SanitizeResult:
     reason: str | None = None  # stable reason code when not ok
     sandboxed: bool = True  # False when extraction ran in DEMO `direct` mode (no isolation)
     ocr_used: bool = False  # True when the PDF had no text layer and was OCR'd
+    low_ocr_confidence: bool = False  # spec #3: an OCR'd page scored below the confidence floor
 
 
 def detect_extension(data: bytes, path: str) -> str | None:
@@ -72,7 +73,10 @@ def run_sanitizer(input_path: str, timeout_seconds: int, *, mode: str = "sandbox
     except subprocess.TimeoutExpired:
         return SanitizeResult(ok=False, reason="sanitize_timeout", sandboxed=sandboxed)
 
-    ocr_used = "OCR_USED" in (proc.stderr or "")
+    stderr = proc.stderr or ""
+    ocr_used = "OCR_USED" in stderr
+    low_conf = "LOW_OCR_CONFIDENCE" in stderr
     if proc.returncode == 0:
-        return SanitizeResult(ok=True, text=proc.stdout, sandboxed=sandboxed, ocr_used=ocr_used)
+        return SanitizeResult(ok=True, text=proc.stdout, sandboxed=sandboxed,
+                              ocr_used=ocr_used, low_ocr_confidence=low_conf)
     return SanitizeResult(ok=False, reason=_RC_REASON.get(proc.returncode, "sanitize_failed"), sandboxed=sandboxed)

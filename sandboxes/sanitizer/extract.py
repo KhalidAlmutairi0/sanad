@@ -10,11 +10,22 @@ Exit codes: 0 ok; 2 unsupported type; 3 extraction error; 4 empty result.
 """
 from __future__ import annotations
 
+import os
 import pathlib
 import sys
 import unicodedata
 
 SUPPORTED = {".pdf", ".docx", ".txt"}
+
+# spec #3: OCR pages whose mean Tesseract word-confidence falls below this are flagged so the
+# reviewer knows the text came from a poor scan. Env-overridable (mirrors OCR_MIN_CONFIDENCE).
+_OCR_MIN_CONFIDENCE = float(os.environ.get("OCR_MIN_CONFIDENCE", "60"))
+
+
+def _mean_confidence(confidences: list) -> float:
+    """Mean of valid per-word confidences (Tesseract uses -1 for non-text boxes). Empty -> 0."""
+    vals = [float(c) for c in confidences if c not in (None, "", "-1") and float(c) >= 0]
+    return sum(vals) / len(vals) if vals else 0.0
 
 
 def _clean(text: str) -> str:
@@ -41,16 +52,25 @@ _OCR_MAX_PAGES = 40  # bound work under the sandbox timeout/rlimits
 
 def _ocr_pdf(path: pathlib.Path) -> str:
     """OCR a scanned PDF with Tesseract (ara+eng), fully offline. Runs inside the no-network
-    sandbox — tesseract + poppler need no network, so the containment guarantee holds."""
+    sandbox — tesseract + poppler need no network, so the containment guarantee holds.
+
+    Also captures per-page mean word-confidence (image_to_data) and flags the document when any
+    page is below the threshold (spec #3), so downstream can mark it 'verify against original'."""
     from pdf2image import convert_from_path
     import pytesseract
 
     images = convert_from_path(str(path), dpi=_OCR_DPI, first_page=1, last_page=_OCR_MAX_PAGES)
     pages = []
+    low_confidence = False
     for img in images:
         pages.append(pytesseract.image_to_string(img, lang="ara+eng"))
+        data = pytesseract.image_to_data(img, lang="ara+eng", output_type=pytesseract.Output.DICT)
+        if _mean_confidence(data.get("conf", [])) < _OCR_MIN_CONFIDENCE:
+            low_confidence = True
     # Signal to the wrapper that OCR was used (kept off stdout, which is the clean text).
     sys.stderr.write("OCR_USED\n")
+    if low_confidence:
+        sys.stderr.write("LOW_OCR_CONFIDENCE\n")
     return "\n".join(pages)
 
 

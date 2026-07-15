@@ -74,6 +74,7 @@ export interface ContractDetail {
   readiness_score: number | null;
   findings_summary: FindingsSummary;
   ocr_used?: boolean;
+  low_ocr_confidence?: boolean;
 }
 
 export interface CorpusItem {
