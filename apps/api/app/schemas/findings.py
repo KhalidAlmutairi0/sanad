@@ -31,6 +31,8 @@ class FindingItem(BaseModel):
     violation_cost_ar: str | None
     violation_cost_min: float | None
     violation_cost_max: float | None
+    # Retrieval confidence tier (spec #1): 'high' | 'low' | 'uncertain'.
+    confidence_tier: str = "high"
     review_status: str
     citation: Citation
 

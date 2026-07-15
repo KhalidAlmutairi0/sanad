@@ -51,6 +51,15 @@ class Settings(BaseSettings):
     # collisions), so the net must be wide for recall; the reranker then restores precision.
     rerank_fetch_k: int = Field(default=100, alias="RERANK_FETCH_K")
 
+    # Retrieval confidence tiers (spec #1). Signal is derived from cosine similarity of the
+    # cited article (sim = 1 - cosine_distance) and its margin over the next-best candidate.
+    # Anchor: _RELEVANCE_MAX_DISTANCE=0.42 (dist) => sim 0.58 is the irrelevance floor.
+    # PROVISIONAL defaults — calibrate against the real reranker score distribution (raw
+    # match_score/match_margin are stored on every finding for exactly this purpose).
+    confidence_min_sim: float = Field(default=0.62, alias="CONFIDENCE_MIN_SIM")
+    confidence_high_sim: float = Field(default=0.72, alias="CONFIDENCE_HIGH_SIM")
+    confidence_min_margin: float = Field(default=0.04, alias="CONFIDENCE_MIN_MARGIN")
+
     # LLM (behind services/llm only)
     llm_provider: str = Field(default="selfhosted", alias="LLM_PROVIDER")
     llm_model: str = Field(default="claude-sonnet-4-20250514", alias="LLM_MODEL")

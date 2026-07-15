@@ -66,6 +66,7 @@ def _item(f: Finding, rv: RegulationVersion, code: str) -> FindingItem:
         violation_cost_ar=f.violation_cost_ar,
         violation_cost_min=float(f.violation_cost_min) if f.violation_cost_min is not None else None,
         violation_cost_max=float(f.violation_cost_max) if f.violation_cost_max is not None else None,
+        confidence_tier=f.confidence_tier,
         review_status=f.review_status,
         citation=_citation(rv, code),
     )

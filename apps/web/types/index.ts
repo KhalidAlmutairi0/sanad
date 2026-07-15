@@ -38,6 +38,7 @@ export interface Finding {
   violation_cost_ar: string | null;
   violation_cost_min: number | null;
   violation_cost_max: number | null;
+  confidence_tier: "high" | "low" | "uncertain";
   review_status: ReviewStatus;
   citation: Citation;
 }

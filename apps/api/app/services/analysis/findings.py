@@ -11,9 +11,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models import Clause, Contract
 from app.services.analysis.violation_cost import extract_violation_cost
 from app.services.audit import write_audit
+from app.core.config import get_settings
 from app.services.citations import create_finding_guarded
 from app.services.llm import LLMRequest, UntrustedBlock, get_llm
 from app.services.retrieval import Candidate, retrieve_candidates
+from app.services.retrieval.confidence import classify_confidence
 from app.services.settings import CONTRACTS_GUIDANCE_KEY, get_setting
 
 ACTOR_ANALYSIS = "analysis"
@@ -117,6 +119,7 @@ async def generate_findings_for_contract(session: AsyncSession, contract_id: uui
     ).scalars().all()
 
     provider = get_llm()
+    settings = get_settings()
     guidance = await get_setting(session, CONTRACTS_GUIDANCE_KEY, CONTRACTS_GUIDANCE_DEFAULT)
     system_prompt = _compose_system_prompt(guidance)
     total = 0
@@ -147,6 +150,11 @@ async def generate_findings_for_contract(session: AsyncSession, contract_id: uui
                 )
                 continue
             cand = candidates[idx]
+            # Confidence from the retrieval step: cited article's cosine sim + margin over the
+            # strongest OTHER candidate (spec #1). Signal is independent of the generation model.
+            others = [c.distance for j, c in enumerate(candidates) if j != idx]
+            next_best = min(others) if others else None
+            conf = classify_confidence(cand.distance, next_best, settings)
             phrase, vmin, vmax = extract_violation_cost(cand.article_text_ar)
             await create_finding_guarded(
                 session,
@@ -162,6 +170,9 @@ async def generate_findings_for_contract(session: AsyncSession, contract_id: uui
                 violation_cost_ar=draft.get("violation_cost_ar") or phrase,
                 violation_cost_min=vmin,
                 violation_cost_max=vmax,
+                confidence_tier=conf.tier,
+                match_score=conf.score,
+                match_margin=conf.margin,
                 actor=ACTOR_ANALYSIS,
             )
             total += 1
