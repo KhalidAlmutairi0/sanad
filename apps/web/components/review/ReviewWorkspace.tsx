@@ -114,14 +114,21 @@ export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props)
                 const sev = sevOf(f.severity);
                 const decided = f.review_status !== "pending";
                 const isActive = f.id === activeId;
+                const lowConf = f.confidence_tier === "low" || f.confidence_tier === "uncertain";
                 return (
                   <div
                     key={f.id}
                     onClick={() => selectFinding(f)}
                     className={`bg-card border rounded-xl p-5 flex flex-col gap-3 cursor-pointer transition-all ${
-                      isActive ? "border-primary ring-1 ring-primary" : "border-border hover:border-primary/50"
+                      isActive ? "border-primary ring-1 ring-primary" : lowConf ? "border-dashed border-[#B4842F]/60 hover:border-[#B4842F]" : "border-border hover:border-primary/50"
                     } ${decided ? "opacity-60" : ""}`}
                   >
+                    {lowConf && (
+                      <div className="flex items-center gap-2 text-[12px] text-[#B4842F] bg-[#B4842F]/8 border border-[#B4842F]/25 rounded-md px-3 py-1.5 -mt-1">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <span className="font-medium">ضعيف التطابق — يتطلب تحقق يدوي</span>
+                      </div>
+                    )}
                     <div className="flex items-center gap-3 flex-wrap">
                       <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${dotClass[sev]}`} />
                       <span className={`text-[12px] font-medium ${sevText[sev]}`}>{SEV_AR[f.severity] ?? f.severity}</span>

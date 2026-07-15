@@ -34,6 +34,9 @@ async def create_finding_guarded(
     violation_cost_ar: str | None = None,
     violation_cost_min: float | None = None,
     violation_cost_max: float | None = None,
+    confidence_tier: str = "high",
+    match_score: float | None = None,
+    match_margin: float | None = None,
     actor: str,
 ) -> Finding:
     """Insert a finding ONLY if its citation resolves. Otherwise audit citation_rejected
@@ -66,6 +69,9 @@ async def create_finding_guarded(
         violation_cost_ar=violation_cost_ar,
         violation_cost_min=violation_cost_min,
         violation_cost_max=violation_cost_max,
+        confidence_tier=confidence_tier,
+        match_score=match_score,
+        match_margin=match_margin,
         review_status="pending",
     )
     session.add(finding)
