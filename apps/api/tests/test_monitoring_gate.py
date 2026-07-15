@@ -14,11 +14,11 @@ from httpx import AsyncClient
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import MonitoringDiff, MonitoringEvent, Regulation, RegulationVersion
+from app.models import MonitoringDiff, MonitoringEvent, Regulation, RegulationVersion, User
 from app.services.monitoring import detection
 
 
-async def _seed_reg(session: AsyncSession, code: str) -> Regulation:
+async def _seed_reg(session: AsyncSession, code: str, verified_by: uuid.UUID) -> Regulation:
     reg = Regulation(code=code, name_ar="نظام", name_en="Law", authority="SAMA",
                      source_domain="laws.boe.gov.sa")
     session.add(reg)
@@ -26,7 +26,7 @@ async def _seed_reg(session: AsyncSession, code: str) -> Regulation:
     session.add(RegulationVersion(
         regulation_id=reg.id, article_ref="Article 1", article_text_ar="النص الأصلي.",
         source_url="https://laws.boe.gov.sa/x", content_hash=uuid.uuid4().hex,
-        fetched_at=dt.datetime.now(dt.timezone.utc),
+        fetched_at=dt.datetime.now(dt.timezone.utc), verified_by=verified_by,
     ))
     await session.flush()
     return reg
@@ -34,9 +34,9 @@ async def _seed_reg(session: AsyncSession, code: str) -> Regulation:
 
 @pytest.mark.asyncio
 async def test_run_check_is_free_and_only_persists_diffs(
-    api_client: AsyncClient, session: AsyncSession, auth_headers: dict[str, str], monkeypatch
+    api_client: AsyncClient, session: AsyncSession, user: User, auth_headers: dict[str, str], monkeypatch
 ) -> None:
-    reg = await _seed_reg(session, f"PDPL-{uuid.uuid4().hex[:6]}")
+    reg = await _seed_reg(session, f"PDPL-{uuid.uuid4().hex[:6]}", user.id)
     headers = auth_headers  # seeded reviewer
 
     # One source that exists in the DB; inject a changed live article map (Article 1 amended).
@@ -66,9 +66,9 @@ async def test_run_check_is_free_and_only_persists_diffs(
 
 @pytest.mark.asyncio
 async def test_promote_candidate_creates_event_and_marks_diff(
-    api_client: AsyncClient, session: AsyncSession, auth_headers: dict[str, str]
+    api_client: AsyncClient, session: AsyncSession, user: User, auth_headers: dict[str, str]
 ) -> None:
-    reg = await _seed_reg(session, f"PDPL-{uuid.uuid4().hex[:6]}")
+    reg = await _seed_reg(session, f"PDPL-{uuid.uuid4().hex[:6]}", user.id)
     headers = auth_headers  # seeded reviewer
     diff = MonitoringDiff(regulation_id=reg.id, article_ref="Article 9", change_type="new_article",
                           live_text="مادة جديدة.", source_url="https://laws.boe.gov.sa/x",
