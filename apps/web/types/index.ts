@@ -117,6 +117,16 @@ export interface MonitoringEvent {
   new_version_id: string | null;
 }
 
+export interface MonitoringDiff {
+  id: string;
+  regulation_code: string;
+  article_ref: string;
+  change_type: string;
+  live_text: string;
+  source_url: string;
+  status: string;
+}
+
 export interface EvidenceSearchItem {
   regulation_version_id: string;
   regulation_code: string;
