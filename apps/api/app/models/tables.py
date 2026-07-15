@@ -173,6 +173,9 @@ class Obligation(Base):
     owner_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
     due_date: Mapped[dt.date | None] = mapped_column(Date)
     status: Mapped[str] = mapped_column(Text, nullable=False, server_default="open")
+    # spec #6: when the cited article is flagged amended (promote-candidate), status becomes
+    # 'pending_reverification' and the pre-hold status is saved here to restore on resolve.
+    prior_status: Mapped[str | None] = mapped_column(Text)
     created_at: Mapped[dt.datetime] = _created_at()
 
 

@@ -51,7 +51,7 @@ class AssignResponse(BaseModel):
 
 @router.get("", response_model=ObligationList)
 async def list_obligations(
-    status: str | None = Query(default=None, pattern="^(open|in_progress|met|overdue)$"),
+    status: str | None = Query(default=None, pattern="^(open|in_progress|met|overdue|pending_reverification)$"),
     owner_id: uuid.UUID | None = Query(default=None),
     _: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_session),
