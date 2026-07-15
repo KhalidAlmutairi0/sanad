@@ -84,6 +84,8 @@ export interface CorpusItem {
   official_fetch: number;
   human_verified: number;
   last_reconciled_at: string | null;
+  days_since_reconciled: number | null;
+  stale: boolean;
 }
 
 export interface ApiError {

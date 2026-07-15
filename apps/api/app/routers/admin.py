@@ -15,10 +15,12 @@ from pydantic import BaseModel
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.config import get_settings
 from app.core.deps import get_session, require_roles
 from app.core.errors import SanadError
 from app.models import AuditLog, Invite, Regulation, RegulationVersion, User
 from app.services.analysis.findings import CONTRACTS_CONTRACT, CONTRACTS_GUIDANCE_DEFAULT
+from app.services.corpus.staleness import staleness
 from app.services.analysis.idea_report import IDEA_CONTRACT, IDEA_GUIDANCE_DEFAULT
 from app.services.audit import write_audit
 from app.services.settings import (
@@ -84,6 +86,10 @@ class CorpusItem(BaseModel):
     official_fetch: int
     human_verified: int
     last_reconciled_at: dt.datetime | None
+    # spec #7: days since last reconciled (None if never), and whether it exceeds the
+    # configured staleness threshold.
+    days_since_reconciled: int | None = None
+    stale: bool = False
 
 
 class CorpusList(BaseModel):
@@ -192,11 +198,16 @@ async def get_corpus(
             .order_by(tier_ct.desc())
         )
     ).all()
-    items = [
-        CorpusItem(code=r.code, name_ar=r.name_ar, authority=r.authority, articles=r.articles,
-                   official_fetch=r.of, human_verified=r.hv, last_reconciled_at=r.last_reconciled_at)
-        for r in rows
-    ]
+    stale_days = get_settings().corpus_stale_days
+    now = dt.datetime.now(dt.timezone.utc)
+    items = []
+    for r in rows:
+        days, is_stale = staleness(r.last_reconciled_at, now, stale_days)
+        items.append(CorpusItem(
+            code=r.code, name_ar=r.name_ar, authority=r.authority, articles=r.articles,
+            official_fetch=r.of, human_verified=r.hv, last_reconciled_at=r.last_reconciled_at,
+            days_since_reconciled=days, stale=is_stale,
+        ))
     return CorpusList(items=items, total_articles=sum(i.articles for i in items))
 
 

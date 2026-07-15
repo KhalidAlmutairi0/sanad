@@ -101,6 +101,9 @@ export function AdminView() {
               <Card title="مخزون الأنظمة" wide>
                 <div className="flex items-center justify-between mt-2">
                   <span className="text-[13px] text-muted-foreground font-mono">{corpus.reduce((s, c) => s + c.articles, 0)} مادة</span>
+                  {corpus.some((c) => c.stale) && (
+                    <span className="text-[12px] text-[#B4842F]">{corpus.filter((c) => c.stale).length} مصدر يحتاج تحديث</span>
+                  )}
                 </div>
                 <div className="mt-4 max-h-[40vh] overflow-auto rounded-lg border border-border">
                   <table className="w-full text-[14px] text-right">
@@ -114,14 +117,23 @@ export function AdminView() {
                     </thead>
                     <tbody className="divide-y divide-border">
                       {corpus.map((c) => (
-                        <tr key={c.code}>
+                        <tr key={c.code} className={c.stale ? "bg-[#B4842F]/[0.06]" : ""}>
                           <td className="px-3 py-2">{c.name_ar}</td>
                           <td className="px-3 py-2 text-muted-foreground">{c.authority}</td>
                           <td className="px-3 py-2 text-left font-mono tnum">
                             {c.articles}
                             {c.official_fetch > 0 && <span className="ms-2 text-[11px] text-primary">AUTO</span>}
                           </td>
-                          <td className="px-3 py-2 text-left text-[13px] text-muted-foreground font-mono">{c.last_reconciled_at ? c.last_reconciled_at.slice(0, 10) : "—"}</td>
+                          <td className="px-3 py-2 text-left text-[13px] font-mono">
+                            <span className={c.stale ? "text-[#B4842F]" : "text-muted-foreground"}>
+                              {c.last_reconciled_at ? c.last_reconciled_at.slice(0, 10) : "—"}
+                            </span>
+                            {c.stale && (
+                              <span className="ms-2 text-[11px] px-1.5 py-0.5 rounded border border-[#B4842F]/40 text-[#B4842F]">
+                                {c.days_since_reconciled === null ? "لم تُطابق" : `منذ ${c.days_since_reconciled} يوم`}
+                              </span>
+                            )}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
