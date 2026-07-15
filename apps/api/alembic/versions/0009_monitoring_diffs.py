@@ -6,14 +6,22 @@ Create Date: 2026-07-15
 """
 from __future__ import annotations
 
+import re
+
 import sqlalchemy as sa
 from alembic import op
 from sqlalchemy.dialects.postgresql import UUID
+
+from app.core.config import get_settings
 
 revision = "0009_monitoring_diffs"
 down_revision = "0008_clause_retrieval_state"
 branch_labels = None
 depends_on = None
+
+_APP_ROLE = get_settings().app_user
+if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", _APP_ROLE):
+    raise ValueError(f"Invalid app role identifier: {_APP_ROLE!r}")
 
 
 def upgrade() -> None:
@@ -32,6 +40,8 @@ def upgrade() -> None:
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now()),
     )
     op.create_index("ix_monitoring_diffs_status", "monitoring_diffs", ["status"])
+    # Mutable working table (not append-only): the app role clears/updates pending rows.
+    op.execute(f"GRANT SELECT, INSERT, UPDATE, DELETE ON monitoring_diffs TO {_APP_ROLE}")
 
 
 def downgrade() -> None:
