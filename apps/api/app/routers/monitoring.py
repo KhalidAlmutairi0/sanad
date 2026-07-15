@@ -16,6 +16,10 @@ from app.core.deps import get_current_user, get_session, require_roles
 from app.core.errors import SanadError
 from app.models import MonitoringDiff, MonitoringEvent, Regulation, RegulationVersion, User
 from app.services.monitoring import detection
+from app.services.monitoring.obligations import (
+    flag_pending_reverification,
+    resolve_pending_reverification,
+)
 from app.services.audit import write_audit
 from app.services.llm import LLMRequest, get_llm
 from app.services.retrieval import embed_texts
@@ -113,10 +117,16 @@ async def verify_event(
 
     event.new_version_id = version.id
     event.status = "verified"
+
+    # spec #6: release the reverification hold on obligations for this article (restore prior
+    # status; never auto-advance to met/open).
+    released = await resolve_pending_reverification(session, event.regulation_id, p.article_ref)
+
     await write_audit(
         session, actor=str(user.id), action="regulation_version_verified",
         target=str(version.id), verdict="allowed",
-        detail={"event_id": str(event_id), "article_ref": p.article_ref},
+        detail={"event_id": str(event_id), "article_ref": p.article_ref,
+                "obligations_released": released},
     )
     await session.commit()
     return VerifyResponse(regulation_version_id=version.id, status="verified")
@@ -306,12 +316,16 @@ async def promote_candidate(
     diff.status = "promoted"
     await session.flush()
 
+    # spec #6: obligations citing this article must not keep looking current during the gap.
+    held = await flag_pending_reverification(session, diff.regulation_id, diff.article_ref)
+
     # Attributable token-spend record for this feature (the counter, spec #5).
     await write_audit(
         session, actor=str(user.id), action="monitoring_promote", target=str(event.id),
         verdict="allowed",
         detail={"diff_id": str(diff.id), "regulation_code": reg.code if reg else None,
-                "article_ref": diff.article_ref, "change_type": diff.change_type},
+                "article_ref": diff.article_ref, "change_type": diff.change_type,
+                "obligations_held": held},
     )
     await session.commit()
     return EventItem(

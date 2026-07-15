@@ -10,6 +10,7 @@ const STATUS: Record<Obligation["status"], { label: string; cls: string }> = {
   in_progress: { label: "قيد التنفيذ", cls: "border-[#D4812A] text-[#D4812A]" },
   met: { label: "مكتمل", cls: "border-primary text-primary" },
   overdue: { label: "متأخر", cls: "border-destructive text-destructive" },
+  pending_reverification: { label: "بانتظار إعادة التحقق", cls: "border-[#B4842F] text-[#B4842F] bg-[#B4842F]/8" },
 };
 
 export function RegisterView() {

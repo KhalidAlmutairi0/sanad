@@ -103,7 +103,7 @@ export interface Obligation {
   title_en: string | null;
   owner_id: string | null;
   due_date: string | null;
-  status: "open" | "in_progress" | "met" | "overdue";
+  status: "open" | "in_progress" | "met" | "overdue" | "pending_reverification";
   citation: SourceCitation;
 }
 
