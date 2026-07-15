@@ -65,6 +65,10 @@ class Settings(BaseSettings):
     # than silently returning zero findings. Same anchor as the offline stub's relevance gate.
     retrieval_relevance_max_distance: float = Field(default=0.42, alias="RETRIEVAL_RELEVANCE_MAX_DISTANCE")
 
+    # Corpus staleness (spec #7): a regulation not reconciled against its source within this
+    # many days is flagged stale in the Admin corpus view.
+    corpus_stale_days: int = Field(default=30, alias="CORPUS_STALE_DAYS")
+
     # LLM (behind services/llm only)
     llm_provider: str = Field(default="selfhosted", alias="LLM_PROVIDER")
     llm_model: str = Field(default="claude-sonnet-4-20250514", alias="LLM_MODEL")
