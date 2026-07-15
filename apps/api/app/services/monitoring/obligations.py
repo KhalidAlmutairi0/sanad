@@ -46,6 +46,8 @@ async def flag_pending_reverification(
         ob.prior_status = ob.status
         ob.status = PENDING_REVERIFICATION
         count += 1
+    if count:
+        await session.flush()
     return count
 
 
@@ -61,4 +63,6 @@ async def resolve_pending_reverification(
         ob.status = ob.prior_status or "open"
         ob.prior_status = None
         count += 1
+    if count:
+        await session.flush()
     return count
