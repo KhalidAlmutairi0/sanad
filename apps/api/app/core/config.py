@@ -69,6 +69,14 @@ class Settings(BaseSettings):
     # many days is flagged stale in the Admin corpus view.
     corpus_stale_days: int = Field(default=30, alias="CORPUS_STALE_DAYS")
 
+    # OCR confidence (spec #3): pages whose mean Tesseract word-confidence is below this are
+    # flagged (the sandbox reads OCR_MIN_CONFIDENCE; this mirrors it for app-side reference).
+    ocr_min_confidence: float = Field(default=60.0, alias="OCR_MIN_CONFIDENCE")
+    # Vision-model secondary pass for low-confidence pages. OFF by default: it crosses the
+    # sanitizer's no-network boundary (needs page images out of the sandbox) and spends tokens,
+    # so enabling it is a deliberate, separately-wired deployment decision.
+    ocr_vision_fallback_enabled: bool = Field(default=False, alias="OCR_VISION_FALLBACK_ENABLED")
+
     # LLM (behind services/llm only)
     llm_provider: str = Field(default="selfhosted", alias="LLM_PROVIDER")
     llm_model: str = Field(default="claude-sonnet-4-20250514", alias="LLM_MODEL")

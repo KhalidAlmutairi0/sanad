@@ -48,6 +48,7 @@ class ContractDetail(BaseModel):
     readiness_score: int | None
     findings_summary: FindingsSummary
     ocr_used: bool = False
+    low_ocr_confidence: bool = False
 
 
 class ClauseItem(BaseModel):

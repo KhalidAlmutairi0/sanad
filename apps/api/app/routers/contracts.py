@@ -144,7 +144,7 @@ async def get_contract(
     return ContractDetail(
         id=contract.id, title=contract.title, status=contract.status,
         readiness_score=contract.readiness_score, findings_summary=summary,
-        ocr_used=contract.ocr_used,
+        ocr_used=contract.ocr_used, low_ocr_confidence=contract.low_ocr_confidence,
     )
 
 
