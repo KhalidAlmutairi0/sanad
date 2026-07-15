@@ -76,10 +76,13 @@ export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props)
             {clauses.map((c) => {
               const sev = clauseSev.get(c.id);
               const isActive = c.id === activeClauseId;
+              const insufficient = c.retrieval_insufficient && !sev;
               const box = sev === "red"
                 ? "p-4 -mx-4 rounded-lg bg-primary/5 border border-primary/30"
                 : sev === "amber"
                 ? "p-4 -mx-4 rounded-lg bg-[#D4812A]/5 border border-[#D4812A]/30"
+                : insufficient
+                ? "p-4 -mx-4 rounded-lg bg-muted-foreground/[0.04] border border-dashed border-muted-foreground/30"
                 : "";
               const activeRing = isActive ? "ring-2 ring-primary ring-offset-2 ring-offset-card p-4 -mx-4 rounded-lg" : "";
               const numColor = sev === "red" ? "text-primary" : sev === "amber" ? "text-[#D4812A]" : "text-muted-foreground";
@@ -90,8 +93,17 @@ export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props)
                   className={`flex gap-4 scroll-mt-4 transition-all ${box} ${activeRing}`}
                   dir={c.text_ar ? "rtl" : "ltr"}
                 >
-                  <span className={`font-mono mt-1 ${numColor}`}>{c.ordinal}.</span>
-                  <p>{c.text_ar ?? c.text_en}</p>
+                  <span className={`font-mono mt-1 shrink-0 ${insufficient ? "text-muted-foreground/70" : numColor}`}>
+                    {insufficient ? "?" : `${c.ordinal}.`}
+                  </span>
+                  <div className="flex-1">
+                    <p>{c.text_ar ?? c.text_en}</p>
+                    {insufficient && (
+                      <span className="mt-2 inline-block text-[12px] text-muted-foreground border border-dashed border-muted-foreground/40 rounded px-2 py-0.5">
+                        لم يُعثر على مادة نظامية مطابقة — لم يُقيَّم هذا البند
+                      </span>
+                    )}
+                  </div>
                 </div>
               );
             })}

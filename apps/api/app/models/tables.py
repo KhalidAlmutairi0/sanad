@@ -104,6 +104,9 @@ class Clause(Base):
     text_ar: Mapped[str | None] = mapped_column(Text)
     text_en: Mapped[str | None] = mapped_column(Text)
     embedding: Mapped[list[float] | None] = mapped_column(Vector(EMBEDDING_DIM))
+    # spec #2: set when retrieval surfaced no relevant article for this clause (assessed=false,
+    # distinct from "assessed, no issue"). Must not count as a reviewed/assessed clause.
+    retrieval_insufficient: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=func.false())
     created_at: Mapped[dt.datetime] = _created_at()
 
 

@@ -16,6 +16,7 @@ from app.services.citations import create_finding_guarded
 from app.services.llm import LLMRequest, UntrustedBlock, get_llm
 from app.services.retrieval import Candidate, retrieve_candidates
 from app.services.retrieval.confidence import classify_confidence
+from app.services.retrieval.relevance import is_retrieval_insufficient
 from app.services.settings import CONTRACTS_GUIDANCE_KEY, get_setting
 
 ACTOR_ANALYSIS = "analysis"
@@ -128,7 +129,11 @@ async def generate_findings_for_contract(session: AsyncSession, contract_id: uui
         if not clause_text:
             continue
         candidates = await retrieve_candidates(session, clause_text, k=4)
-        if not candidates:
+        # spec #2: nothing relevant retrieved -> flag the clause as unassessed and skip the
+        # LLM entirely (no forced finding from irrelevant candidates, and no wasted tokens).
+        best_distance = candidates[0].distance if candidates else None
+        if is_retrieval_insufficient(best_distance, settings.retrieval_relevance_max_distance):
+            clause.retrieval_insufficient = True
             continue
 
         req = LLMRequest(
