@@ -192,6 +192,22 @@ class MonitoringEvent(Base):
     created_at: Mapped[dt.datetime] = _created_at()
 
 
+class MonitoringDiff(Base):
+    """Raw, unprocessed diff from a run-check (spec #5): produced by pure text comparison
+    (zero LLM). Stays pending_review until a reviewer promotes it (the token-spending step,
+    which creates a MonitoringEvent) or dismisses it."""
+
+    __tablename__ = "monitoring_diffs"
+    id: Mapped[uuid.UUID] = _pk()
+    regulation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("regulations.id"), nullable=False)
+    article_ref: Mapped[str] = mapped_column(Text, nullable=False)
+    change_type: Mapped[str] = mapped_column(Text, nullable=False)  # new_article|amended|repealed
+    live_text: Mapped[str] = mapped_column(Text, nullable=False)
+    source_url: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="pending_review")
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
 class Invite(Base):
     __tablename__ = "invites"
     id: Mapped[uuid.UUID] = _pk()

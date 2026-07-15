@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AppLayout, Button, MonoChip } from "@/components/design/Shared";
 import { apiGet, apiPost } from "@/lib/api";
-import type { MonitoringEvent } from "@/types";
+import type { MonitoringDiff, MonitoringEvent } from "@/types";
 
 const CHANGE_AR: Record<string, string> = { new_article: "مادة جديدة", amended: "تعديل", repealed: "إلغاء" };
 
@@ -31,15 +31,46 @@ function VerifyForm({ eventId, onDone }: { eventId: string; onDone: () => void }
   );
 }
 
+const CHANGE_TYPE_AR: Record<string, string> = { new_article: "مادة جديدة", amended: "تعديل", repealed: "إلغاء" };
+
 export function MonitoringView() {
   const [items, setItems] = useState<MonitoringEvent[]>([]);
+  const [diffs, setDiffs] = useState<MonitoringDiff[]>([]);
   const [loading, setLoading] = useState(true);
   const [openId, setOpenId] = useState<string | null>(null);
+  const [checking, setChecking] = useState(false);
+  const [promoting, setPromoting] = useState<string | null>(null);
+  const [checkMsg, setCheckMsg] = useState<string | null>(null);
 
   function load() {
-    apiGet<{ items: MonitoringEvent[] }>("/monitoring/events").then((d) => setItems(d.items)).finally(() => setLoading(false));
+    Promise.all([
+      apiGet<{ items: MonitoringEvent[] }>("/monitoring/events").then((d) => setItems(d.items)),
+      apiGet<{ items: MonitoringDiff[] }>("/monitoring/diffs").then((d) => setDiffs(d.items)).catch(() => setDiffs([])),
+    ]).finally(() => setLoading(false));
   }
   useEffect(load, []);
+
+  async function runCheck() {
+    setChecking(true);
+    setCheckMsg(null);
+    const res = await apiPost<{ total_changes: number; changed_sources: number }>("/monitoring/run-check", {}).catch(() => null);
+    if (res) {
+      setCheckMsg(res.total_changes > 0
+        ? `تم رصد ${res.total_changes} تغييراً في ${res.changed_sources} مصدر — راجعها بالأسفل قبل المعالجة.`
+        : "لا توجد تغييرات. جميع المصادر محدثّة.");
+      load();
+    } else {
+      setCheckMsg("تعذّر إجراء الفحص. حاول مرة أخرى.");
+    }
+    setChecking(false);
+  }
+
+  async function promote(diffId: string) {
+    setPromoting(diffId);
+    await apiPost(`/monitoring/promote-candidate`, { diff_id: diffId }).catch(() => null);
+    setPromoting(null);
+    load();
+  }
 
   return (
     <AppLayout>
@@ -49,11 +80,38 @@ export function MonitoringView() {
             <h1 className="text-2xl font-bold mb-2">رصد التحديثات التنظيمية</h1>
             <p className="text-[15px] text-muted-foreground">متابعة منتظمة للمصادر الرسمية، مع تقييم أثر كل تحديث على سجل التزاماتك.</p>
           </div>
-          <div className="bg-primary/10 border border-primary/30 text-primary px-4 py-2 rounded-lg flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-[13px] font-mono">متابعة مستمرة</span>
-          </div>
+          <Button variant="ghost" className="h-10 px-4 text-[13px]" onClick={runCheck} disabled={checking}>
+            {checking ? "جاري الفحص…" : "فحص التحديثات الآن"}
+          </Button>
         </div>
+
+        {checkMsg && (
+          <div className="text-[14px] text-muted-foreground bg-muted/40 border border-border rounded-lg px-4 py-3">{checkMsg}</div>
+        )}
+
+        {diffs.length > 0 && (
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <h2 className="text-[15px] font-bold">تغييرات غير معالجة</h2>
+              <span className="text-[12px] text-muted-foreground">فحص مجاني — المعالجة تستهلك رموزاً (LLM)</span>
+            </div>
+            {diffs.map((d) => (
+              <div key={d.id} className="bg-card border border-dashed border-[#B4842F]/50 rounded-xl p-5">
+                <div className="flex items-center gap-3 flex-wrap mb-3">
+                  <span className="font-bold text-[14px]">{d.regulation_code}</span>
+                  <MonoChip>{d.article_ref}</MonoChip>
+                  <span className="text-[12px] px-2 py-0.5 rounded border border-[#B4842F]/40 text-[#B4842F]">{CHANGE_TYPE_AR[d.change_type] ?? d.change_type}</span>
+                </div>
+                <p dir="rtl" className="text-[14px] leading-[1.9] text-muted-foreground mb-4 line-clamp-4">{d.live_text}</p>
+                <div className="flex justify-end">
+                  <Button className="h-9 px-4 text-[13px]" onClick={() => promote(d.id)} disabled={promoting === d.id}>
+                    {promoting === d.id ? "جاري المعالجة…" : "معالجة هذا التغيير (يستهلك رموز)"}
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {loading ? (
           <div className="py-16 text-center text-muted-foreground">جاري التحميل…</div>
