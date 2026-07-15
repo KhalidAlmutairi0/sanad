@@ -3,8 +3,8 @@ articles are NEW, REMOVED, or CHANGED versus the committed corpus. This is the d
 half of monitoring — it never auto-writes the citation store; changes are surfaced for a
 human to verify (AGENTS.md #5), then ingested as new versions (append-only).
 
-Run periodically (cron / the arq worker). Respects the gazette's 10s crawl-delay between
-laws. Exit code 0 = no changes, 1 = changes detected (so a scheduler can alert).
+Run periodically (cron / the arq worker). The crawl-delay is enforced by the Playwright fetcher
+(spec #4). Exit code 0 = no changes, 1 = changes detected (so a scheduler can alert).
 
     python scripts/check_law_updates.py [--json]
 """
@@ -14,12 +14,12 @@ import argparse
 import json
 import pathlib
 import sys
-import time
 
 import yaml
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from fetch_boe_law import CRAWL_DELAY_SECONDS, fetch, parse_articles  # noqa: E402
+from fetch_boe_law import parse_articles  # noqa: E402
+from playwright_fetch import BrowserFetcher  # noqa: E402
 
 CORPUS_DIR = pathlib.Path(__file__).resolve().parent / "seed_data" / "corpus"
 SOURCES = CORPUS_DIR / "_sources.yaml"
@@ -29,16 +29,20 @@ def _by_ref(articles: list[dict]) -> dict[str, str]:
     return {a["article_ref"]: " ".join(a["article_text_ar"].split()) for a in articles}
 
 
-def diff_law(src: dict) -> dict:
-    corpus_path = CORPUS_DIR / src["corpus_file"]
-    committed = _by_ref(yaml.safe_load(corpus_path.read_text(encoding="utf-8"))["articles"])
-    live = _by_ref(parse_articles(fetch(src["url"])))
-
+def compute_diff(code: str, committed: dict[str, str], live: dict[str, str]) -> dict:
+    """Pure set diff between committed and live article maps (no I/O, unit-testable)."""
     added = sorted(set(live) - set(committed))
     removed = sorted(set(committed) - set(live))
     changed = sorted(r for r in set(live) & set(committed) if live[r] != committed[r])
-    return {"code": src["code"], "added": added, "removed": removed, "changed": changed,
+    return {"code": code, "added": added, "removed": removed, "changed": changed,
             "live_count": len(live), "committed_count": len(committed)}
+
+
+def diff_law(src: dict, live_html: str) -> dict:
+    corpus_path = CORPUS_DIR / src["corpus_file"]
+    committed = _by_ref(yaml.safe_load(corpus_path.read_text(encoding="utf-8"))["articles"])
+    live = _by_ref(parse_articles(live_html))
+    return compute_diff(src["code"], committed, live)
 
 
 def main() -> int:
@@ -48,13 +52,18 @@ def main() -> int:
 
     sources = yaml.safe_load(SOURCES.read_text(encoding="utf-8"))["sources"]
     results = []
-    for i, src in enumerate(sources):
-        if i:
-            time.sleep(CRAWL_DELAY_SECONDS)
-        try:
-            results.append(diff_law(src))
-        except Exception as e:  # noqa: BLE001 — report, never crash the whole run
-            results.append({"code": src["code"], "error": str(e)})
+    # One persistent headless Chromium for the whole run; fetch enforces the crawl-delay and
+    # returns fetch failures on a channel separate from diff results.
+    with BrowserFetcher() as fetcher:
+        for src in sources:
+            outcome = fetcher.fetch(src["url"])
+            if outcome.error or outcome.html is None:
+                results.append({"code": src["code"], "error": outcome.error or "empty response"})
+                continue
+            try:
+                results.append(diff_law(src, outcome.html))
+            except Exception as e:  # noqa: BLE001 — a parse failure must not crash the run
+                results.append({"code": src["code"], "error": str(e)})
 
     any_change = any(r.get("added") or r.get("removed") or r.get("changed") for r in results)
 
