@@ -160,5 +160,11 @@ async def get_clauses(
         )
     ).scalars().all()
     return ClauseList(
-        items=[ClauseItem(id=c.id, ordinal=c.ordinal, text_ar=c.text_ar, text_en=c.text_en) for c in rows]
+        items=[
+            ClauseItem(
+                id=c.id, ordinal=c.ordinal, text_ar=c.text_ar, text_en=c.text_en,
+                retrieval_insufficient=c.retrieval_insufficient,
+            )
+            for c in rows
+        ]
     )

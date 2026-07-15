@@ -55,6 +55,8 @@ class ClauseItem(BaseModel):
     ordinal: int
     text_ar: str | None
     text_en: str | None
+    # spec #2: true when retrieval found nothing relevant (unassessed, not "clean").
+    retrieval_insufficient: bool = False
 
 
 class ClauseList(BaseModel):

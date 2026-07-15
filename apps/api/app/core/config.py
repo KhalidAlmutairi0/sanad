@@ -60,6 +60,11 @@ class Settings(BaseSettings):
     confidence_high_sim: float = Field(default=0.72, alias="CONFIDENCE_HIGH_SIM")
     confidence_min_margin: float = Field(default=0.04, alias="CONFIDENCE_MIN_MARGIN")
 
+    # Retrieval sufficiency (spec #2): if the best candidate's cosine distance exceeds this,
+    # nothing relevant was retrieved for the clause -> mark it retrieval_insufficient rather
+    # than silently returning zero findings. Same anchor as the offline stub's relevance gate.
+    retrieval_relevance_max_distance: float = Field(default=0.42, alias="RETRIEVAL_RELEVANCE_MAX_DISTANCE")
+
     # LLM (behind services/llm only)
     llm_provider: str = Field(default="selfhosted", alias="LLM_PROVIDER")
     llm_model: str = Field(default="claude-sonnet-4-20250514", alias="LLM_MODEL")

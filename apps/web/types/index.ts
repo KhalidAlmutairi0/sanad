@@ -48,6 +48,7 @@ export interface Clause {
   ordinal: number;
   text_ar: string | null;
   text_en: string | null;
+  retrieval_insufficient: boolean;
 }
 
 export interface FindingsSummary {
