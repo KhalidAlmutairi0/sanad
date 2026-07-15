@@ -20,7 +20,18 @@ depends_on = None
 
 def upgrade() -> None:
     op.add_column("obligations", sa.Column("prior_status", sa.Text(), nullable=True))
+    # Widen ck_oblig_status to allow the reverification hold (spec #6).
+    op.execute("ALTER TABLE obligations DROP CONSTRAINT ck_oblig_status")
+    op.execute(
+        "ALTER TABLE obligations ADD CONSTRAINT ck_oblig_status "
+        "CHECK (status IN ('open','in_progress','met','overdue','pending_reverification'))"
+    )
 
 
 def downgrade() -> None:
+    op.execute("ALTER TABLE obligations DROP CONSTRAINT ck_oblig_status")
+    op.execute(
+        "ALTER TABLE obligations ADD CONSTRAINT ck_oblig_status "
+        "CHECK (status IN ('open','in_progress','met','overdue'))"
+    )
     op.drop_column("obligations", "prior_status")

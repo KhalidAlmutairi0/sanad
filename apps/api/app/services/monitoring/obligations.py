@@ -21,13 +21,9 @@ PENDING_REVERIFICATION = "pending_reverification"
 async def _obligations_for_article(
     session: AsyncSession, regulation_id: uuid.UUID, article_ref: str
 ) -> list[Obligation]:
-    version_ids = (
-        select(RegulationVersion.id)
-        .where(
-            RegulationVersion.regulation_id == regulation_id,
-            RegulationVersion.article_ref == article_ref,
-        )
-        .scalar_subquery()
+    version_ids = select(RegulationVersion.id).where(
+        RegulationVersion.regulation_id == regulation_id,
+        RegulationVersion.article_ref == article_ref,
     )
     return list(
         (
