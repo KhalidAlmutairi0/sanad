@@ -1,0 +1,34 @@
+# Commercial Agencies Law (نظام الوكالات التجارية) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: COMAGENCY
+  name_ar: نظام الوكالات التجارية
+  name_en: Commercial Agencies Law
+  authority: Ministry of Commerce
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة (1)
+  article_text_ar: لا يجوز لغير السعوديين سواء بصفة أشخاص طبيعيين أو معنويين أن يكونوا وكلاء تجاريين في المملكة العربية السعودية، على أن الشركات السعودية التي تقوم بأعمال الوكالات التجارية يجب أن يكون رأس مالها بالكامل سعوديًّا، وأن يكون أعضاء مجالس إدارتها ومن لهم حق التوقيع باسمها سعوديين.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1
+  verified: false
+- article_ref: المادة (2)
+  article_text_ar: الوكلاء التجاريون الذين يمارسون عملهم وقت صدور هذا النظام ولا ينطبق عليهم نص المادة الأولى يمنحون فترة لتصفية أعمالهم ونقلها إلى الوكلاء التجاريين السعوديين خلال مدة لا تزيد على سنتين من تاريخ العمل بهذا النظام. ويحدد وزير التجارة والصناعة هذه الفترة بالنسبة لكل وكيل على حدة مراعيًا في ذلك سرعة التصفية وطبيعة عمله والقيد الزمني المشار إليه آنفًا.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1
+  verified: false
+- article_ref: المادة (3)
+  article_text_ar: لا يجوز أن يقوم بعمل الوكيل التجاري إلا من كان مقيدًا في السجل المعد لهذا الغرض في وزارة التجارة والصناعة، ويصدر وزير التجارة والصناعة قرارًا بإنشاء هذا السجل، وتشتمل بيانات السجل المذكور على اسم التاجر أو الشركة، ونوع البضاعة الموكل فيها، والشركة والمؤسسة الموكلة، وتاريخ التوكيل، ومدته إن كانت الوكالة محددة بأجل. وتقدم طلبات القيد بهذا السجل مع المستندات المسوغة للقيد إلى وكيل وزارة التجارة والصناعة، ولا يجوز رفض القيد إلا لغير السعودي أو لمن كان سعوديًّا ممنوعًا من مزاولة التجارة وغير أهل لممارستها، ويجوز لمن رفض قيده أن يتظلم إلى وزير التجارة والصناعة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1
+  verified: false
+- article_ref: المادة (4)
+  article_text_ar: كل من يزاول أعمال الوكالات التجارية بالمخالفة لأحكام هذا النظام يعاقب بغرامة لا تقل عن ألف ريال ولا تزيد على خمسة آلاف ريال، فإن كانت المخالفة منسوبة لأجنبي أو لشركة سعودية فيها شريك أو أكثر غير سعوديين كانت العقوبة بالإضافة إلى الغرامة المنصوص عليها في الفقرة السابقة تصفية الأعمال إداريًّا في الوكالة التجارية مع جواز الحرمان من ممارسة التجارة أبدًا أو لمدة معينة. ويجوز لوزير الداخلية بناء على توصية من وزير التجارة والصناعة الأمر بترحيل الأجنبي من البلاد .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1
+  verified: false
+- article_ref: المادة (5)
+  article_text_ar: 'تحدد رسوم القيد في سجل الوكالات كالآتي: خمسون ريال للتاجر الفرد. مائة ريال للشركة. وتدفع الرسوم لمرة واحدة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1
+  verified: false
+- article_ref: المادة (6)
+  article_text_ar: يعمل بهذا النظام بعد ثلاثة أشهر من تاريخ نشره .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1
+  verified: false
