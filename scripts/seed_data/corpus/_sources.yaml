@@ -147,10 +147,7 @@ sources:
     name_ar: نظام السجل التجاري
     name_en: Commercial Register Law
     authority: Ministry of Commerce
-    # Disabled: the register-law page uses a different template (no div.article_item), so the
-    # boe parser yields 0 articles. Needs a parser tweak before enabling.
-    enabled: false
-    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/d0e0ea69-e88b-471a-9773-b20900a51be6/1
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/98ee4b51-d398-4323-ae69-b2b8009f3156/1
     corpus_file: COMREG.yaml
   - code: COMPLEDGE
     name_ar: نظام الرهن التجاري
