@@ -77,8 +77,15 @@ class BrowserFetcher:
 
         self._pw = sync_playwright().start()
         # --no-sandbox / --disable-dev-shm-usage: required when Chromium runs in a container.
+        # The rest keep RAM lean on a shared VM (no GPU, no extensions, capped JS heap); combined
+        # with sequential single-page fetches this stays well within an 8 GB box.
         self._browser = self._pw.chromium.launch(
-            headless=True, args=["--no-sandbox", "--disable-dev-shm-usage"]
+            headless=True,
+            args=[
+                "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu",
+                "--disable-extensions", "--disable-background-networking",
+                "--js-flags=--max-old-space-size=512",
+            ],
         )
         self._context = self._browser.new_context(user_agent=USER_AGENT, locale=LOCALE)
         self._context.route("**/*", self._route)
