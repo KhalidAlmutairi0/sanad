@@ -1,0 +1,74 @@
+#  (نظام جوازات السفر السياسية والخاصة) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE021
+  name_ar: نظام جوازات السفر السياسية والخاصة
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة 1
+  article_text_ar: تمنح الحكومة الجوازات السياسية والخاصة بقصد حصول أصحابها على تسهيلات خاصة لأداء مهماتهم أو بحكم مراكزهم الشخصية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 2
+  article_text_ar: 'تمنح جوازات السفر السياسية للأشخاص الآتي بيانهم: أ - أفراد العائلة المالكة . ب - الوزراء و مستشاري جلالة الملك الخاصين العاملين والسابقين. جـ - السفراء و الوزراء المفوضين وموظفي المرتبتين الممتازة والخامسة عشر العاملون سواء كانوا في مهمات رسمية أو في سفرات عادية. وتكون جوازات سفر جميع هؤلاء صالحة لمدة سنة وتجدد سنويا من قبل وزارة الخارجية أو من ممثليات جلالته في الخارج ويجوز تجديدها قبل انتهاء السنة بمدة أقصاها ثلاثة شهور وتنتهي صلاحية الجواز بمضي خمس سنوات من تاريخ صدوره.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 3
+  article_text_ar: 'تمنح جوازات السفر السياسية للأشخاص الآتي بيانهم في المهمات الرسمية: أ - حاملي البريد السياسي . ب - أعضاء السلك السياسي .'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 4
+  article_text_ar: 'تمنح جوازات السفر الخاصة للأتي بيانهم: أ - موظفي المراتب الحادية عشرة حتى الرابعة عشرة العاملين الذين يشملهم نظام الموظفين العام.ب - أعضاء السلك الإداري العاملين في ممثليات جلالته بالخارج.جـ - أعضاء السلك السياسي في الداخل إذا كانوا في المرتبة السابعة فما فوق.د - موظفي المرتبتين الممتازة والخامسة عشرة السابقين.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 5
+  article_text_ar: تمنح جوازات السفر الخاصة في المهمات الرسمية لرجال السلك الإداري في وزارة الخارجية وتمنح كذلك بناءً على طلب كتابي من الوزير المختص لموظفي المرتبة السابعة فما فوق الذين ينتدبون إلى الخارج في مهمات رسمية مؤقتة لا تزيد على ستة شهور.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 6
+  article_text_ar: يمنح الفريق واللواء جواز سفر سياسي في المهمات الرسمية والإجازات وجواز خاص بعد الإحالة على التقاعد كما يمنح من يشغل رتبة زعيم أو عقيد جواز سفر خاص في المهمات الرسمية والإجازات ويمنح من يشغل رتبة قائد إلى رتبة ملازم ثاني جواز سفر خاص في المهمات الرسمية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 7
+  article_text_ar: يجوز لحاملي الجوازات السياسية والخاصة الذين ورد ذكرهم في المادة الثانية والفقرة (ب) من المادة الثالثة والمادتين الرابعة والسادسة - الحصول لزوجاتهم وأولادهم على جوازات سفر مستقلة من نوع - جوازات سفرهم أو أن يطلبوا إضافتهم إلى جوازات سفرهم ويمكن أن يضاف الأولاد إلى جواز سفر الزوجة أو أن تصدر لهم جوازات سفر مستقلة وذلك إلى سن الثامنة عشرة بالنسبة للذكور وحتى الزواج بالنسبة للإناث طالما لا يزلن تحت كفالة والدهن الفعلية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 8
+  article_text_ar: الموظفون العاملون التابعون لوزارات أخرى والمعينون كملحقين في الممثليات الدبلوماسية السعودية في الخارج يطبق بحقهم ما يطبق بحق موظفي وزارة الخارجية العاملين في الخارج
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 9
+  article_text_ar: يجوز إصدار جوازات سفر خاصة أو سياسية لموظفي المؤسسات العامة باقتراح من وزير الدولة للشئون الخارجية وموافقة رئيس مجلس الوزراء بناءً على كتابة من الوزير المسئول وفقاً لقواعد هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 10
+  article_text_ar: يمنح بأمر من جلالة الملك جوازات سفر سياسية أو خاصة للأشخاص الذين يرى منحها لهم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 11
+  article_text_ar: ينتهي حتماً وفي كل الحالات مفعول جوازات السفر السياسية والخاصة بانتهاء المهمة التي يمنح الجواز من أجلها والعودة إلى المملكة ويعاد الجواز لوزارة الخارجية ولا يجوز استعماله للسفر مرة أخرى إلا بتجديد صلاحيته ومنح حامله تأشيرة خروج، ولا يتجدد الجواز السياسي أو الخاص الممنوح لمهمة رسمية إلاّ بطلب من الجهة التي ترتبط بها تلك المهمة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 12
+  article_text_ar: تصدر جوازات السفر السياسية والخاصة من وزارة الخارجية وتعتبر صادرة بأمر صاحب الجلالة الملك وترقم بأرقام مسلسلة وتسجل في سجلات خاصة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 13
+  article_text_ar: تعطى تأشيرات الخروج لحاملي جوازات السفر السياسية والخاصة من وزارة الخارجية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 14
+  article_text_ar: تصدر وزارة الخارجية قراراً يعين فيه شكل جوازات السفر السياسية والخاصة وتصدر تلك الجوازات - باللغتين العربية والإنجليزية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 15
+  article_text_ar: ينتهي العمل بجوازات السفر السياسية أو الخاصة الحالية الممنوحة لأشخاص لا يستحقونها بمقتضى أحكام هذا النظام، ويستثنى من ذلك جوازات سفر أولئك الأشخاص الموجودين في خارج المملكة عند نشر هذا النظام فتسقط صلاحيات جوازاتهم عند عودتهم إلى المملكة شريطة ألا تمتد إقامتهم في الخارج أكثر من ستة أشهر بعد تاريخ تنفيذ هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false
+- article_ref: المادة 16
+  article_text_ar: يلغي هذا النظام نظام الجوازات السياسية والخاصة الصادر بالمرسوم الملكي رقم (57) وتاريخ 7 / 8 / 1380 هـ والقرارات والأوامر المخالفة لأحكامه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f5b4288e-5625-4cf3-8ce8-a9a700f17bf9/1
+  verified: false

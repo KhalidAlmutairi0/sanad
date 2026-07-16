@@ -1,0 +1,26 @@
+#  (نظام جباية الزكاة) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE253
+  name_ar: نظام جباية الزكاة
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: تعتبر أحكام المرسوم رقم (17 / 2 / 28 /3321) وتاريخ 21 المحرم 1370، خاصة بالأفراد والشركات الذين لا يحملون الرعوية السعودية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/25fed59a-2790-4a77-ab11-a9a700f2c5fd/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: تستوفى من الأفراد والشركات الذين يحملون الرعوية السعودية الزكاة الشرعية وفقا لأحكام الشريعة الإسلامية السمحاء.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/25fed59a-2790-4a77-ab11-a9a700f2c5fd/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: تعتبر أحكام هذا المرسوم نافذة اعتبارا من تاريخ تطبيق أحكام المرسوم رقم (17 / 2 / 28 /3321) وتاريخ 21 المحرم 1370.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/25fed59a-2790-4a77-ab11-a9a700f2c5fd/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: يبلغ هذا المرسوم لمن يلزم لتنفيذ أحكامه. التوقيع الملكي
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/25fed59a-2790-4a77-ab11-a9a700f2c5fd/1
+  verified: false

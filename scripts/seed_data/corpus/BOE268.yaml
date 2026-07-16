@@ -1,0 +1,266 @@
+#  (نظام نقابة السيارات) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE268
+  name_ar: نظام نقابة السيارات
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: تؤسس في المملكة العربية السعودية إدارة تكون مهمتها ترتيب وتنظيم نقل الحجاج وتسمى ( نقابة السيارات ) إنفاذا لأمر حضرة صاحب السمو الملكي ولي العهد المعظم الصادر برقم (142) في 11 / 2 / 1372 هـ.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: مرجع هذه النقابة المديرية العامة للحج والإذاعة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: مركز النقابة الرئيس بمكة المكرمة وتؤسس لها فروع في المدينة المنورة وفي جدة وفي غيرها من المدن حسب اللزوم وتبعا لاقتضاء ضرورة العمل.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: يعين للنقابة رئيس عام يتولى إدارة أعمالها ومسؤولياتها المدرجة في هذا النظام بمعاونة الموظفين التابعين له. ويتم تعيينه بترشيح من المديرية العامة للحج والإذاعة وموافقة المقام السامي عليه، ويجب ألا يكون من أصحاب الشركات ولا من المطوفين أو الوكلاء أو الأدلاء.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: 'تتكون للنقابة هيئة تتضامن مع الرئيس في الأعمال والمسؤوليات وتعمل تحت رئاسته وتتألف من: (أ) مندوب عن الإدارة العامة للحج والإذاعة . (ب) ممثلين للشركات لا يزيد عددهم عن أربعة أشخاص ينتخبهم أصحاب الشركات بدعوة من الرئيس في كل عام.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: تقوم النقابة بوضع الميزانية السنوية اللازمة لمركزها والفروع التابعة لها وتعرضها لمرجعها للتصديق عليها وفق الأصول.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: تعين النقابة الموظفين اللازمين لأعمالها في حدود ميزانيتها المصدقة وبموافقة مرجعها على ذلك، على أن يتم تعيين المعاونين للرئيس العام بمعرفة الرئيس المذكور وبموافقة المقام السامي عليهم، ويجب ألا يكونوا من أصحاب الشركات ولا من المطوفين أو الوكلاء أو الأدلاء.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: يخضع جميع موظفي النقابة للتعليمات الداخلية الخاصة بهم ولا يسري عليهم نظام الموظفين العام ولا التقاعد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: الإشراف التام على جميع السيارات الناقلة للحجاج.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: تسجيل الشركات التي تعمل في نقل الحجاج لديها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: تعيين لجنة للكشف على سيارات الشركات المخصصة لنقل الحجاج باشتراك مندوبين من إدارة الحج العامة ومديرية الأمن العام والنقابة مع مهندسين فنيين تنتخبهم للكشف على كل سيارة معدة لنقل الحجاج وإعطاء قرار بصلاحيتها للنقل أو عدم ذلك موقع عليه من كافة أعضاء لجنة الكشف، على ألا يتنافى مع الكشف المنصوص عليه في قرار مجلس الشورى رقم (161) في 26 / 8 / 368 .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: إعطاء كل سيارة صالحة للعمل تم الكشف عليها شهادة خاصة بموجب تقارير لجان الكشف موضح بها رقم السيارة والرقم المتسلسل للمكنة والشاسيه والكفرات بما في ذلك الكفر الاحتياطي وعدد الركاب، مع بيان نوعها وموديلها واسم الشركة التابعة لها ورقم وتاريخ تقرير لجنة الكشف عليها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: اتخاذ سجل خاص لتسجيل شهادات السيارات الموضحة في المادة السابقة (12) يكتب فيه جميع الإيضاحات الخاصة بالسيارة المعطاة لها الشهادة ويعتبر هو (السجل الأساسي) لسيارات الشركات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: توزيع الحجاج على الشركات بالنسبة المئوية وبموجب تعليمات التوزيع الموضحة في الباب الثالث من هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: استيفاء أجور النقل المقررة، على أن تقوم بمحاسبة أصحاب الشركات على صافي استحقاقهم يوميا.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: الاشتراك مع الجهات الحكومية ذات العلاقة في وضع وتحديد أجور النقل للحجاج في كل عام مع مراعاة الاعتدال في التحديد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السابعة عشرة
+  article_text_ar: ملاحظة كل ما يتعلق بمصلحة نقل الحجاج وترتيبه على أكمل وجه وفقا لهذا النظام والتعليمات الحكومية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثامنة عشرة
+  article_text_ar: إعداد جداول تفصيلية عن الحجاج القادمين بالبواخر والطائرات تشمل تواريخ وصولهم، ومواعيد سفرهم من إلى مكة المكرمة والمدينة المنورة، مع تواريخ عودتهم من المدينة إلى مكة، وذلك بمعاونة القسم المختص في إدارة الحج العامة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة التاسعة عشرة
+  article_text_ar: اتخاذ سجل خاص للحجاج المرحلين من قبلها يوضح فيه أجناسهم والشركات التي نقلتهم، مع التفصيلات اللازمة ويجب أن يتم ذلك حال ترحليهم فورا بدون تأخير.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة العشرون
+  article_text_ar: وضع الترتيب اللازم لنقل الحجاج إلى عرفات والعودة منها، على أن يكون معدا في غرة ذي الحجة على أساس العدد الوارد منهم فعلا، مع تقدير العدد المحتمل وروده بنسبة تخمينية، ويعرض على لجنة مكونة من مندوب عن وزارة الداخلية ومدير الأمن العام ومدير الحج العام للنظر فيه وإقراره .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الحادية والعشرون
+  article_text_ar: وضع تعليمات خاصة بالمهندسين والسائقين ومعاونيهم، تشمل ما لكل منهم وما عليه من واجبات وحقوق بالنسبة للجهات والشركات التي يعملون لديها وينتخبون من يمثلهم في النقابة حين وضع هذه التعليمات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثانية والعشرون
+  article_text_ar: يعتبر رئيس النقابة والموظفون المرتبطون به في المركز الرئيسي والفروع التابعة له مع أعضاء هيئة النقابة مسؤولين بالتسلسل أمام الجهة الحكومية المختصة عن جميع الأعمال المناطة بهم فيما يتعلق بشئون نقل الحجاج المدرجة في هذا النظام، كل ضمن نطاق عمله واختصاصه الذي تحدده التعليمات الداخلية التي تضعها النقابة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثالثة والعشرون
+  article_text_ar: تكون اجتماعات هيئة النقابة متصلة في موسم الحج للنظر في صالح نقل الحجاج ومسايرة حركات العمل، وتخضع هذه الاجتماعات لنظام الهيئات والمجالس الرسمية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الرابعة والعشرون
+  article_text_ar: تكون التبليغات والمخابرات بين مركز النقابة وفروعها وبينها وبين إدارة الحج بموجب تحارير ذات رقم مسلسل وقيد وتاريخ وما دعت سرعة العمل إلى تبليغه تليفونيا يجب أن يؤكد كتابيا.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الخامسة والعشرون
+  article_text_ar: للشركة التي تم تسجيلها في النقابة قبل غيرها من الشركات حق الأولية في النقل طبقا لمقتضى المادة (16)، ثم يكون الحق للتي تليها في التسجيل، وهكذا يجري الترتيب في هذه الأولية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السادسة والعشرون
+  article_text_ar: 'يكون توزيع الحجاج على الشركات حسبما يأتي: (أ‌) تعطى الشركة الأولى في التسجيل عشرين في المائة من حمولتها المسجلة من الحجاج.وباستكمال نسبتها المذكورة تعطى الشركة التي تليها نفس النسبة من حمولتها المسجلة وهكذا إلى أن يتم الدور على جميع الشركات بموجب حمولتها المسجلة، ويعاد التوزيع بنفس الترتيب، على أن يراعى تسلسل خاص لكل خط من خطوط النقل باستثناء خط عرفات. (ب‌) ينفذ في خط عرفات الترتيب الذي نصت عليه المادة (20) من هذا النظام.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السابعة والعشرون
+  article_text_ar: على النقابة قبل إحالة الحجاج إلى أية شركة أن تتأكد من استعداد تلك الشركة لنقل ما يحال إليها فورا، وفي حالة وقوع أي تأخير من تلك الشركة تسقط حصتها في النقل لتلك المرة فقط فيما عدا خط عرفات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثامنة والعشرون
+  article_text_ar: على النقابة في حالة عجز أية شركة عن نقل بعض الحمولة المحالة إليها في خط عرفات أن تقوم باستئجار السيارات اللازمة لنقل تلك الحمولة وتعود بالأجرة المدفوعة مضاعفة على تلك الشركة، ويكون الفائض من ذلك ضمن واردات النقابة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة التاسعة والعشرون
+  article_text_ar: على كل شركة أن تقوم بنقل الحجاج المحالين إليها من النقابة في خلال مدة لا تتجاوز اثنتي عشرة ساعة على أكبر تقدير.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثلاثون
+  article_text_ar: يتم نقل الحجاج من قبل الشركات بموجب اعتمادات مطبوعة متسلسلة تعطى من النقابة ويوضح فيها عدد الحجاج وأجناسهم وعدد الكبار منهم والأنصاف والأطفال ووجهة سفرهم وأسماء وكلائهم ومطوفهم مع إيضاح ما إذا كانت الرحلة مرجعة أو ذهابا فقط.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الحادية والثلاثون
+  article_text_ar: يجب أن يتم ترتيب نقل الحجاج من مكة بعد انتهاء نسك الحج في خلال أيام التشريق حسب نظام الأفواج المتبع.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثانية والثلاثون
+  article_text_ar: يجب على كل شركة ترغب في المساهمة في نقل الحجاج أن تتقدم أولا إلى النقابة بطلب تسجيلها وفق الشروط المنصوص عليها في هذا النظام على أن يسبق هذا الطلب تسجيلها لدى كاتب العدل بموجب نظام الشركات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثالثة والثلاثون
+  article_text_ar: يجب على الشركة طالبة التسجيل أن تقدم مع طلبها وثيقة تسجيل كاتب العدل .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الرابعة والثلاثون
+  article_text_ar: لا يكون لأية شركة حق التسجيل في النقابة إلا إذا بلغ الحد الأدنى لسيارتها مائة سيارة على أساس أن ثمانين في المائة أتوبيسات وعشرين في المائة سيارات صغيرة، وتراعى هذه النسبة للزيادة من الحد الأدنى في عموم الشركات بصورة إلزامية حتى نهاية عام 1373 هـ.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الخامسة والثلاثون
+  article_text_ar: يحق لكل شركة مسجلة في النقابة استيراد سيارات جديدة علاوة على موجودها المسجل مع مراعاة ما جاء في المادة (34) وتطبق عليها شرائط الكشف المدرجة في هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السادسة والثلاثون
+  article_text_ar: يجب على كل شركة أن تعين مديرا مسؤولا في مركزها الرئيسي ووكلاء في فروعها ابتداء من أول الموسم حتى نهايته وتقدم أسماءهم إلى النقابة ليكونوا معتمدين لديها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السابعة والثلاثون
+  article_text_ar: يشترط في المدير والوكلاء أن يكونوا سعوديين ويعتبرون مسئولين عن الشركات التي يمثلونها في جميع الإجراءات المتعلقة بنقل الحجاج.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثامنة والثلاثون
+  article_text_ar: يلزم على كل شركة أن تقدم للنقابة بيانا بعدد سياراتها موضح به أصناف تلك السيارات وعدد المقاعد لكل سيارة في موعد لا يتجاوز نهاية جمادى الآخرة من كل عام .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة التاسعة والثلاثون
+  article_text_ar: يجب على كل شركة أن تعين مركزا لإسعاف السيارات في كل من رابغ والمسجيد في طريق المدينة المنورة مزودة بالوقود والأدوات الاحتياطية والكفرات واللساتك وبمهندس خاص للإصلاح مع سيارة احتياطية خالية على أن يتم ذلك بترتيب وإشراف النقابة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الأربعون
+  article_text_ar: يجب على كل شركة أن توجد لديها المراكز المؤقتة اللازمة في كل من عرفات ومنى وتكون مستعدة للعمل ابتداء من اليوم الخامس في شهر ذي الحجة ومزودة بكافة الاستعدادات اللازمة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الحادية والأربعون
+  article_text_ar: يجب على الشركات أن تزود كل قافلة من قوافل الحجاج إلى المدينة المنورة بسيارة أوتوبيس خالية للاحتياط بسيارة أخرى لوري للمهندس والمندوبين الرسميين على أن تضع النقابة الترتيب اللازم لذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثانية والأربعون
+  article_text_ar: 'يجب على كل شركة أن تراعي تزويد كل سيارة مخصصة لنقل الحجاج بما يأتي: أ ) بأوعية الماء (القرب – والفناطيس). ب ) بالكفر واللستك الاحتياطي والآلة الرافعة مع العدة الاحتياطية الضرورية. ج ) بالحبال الثابتة ولوازمها الكاملة لربط الأمتعة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثالثة والأربعون
+  article_text_ar: يجب على الشركات أن تخضع للأوامر الحكومية فيما يختص بأمتعة الحجاج وإقامتهم في المدينة المنورة، وفيما يختص بالأجور المستحقة إعادتها للحجاج، وتبديل درجات الركوب.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الرابعة والأربعون
+  article_text_ar: يجب أن تقدم كل شركة بيانا يوميا للنقابة بسيارات الحجاج المرحلين من قبلها إلى المدينة المنورة وعددهم وجنسياتهم للاحتفاظ به لدى النقابة والوقوف على حركات الحجاج من قبل جهات الاختصاص.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الخامسة والأربعون
+  article_text_ar: يجري الكشف المنوه عنه في المادتين (11 و 12) سنويا من قبل النقابة ابتداء من شهر جمادى الأولى حتى نهاية رجب.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السادسة والأربعون
+  article_text_ar: يكون الكشف في المركز الرئيسي لعمل كل شركة باشعار من النقابة بعد أن تتقدم الشركة إليها بطلب كتابي مسجل.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السابعة والأربعون
+  article_text_ar: تقدم الشركة السابقة في الطلب على غيرها في الكشف، وفي حال ورود طلبات متعددة إلى النقابة في تاريخ واحد يقرع بينها في الأولية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثامنة والأربعون
+  article_text_ar: إذا ظهر للجنة الكشف عدم صلاح سيارة بعد الكشف عليها تحرر محضرا بذلك توضح فيه الأسباب، وما إذا كانت قابلة للإصلاح أم لا، وما يمكن إصلاحه تكلف الشركة بإصلاحه وإعادته للكشف قبل نهاية رجب.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة التاسعة والأربعون
+  article_text_ar: لا تحسب حمولة ما يكون تحت الإصلاح إلا بعد تصديق اللجنة على صلاحه في كشف ثاني تقرره اللجنة ضمن المدة المقررة واعتبارا من تاريخ هذا التصديق.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الخمسون
+  article_text_ar: يستبعد من سجل النقابة نهائيا حمولة كل سيارة تقرر اللجنة عدم صلاحها في الكشف الثاني عليها، وتلزم الشركة بإكمال النصاب فيما دون المائة سيارة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الحادية والخمسون
+  article_text_ar: 'يجب أن يلاحظ في تسجيل السيارات الجديدة ما يأتي: ( أ ) السيارات الجديدة التي يتعذر استيرادها قبل انتهاء مدة الكشف الرسمية تسجل حمولتها لشركاتها من تاريخ ورودها وإتمام الكشف عليها، على أن تقدم الشركة المستوردة للسيارات الجديدة ما يثبت طلبها الفعلي للسيارات وفتح اعتماداتها وأسباب التأخير بمستندات قانونية مقبولة لدى النقابة. ( ب ) في حالة قيام الشركة المسجلة بطلب سيارات جديدة لا تحسب لها حمولة السيارات الجديدة إلا بعد ورودها فعلا، وبعد انتهاء الكشف عليها في موعد الكشف على السيارات الجديدة ولا تعطي حصتها من النقل إلا بعد استكمال دورة التوزيع على جميع الشركات، إن كان الدور الحالي للتوزيع قد تخطاها. ( جـ ) أما الشبكات الجديدة التي تقدمت بطلب التسجيل في موعده الرسمي وطلبت بالفعل سياراتها ولم ترد تلك السيارات إلا بعد موعد الكشف الأول فلا تحسب حصتها في النقل بعد ورودها فعلاً إلا بعد إتمام الكشف عليها في استكمال دورة التوزيع على جميع الشركات بحيث يحسب تسلسلها في نهاية الدورة القائمة حينئذ.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثانية والخمسون
+  article_text_ar: يعتبر آخر موعد لقبول الكشف على السيارات الجديدة المستوردة من الخارج هو نهاية شوال بصفة قاطعة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثالثة والخمسون
+  article_text_ar: يبدأ موسم حج كل عام من غرة شهر رجب.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الرابعة والخمسون
+  article_text_ar: تعتبر نهاية جمادى الأولى من كل عام آخر موعد لقبول تسجيل الشركات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الخامسة والخمسون
+  article_text_ar: إذا بلغ عدد الشركات المخصصة لنقل الحجاج في المستقبل مبلغا يكفي لسد الحاجة إليها فللنقابة أن تتخذ قرارا إجماعيا بإيقاف تسجيل شركات جديدة على أن توضح في هذا القرار الأسباب التفصيلية الداعية لذلك. ولا يعتبر هذا القرار نافذا إلا بعد تصديق المقام السامي عليه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السادسة والخمسون
+  article_text_ar: إذا زاد عدد السيارات الجديدة المخصصة لنقل الحجاج على الحد المطلوب فللنقابة أن تتخذ قرارا جماعيا بإيقاف زيادة الحمولات المسجلة للشركات أن توضح في هذا القرار الأسباب التفصيلية الداعية لذلك، ولا يعتبر هذا القرار نافذا إلا بعد تصديق المقام السامي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة السابعة والخمسون
+  article_text_ar: يحسم من صافي استحقاق كل شركة في أجور النقل اثنان في المائة مقابل مصاريف النقابة وفروعها على أن يرد إلى الشركات ما فاض منه بنسبة ما أخذ منها، ويجب أن يرجع على الشركات بالعجز الحاصل في المحسوم ما دام ضمن الميزانية المقررة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثامنة والخمسون
+  article_text_ar: تقوم النقابة بتسليم استحقاق الشركات من أجور نقل الحجاج للأشخاص الذين تختارهم الشركات بموجب وكالة رسمية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة التاسعة والخمسون
+  article_text_ar: يجب أن تلاحظ شركات نقل الحجاج أن يكون استخدام المهندسين والسائقين لديها بعقود رسمية موسمية على الأقل، بمعنى أنه لا يمكن انتقال مهندس أو سائق من شركة إلى أخرى أو ترك العمل طيلة مدة الموسم، ويكون الطرفان ملزمين باحترامه وإنفاذه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الستون
+  article_text_ar: للمهندس والسائقين أن يتقدموا بشكواهم ضد الشركات إلى النقابة على أن تكون ضمن استدعاء رسمي شامل للأسباب الداعية لها، وعلى النقابة أن تنظر وتفصل حالا في تلك الشكوى بما يضمن الحقوق وعلى أساس العقد والتعليمات الخاصة بالمهندسين والسائقين.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الحادية والستون
+  article_text_ar: للنقابة في حالة ثبوت حقوق مادية للمهندسين أو السائقين الشاكين طرف الشركات أن تقوم بتسديدها لأصحابها وحسمها من استحقاقات الشركة التي يعملون لديها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثانية والستون
+  article_text_ar: تقويم أم القرى الهجري هو التقويم الرسمي للنقابة وشركات النقل للحجاج.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الثالثة والستون
+  article_text_ar: للنقابة حق النظر والفصل في الخلافات والحوادث التي تقع فيما بين الشركات أو بينها وبين المستأجرين بناء على مراجعتهم، وفي حالة تعذر الفصل من قبلها عليها أن تضع القرار اللازم وترفعه إلى المراجع المختصة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false
+- article_ref: المادة الرابعة والستون
+  article_text_ar: يحل هذا النظام محل الأنظمة السابقة للنقابة ويعتبر ساري المفعول من حين تصديقه من المقام السامي، وتقوم الجهة المختصة بإبلاغه إلى الدوائر ذات العلاقة ونشره في الصحف، ولا يمكن تعديل أو إضافة مادة على هذا النظام إلا بموافقة المقام السامي على ذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/cddb94e2-167b-4158-af5f-a9a700f2de58/1
+  verified: false

@@ -1,0 +1,58 @@
+#  (تنظيم الهيئة الملكية للجبيل وينبع) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE457
+  name_ar: تنظيم الهيئة الملكية للجبيل وينبع
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: تشكل " هيئة ملكية " لتنفيذ خطة التجهيزات الأساسية اللازمة لإعداد منطقتي الجبيل وينبع كمنطقتين صناعيتين، ويكون لهذه الهيئة شخصية معنوية مستقلة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: يكون للهيئة مجلس إدارة يتكون من رئيس وستة أعضاء يرشحهم النائب الأول لرئيس مجلس الوزراء ، ويصدر بتعيينهم أمر ملكي لمدة ثلاث سنوات قابلة للتجديد، وتحدد مكافآتهم بقرار من مجلس الوزراء
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: يرتبط رئيس مجلس الإدارة بالنائب الأول لرئيس مجلس الوزراء مباشرة، وعلى النائب الأول رفع تقرير شهري لنا عن سير أعمال الهيئة وأخذ توجيهاتنا بالنسبة لتذليل ما يعترض أعمالها من صعوبات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: مجلس الإدارة هو السلطة المهيمنة دون غيره على شئون تنفيذ خطة التجهيزات الأساسية بالمنطقتين المشار إليهما وفي سبيل ذلك يختار الأسلوب المناسب للتنفيذ.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: يكون للهيئة ميزانية مستقلة، ويجوز أن تضع ميزانية لبرامجها تزيد عن سنة واحدة وفقا لما تتطلبه المدة التقديرية لتنفيذ الخطة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: ترصد الدولة سنويا الأموال اللازمة لتنفيذ خطة التجهيزات الأساسية بالمنطقتين بعد إقرارها من مجلس الوزراء وتوضع باسم الهيئة في حساب مستقل، ويحدد الصرف منها بقرار من مجلس الإدارة دون التقيد بإجراءات الصرف المتبعة في الأجهزة الحكومية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يعيّن لكل منطقة من منطقتي الهيئة بقرار من مجلس الوزراء مدير عام في المرتبة الخامسة عشرة بناء على ترشيح من رئيس مجلس الإدارة تكون مهمته تنفيذ قرارات مجلس الإدارة ورفع توصياته بشأنها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: دون الإخلال بأوجه الرقابة المعمول بها في الدولة يعين مجلس الإدارة مراقبا أو أكثر للحسابات لمراجعة الحسابات المصروفة والرفع بشأنها لمجلس الإدارة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: يصدر مجلس الإدارة اللوائح الإدارية والمالية اللازمة دون التقيد بالقواعد المالية والإدارية المعمول بها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: ترفع الهيئة تقريرا سنويًّا لمجلس الوزراء توضح فيه أوجه نشاطها وإنجازاتها وبرامجها المستقبلية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: يعمل بهذا المرسوم من تاريخ صدوره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: وقد نظم مشروع مرسوم ملكي بذلك صورته مرافقة لهذا.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0ad8fc8e-73f8-48b6-9c5b-a9a700f2974b/1
+  verified: false

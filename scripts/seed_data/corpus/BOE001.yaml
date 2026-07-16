@@ -1,0 +1,342 @@
+#  (النظام الأساسي للحكم) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE001
+  name_ar: النظام الأساسي للحكم
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: المملكة العربية السعودية، دولة عربية إسلامية، ذات سيادة تامة، دينها الإسلام، ودستورها كتاب الله تعالى وسنة رسوله صلى الله عليه وسلم. ولغتها هي اللغة العربية، وعاصمتها مدينة الرياض.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: عيدا الدولة، هما عيدا الفطر والأضحى، وتقويمها، هو التقويم الهجري.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: 'يكون علم الدولة كما يلي : أ - لونه أخضر.ب - عرضه يساوي ثلثي طوله.ج - تتوسطه كلمة : (لا إله إلا الله محمد رسول الله) تحتها سيف مسلول، ولا ينكس العلم أبدا.ويبين النظام الأحكام المتعلقة به.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: شعار الدولة سيفان متقاطعان، ونخلة وسط فراغهما الأعلى، ويحدد النظام نشيد الدولة وأوسمتها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: أ - نظام الحكم في المملكة العربية السعودية، ملكي. ب - يكون الحكم في أبناء الملك المؤسس عبد العزيز بن عبد الرحمن الفيصل آل سعود و أبناء الأبناء، ويبايع الأصلح منهم للحكم على كتاب الله تعالى وسنة رسوله صلى الله عليه وسلم. جـ - يختار الملك ولي العهد، ويعفيه بأمر ملكي. د - يكون ولي العهد متفرغا لولاية العهد، وما يكلفه به الملك من أعمال. هـ - يتولى ولي العهد سلطات الملك عند وفاته حتى تتم البيعة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: يبايع المواطنون الملك على كتاب الله تعالى، وسنة رسوله، وعلى السمع والطاعة في العسر واليسر والمنشط والمكره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يستمد الحكم في المملكة العربية السعودية سلطته من كتاب الله تعالى، و سنة رسوله. وهما الحاكمان على هذا النظام وجميع أنظمة الدولة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: يقوم الحكم في المملكة العربية السعودية على أساس العدل والشورى والمساواة، وفق الشريعة الإسلامية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: الأسرة ، هي نواة المجتمع السعودي، ويربى أفرادها على أساس العقيدة الإسلامية، وما تقتضيه من الولاء والطاعة لله، ولرسوله، ولأولي الأمر، واحترام النظام وتنفيذه، وحب الوطن، والاعتزاز به وبتاريخه المجيد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: تحرص الدولة على توثيق أواصر الأسرة، والحفاظ على قيمها العربية والإسلامية، ورعاية جميع أفرادها، وتوفير الظروف المناسبة لتنمية ملكاتهم وقدراتهم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: يقوم المجتمع السعودي على أساس من اعتصام أفراده بحبل الله، وتعاونهم على البر والتقوى، والتكافل فيما بينهم، وعدم تفرقهم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: تعزيز الوحدة الوطنية واجب، وتمنع الدولة كل ما يؤدي للفرقة و الفتنة والانقسام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: يهدف التعليم إلى غرس العقيدة الإسلامية في نفوس النشء، وإكسابهم المعارف والمهارات، وتهيئتهم ليكونوا أعضاء نافعين في بناء مجتمعهم، محبين لوطنهم، معتزين بتاريخه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: جميع الثروات التي أودعها الله في باطن الأرض، أو في ظاهرها، أو في المياه الإقليمية أو في النطاق البري والبحري الذي يمتد إليه اختصاص الدولة، وجميع موارد تلك الثروات، ملك للدولة، وفقا لما يبينه النظام. ويبين النظام وسائل استغلال هذه الثروات، وحمايتها، وتنميتها لما فيه مصلحة الدولة وأمنها واقتصادها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: لا يجوز منح امتياز أو استثمار مورد من موارد البلاد العامة إلا بموجب نظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: للأموال العامة حرمتها، وعلى الدولة حمايتها، وعلى المواطنين والمقيمين المحافظة عليها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة عشرة
+  article_text_ar: الملكية، ورأس المال، والعمل، مقومات أساسية في الكيان الاقتصادي والاجتماعي للمملكة. وهي حقوق خاصة تؤدي وظيفة اجتماعية، وفق الشريعة الإسلامية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة عشرة
+  article_text_ar: تكفل الدولة حرية الملكية الخاصة وحرمتها، ولا ينزع من أحد ملكه إلا للمصلحة العامة على أن يعوض المالك تعويضا عادلا.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة عشرة
+  article_text_ar: تحظر المصادرة العامة للأموال، ولا تكون عقوبة المصادرة الخاصة إلا بحكم قضائي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة العشرون
+  article_text_ar: لا تفرض الضرائب والرسوم إلا عند الحاجة، وعلى أساس من العدل، ولا يجوز فرضها، أو تعديلها، أو إلغاؤها، أو الإعفاء منها إلا بموجب النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية والعشرون
+  article_text_ar: تجبى الزكاة وتنفق في مصارفها الشرعية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية والعشرون
+  article_text_ar: يتم تحقيق التنمية الاقتصادية والاجتماعية، وفق خطة علمية عادلة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة والعشرون
+  article_text_ar: تحمي الدولة عقيدة الإسلام، وتطبق شريعته، وتأمر بالمعروف وتنهى عن المنكر، وتقوم بواجب الدعوة إلى الله.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة والعشرون
+  article_text_ar: تقوم الدولة بإعمار الحرمين الشريفين وخدمتهما، وتوفر الأمن والرعاية لقاصديهما، بما يمكن من أداء الحج والعمرة والزيارة بيسر وطمأنينة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة والعشرون
+  article_text_ar: تحرص الدولة على تحقيق آمال الأمة العربية والإسلامية في التضامن وتوحيد الكلمة، وعلى تقوية علاقاتها بالدول الصديقة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة والعشرون
+  article_text_ar: تحمي الدولة حقوق الإنسان، وفق الشريعة الإسلامية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة والعشرون
+  article_text_ar: تكفل الدولة حق المواطن وأسرته، في حالة الطوارئ، والمرض، والعجز، والشيخوخة، وتدعم نظام الضمان الاجتماعي، وتشجع المؤسسات والأفراد على الإسهام في الأعمال الخيرية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة والعشرون
+  article_text_ar: تيسر الدولة مجالات العمل لكل قادر عليه، وتسن الأنظمة التي تحمي العامل وصاحب العمل.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة والعشرون
+  article_text_ar: ترعى الدولة العلوم والآداب والثقافة، وتعنى بتشجيع البحث العلمي، وتصون التراث الإسلامي والعربي، وتسهم في الحضارة العربية والإسلامية والإنسانية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثلاثون
+  article_text_ar: توفر الدولة التعليم العام، وتلتزم بمكافحة الأمية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية والثلاثون
+  article_text_ar: تعنى الدولة بالصحة العامة، وتوفر الرعاية الصحية لكل مواطن.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية والثلاثون
+  article_text_ar: تعمل الدولة على المحافظة على البيئة وحمايتها وتطويرها ومنع التلوث عنها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة والثلاثون
+  article_text_ar: تنشئ الدولة القوات المسلحة، وتجهزها من أجل الدفاع عن العقيدة، والحرمين الشريفين، والمجتمع، والوطن.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة والثلاثون
+  article_text_ar: الدفاع عن العقيدة الإسلامية، والمجتمع ، والوطن واجب على كل مواطن، ويبين النظام أحكام الخدمة العسكرية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة والثلاثون
+  article_text_ar: يبين النظام أحكام الجنسية العربية السعودية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة والثلاثون
+  article_text_ar: توفر الدولة الأمن لجميع مواطنيها والمقيمين على إقليمها، ولا يجوز تقييد تصرفات أحد، أو توقيفه، أو حبسه، إلا بموجب أحكام النظام .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة والثلاثون
+  article_text_ar: للمساكن حرمتها، ولا يجوز دخولها بغير إذن صاحبها، ولا تفتيشها، إلا في الحالات التي يبينها النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة والثلاثون
+  article_text_ar: العقوبة شخصية، ولا جريمة ولا عقوبة إلا بناء على نص شرعي، أو نص نظامي، ولا عقاب إلا على الأعمال اللاحقة للعمل بالنص النظامي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة والثلاثون
+  article_text_ar: تلتزم وسائل الإعلام والنشر وجميع وسائل التعبير بالكلمة الطيبة، وبأنظمة الدولة، وتسهم في تثقيف الأمة ودعم وحدتها، ويحظر ما يؤدي إلى الفتنة، أو الانقسام، أو يمس بأمن الدولة وعلاقاتها العامة، أو يسيء إلى كرامة الإنسان وحقوقه، وتبين الأنظمة كيفية ذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الأربعون
+  article_text_ar: المراسلات البرقية، والبريدية، والمخابرات الهاتفية، وغيرها من وسائل الاتصال، مصونة، ولا يجوز مصادرتها، أو تأخيرها، أو الاطلاع عليها، أو الاستماع إليها، إلا في الحالات التي يبينها النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية والأربعون
+  article_text_ar: يلتزم المقيمون في المملكة العربية السعودية بأنظمتها، وعليهم مراعاة قيم المجتمع السعودي واحترام تقاليده ومشاعره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية والأربعون
+  article_text_ar: تمنح الدولة حق اللجوء السياسي إذا اقتضت المصلحة العامة ذلك، وتحدد الأنظمة والاتفاقيات الدولية قواعد وإجراءات تسليم المجرمين العاديين.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة والأربعون
+  article_text_ar: مجلس الملك ومجلس ولي العهد، مفتوحان لكل مواطن، ولكل من له شكوى أو مظلمة، ومن حق كل فرد مخاطبة السلطات العامة فيما يعرض له من الشئون.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة والأربعون
+  article_text_ar: تتكون السلطات في الدولة من :- السلطة القضائية.- السلطة التنفيذية.- السلطة التنظيمية.وتتعاون هذه السلطات في أداء وظائفها، وفقا لهذا النظام وغيره من الأنظمة، والملك هو مرجع هذه السلطات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة والأربعون
+  article_text_ar: مصدر الإفتاء في المملكة العربية السعودية ، كتاب الله تعالى، وسنة رسوله صلى الله عليه وسلم، ويبين النظام ترتيب هيئة كبار العلماء وإدارة البحوث العلمية والإفتاء واختصاصاتها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة والأربعون
+  article_text_ar: القضاء سلطة مستقلة، ولا سلطان على القضاة في قضائهم لغير سلطان الشريعة الإسلامية .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة والأربعون
+  article_text_ar: حق التقاضي مكفول بالتساوي للمواطنين والمقيمين في المملكة ، ويبين النظام الإجراءات اللازمة لذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة والأربعون
+  article_text_ar: تطبق المحاكم على القضايا المعروضة أمامها أحكام الشريعة الإسلامية ، وفقا لما دل عليه الكتاب والسنة، وما يصدره ولي الأمر من أنظمة لا تتعارض مع الكتاب والسنة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة والأربعون
+  article_text_ar: مع مراعاة ما ورد في المادة الثالثة والخمسين من هذا النظام، تختص المحاكم في الفصل في جميع المنازعات والجرائم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخمسون
+  article_text_ar: الملك أو من ينيبه معنيون بتنفيذ الأحكام القضائية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية والخمسون
+  article_text_ar: يبين النظام تكوين المجلس الأعلى للقضاء واختصاصاته، كما يبين ترتيب المحاكم واختصاصاتها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية والخمسون
+  article_text_ar: يتم تعيين القضاة وإنهاء خدمتهم بأمر ملكي ، بناء على اقتراح من المجلس الأعلى للقضاء ، وفقا لما يبينه النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة والخمسون
+  article_text_ar: يبين النظام ترتيب ديوان المظالم واختصاصاته.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة والخمسون
+  article_text_ar: يبين النظام ارتباط هيئة التحقيق والادعاء العام ، وتنظيمها واختصاصاتها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة والخمسون
+  article_text_ar: يقوم الملك بسياسة الأمة سياسة شرعية طبقا لأحكام الإسلام ، ويشرف على تطبيق الشريعة الإسلامية ، والأنظمة، والسياسة العامة للدولة ، وحماية البلاد والدفاع عنها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة والخمسون
+  article_text_ar: الملك هو رئيس مجلس الوزراء ، ويعاونه في أداء مهامه أعضاء مجلس الوزراء ، وذلك وفقا لأحكام هذا النظام وغيره من الأنظمة، ويبين نظام مجلس الوزراء صلاحيات المجلس فيما يتعلق بالشئون الداخلية والخارجية ، وتنظيم الأجهزة الحكومية ، والتنسيق بينها، كما يبين الشروط اللازم توافرها في الوزراء ، وصلاحياتهم، وأسلوب مساءلتهم، وكافة شئونهم، ويعدل نظام مجلس الوزراء واختصاصاته، وفقا لهذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة والخمسون
+  article_text_ar: أ - يعين الملك نواب رئيس مجلس الوزراء و الوزراء الأعضاء بمجلس الوزراء ، ويعفيهم بأمر ملكي .ب - يعتبر نواب رئيس مجلس الوزراء ، و الوزراء الأعضاء بمجلس الوزراء ، مسئولين بالتضامن أمام الملك عن تطبيق الشريعة الإسلامية ، والأنظمة، و السياسة العامة للدولة .جـ - للملك حل مجلس الوزراء وإعادة تكوينه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة والخمسون
+  article_text_ar: يعين الملك من في مرتبة الوزراء ونواب الوزراء ، ومن في المرتبة الممتازة ، ويعفيهم من مناصبهم بأمر ملكي ، وذلك وفقا لما يبينه النظام.ويعتبر الوزراء ورؤساء المصالح المستقلة، مسئولين أمام رئيس مجلس الوزراء عن الوزارات والمصالح التي يرأسونها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة والخمسون
+  article_text_ar: يبين النظام أحكام الخدمة المدنية ، بما في ذلك المرتبات ، والمكافآت ، والتعويضات ، والمزايا ، والمعاشات التقاعدية .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الستون
+  article_text_ar: الملك هو القائد الأعلى لكافة القوات العسكرية ، وهو الذي يعين الضباط ، وينهي خدماتهم، وفقا للنظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية والستون
+  article_text_ar: يعلن الملك حالة الطوارئ ، والتعبئة العامة ، والحرب ، ويبين النظام أحكام ذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية والستون
+  article_text_ar: للملك إذا نشأ خطر يهدد سلامة المملكة ، أو وحدة أراضيها، أو أمن شعبها ومصالحه، أو يعوق مؤسسات الدولة عن أداء مهامها، أن يتخذ من الإجراءات السريعة ما يكفل مواجهة هذا الخطر. وإذا رأى الملك أن يكون لهذه الإجراءات صفة الاستمرار فيتخذ بشأنها ما يلزم نظاما.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة والستون
+  article_text_ar: يستقبل الملك ، ملوك الدول ورؤساءها، ويعين ممثليه لدى الدول، ويقبل اعتماد ممثلي الدول لديه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة والستون
+  article_text_ar: يمنح الملك الأوسمة، وذلك على الوجه المبين بالنظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة والستون
+  article_text_ar: للملك تفويض بعض الصلاحيات لولي العهد بأمر ملكي .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة والستون
+  article_text_ar: يصدر الملك في حالة سفره إلى خارج المملكة أمرا ملكيا بإنابة ولي العهد في إدارة شئون الدولة، ورعاية مصالح الشعب، وذلك على الوجه المبين بالأمر الملكي .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة والستون
+  article_text_ar: تختص السلطة التنظيمية بوضع الأنظمة واللوائح، فيما يحقق المصلحة، أو يرفع المفسدة في شئون الدولة، وفقا لقواعد الشريعة الإسلامية ، وتمارس اختصاصاتها وفقا لهذا النظام ونظامي مجلس الوزراء ومجلس الشورى.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة والستون
+  article_text_ar: ينشأ مجلس للشورى ، ويبين نظامه طريقة تكوينه، وكيفية ممارسته لاختصاصاته، واختيار أعضائه.وللملك حل مجلس الشورى وإعادة تكوينه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة والستون
+  article_text_ar: للملك أن يدعو مجلس الشورى ، ومجلس الوزراء ، إلى اجتماع مشترك، وله أن يدعو من يراه لحضور هذا الاجتماع لمناقشة ما يراه من أمور.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السبعون
+  article_text_ar: تصدر الأنظمة ، والمعاهدات ، والاتفاقيات الدولية ، والامتيازات ، ويتم تعديلها بموجب مراسيم ملكية .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية والسبعون
+  article_text_ar: تنشر الأنظمة في الجريدة الرسمية، وتكون نافذة المفعول من تاريخ نشرها، ما لم ينص على تاريخ آخر.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية والسبعون
+  article_text_ar: أ - يبين النظام أحكام إيرادات الدولة ، وتسليمها إلى الخزانة العامة للدولة.ب - يجري قيد الإيرادات وصرفها بموجب الأصول المقررة نظاما.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة والسبعون
+  article_text_ar: لا يجوز الالتزام بدفع مال من الخزانة العامة إلا بمقتضى أحكام الميزانية ، فإن لم تتسع له بنود الميزانية وجب أن يكون بموجب مرسوم ملكي .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الرابعة والسبعون
+  article_text_ar: لا يجوز بيع أموال الدولة ، أو إيجارها، أو التصرف فيها، إلا بموجب النظام .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الخامسة والسبعون
+  article_text_ar: تبين الأنظمة أحكام النقد ، والمصارف ، والمقاييس ، والمكاييل ، والموازين .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السادسة والسبعون
+  article_text_ar: يحدد النظام السنة المالية للدولة، وتصدر الميزانية بموجب مرسوم ملكي ، وتشتمل على تقدير الإيرادات والمصروفات لتلك السنة، وذلك قبل بدء السنة المالية بشهر على الأقل، فإذا حالت أسباب اضطرارية دون صدورها وحلت السنة المالية الجديدة، وجب السير على ميزانية السنة السابقة حتى صدور الميزانية الجديدة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة السابعة والسبعون
+  article_text_ar: تعد الجهة المختصة الحساب الختامي للدولة عن العام المالي المنقضي، وترفعه إلى رئيس مجلس الوزراء .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثامنة والسبعون
+  article_text_ar: يجري على ميزانيات الأجهزة ذوات الشخصية المعنوية العامة ، وحساباتها الختامية، ما يجري على ميزانية الدولة وحسابها الختامي من أحكام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة التاسعة والسبعون
+  article_text_ar: تتم الرقابة اللاحقة على جميع إيرادات الدولة ومصروفاتها، و الرقابة على كافة أموال الدولة المنقولة والثابتة ، ويتم التأكد من حسن استعمال هذه الأموال والمحافظة عليها، ورفع تقرير سنوي عن ذلك إلى رئيس مجلس الوزراء .ويبين النظام جهاز الرقابة المختص بذلك وارتباطه، واختصاصاته.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثمانون
+  article_text_ar: تتم مراقبة الأجهزة الحكومية ، والتأكد من حسن الأداء الإداري ، وتطبيق الأنظمة . ويتم التحقيق في المخالفات المالية والإدارية ، ويرفع تقرير سنوي عن ذلك إلى رئيس مجلس الوزراء .ويبين النظام الجهاز المختص بذلك، وارتباطه، واختصاصاته.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الحادية والثمانون
+  article_text_ar: لا يخل تطبيق هذا النظام بما ارتبطت به المملكة العربية السعودية مع الدول والهيئات والمنظمات الدولية من معاهدات واتفاقيات .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثانية والثمانون
+  article_text_ar: مع عدم الإخلال بما ورد في المادة السابعة من هذا النظام، لا يجوز بأي حال من الأحوال تعطيل حكم من أحكام هذا النظام، إلا أن يكون ذلك مؤقتا في زمن الحرب، أو في أثناء إعلان حالة الطوارئ . وعلى الوجه المبين بالنظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false
+- article_ref: المادة الثالثة والثمانون
+  article_text_ar: لايجري تعديل هذا النظام إلا بنفس الطريقة التي تم بها إصداره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/16b97fcb-4833-4f66-8531-a9a700f161b6/1
+  verified: false

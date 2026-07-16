@@ -1,0 +1,38 @@
+#  (نظام الميداليات المدنية والعسكرية) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE096
+  name_ar: نظام الميداليات المدنية والعسكرية
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: تُحدَّث ميدالية باسم ( الاستِحقاق ).
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e1fd0b90-ced3-4402-ad60-a9a700f1f755/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: تُمنح هذه الميدالية بأمر ملكي بناءً على التِماس الإدارات المُختصة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e1fd0b90-ced3-4402-ad60-a9a700f1f755/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: 'تشتمل ميدالية الاستِحقاق السعوديّ على ثلاث درجات: الأولى : مُذهبة.الثانية : فضية.الثالثة : برونزية.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e1fd0b90-ced3-4402-ad60-a9a700f1f755/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: تُمنح ميدالية "الاستِحقاق" إلى المدنيين، ولا تُمنح لأول مرة إلا من الدرجة الثالثة باستثناء الحالات المنصوص عليها في المادة السادسة من شروط منح وسام الملك عبدالعزيز .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e1fd0b90-ced3-4402-ad60-a9a700f1f755/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: 'يُحدَّد فيما يلي العدد الأقصى من الرعايا السعوديين الذين يُمكِن منحُهم ميدالية " الاستِحقاق " أو ترفيعُهم من درجة إلى أُخرى خِلال السنة الجارية: - ميدالية الدرجة الأولى : المُذهبة.- ميدالية الدرجة الثانية : الفصية.- ميدالية الدرجة الثالثة : البرونزية.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e1fd0b90-ced3-4402-ad60-a9a700f1f755/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: تُطبَّق أحكام المواد 5 و6 و7 و8، من نِظام شروط منح وسام الملك عبدالعزيز على كُل من يُرشح لنيل ميدالية " الاستحقاق " أو يحملها، أمَّا تطبيق الأحكام المُتعلِّقة بحالات سحب الميدالية وتنفيذ التدابير المُتَّخذة بشأنِها فيجرى وِفقاً لما جاء في المادة الحادية عشرة من نِظام الأوسِّمة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e1fd0b90-ced3-4402-ad60-a9a700f1f755/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: 'تُحدَّد أوصاف ميدالية " الاستحقاق " كما يلي: 1 - تكون الميدالية من المعدن مُستديرة الشكل قطر دائرتِها (35) مليمتر، ويشتمل وجه المدالية على دائرة من الميناء الخضراء مُحاطة بخط، توشح في أعلاها بخيوط ويُكتب في أسفلِها عبارة "المملكة العربية السعودية"، ويُكتب وسط دائرة الميناء الخضراء عبارة "الاستِحقاق".2 - تُعلق الميدالية بشريطة من القماش الموشح طولها (55) مليمترا وعرضِها (35) مليمتر ذات لون أبيض في الوسط ولون أخضر في كُلٍ مِن الجانبين بشكل عامودي مرتبطتين بحلقة تُمثل العقال. ويُطرز الشعار السعوديّ في وسط الخط العامودي الأبيض.3 - للتفريق بين الدرجات يُرسم الشعار وتُكتب العبارات والخيوط التي توشح الميدالية بِها كما يلي: للدرجة الأولى : باللون الذهبي.للدرجة الثانية : باللون الفضي.للدرجة الثالثة : باللون البرونزي.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e1fd0b90-ced3-4402-ad60-a9a700f1f755/1
+  verified: false

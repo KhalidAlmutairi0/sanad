@@ -1,0 +1,78 @@
+#  (نظام دارة الملك عبد العزيز) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE007
+  name_ar: نظام دارة الملك عبد العزيز
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: تنشئ بموجب هذا النظام دارة تسمى (دارة الملك عبد العزيز) وتكون هيئة مستقلة لها الشخصية الاعتبارية، وتلحق إداريا بوزير المعارف ويكون مقرها مدينة الرياض
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: الغرض من إنشاء الدارة، هو خدمة تاريخ المملكة وجغرافيتها وآدابها وآثارها الفكرية والعمرانية خاصة، والجزيرة العربية وبلاد العرب والإسلام عامة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: 'تقوم الدارة تحقيقًا لأغراضها بالأمور الآتية : أ - إنشاء مكتبة تضم كل ما يخدم أغراض الدارة، وتنظم أعمالها لائحة يصدرها مجلس الإدارة. ب - تحقيق الكتب التي تخدم تاريخ المملكة وجغرافيتها وآدابها وآثارها العمرانية وطبعها وترجمتها بشكل خاص، وتاريخ الجزيرة العربية وبلاد العرب والإسلام بشكل عام. ج - إعداد بحوث ودراسات ومحاضرات وندوات عن سيرة الملك عبد العزيز خاصة، وعن المملكة وحكامها وأعلامها قديمًا وحديثًا بصفة عامة. د - إنشاء قاعة تذكارية تضم كل ما يصور حياة الملك عبد العزيز، وآثار الدولة السعودية منذ نشأتها. هـ - منح جائزة سنوية باسم (جائزة الملك فيصل) لمؤلف أحسن كتاب يتفق مع أغراض الدارة. و - إصدار مجلة ثقافية تخدم أغراض الدارة. ز - مايراه مجلس الإدارة محققا لأغراض الدارة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: 'يشكل للدارة مجلس إدارة على النحو التالي: وزير المعارف رئيساً وكيل وزارة المعارف للشئون الفنية عضواً وكيل جامعة الرياض عضواً أمين عام الدارة عضواً ثلاثة من ذوي المكانة العلمية يعينون بموافقة سامية، بناء على ترشيح رئيس مجلس إدارة الدارة .'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: يكون للدارة هيئة استشارية مؤلفة من عدة مستشارين، من أصحاب المؤهلات أو الخبرات يعينون بموافقة سامية بناء على ترشيح رئيس مجلس الإدارة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: 'مجلس الإدارة هو المتصرف في شئون الدارة وأمورها، وله كافة الصلاحيات اللازمة لتحقيق أهدافها، وله أن يضع ما يلزم من اللوائح، والتعليمات لحسن سير العمل وفقًا لهذا النظام، وله بوجه خاص : أ - وضع السياسة العامة للدارة، ومراقبة تنفيذها. ب - إصدار جميع اللوائح اللازمة لحسن سير العمل. ج - منح الجوائز والإعانات والمكافآت لتشجيع البحوث والدراسات. د - إيفاد مندوبين عن الدارة لحضور المؤتمرات والقيام بالزيارات العلمية. هـ - قبول الهبات والوصايا والمنح والجوائز. و - مناقشة ميزانية الدارة، وإقرار رفعها إلى الجهات المختصة. ز - إقرار الحساب الختامي للدارة، ورفعه إلى الجهة المختصة. ح - حق تفويض كل سلطاته وصلاحياته أو بعضها لرئيسه.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يجتمع مجلس الإدارة مرة كل ثلاثة أشهر، ويجوز عند الضرورة أن يجتمع أكثر من ذلك بدعوة من رئيسه، أو بناء على طلب ثلاثة من أعضائه أو من الأمين العام للدارة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: يعتبر الاجتماع قانونيًّا بحضور أربعة أعضاء على الأقل، وتصدر القرارات بعد التصويت بالأكثرية المطلقة، وفي حال التساوي يرجح جانب الرئيس.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: يمنح رئيس وأعضاء مجلس الإدارة مكافأة عن حضور جلسات المجلس، وجلسات اللجان التي يشترك فيها، وتحدد المكافأة بقرار من مجلس الوزراء .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: يكون للدارة أمين عام يتمتع بصلاحيات تحددها اللائحة التنفيذية لهذا النظام فيما يتعلق بأمور الدارة، ويعين بقرار من رئيس مجلس الإدارة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: 'يتولى أمين عام الدارة إدارتها وتصريف شئونها، ويختص بما يلي : أ - تمثيل الدارة في صلاتها بالغير. ب - تنفيذ قرارات مجلس الإدارة. جـ - اقتراح خطط وبرامج الدارة وتنفيذها والإشراف عليها بعد موافقة مجلس الإدارة. د - إعداد مشروع ميزانية الدارة ، وحسابها الختامي. هـ - الصرف وفقًا للوائح المالية للدارة. و - تقديم أي اقتراحات يراها كفيلة بحسن سير العمل.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: يكون للدارة ميزانية خاصة تدرج تحت فصل مستقل ضمن ميزانية الدولة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: 'تتكون إيرادات الدارة وأموالها من : أ - الاعتمادات التي تخصص لها في ميزانية الدولة. ب - الهبات، والإعانات، والمنح، والوصايا، وما في حكمها. جـ - الموارد الأخرى كالمبيعات التي يقرر مجلس الإدارة إضافتها إلى أموالها.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: تدرج المنح، والإعانات التي يقرر مجلس الإدارة قبولها في حساب خاص بالدارة، وتصرف في الأغراض المخصصة لها وفقًا للشروط التي يحددها مجلس الإدارة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: يضع مجلس الإدارة لائحة تنظم القواعد المالية المسبقة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: يخضع موظفو الدارة لنظام التقاعد، ولنظام الموظفين فيما لا يتعارض مع ما جاء في هذا النظام ولوائحه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false
+- article_ref: المادة السابعة عشرة
+  article_text_ar: مع عدم الإخلال بمراقبة ديوان المراقبة، يعين مجلس الإدارة مراقبًا أو أكثر للحسابات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0057fd8d-8ad4-48f9-b02f-a9a700f16a48/1
+  verified: false

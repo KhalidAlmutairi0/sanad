@@ -1,0 +1,38 @@
+#  (نظام الوزراء ونواب الوزراء وموظفي المرتبة الممتازة) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE144
+  name_ar: نظام الوزراء ونواب الوزراء وموظفي المرتبة الممتازة
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: مادة (1)
+  article_text_ar: يتم تعيين الوزراء ومن في مرتبتِهم ونواب الوزراء وموظفي المرتبة المُمتازة وإعفاؤهم من مناصِّبهم بأمر ملكي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b2a002e4-a3da-474b-9735-a9a700f2386c/1
+  verified: false
+- article_ref: مادة (2)
+  article_text_ar: يُحدَّد الراتب الشهري للوزراء ومن في مرتبتِهم بعشرة آلاف ريال.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b2a002e4-a3da-474b-9735-a9a700f2386c/1
+  verified: false
+- article_ref: مادة (3)
+  article_text_ar: يُحدَّد الراتب الشهري لنواب الوزراء وموظفي المرتبة الممتازة بثمانية آلاف ريال.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b2a002e4-a3da-474b-9735-a9a700f2386c/1
+  verified: false
+- article_ref: مادة (4)
+  article_text_ar: يُمنح الوزراء ومن في مرتبتِهم ونواب الوزراء وموظفو المرتبة الممتازة إجازة سنوية يُحدِّد رئيس مجلس الوزراء مُدتها ووقت التمتع بِها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b2a002e4-a3da-474b-9735-a9a700f2386c/1
+  verified: false
+- article_ref: مادة (5)
+  article_text_ar: يمنح الوزراء ومن في مرتبتِهم ونواب الوزراء وموظفو المرتبة الممتازة، في حالة المرض إجازة مرضية وِفق ما يراه رئيس مجلس الوزراء .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b2a002e4-a3da-474b-9735-a9a700f2386c/1
+  verified: false
+- article_ref: مادة (6)
+  article_text_ar: يسري نِظام مُحاكمة الوزراء الصادر بالمرسوم الملكي رقم (88) وتاريخ 22 / 9 / 1380 هـ، على نواب الوزراء وموظفي المرتبة الممتازة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b2a002e4-a3da-474b-9735-a9a700f2386c/1
+  verified: false
+- article_ref: مادة (7)
+  article_text_ar: تصدُر اللائحة التنفيذية لهذا النظام بقرار من رئيس مجلس الوزراء .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b2a002e4-a3da-474b-9735-a9a700f2386c/1
+  verified: false

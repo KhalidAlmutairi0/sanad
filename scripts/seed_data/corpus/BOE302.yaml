@@ -1,0 +1,94 @@
+#  (لائحة المدارس الأجنبية) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE302
+  name_ar: لائحة المدارس الأجنبية
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: 'يقصد بالمصطلحات الآتية ما يأتي: المدارس الأجنبية: هي التي تطبق مناهج تعليمية غير المناهج السعودية. الوزير: وزير المعارف. الوزارة: وزارة المعارف'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: تنظم هذه اللائحة وضع المدارس الأجنبية الخاصة بالجاليات المقيمة في المملكة، لتوفير التعليم المناسب لأولادها، ضمن ضوابط محددة، وبما يحقق مواصلة تعليمهم عند عودتهم إلى بلدانهم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: تتولى الوزارة الترخيص والإشراف على المدارس الأجنبية وفروعها من خلال الجهة المختصة فيها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: المدارس الأجنبية منشآت تعليمية خاصة، يتم تمويلها من الرسوم الدراسية والتبرعات والهبات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: لا يجوز قبول الطلاب السعوديين في المدارس الأجنبية، عدا من تقضي الضرورة التحاقهم فيها من الطلاب القادمين من الخارج الذين لا تمكنهم ظروفهم الدراسية من الالتحاق بالمدارس السعودية، فللوزير النظر في الموافقة على قبولهم مدة تحددها ظروف كل طالب في كل سنة، بما لا يتجاوز ثلاث سنوات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: يكون الترخيص بفتح أي مدرسة أجنبية بموافقة الوزير بناء على اقتراح مجلس الإشراف المنصوص عليه في المادة الثامنة من هذه اللائحة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يقتصر المستوى الدراسي للمدارس الأجنبية على رياض الأطفال والمراحل الابتدائية والمتوسطة والثانوية أو ما يعادلها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: يكون مجلس للإشراف على المدارس الأجنبية برئاسة الوزير، وعضوية كل من:وكيل وزارة الداخلية.وكيل وزارة الخارجية.وكيل وزارة المعارف.وكيل الرئيس العام لتعليم البنات.ويكون المشرف على المدارس الأجنبية بالوزارة أميناً للمجلس.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: 'يضع مجلس الإشراف التعليمات والقواعد اللازمة لتنفيذ هذه اللائحة، وله على وجه الخصوص الموافقة على الآتي: 1 - القواعد والإجراءات اللازمة لمنح التراخيص.2 - الطلبات التي تقدم لافتتاح المدارس الأجنبية.3 - البرامج والمناهج التعليمية.4 - الرسوم الدراسية.5 - التبرعات والهبات التي تمنح للمدارس الأجنبية.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: تكون اجتماعات مجلس الإشراف مرتين خلال العام في الأقل، ويجوز دعوة المجلس للانعقاد بطلب من رئيسه أو باقتراح أحد الأعضاء وموافقة الرئيس.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: تتولى كل مدرسة أجنبية مسؤولية تنظيم مختلف جوانب العمل داخل المدرسة، بالإضافة إلى ما يتعلق بتحديد مستواها في الأوساط التعليمية، والأكاديمية المختلفة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: يكون في كل مدرسة أجنبية مجلس إدارة لرعاية مصالحها، يمثل فيه أولياء أمور الطلاب، وللوزارة حق المشاركة في حضور اجتماعاته.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: تقوم كل مدرسة أجنبية بتدريس مواد لتعليم مبادئ اللغة العربية والحضارة الإسلامية وتاريخ المملكة وجغرافيتها بما لا يقل عن ساعة واحدة في الأسبوع.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: تقدم كل مدرسة أجنبية لمجلس الإشراف الميزانية التقديرية السنوية باللغة العربية، وذلك قبل بداية كل عام دراسي، تتضمن بياناً للاحتياجات الإدارية والفنية والمالية ومصادر تأمينها وتمويلها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: تقدم كل مدرسة أجنبية تقريراً سنوياً إلى مجلس الإشراف عن سير العمل فيها، وتنفيذ ميزانيتها، وبيان أسباب المخالفات والتجاوزات إن وجدت.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: 'يعاقب من يخالف أحكام هذه اللائحة أو القرارات الصادرة تنفيذاً لها بعقوبة أو أكثر من العقوبات الآتية: 1 - لفت النظر.2 - غرامة مالية لا تزيد على خمسين ألف ريـال.3 - إلغاء الترخيص. وللوزير في كل الأحوال أن يأمر بإزالة المخالفة خلال أسبوعين على الأكثر من تاريخ الإبلاغ بأمر الإزالة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة السابعة عشرة
+  article_text_ar: 'تكون بالوزارة لجنة بقرار من الوزير برئاسة وكيل الوزارة وعضوية كل من: 1 - مندوب من وزارة الداخلية.2 - مندوب من وزارة الخارجية.3 - المشرف على المدارس الأجنبية بالوزارة.4 - أحد المتخصصين في الشريعة الإسلامية. وتتولى هذه اللجنة التحقيق في مخالفات أحكام هذه اللائحة أو القرارات الصادرة تنفيذاً لها، والتوصية بالعقوبة المناسبة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الثامنة عشرة
+  article_text_ar: توقع العقوبة بقرار من الوزير بناءً على ما توصي به اللجنة المنصوص عليها في المادة السابعة عشرة من هذه اللائحة، ويجوز التظلم من القرارات الصادرة بعقوبة الغرامة أو إلغاء الترخيص أمام ديوان المظالم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة التاسعة عشرة
+  article_text_ar: يتم بإشراف الوزارة تصفية أي من المدارس الأجنبية في حالة انتهاء الغرض منها أو إلغاء الترخيص، وذلك بالتنسيق مع الجهات ذات العلاقة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة العشرون
+  article_text_ar: تتم تسوية أوضاع المدارس الأجنبية القائمة وقت نفاذ هذه اللائحة بما يتفق مع أحكامها خلال فترة اثني عشر شهراً من تاريخ نفاذها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
+- article_ref: المادة الحادية والعشرون
+  article_text_ar: تنشر هذه اللائحة في الجريدة الرسمية، ويعمل بها بعد تسعين يوماً من تاريخ نشرها وتلغي كل ما يتعارض معها من أحكام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/db470744-edce-47a9-8f45-a9a700f201f3/1
+  verified: false
