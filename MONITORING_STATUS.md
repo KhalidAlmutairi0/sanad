@@ -41,13 +41,12 @@ placeholder scaffold exists at `scripts/seed_data/corpus/sama/` but is not fetch
 1. **Live-structure verification for the 3 new adapters.** Their fetch mechanism + robots status
    are verified; the article-level PARSE selectors are best-effort. Each needs one pass against a
    live page to confirm the selector and article segmentation, then flip `enabled: true`.
-2. **Runtime deps not yet in the API image.** `run-check`'s browser fetch needs
-   `playwright` + `chromium` (`python -m playwright install chromium`) and `lxml` (now in
-   `requirements.txt`) in the API/worker image; `pypdf` is already present. Until then the browser
-   fetch degrades gracefully to "fetch failed" (all-None), never crashing. In the sovereign
-   deployment this fetch should run inside the egress-controlled sandbox (nftables allowlist
-   already includes `laws.boe.gov.sa`; add `moj.gov.sa` / `cma.gov.sa` / `uqn.gov.sa` before
-   enabling those).
+2. **Runtime deps are now in the API image.** `playwright` + Chromium (installed via
+   `playwright install --with-deps chromium`, browser at `/ms-playwright`), `lxml`, and `pypdf`
+   are all baked in, so `run-check`'s browser fetch runs on the server. Chromium is kept lean
+   (headless, no GPU/extensions, capped JS heap) and fetches one page at a time — sized for the
+   8 GB VM. Egress: `laws.boe.gov.sa` is allowlisted; add `moj.gov.sa` / `cma.gov.sa` /
+   `uqn.gov.sa` to the sandbox allowlist before enabling those adapters.
 3. **Scheduling is manual by design** (per current decision). The function is written so wiring a
    scheduler later is additive (call `run-check` from cron/arq) — not done now.
 4. **UQN PDF article segmentation** is heuristic (gazette PDFs aren't cleanly article-delimited).

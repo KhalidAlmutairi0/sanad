@@ -23,6 +23,9 @@ pypdf==5.1.0
 python-docx==1.1.2
 # HTML parsing for per-source monitoring adapters (boe/moj/cma).
 lxml==5.3.0
+# Headless-browser fetch for regulatory monitoring (run-check). Chromium is installed in the
+# Dockerfile via `playwright install --with-deps chromium`.
+playwright==1.49.1
 # Offline OCR fallback for scanned PDFs (Tesseract ara+eng via poppler rasterization).
 pytesseract==0.3.13
 pdf2image==1.17.0
