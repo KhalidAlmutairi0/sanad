@@ -9,11 +9,15 @@ resolver: 1.1.1.1          # DNS resolver reachable from inside the namespace
 refresh_seconds: 60
 
 domains:
-  # Regulators
+  # Regulators / official sources. Each was robots-checked before adding
+  # (scripts/check_allowlist_robots.py re-verifies on demand — run it before enabling a source).
   - sama.gov.sa
   - sdaia.gov.sa
   - zatca.gov.sa
   - hrsd.gov.sa
   - laws.boe.gov.sa
+  - moj.gov.sa        # MOJ adapter — robots: User-agent * no Disallow
+  - cma.gov.sa        # CMA adapter — robots: content allowed (SharePoint infra paths disallowed)
+  - uqn.gov.sa        # Umm Al-Qura gazette adapter — robots: content allowed (avoid ?page=/ajax)
   # LLM API (only when LLM_PROVIDER routes egress through this sandbox)
   - api.anthropic.com
