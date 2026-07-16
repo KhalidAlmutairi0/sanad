@@ -1,0 +1,38 @@
+#  (نظام تعداد السكان العام) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE113
+  name_ar: نظام تعداد السكان العام
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: يجرى تعداد عام للسكان في جميع أنحاء المملكة العربية السعودية، يحدد موعد إجرائه بقرار من مجلس الوزراء في موعد لا يتجاوز أربع سنوات من تاريخ صدور هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0fceb9eb-d143-4d87-8a47-a9a700f20f2e/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: يكون وزير المالية والاقتصاد الوطني مسؤولا عن إجراء هذا التعداد، بواسطة مصلحة الإحصاءات العامة التابعة لوزارة المالية والاقتصاد الوطني ، ويكون له صرف التعويضات والمكافآت وإبرام العقود في حدود ما يقتضيه الأمر دون تقيد بأحكام نظام الموظفين العام أو الأنظمة المالية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0fceb9eb-d143-4d87-8a47-a9a700f20f2e/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: على جميع موظفي ومنسوبي الدولة من مدنيين وعسكريين، أن يقدموا للموظفين الذين لهم علاقة بأعمال التعداد المزودين ببطاقات شخصية صادرة من مصلحة الإحصاءات العامة ، كل مساعدة وتسهيل يحتاجونها للقيام بأعمالهم، وأن يزودوهم بجميع المعلومات التي يطلبونها منهم، وأن يقوموا بالأعمال التي تدخل في نطاق اختصاصهم إن كانت هناك أعمال لازمة للتحضير للتعداد أو تنفيذه. ويعاقب كل موظف تعمد عدم أداء المساعدة أو تهاون في أدائها طبقا للأنظمة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0fceb9eb-d143-4d87-8a47-a9a700f20f2e/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: يحظرعلى كل شخص تعويق المسؤولين عن التعداد عن أداء مهمتهم أو منعهم من وضع أية علامات أو أرقام على أبواب أو جدران المساكن التي يملكونها أو يشغلونها أو غيرها، ويجب على كل شخص أن يجيب على الأسئلة المتعلقة بتعداد السكان التي يوجهها إليه المسؤولون عنه في حدود معرفته.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0fceb9eb-d143-4d87-8a47-a9a700f20f2e/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: تنشر نتائج التعداد على شكل جداول إحصائية عامة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0fceb9eb-d143-4d87-8a47-a9a700f20f2e/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: يصدر وزيرالمالية والاقتصاد الوطني اللوائح والقرارات اللازمة لتنفيذ هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0fceb9eb-d143-4d87-8a47-a9a700f20f2e/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يلغي هذا النظام كافة الأنظمة السابقة له والمتعارضة معه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/0fceb9eb-d143-4d87-8a47-a9a700f20f2e/1
+  verified: false

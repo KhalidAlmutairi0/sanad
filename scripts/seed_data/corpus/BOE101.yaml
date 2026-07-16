@@ -1,0 +1,74 @@
+#  (نظام إنتاج المواد التعليمية المساعدة وتسويقها) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE101
+  name_ar: نظام إنتاج المواد التعليمية المساعدة وتسويقها
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: 'يقصد بالألفاظ والعبارات الآتية أينما وردت في هذا النظام المعاني المبينة أمامها ما لم يقتض السياق خلاف ذلك : المادة التعليمية : كل صيغة تعرض محتويات المنهج، أو جزءًا منه. الجهة المعنية : الجهة الحكومية التي صيغت المادة التعليمية طبقًا لمناهجها. المالك : مالك المادة التعليمية ، أو من له حق التصرف فيها. الترخيص : إجازة المادة التعليمية بعد إنتاجها بصيغتها النهائية. التسويق : أي صورة من صور عرض المادة التعليمية للتداول بثمن أو بدون ثمن. شهادة التأهيل : الشهادة التي تمنحها الجهة المعنية لمن يكون مؤهلًا للعمل في مجال إنتاج المواد التعليمية، سواء كان شخصًا طبيعيًّا أو اعتباريًّا.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: يسري هذا النظام على المادة التعليمية المنتجة محليًّا أو خارجيًّا.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: 'يحظر إنتاج أو تسويق أي مادة تعليمية تحتوي على: 1 - مخالفة أحكام الشريعة الإسلامية والسياسة العامة للدولة وأنظمتها .2 - مخالفة سياسة التعليم المعتمدة في المملكة.3 - تقديم حلول مباشرة لمسائل الكتاب المدرسي أو تمارينه.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: على كل من يرغب في مزاولة إنتاج المادة التعليمية ، الحصول على شهادة التأهيل للإنتاج من الجهة المعنية .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: أ - على كل من ينتج أو يستورد أو ينشر مادة تعليمية الحصول قبل تسويقها على الترخيص بذلك من الجهة المعنية ، وعلى الجهة المعنية الموافقة عليها أو رفضها خلال ستين يومًا من تسلمها مستوفية الشروط، وإلا عدت مجازة.ب - على الجهة المعنية قبل البدء بفحص المادة تحصيل رسم الفحص على أساس مبلغ قدره مائتا ريال عن كل ساعة عمل يحتاجها الفحص، على ألا يقل ما يدفعه المالك عن ألف ريال. وليس له الحق في استرداده؛ سواء أرخص للمادة التعليمية أم لم يرخص لها.وتحدد اللائحة التنفيذية لهذا النظام المعايير المناسبة لتقدير عدد ساعات الفحص.ج - تحدد الجهة المعنية إجراءات الفحص وأساليبه، وما يتطلبه من نماذج ووسائل ضرورية لذلك .د - في حالة إجازة المادة التعليمية تصدر الجهة المعنية ترخيصًا بإنتاجها، أو تسويقها، أو نشرها، موقعًا من رئيس الجهة المعنية ، أو من يفوضه. ولا يعد هذا الترخيص نهائيًّا إلا بعد فسح المادة التعليمية من وزارة الثقافة والإعلام طبقًا لنظام المطبوعات والنشر.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: في حالة إجراء أي تعديل يحتاج إلى فحص يلتزم المالك بتنفيذ ما تراه الجهة المعنية لازمًا لذلك، وبدفع الرسم المحدد في الفقرة (ب) من المادة (الخامسة).
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: تضع كل جهة معنية قواعد الاستعانة بمؤهلين لفحص المادة التعليمية ، وتخصص رسوم الفحص الواردة في هذا النظام لمكافأة الفاحصين- سواء كانوا من خارج تلك الجهة أو من داخلها- خارج وقت دوامهم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: لا تتحمل الجهة المعنية أي مسؤولية عن خسائر مالك المادة التعليمية إذا حصل تطوير لمناهج الجهة المعنية يتعارض كليًّا أو جزئيًّا - مع المادة التعليمية المرخص لها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: على منتج المادة التعليمية ، أو مسوقها، أن يودع نسخة لدى الجهة المعنية ، وأن يلتزم بما ينص عليه نظام الإيداع فيما يخص مكتبة الملك فهد الوطنية .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: على منتجي المواد التعليمية التي أنتجت قبل تطبيق هذا النظام، أو مسوقيها، تقديم طلب إلى الجهة المعنية للحصول على شهادة التأهيل و الترخيص اللازمين خلال مدة لا تتجاوز تسعة أشهر من تاريخ نفاذ هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: يُكوَّن في كل جهة معنية - بقرار من رئيسها- لجنة من أربعة أعضاء يكون أحدهم مستشارًا نظاميًّا، تتولي النظر في مخالفات هذا النظام وتطبيق الجزاءات المنصوص عليها، وتعتمد قراراتها من رئيس الجهة، ويجوز التظلم منها أمام ديوان المظالم خلال مدة أقصاها ستون يوماً من تاريخ الإبلاغ بالقرار.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: يعاقب كل من ينشر أي مادة تعليمية أو ينتجها أو يسوقها قبل الحصول على شهادة التأهيل ، أو الترخيص اللازم لها، أو كان هذا الترخيص غير ساري المفعول؛ بغرامة مالية بحد أعلى قدره مائتا ألف ريال، ويجوز الحكم بإيقاف المادة التعليمية محل المخالفة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: تتولى كل جهة معنية تطبيق أحكام هذا النظام كل فيما يخصه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: يصدر وزير التربية والتعليم - بعد الاتفاق مع الجهات المعنية- اللائحة التنفيذية لهذا النظام، خلال مائة وثمانين يومًا من تاريخ نشره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: يلغي هذا النظام كل ما يتعارض معه من أحكام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: يعمل بهذا النظام بعد مائة وثمانين يومًا من تاريخ نشره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/dbc3e41b-e877-48f2-a213-a9a700f1fdab/1
+  verified: false

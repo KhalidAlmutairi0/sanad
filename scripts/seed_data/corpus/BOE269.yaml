@@ -1,0 +1,30 @@
+#  (نظام حماية خطوط السكك الحديدية) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE269
+  name_ar: نظام حماية خطوط السكك الحديدية
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: أ - تعتبر المائتي متر من مركز خط السكة الحديد على كلا الجانبين ملكا عاما للدولة، وتسمى منطقة أراضي السكة الحديد.ب - ويجوز بقرار من مجلس الوزراء بناء على اقتراح من وزير المواصلات إنقاص هذه المسافة في بعض المناطق وفقا لما تقتضيه المصلحة العامة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/748dc7f1-acae-43a2-b536-a9a700f2dfa3/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: لا يجوز وضع اليد على هذه المنطقة ولا تملكها بأية صورة من صور التملك، ولا الانتفاع بها، ولا استعمالها بأي وجه من وجوه الاستعمال الدائم أو المؤقت أو العارض.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/748dc7f1-acae-43a2-b536-a9a700f2dfa3/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: 'لا يجوز إلا في الأحوال وبالشروط التي تعتبرها إدارة السكة الحديد ؛ ما يلي: أ - وقوف الأشخاص أو العربات أو السيارات أو الحيوانات داخل منطقة أراضي السكة الحديد.ب - المرور على خطوط وجسور السكة أو اجتيازها أو ترك الحيوانات تمر عليها أو تجتازها.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/748dc7f1-acae-43a2-b536-a9a700f2dfa3/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: في حالة التعرض لمنطقة أراضي السكة الحديد بأحد صور التعرض المنصوص عليها في المادة الثانية، يكون لمصلحة السكة الحديد بموجب قرار يصدره مديرها العام إزالة التعرض بالطرق الإدارية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/748dc7f1-acae-43a2-b536-a9a700f2dfa3/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: أ - فضلا عن إزالة التعرض بالطرق الإدارية؛ يحكم على المتعرض بغرامة لا تقل عن ألف ريال ولا تزيد على خمسة آلاف ريال، وإذا تكرر التعرض تضاعف الغرامة مع الحبس لمدة لا تقل عن شهر ولا تزيد على ستة أشهر، ويلزم المتعرض في جميع الأحوال بالتعويضات ومصاريف الإزالة.ب - يحكم على كل من يرتكب إحدى المخالفات المنصوص عليها في المادة الثالثة بالغرامة التي لا تزيد على خمسمائة ريال، ويلتزم بتعويض جميع الخسائر التي قد تنشأ من مخالفته.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/748dc7f1-acae-43a2-b536-a9a700f2dfa3/1
+  verified: false

@@ -1,0 +1,90 @@
+#  (نظام مكافحة التدخين) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE217
+  name_ar: نظام مكافحة التدخين
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: يهدف هذا النظام إلى مكافحة التدخين، باتخاذ جميع الإجراءات والخطوات اللازمة على مستوى الدولة والمجتمع والأفراد ؛ سعياً إلى الحد من عادة التدخين بجميع أنواعه عند الأفراد، وفي مراحل العمر المختلفة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: يقصد بالتدخين تعاطي التبغ ومشتقاته، ويشمل ذلك السجائر والسيجار والجراك والتنباك والمعسل وأي منتج يدخل التبغ في مكوناته، سواء تم ذلك عن طريق السجائر أو السيجار أو الغليون أو النشوق أو الشيشة أو المضغ أو التخزين أو أي طريقة أخرى .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: تحظر زراعة أو تصنيع التبغ ومشتقاته في المملكة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: تزاد الرسوم على التبغ ومشتقاته، بقرار من مجلس الوزراء.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: يجب أن يكون موضحاً على علبة التبغ ومشتقاته البيانات الإيضاحية والتحذيرية التي تحددها اللائحة التنفيذية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: لا يفسح للتبغ ومشتقاته بشكل نهائي إلا بعد تحليل عينات منه في المختبرات التي تحددها اللائحة التنفيذية، للتأكد من مطابقتها للمواصفات التي تعدها الجهة المختصة بالتنسيق مع وزارة الصحة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: 'يمنع التدخين في الأماكن الآتية: 1 - الأماكن والساحات المحيطة بالمساجد. 2 - الوزارات والمصالح الحكومية والمؤسسات والهيئات العامة وفروعها، والجهات العامة الأخرى في الدولة. 3 - المؤسسات التعليمية والصحية والرياضية والثقافية، والاجتماعية والخيرية. 4 - الأماكن المخصصة للعمل في الشركات والمؤسسات والهيئات والمصانع والبنوك وما في حكمها. 5 - وسائل النقل العامة برية أو جوية أو بحرية، وفق ما تحدده اللائحة التنفيذية.6 - أماكن تصنيع الطعام والمواد الغذائية والمشروبات وتجهيزها وتعبئتها. 7 - مواقع إنتاج البترول ومشتقاته ونقله وتوزيعه وتكريره ومحطات توزيع الوقود والغاز وبيعهما. 8 - المستودعات والمصاعد ودورات المياه. 9 - الأماكن العامة التي لم ترد في الفقرات السابقة، على أنه في حالة إيجاد مواقع للمدخنين في الأماكن التي تصنف ضمن هذه الفقرة، فيجب على الشخص المسؤول عنها مراعاة أن تكون معزولة وفي أضيق الحدود، ولا يدخلها من يقل عمره عن ثمانية عشر عاماً. وتحدد اللائحة التنفيذية معايير تطبيق هذه الفقرة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: 'للحد من بيع التبغ ومشتقاته يراعى ما يأتي : 1 - ألَّا يباع إلا داخل عبوة مغلقة تحتوي على العدد أو الكمية التي تحددها اللائحة التنفيذية. 2 - ألَّا يباع بآلات البيع الذاتي.3 - ألا يباع داخل وسائل النقل العامة. 4 - ألَّا يباع لمن تقل أعمارهم عن ثمانية عشر عاماً. 5 - ألا تسجل براءات الاختراع المتعلقة به. 6 - ألَّا يخفض سعره، وألَّا يقدم على شكل عينات مجانية أو هدايا. 7 - عدم استيراد أو بيع أو تقديم منتجات تحمل دعايةً للتبغ ومشتقاته. 8 - وضع ملصق في مكان البيع يحوي تحذيراً صحياً بمضار التدخين.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: يمنع استيراد وبيع ألعاب الأطفال والحلوى المصنعة على هيئة سجائر أو أي أداة من وسائل التدخين .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: 1 - يمنع الإعلان والترويج للتبغ ومشتقاته بأي وسيلة من وسائل الإعلان أو الإعلام السعودية. 2 - تحذف مشاهد تعاطي التبغ ومشتقاته من الأفلام والمسلسلات والبرامج والمطبوعات التي تعرض في السعودية، وكل ما يشجع على التدخين.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: على كل الجهات الحكومية المسؤولة عن الشؤون الإسلامية، والتعليم، والإعلام، والرياضة، والصحة، والشؤون الاجتماعية، عمل برامج توعية لمكافحة التدخين بشكل مستمر وبطريقة فعالة ومبتكرة، وحث القطاع الأهلي للمشاركة في هذه البرامج.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: تتولى الوزارات والمصالح الحكومية والمؤسسات والهيئات العامة وفروعها، والجهات العامة الأخرى في الدولة، والمؤسسات التعليمية والصحية والرياضية والثقافية والاجتماعية والخيرية، ومؤسسات ومنشآت القطاع الخاص وفروعها؛ مسؤولية ضبط وتحرير المخالفات وإيقاع الغرامات.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: يعاقب كل مخالف لأحكام المادة (الثالثة) من هذا النظام بغرامة مالية مقدارها (20.000) عشرون ألف ريال مع إزالة المخالفة على حسابه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: يعاقب كل من يتعاطى التدخين مخالفاً أحكام المادة (السابعة) من هذا النظام بغرامة مالية مقدارها (200) مائتا ريال.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: فيما لم يرد في شأنه نص خاص بالعقوبة، يعاقب كل من يرتكب أي مخالفة لأي حكم من أحكام هذا النظام بغرامة لا تتجاوز (5000) خمسة آلاف ريال، وتضاعف العقوبة في حالة العَوْد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: يجوز لمن صدرت ضده عقوبة من العقوبات المنصوص عليها في هذا النظام، التظلم أمام الجهة المختصة، خلال المدة النظامية المقررة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة السابعة عشرة
+  article_text_ar: لا تخل العقوبات المنصوص عليها في هذا النظام بأي عقوبة أشد ينص عليها نظام آخر .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة الثامنة عشرة
+  article_text_ar: تخصص جميع الغرامات المحصلة بموجب أحكام هذا النظام لدعم جهود التوعية وتشجيع الجمعيات الأهلية على مكافحة التدخين ونشرها على مستوى المملكة. وينشأ لهذا الغرض حساب بنكي يصرف منه بحسب التعليمات التي يصدرها وزير الصحة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة التاسعة عشرة
+  article_text_ar: يصدر وزير الصحة اللائحة التنفيذية لهذا النظام بالتنسيق مع الجهات المعنية، خلال ستة أشهر من تاريخ نشره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false
+- article_ref: المادة العشرون
+  article_text_ar: يعمل بهذا النظام بعد سنة من تاريخ نشره في الجريدة الرسمية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93b6f7f3-1083-46e7-b30e-a9a700f291b0/1
+  verified: false

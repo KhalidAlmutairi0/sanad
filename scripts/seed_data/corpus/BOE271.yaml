@@ -1,0 +1,42 @@
+#  (نظام الموانئ والمرافئ والمنائر البحرية) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE271
+  name_ar: نظام الموانئ والمرافئ والمنائر البحرية
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: يطبق هذا النظام على جميع الموانئ والمرافئ البحرية بالمملكة، وتعين بقرار من وزير الداخلية ووزير المواصلات الحدود الجغرافية لكل ميناء أو مرفأ، والمنطقة التابعة له.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: 'كل مخالفة لأحكام هذا النظام أو اللوائح التي تصدر تنفيذا له تتم إزالتها في جميع الحالات، ويجازى مرتكبها بواحدة أو أكثر من العقوبات الآتية: أ - الإيقاف عن العمل مؤقتا لمدة لا تتجاوز سنة.ب - سحب الرخصة والحرمان من مزاولة العمل نهائيا.ج - غرامة أقصاها خمسون ألف ريال.د - السجن لمدة أقصاها خمس سنوات.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: تسقط الدعوى ضد المتهم بمضي ثلاث سنوات على تاريخ وقوع المخالفة المنسوبة إليه، وتنقطع هذه المدة بأي إجراء من إجراءات التحقيق أو المحاكمة، وتسري المدة من جديد ابتداء من آخر إجراء، ويسقط الجزاء بعد مضي خمس سنوات على تاريخ صدور القرار النهائي به دون تنفيذه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: القرارات الصادرة بتوقيع جزاء تعتبر نهائية وواجبة التنفيذ بانقضاء ثلاثين يوما على تاريخ إشعار صاحب الشأن بها دون أن يتظلم منها، ويستثنى من ذلك القرارات المشتملة على توقيع جزاء السجن، فلا يجوز تنفيذها إلا بعد تصديق رئيس مجلس الوزراء عليها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: لكل من صدر بحقه قرار بتوقيع جزاء بمقتضى أحكام النظام واللوائح الصادرة تنفيذا له؛ التظلم من قرار الجزاء بدعوى مخالفته للأحكام المذكورة، على أن يكون التظلم مكتوبا ومشتملا على الأسباب المؤيدة له، وأن يقدم لديوان المظالم خلال مدة الثلاثين يوما المشار إليها في المادة (4) السابقة. ويفصل ديوان المظالم مباشرة في التظلم، ثم يرفع النتيجة لرئيس مجلس الوزراء للنظر.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: يضع مجلس الوزراء القواعد التنظيمية اللازمة لهذا النظام وتنشر قراراته وكذلك اللوائح الصادرة تنفيذا له بجريدة أم القرى.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يحل هذا النظام محل نظام مديرية مصلحة خفر السواحل وتوابعها في كل ما يتعلق بالموانئ والمرافئ والمنائر، ويلغي كل ما يتعارض معه من الأنظمة الأخرى. وتقوم وزارة المواصلات بتحصيل الرسوم المعمول بها عن خدمات الموانئ، حتى يتم اعتماد لائحة الرسوم الجديدة بقرار من مجلس الوزراء .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: على نائب رئيس مجلس الوزراء والوزراء المعنيين؛ تنفيذ هذا النظام كلٌّ فيما يخصه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b680a5b2-1ed3-4014-9f49-a9a700f2e298/1
+  verified: false

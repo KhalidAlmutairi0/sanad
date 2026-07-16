@@ -1,0 +1,138 @@
+#  (نظام مجلس الوزراء) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE003
+  name_ar: نظام مجلس الوزراء
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة (1)
+  article_text_ar: مجلس الوزراء هيئة نظامية يرأسها الملك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (2)
+  article_text_ar: مقر مجلس الوزراء مدينة الرياض ويجوز عقد جلساته في جهة أخرى من المملكة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (3)
+  article_text_ar: 'يشترط في عضو مجلس الوزراء ما يلي: أ - أن يكون سعودي الجنسية بالأصل والمنشأ.ب - أن يكون من المشهود لهم بالصلاح والكفاية.ج - أن لا يكون محكوما عليه بجريمة مخلة بالدين والشرف.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (4)
+  article_text_ar: 'لا يباشر أعضاء مجلس الوزراء أعمالهم إلا بعد أداء اليمين الآتية: "أقسم بالله العظيم أن أكون مخلصا لديني، ثم لمليكي، وبلادي، وأن لا أبوح بسر من أسرار الدولة، وأن أحافظ على مصالحها وأنظمتها، وأن أؤدي أعمالي بالصدق والأمانة والإخلاص".'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (5)
+  article_text_ar: لا يجوز الجمع بين عضوية مجلس الوزراء وأية وظيفة حكومية أخرى، إلا إذا رأى رئيس مجلس الوزراء أن الضرورة تدعو إلى ذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (6)
+  article_text_ar: لا يجوز لعضو مجلس الوزراء أثناء تولية العضوية أن يشتري أو يستأجر مباشرة أو بالواسطة أو بالمزاد العام أيا كان من أملاك الدولة، كما لا يجوز له بيع أو إيجار أي شيء من أملاكه إلى الحكومة وليس له مزاولة أي عمل تجاري أو مالي أو قبول العضوية لمجلس إدارة أي شركة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (7)
+  article_text_ar: تعقد اجتماعات مجلس الوزراء برئاسة الملك رئيس المجلس أو أحد نواب الرئيس وتصبح قراراته نهائية بعد موافقة الملك عليها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (8)
+  article_text_ar: يتم تعيين أعضاء مجلس الوزراء وإعفاؤهم من مناصبهم وقبول استقالاتهم بأمر ملكي، وتحدد مسئولياتهم وفقا للمادتين السابعة والخمسين والثامنة والخمسين من النظام الأساسي للحكم.ويبين النظام الداخلي للمجلس حقوقهم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (9)
+  article_text_ar: مدة مجلس الوزراء لا تزيد عن أربع سنوات يتم خلالها إعادة تشكيله بأمر ملكي، وفي حالة انتهاء المدة قبل إعادة تشكيله يستمر في أداء عمله حتى إعادة التشكيل.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (10)
+  article_text_ar: يعتبر الوزير هو الرئيس المباشر والمرجع النهائي لشئون وزارته ويمارس أعماله وفق أحكام هذا النظام والأنظمة واللوائح الأخرى.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (11)
+  article_text_ar: أ - النيابة عن الوزير في مجلس الوزراء لا تكون إلا لوزير آخر وبموجب أمر يصدر من رئيس مجلس الوزراء . ب - يتولى نائب الوزير ممارسة صلاحيات الوزير في حالة غيابه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (12)
+  article_text_ar: 'يتألف مجلس الوزراء من: أ - رئيس مجلس الوزراء .ب - نواب رئيس مجلس الوزراء .جـ - الوزراء العاملين .د - وزراء الدولة الذين يعينون أعضاء في مجلس الوزراء بأمر ملكي. هـ - مستشاري الملك الذين يعينون أعضاء في مجلس الوزراء بأمر ملكي.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (13)
+  article_text_ar: حضور اجتماعات مجلس الوزراء حق خاص بأعضائه فقط وبالأمين العام لمجلس الوزراء ، ويجوز بناء على طلب الرئيس أو أحد الأعضاء بعد موافقة رئيس مجلس الوزراء السماح لأحد المسئولين أو الخبراء بحضور جلسات المجلس لتقديم ما لديه من معلومات وإيضاحات على أن يكون حق التصويت خاصا بالأعضاء فقط.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (14)
+  article_text_ar: لا يعتبر اجتماع مجلس الوزراء صحيحا إلا بحضور ثلثي أعضائه ولا تكون قراراته نظامية إلا بعد صدورها بأغلبية الحاضرين وفي حالة التساوي يعتبر صوت الرئيس مرجحا، وفي الحالات الاستثنائية يكون انعقاد المجلس صحيحا بحضور نصف أعضائه ولا تكون قراراته نظامية في هذه الحالة إلا بموافقة ثلثي أعضائه الحاضرين، ولرئيس مجلس الوزراء تقدير الحالات الاستثنائية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (15)
+  article_text_ar: لا يتخذ مجلس الوزراء قرارا في موضوع خاص بأعمال وزارة من الوزارات إلا بحضور وزيرها أو من ينوب عنه ما لم تدع الضرورة لذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (16)
+  article_text_ar: مداولات المجلس سرية أما قراراته فالأصل فيها العلنية عدا ما اعتبر منها سريا بقرار من المجلس.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (17)
+  article_text_ar: يحاكم أعضاء مجلس الوزراء عن المخالفات التي يرتكبونها في أعمالهم الرسمية بموجب نظام خاص يتضمن بيان المخالفات وتحديد إجراءات الاتهام والمحاكمة وكيفية تأليف هيئة المحكمة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (18)
+  article_text_ar: يجوز لمجلس الوزراء أن يؤلف لجانا من بين أعضائه أو من غيرهم لبحث مسألة مدرجة بجدول أعماله لتقديم تقرير خاص عنها ويتولى النظام الداخلي للمجلس بيان عدد اللجان وسير أعمالها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (19)
+  article_text_ar: مع مراعاة ما ورد في النظام الأساسي للحكم ونظام مجلس الشورى يرسم مجلس الوزراء السياسة الداخلية والخارجية والمالية والاقتصادية والتعليمية والدفاعية وجميع الشؤون العامة للدولة ويشرف على تنفيذها. وينظر في قرارات مجلس الشورى . وله السلطة التنفيذية وهو المرجع للشؤون المالية والإدارية في سائر الوزارات والأجهزة الحكومية الأخرى.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (20)
+  article_text_ar: مع مراعاة ما ورد في نظام مجلس الشورى، تصدر الأنظمة، والمعاهدات، والاتفاقيات الدولية والامتيازات، وتعدل بموجب مراسيم ملكية بعد دراستها من مجلس الوزراء.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (21)
+  article_text_ar: يدرس مجلس الوزراء مشروعات الأنظمة واللوائح المعروضة عليه ويصوت عليها مادة مادة ثم يصوت عليها بالجملة وذلك حسب الإجراءات المرسومة في النظام الداخلي للمجلس.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (22)
+  article_text_ar: لكل وزير الحق بأن يقترح مشروع نظام أو لائحة يتعلق بأعمال وزارته. كما يحق لكل عضو من أعضاء مجلس الوزراء أن يقترح ما يرى مصلحة من بحثه في المجلس بعد موافقة رئيس مجلس الوزراء.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (23)
+  article_text_ar: يجب نشر جميع المراسيم في الجريدة الرسمية، وتكون نافذة المفعول من تاريخ نشرها ما لم ينص على تاريخ آخر.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (24)
+  article_text_ar: 'للمجلس باعتباره السلطة التنفيذية المباشرة الهيمنة التامة على شؤون التنفيذ والإدارة، ويدخل في اختصاصاته التنفيذية الأمور الآتية: 1 - مراقبة تنفيذ الأنظمة واللوائح والقرارات. 2 - إحداث وترتيب المصالح العامة . 3 - متابعة تنفيذ الخطة العامة للتنمية . 4 - إنشاء لجان تتحرى عن سير أعمال الوزارات والأجهزة الحكومية الأخرى أو عن قضية معينة وترفع هذه اللجان نتائج تحرياتها إلى المجلس في الوقت الذي يحدده لها وينظر المجلس في نتيجة تحرياتها وله إنشاء لجان للتحقيق على ضوء ذلك والبت في النتيجة مع مراعاة ما تقضي به الأنظمة واللوائح.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (25)
+  article_text_ar: لا يجوز للحكومة أن تعقد قرضا إلا بعد موافقة مجلس الوزراء وصدور مرسوم ملكي بذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (26)
+  article_text_ar: يدرس مجلس الوزراء ميزانية الدولة ويصوت عليها فصلا فصلا وتصدر بموجب مرسوم ملكي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (27)
+  article_text_ar: كل زيادة يراد إحداثها على الميزانية لا تكون إلا بموجب مرسوم ملكي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (28)
+  article_text_ar: يرفع وزير المالية والاقتصاد الوطني الحساب الختامي للدولة عن العام المالي المنقضي إلى رئيس مجلس الوزراء لإحالته إلى مجلس الوزراء لغرض اعتماده.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (29)
+  article_text_ar: الملك رئيس مجلس الوزراء هو الذي يوجه السياسة العامة للدولة ، ويكفل التوجيه والتنسيق والتعاون بين مختلف الأجهزة الحكومية ، ويضمن الانسجام والاستمرار والوحدة في أعمال مجلس الوزراء. وله الإشراف على مجلس الوزراء والوزارات والأجهزة الحكومية، وهو الذي يراقب تنفيذ الأنظمة واللوائح والقرارات.وعلى جميع الوزارات والأجهزة الحكومية الأخرى أن ترفع إلى رئيس مجلس الوزراء خلال تسعين يوما من بداية كل سنة مالية تقريرا عما حققته من إنجازات مقارنة بما ورد في الخطة العامة للتنمية خلال السنة المالية المنقضية، وما واجهها من صعوبات وما تراه من مقترحات لحسن سير العمل فيها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (30)
+  article_text_ar: 'يدخل في تشكيلات مجلس الوزراء الإدارية الأجهزة الآتية: أولاً - ديوان رئاسة مجلس الوزراء. ثانياً - الأمانة العامة لمجلس الوزراء. ثالثاً - هيئة الخبراء .ويبين النظام الداخلي لمجلس الوزراء تشكيلات هذه الأجهزة واختصاصاتها وكيفية قيامها بأعمالها.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (31)
+  article_text_ar: يصدر النظام الداخلي لمجلس الوزراء بأمر ملكي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false
+- article_ref: المادة (32)
+  article_text_ar: لا يجري تعديل هذا النظام إلا بالطريقة التي تم بها إصداره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/93e87aa7-f344-4711-b97c-a9a700f1662b/1
+  verified: false

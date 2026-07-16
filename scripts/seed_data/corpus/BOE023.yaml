@@ -1,0 +1,34 @@
+#  (نظام عقوبات انتحال صفة رجل السلطة العامة) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE023
+  name_ar: نظام عقوبات انتحال صفة رجل السلطة العامة
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: رجل السلطة العامة في تطبيق أحكام هذا النظام هو كل من يخوله النظام سلطة تنفيذ الأوامر والتعليمات وضبط المخالفات التي تقع في دائرة اختصاصه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/ebd54fd4-fb61-458b-a837-a9a700f17e56/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: كل من انتحل صفة رجل السلطة العامة يعاقب بالسجن مدة لا تتجاوز ثلاث سنوات، أو بغرامة لا تزيد على خمسين ألف ريال أو بهما معا. فإذا كان ارتكاب الجريمة مصحوبا بالإرهاب أو الاستغلال، أو كان من انتحلت صفته من رجال المباحث أو الاستخبارات أو أحد العسكريين أو من في حكمهم فيعاقب الفاعل بالسجن مدة لا تتجاوز عشر سنوات، أو بغرامة لا تزيد على مائة وخمسين ألف ريال (150.000) أو بهما معا.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/ebd54fd4-fb61-458b-a837-a9a700f17e56/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: تقام دعوى الاتهام بارتكاب الجرائم المنصوص عليها في هذا النظام من قبل المدعي العام أمام ديوان المظالم للفصل فيها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/ebd54fd4-fb61-458b-a837-a9a700f17e56/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: لا يمنع تطبيق العقوبات المنصوص عليها في هذا النظام من محاكمة الجاني أمام القضاء المختص عن أي جريمة أخرى.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/ebd54fd4-fb61-458b-a837-a9a700f17e56/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: يصدر وزير الداخلية القرارات اللازمة لتنفيذ هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/ebd54fd4-fb61-458b-a837-a9a700f17e56/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: ينشر هذا النظام في الجريدة الرسمية ، ويعمل به من تاريخ نشره، ويلغي كل ما يتعارض معه من أحكام
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/ebd54fd4-fb61-458b-a837-a9a700f17e56/1
+  verified: false

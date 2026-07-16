@@ -1,0 +1,82 @@
+#  (نظام البنك السعودي للتسليف والادخار ( بنك التنمية الاجتماعية )) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE258
+  name_ar: نظام البنك السعودي للتسليف والادخار ( بنك التنمية الاجتماعية )
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: 'يقصد بالكلمات والعبارات الآتية أينما وردت في هذا النظام المعاني المبينة أمامها، ما لم يقتض السياق خلاف ذلك : 1 - البنك : البنك السعودي للتسليف والادخار . 2 - الوزير : وزير المالية .'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: تكون للبنك شخصية معنوية وذمة مالية مستقلة، وله بموجبها الحق في التملك والتصرف والتقاضي طبقا لأحكام هذا النظام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: المقر الرئيس للبنك مدينة الرياض، ويجوز إنشاء فروع له في مناطق المملكة، أو تعيين وكلاء أو مراسلين له في تلك المناطق.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: 'يهدف البنك إلى ما يأتي: أ - تقديم قروض بدون فائدة للمنشآت الصغيرة والناشئة ولأصحاب الحرف والمهن من المواطنين، تشجيعا لهم على مزاولة الأعمال والمهن بأنفسهم ولحسابهم الخاص.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: يخضع البنك لرقابة مؤسسة النقد العربي السعودي والأنظمة المصرفية، بما لا يتعارض مع نظامه، وبما ينسجم مع أحكام الشريعة الإسلامية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: رأس مال البنك المصرح به هو ستة آلاف مليون ريال تدفعها وزارة المالية ، ويجوز زيادة رأس المال بقرار من مجلس الوزراء ، بناء على توصية من الوزير.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: 'تتكون أموال البنك ومصادره التمويلية من الآتي: أ - رأس مال البنك.ب - الودائع الحكومية .ج - الرسوم مقابل المصروفات التي يتكبدها البنك في سبيل ممارسة نشاطه حسبما يقرره مجلس الإدارة، ويستثنى من ذلك القروض الاجتماعية لذوي الدخل المحدود.د - الدخل الناتج من استثمار أموال البنك وأرصدته وممتلكاته.هـ - المخصصات أو الأموال التي تعين الحكومة بها البنك على سبيل الهبة أو القرض .و - القروض والوادائع التي تقدمها مؤسسة النقد العربي السعودي وغيرها من الهيئات والمؤسسات العامة والخاصة والجمعيات الخيرية .ز - الودائع التي يودعها الجمهور وتضمن الحكومة تسديدها.ح - سندات الادخار .ط - الأوراق المالية والضمانات على مختلف أنواعها.ي - الأموال أو المخصصات التي يقدمها الغير على سبيل الهبة أو الوقف.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: 'أ - يكون للبنك مجلس إدارة يتكون من عشرة أعضاء من بينهم الرئيس، وذلك على النحو الآتي :'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: 'مجلس الإدارة هو السلطة العليا المشرفة على أعمال البنك وتحقيق أهدافه، وله على وجه الخصوص ما يأتي: أ - إقرار الهيكل التنظيمي واللوائح المالية والإدارية.ب - تشكيل اللجان التنفيذية اللازمة لعمل البنك، وتحديد صلاحياتها. ج - إقرار مشروع ميزانية سنوية لنشاط البنك ونفقاته الإدارية. د - وضع الحدود القصوى لقيمة أنواع القروض التي يقدمها البنك وضمانات استردادها.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: يجتمع المجلس بدعوة من رئيسه أربع مرات على الأقل في السنة، ولا تكون اجتماعات المجلس صحيحة إلا إذا حضرها ثلثا الأعضاء بمن فيهم الرئيس، ويصدر المجلس قراراته بأغلبية الحاضرين، وعند تساوي الأصوات يرجح الجانب الذي صوت معه الرئيس.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: يكون للبنك مدير عام لا تقل مرتبته عن الخامسة عشرة، ويعين بقرار من مجلس الوزراء بناء على اقتراح من الوزير.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: 'يختص مدير عام البنك بالآتي: أ - العمل على تحقيق الأهداف التي أنشئ من أجلها البنك.ب - الإشراف على إدارة البنك وتنفيذ السياسات والقرارات التي يتخذها مجلس الإدارة.ج - تمثيل البنك لدى الغير.د - تحصيل الحقوق المستحقة للبنك، أو المحولة إليه.هـ - إعداد تقارير ربع سنوية وسنوية تعرض على مجلس الإدارة، وتشمل الإنجازات والمعوقات واقتراحات بالحلول المناسبة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: تقدم القروض المحددة في المادة (الرابعة) من هذا النظام مقابل ضمانات مقبولة وكافية لاستيفاء القرض ، وفقا لأحكام هذا النظام ولائحته التنفيذية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: أ - تتمتع القروض التي يمنحها البنك بالمزايا والضمانات المقررة لحقوق الخزانة العامة للدولة .ب - تعامل حقوق البنك وفقا للقواعد المنظمة لجباية أموال الدولة .ج - على جميع الأجهزة والمصالح الحكومية التعاون مع البنك في سبيل تحصيل قروضه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: 'تقدم قروض البنك وفق اللوائح والتعليمات التي تحدد شروط الإقراض وحالاته وضماناته ، على أن تشتمل هذه التعليمات على الآتي: أ - أن المقترض ذو حاجة حقيقية إلى القرض .ب - أن القرض سيحقق غرضا اجتماعيا أو مهنيا أو اقتصاديا.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: السنة المالية للبنك هي السنة المالية للدولة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة السابعة عشرة
+  article_text_ar: يحل هذا النظام محل نظام بنك التسليف السعودي ، الصادر بالمرسوم الملكي رقم (م/44) وتاريخ 21 / 9 / 1391 هـ، ويلغي كل مايتعارض معه من أحكام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false
+- article_ref: المادة الثامنة عشرة
+  article_text_ar: ينشر هذا النظام في الجريدة الرسمية، ويعمل به بعد تسعين يوما من تاريخ نشره.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/90b81287-baab-4f66-a9c1-a9a700f2ce78/1
+  verified: false

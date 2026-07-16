@@ -1,0 +1,58 @@
+#  (تنظيم نفقات المرضى السعوديين ومرافقيهم المحولين للعلاج خارج مناطق إقامتهم) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE317
+  name_ar: تنظيم نفقات المرضى السعوديين ومرافقيهم المحولين للعلاج خارج مناطق إقامتهم
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: تصرف إعانة للمرضى المحولين للعلاج في غير محل إقامتهم مقدارها مائة وخمسون (150) ريالاً يومياً داخل المملكة وثلاثمائة (300) ريالاً يومياً خارج المملكة متى اقتضى الأمر إقامتهم خارج المستشفى. ولا تصرف هذه الإعانة عند دخول المريض المستشفى وتعاد له عند خروجه للمدة اللازمة لبقائه لمراجعة المستشفى الموضحة في التقرير الطبي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: تصرف لمرافق المريض إعانة مقدارها مائة وخمسون (150) ريالاً يومياً داخل المملكة وثلاثمائة (300) ريال خارج المملكة، ولا تصرف هذه الإعانة عند مرافقة المريض داخل المستشفى في حالة تأمين الإعاشة والسكن.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: يعطى كل من المريض المحول ومرافقه تذكرة إركاب (ذهاب وعودة) بالدرجة السياحية إلا إذا استدعت حالته الصحية خلاف ذلك فيتم إركابه بالدرجة الأولى من مكان إقامته إلى البلد المحول إليه، وفي حالة تعذر السفر بالطائرة يصرف للمريض والمرافق ما يعادل أجرة إركابهما بالنقل الجماعي.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: تصدر القرارات الطبية للعلاج في الخارج من قبل الهيئات الطبية في وزارة الصحة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: تتولى وزارة الصحة صرف جميع النفقات المقررة بموجب هذه اللائحة سواء للمريض أو مرافقه، ولا يشمل ذلك الأشخاص التابعين لجهات قد خصص في ميزانيتها بند لأغراض العلاج.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: تحدد الهيئات الطبية العليا في وزارة الصحة الجهة التي تتوافر لديها إمكانيات العلاج في كل حالة على حده، والمدة اللازمة لعلاج كل مريض، ومدى حاجته إلى مرافق، ومدة المرافقة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: 'يصرف لكل من المريض الذي يعالج خارج المملكة ومرافقه بالإضافة إلى ما ذكر أعلاه ما يلي : أ - ألف وخمسمائة (1500) ريال بدل تجهيز لمرة واحدة. ب - ألف (1000) ريال شهرياً مقابل خدمة للمريض شديد الإعاقة الذي لا يستطيع خدمة نفسه على أن يحدد ذلك في قرار الهيئة الطبية.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: لا يجوز الجمع بين الإعانة المنصوص عليها في هذه اللائحة وبين المصاريف السفرية المقررة في نظم الخدمة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: مع مراعاة ما ورد في المادة (الخامسة) تقوم ممثليات المملكة في البلدان التي لا يوجد بها مكاتب صحية أو ملحقون عسكريون بالإشراف على علاج المرضى المرسلين إلى تلك البلدان. والصرف عليهم وفقاً لهذا التنظيم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: لا تخل أحكام هذه اللائحة بالمزايا المقررة في نظم الخدمة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: يعامل مرافقو المرضى المحولين للعلاج خارج المملكة، وفقًا لما قضى به الأمر السامي (10007/ب) وتاريخ 2 / 7 / 1431 هـ .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: تصدر وزارة الصحة بالتنسيق مع القطاعات الصحية الحكومية الأخرى الضوابط والإجراءات اللازمة لتنفيذ هذا التنظيم.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/de7dfbea-f1ca-4cd0-b664-a9a700f28e01/1
+  verified: false

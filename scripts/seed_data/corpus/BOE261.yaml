@@ -1,0 +1,138 @@
+#  (نظام إيرادات الدولة) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE261
+  name_ar: نظام إيرادات الدولة
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: 'يقصد بالعبارات والمصطلحات الآتية أينما وردت في هذا النظام المعاني المبينة أمامها، ما لم يقتض السياق خلاف ذلك: الدولــــة : المملكة العربية السعودية . الـوزارة : وزارة المالية . الوزيـــر : وزير المالية . الجهـــــــة : كل وزارة أو مصلحة أو مؤسسة عامة أو هيئة عامة . النظــــام : نظام إيرادات الدولة . اللائحـة : اللائحة التنفيذية للنظام . الإيرادات : الموارد المالية التي تحصل عليها الدولة في شكل تدفقات مالية. الديـــــن : كل مال مستحق للدولة. المديــــن : كل شخص ذي صفة طبيعية أو اعتبارية في ذمته مال للدولة . الضريبة : اقتطاع مالي إلزامي من دخل وثروة شخص ذي صفة طبيعية أو اعتبارية يدفع للدولة دون مقابل من أجل تحقيق نفع عام . الرسم : مبلغ من النقود يسدده المستفيد للدولة إلزاما، مقابل خدمة عامة ذات نفع خاص تقدم له . الأجر : مبلغ من النقود يدفع مقابل نفع خاص للاستفادة من الخدمة المقدمة . الجزاءات والغرامات : مبالغ نقدية تفرض على مخالفي الأنظمة . يوم عمل : أيام العمل طبقا لأيام العمل الرسمية في الدولة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: 'تتكون مصادر الإيرادات من الآتي: 1 - الثروات الطبيعية. 2 - الرسوم والأجور والضرائب . 3 - الاقتراض والقروض المسددة . 4 - عوائد الاستثمار . 5 - المبيعات والجزاءات والغرامات . 6 - بيع أملاك الدولة وإيجاراتها . 7 - التبرعات والهبات والتعويضات .8 - أي مصدر آخر يصدر به قرار من مجلس الوزراء.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: تقدر الوزارة إيرادات الدولة المتوقع تحصيلها لكل سنة مالية في ضوء التقديرات الواردة من الجهات .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: أ - تكون الجهة مسؤولة عن الاستثمار الأمثل لمواردها، وتنمية إيراداتها وتطويرها، ومراقبة تحصيلها، ومتابعته بالتنسيق مع الوزارة .ب - تنشأ وحدة إدارية مستقلة للاستثمار وتنمية الإيرادات وتطويرها، ومراقبة التحصيل ومتابعته في أي جهة يتطلب عملها ذلك .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: يخصص للجهة التي تحقق زيادة في إيراداتها ـ ضمن اعتمادات ميزانيتها ـ ما يقابل (20%) من الزيادة المتحققة في إيراداتها للسنة المالية المنتهية عن السنة السابقة، عدا إيرادات الثروات الطبيعية وبيع العقارات والجزاءات والغرامات، على أن تحدد اللائحة التنفيذية لهذا النظام المبالغ القصوى لكل جهة جبائية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: تمنح مكافأة تشجيعية للموظفين الذين عملوا على تحقيق هذه الزيادة على ألا يتجاوز مقدار المكافأة الممنوحة لكل موظف ثلاثة رواتب في السنة المالية، وتحدد اللائحة ضوابط منح هذه المكافأة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: تضع الوزارة ـ مع الجهة ذات العلاقة ـ الإجراءات الكفيلة بتحصيل الإيرادات بما يضمن المحافظة والرقابة عليها، ولها أن تستعين في ذلك بالقطاع الخاص .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: يجب على الجهة تحصيل جميع الإيرادات المستحقة في مواعيدها المحددة نظاما ووفقا للنماذج والأساليب التي تحددها اللائحة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: يجب على الجهة خلال السنة المالية قيد الإيرادات عند استحقاقها، وتسجيلها حال تحصيلها وفقا لما تحدده اللائحة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: تتولى الجهة إيداع إيراداتها في الحسابات التي خصصتها لها الوزارة في مؤسسة النقد العربي السعودي أو البنوك المحلية، وذلك في مواعيدها المحددة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: لا يحق للجهة الإعفاء من أي إيراد مستحق أو تأجيل تحصيله .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: تتخذ الوزارة ـ وفقا للأساليب والتقنيات الحديثة ـ الإجراءات الكفيلة بتحصيل إيرادات الدولة، وتتحمل أجور تكاليف عملية التحصيل وفق ما تراه مناسبا .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: كل من تأخر عن أداء الدين المستحق عليه للدولة في الموعد المحدد، تشعره الجهة كتابيا بوجوب تأديته خلال (30) ثلاثين يوم عمل من تاريخ الإشعار .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: إذا لم يسدد المدين الدين المستحق عليه خلال المدة المشار إليها في المادة الثالثة عشرة، فينذر نهائيا بالتسديد خلال (15) خمسة عشر يوم عمل، فإن انقضت هذه المدة ولم يسدد الدين الواجب عليه وجب على الجهة اتخاذ الإجراءات اللازمة أمام المحكمة المختصة للحجز على أمواله في حدود الدين الذي عليه .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: يجوز للجهة الحكومية ذات العلاقة بموجب أمر قضائي مخاطبة الجهات الحكومية الأخرى بطلب حجز ما يوازي الدين المطلوب سداده من مستحقات المدين لديها قبل تسلمه لها من غير قيمة الضمانات البنكية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: يجب على كل بنك أو مؤسسة مالية عامة أو خاصة بعد تسلم إشعار الحجز من المحكمة المختصة تنفيذ ذلك بما يكفي لسداد الدين، وإن لم يلتزم بذلك يلزم بسداد مبلغٍ للجهة يساوي قيمة الممتلكات التي كانت بحوزته بما لا يتجاوز المبلغ الذي تم الحجز من أجله .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة السابعة عشرة
+  article_text_ar: إذا لم تكف أموال المدين المنقولة لسداد الدين، فيتم التنفيذ على عقاراته المحجوزة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثامنة عشرة
+  article_text_ar: تسري أحكام مواد هذا الفصل على أملاك الأوقاف .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة التاسعة عشرة
+  article_text_ar: دين الدولة المستحق دين ممتاز ولا يسقط بالتقادم .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة العشرون
+  article_text_ar: تكون لجنة في الوزارة من ثلاثة أعضاء، يكون أحدهم من ذوي الاختصاص الشرعي أو النظامي للنظر في دراسة الطلبات الواردة للإعفاء من الدين أو تقسيطه وإعداد التوصيات بشأنها .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الحادية والعشرون
+  article_text_ar: 'لا يجوز الإعفاء من الدين إلا بموافقة رئيس مجلس الوزراء . وللوزير صلاحية الإعفاء من الدين ـ إذا لم يتجاوز خمسمائة ألف ريال ـ في الحالات الآتية: 1 - إذا توفي المدين وثبت شرعا أنه ليس له تركة يمكن الرجوع إليها .2 - إذا قدم المدين ما يثبت إعساره أو إفلاسه شرعا وفقا للأنظمة الشرعية .'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثانية والعشرون
+  article_text_ar: 'للوزير - أو من ينيبه - صلاحية تقسيط ديون الدولة على العاجزين عن الوفاء بها دفعة واحدة، وفق القواعد الآتية: 1 - أن يقدم المدين للّجنة المستنداتِ المؤيدة لعجزه عن الوفاء بالدين المترتب عليه دفعة واحدة . 2 - ألا تزيد مدة التقسيط على عشرين سنة .'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثالثة والعشرون
+  article_text_ar: إذا تأخر المدين عن سداد أي من الأقساط المستحقة عليه فيشعر كتابيا بوجوب تأديته خلال ثلاثين يوم عمل من تاريخ الإشعار، وإذا لم يسدد خلال تلك المدة فينذر نهائيا بالتسديد خلال خمسة عشر يوم عمل .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الرابعة والعشرون
+  article_text_ar: إذا انقضت المدة ولم يسدد المدين القسط الواجب عليه أو يقدم ما يثبت أسباب توقفه عن السداد، فيلغى التقسيط وتصبح باقي الأقساط واجبة الأداء، وعلى الجهة مطالبة المدين بسدادها دفعة واحدة، واتخاذ الإجراءات اللازمة أمام المحكمة المختصة للحجز على أمواله في حدود الدين الذي عليه.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الخامسة والعشرون
+  article_text_ar: لا ينظر في إعفاء أو تقسيط الديون المترتبة على المدانين في جرائم اختلاس أو تزوير أو تحايل .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة السادسة والعشرون
+  article_text_ar: يجب على الجهة ـ حال حدوث أي مخالفة لهذا النظام ولائحته التنفيذية ـ إبلاغ الوزارة والأجهزة الرقابية في موعد أقصاه ثلاثون يوم عمل من اكتشاف المخالفة .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة السابعة والعشرون
+  article_text_ar: تطبق على مخالفي هذا النظام العقوبات المقررة نظاما.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثامنة والعشرون
+  article_text_ar: لا تخل أحكام هذا النظام بالأحكام الواردة في الأنظمة الخاصة بالجهات الأخرى.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثامنة والعشرون مكرر
+  article_text_ar: '- أضيفت هذه المادة وذلك بموجب المرسوم الملكي رقم (م/93) بتاريخ 1443/10/1هـ، والتي تنص على الآتي: لاتسري أحكام المواد (العشرين) و(الحادية والعشرين) و(الثانية والعشرين) من هذا النظام على الديون الخاصة بالصناديق والبنوك التابعة لصندوق التنمية الوطني. لصندوق التنمية الوطني -أو من يفوضه- صلاحية الإعفاء من الدين، وصلاحية تقسيط الدين على العاجزعن الوفاء به دفعة واحدة، لأي من الصناديق والبنوك التابعة له وفقاً لمعايير وضوابط وإجراءات يقرها مجلس إدارة الصندوق.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة التاسعة والعشرون
+  article_text_ar: يصدر الوزير اللائحة التنفيذية لهذا النظام خلال مدة لا تتجاوز تسعين يوما من تاريخ نشره في الجريدة الرسمية .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الثلاثون
+  article_text_ar: يحل هذا النظام محل نظام جباية أموال الدولة، الصادر بالإرادة الملكية رقم (41 / 3 / 2 ) وتاريخ 12 / 4 / 1359 هـ، والمبلغ بالأمر السامي رقم (5732) في 4 / 5 / 1359 هـ، ويلغي كل ما يتعارض معه من أحكام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false
+- article_ref: المادة الحادية والثلاثون
+  article_text_ar: ينشر هذا النظام في الجريدة الرسمية ، ويعمل به بعد تسعين يوما من تاريخ نشره .
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/8b100aee-54a5-48c1-9866-a9a700f2d539/1
+  verified: false

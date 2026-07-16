@@ -1,0 +1,50 @@
+#  (لائحة المحافظة على الذوق العام) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE340
+  name_ar: لائحة المحافظة على الذوق العام
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: المادة الأولى
+  article_text_ar: 'لأغراض تطبيق هذه اللائحة، يقصد بالعبارات والألفاظ الآتية المعاني الواردة أمام كل منها، ما لم يقتضِ السياق غير ذلك: اللائحة: لائحة المحافظة على الذوق العام. الذوق العام: مجموعة السلوكيات والآداب التي تعبر عن قيم المجتمع ومبادئه وهويته، بحسب الأسس والمقومات المنصوص عليها في النظام الأساسي للحكم. الأماكن العامة: المواقع المتاح ارتيادها للعموم –مجاناً أو بمقابل- من الأسواق، والمجمعات التجارية، والفنادق، والمطاعم، والمقاهي، والمتاحف، والمسارح، ودور السينما، والملاعب، ودور العرض، والمنشآت الطبية والتعليمية، والحدائق، والمتنزهات، والأندية، والطرق، والممرات، والشواطئ، ووسائل النقل المختلفة، والمعارض، ونحو ذلك.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: تسري اللائحة على كل من يرتاد الأماكن العامة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: يجب على كل من يكون في مكان عام احترام القيم والعادات والتقاليد والثقافة السائدة في المملكة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: لا يجوز الظهور في مكان عام بزي أو لباس غير محتشم أو ارتداء زي أو لباس يحمل صوراً أو أشكالاً أو علامات أو عبارات تسئ إلى الذوق العام.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: لا تجوز الكتابة أو الرسم أو ما في حكمهما على جدران مكان عام، أو أي من مكوناته، أو موجوداته، أو أي من وسائل النقل؛ ما لم يكن مرخصاً بذلك من الجهة المعنية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: لا يسمح في الأماكن العامة بأي قول أو فعل فيه إيذاء لمرتاديها، أو إضرار بهم، أو يؤدي إلى إخافتهم أو تعريضهم للخطر.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: يحدد وزير الداخلية –بالتنسيق مع رئيس مجلس إدارة الهيئة العامة للسياحة والتراث الوطني والجهات الأخرى ذات العلاقة- جهات الضبط الإداري المعنية بتطبيق أحكام اللائحة، والآليات المناسبة لإيقاع العقوبات، وله تخويل صلاحية مباشرة أعمال الضبط الواردة في اللائحة أو بعض منها إلى شركات الحراسات الأمنية الخاصة المرخصة، وفقاً لضوابط يصدرها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: مع عدم الإخلال بأي عقوبة أشد مقررة نظاماً؛ توقع غرامة مالية على كل من يخالف أيَّا من الأحكام الواردة في اللائحة بما لا يتجاوز (خمسة) آلاف ريال، وفقاً لجدول تصنيف المخالفات المنصوص عليه في المادة (التاسعة) من اللائحة، ويضاعف مقدار الغرامة في حال تكرار المخالفة نفسها خلال (سنة) من تاريخ ارتكابها للمرة الأولى. يجوز لمن صدر في حقه قرار بغرامة مالية وفقاً للفقرة (1) من هذه المادة، التظلم منه أمام المحكمة الإدارية المختصة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: تتولى وزارة الداخلية –بالاشتراك مع الهيئة العامة للسياحة والتراث الوطني والجهات الأخرى ذات العلاقة- تصنيف المخالفات، وتحديد الغرامات المالية المقابلة لكل منها، وفق جدول تعده لهذا الغرض ويصدر بقرار من وزير الداخلية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: تُنشر اللائحة في الجريدة الرسمية، ويعمل بها بعد (ثلاثين) يوماً من تاريخ نشرها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3b96a591-47c8-4469-9abb-aa4700f1aa52/1
+  verified: false

@@ -1,0 +1,74 @@
+#  (اللائحة الأساسية للبيوت الاجتماعية) — fetched VERBATIM from laws.boe.gov.sa.
+# Parsed from the official gazette; verified: false until a human confirms each
+# article against source_url (AGENTS.md #5). Not fabricated.
+regulation:
+  code: BOE326
+  name_ar: اللائحة الأساسية للبيوت الاجتماعية
+  name_en: ''
+  authority: —
+  source_domain: laws.boe.gov.sa
+articles:
+- article_ref: 'المادة الأولى: تعريفات'
+  article_text_ar: 'يقصد بالعبارات والمصطلحات الآتية - أينما وردت في هذه اللائحة - المعاني المبينة أمام كل منها، ما لم يقتض السياق خلاف ذلك: 1- البيوت الاجتماعية: مساكن تنشئها وزارة الشؤون الاجتماعية لرعاية من لا يعرف والداه أو والده، ذكراً كان أم أنثى، وتتولى إدارتها والإشراف عليها. 2- المقيم: من تتولى البيوت الاجتماعية رعايته وفقاً لأحكام هذه اللائحة. 3- الرعاية: كل ما يحتاجه المقيم أثناء إقامته في البيوت الاجتماعية من النواحي: المادية، والاجتماعية، والنفسية، والتربوية، والتعليمية، والصحية، والتأهيلية. 4 - الوزارة: وزارة الشؤون الاجتماعية. 5 - الوزير: وزير الشؤون الاجتماعية. 6 - القواعد: القواعد التنفيذية لهذه اللائحة.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الثانية
+  article_text_ar: تهدف البيوت الاجتماعية إلى توفير رعاية قريبة من الحياة الأسرية الطبيعية، لمن لا تتوافر له الرعاية الأسرية؛ وفقاً لما تحدده القواعد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الثالثة
+  article_text_ar: يلحق بالبيوت الاجتماعية مَنْ يعرف والده؛ وفق ضوابط تحددها القواعد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الرابعة
+  article_text_ar: تحدد القواعد شروط القبول في البيوت الاجتماعية وإجراءاته.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الخامسة
+  article_text_ar: تعد البيوت الاجتماعية برنامجاً تأهيليًّا للذكور الذين سينقلون إلى البيوت الاجتماعية المخصصة لهم؛ وفقاً لما تحدده القواعد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة السادسة
+  article_text_ar: تضع البيوت الاجتماعية خطة سنوية للبرامج والأنشطة، يراعى فيها التنوع والمرحلة العمرية والإمكانات اللازمة لتنفيذها؛ وفقاً لما تحدده القواعد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة السابعة
+  article_text_ar: 1- تصرف للمقيم مكافأة شهرية؛ وفقاً لما تحدده القواعد.2 - تتكفل الوزارة - إذا لم يقبل المقيم في المدارس أو الجامعات أو المعاهد الحكومية - بدفع الرسوم الدراسية المترتبة على إلحاقه بمدرسة أو معهد أو جامعة أهلية. 3 - تتحمل الوزارة - إذا لم يعالج المقيم في مركز أو مستشفى حكومي- مصاريف علاجه في مركز أو مستشفى خاص. 4 - استثناءً من الشرط الوارد في الفقرتين (2) و(3)، يجوز للوزير في الحالات التي يقدرها إلحاق المقيم بمدرسة أو معهد أو جامعة أهلية، ويجوز له أيضاً علاج الحالات التي يقدرها في المراكز أو المستشفيات الخاصة.5 - تؤمن الوزارة وسيلة نقل لمن يتعلم أو يتدرب أو يعمل من المقيمين.وتحدد القواعد الشروط والضوابط اللازمة لذلك.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الثامنة
+  article_text_ar: لا يجوز أن تزيد الطاقة الاستيعابية لكل بيت اجتماعي عن (أربعين) مقيماً، وإذا كان مكوناً من عدة وحدات سكنية فلا يجوز أن تزيد الطاقة الاستيعابية للوحدة على (ثمانية) مقيمين، وتحدد القواعد فئاتهم العمرية، والمواصفات اللازمة للبيوت الاجتماعية ووحداتها السكنية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة التاسعة
+  article_text_ar: 'تنتهي الإقامة في البيوت الاجتماعية في الحالات الآتية: أ ـ انتقال كفالة المقيم إلى جهة رعاية بديلة بعد موافقة الوزارة على ذلك.ب - بلوغ الذكر المقيم سن (العشرين) أو حصوله على شهادة الثانوية العامة أو ما يعادلها، أيهما أسبق. وللوزير - عند الاقتضاء - زيادة مدة إقامة المقيم في تلك البيوت حتى بلوغه سن (الخامسة والعشرين).ج - زواج المقيم.د - الوفاة.هـ - أي حالة أخرى تحددها القواعد.'
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة العاشرة
+  article_text_ar: تعد الوزارة للمقيمين في البيوت الاجتماعية ما يحتاجون إليه من برامج تأهيلية وتدريبية وتوعوية وفق ما تحدده القواعد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الحادية عشرة
+  article_text_ar: يجب توفير ما تحتاجه البيوت الاجتماعية من المختصين في المجال النفسي والاجتماعي والتربوي وغير ذلك؛ لتقديم الخدمات الشاملة للمقيمين وفق احتياجات مراحلهم العمرية ومتطلباتها.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الثانية عشرة
+  article_text_ar: تتولى الوزارة الرعاية اللاحقة لمن يحتاج إليها ممن انتهت إقامتهم في البيوت الاجتماعية وفق ما تحدده القواعد.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الثالثة عشرة
+  article_text_ar: للوزير إصدار ضوابط تحكم افتتاح بيوت اجتماعية لرعاية وإيواء من لا يُعرف والداه أو والده؛ ليطبقها من يرغب في ذلك من الجمعيات والمؤسسات الخيرية والموسرين والخيرين من أفراد المجتمع، بما ينسجم مع الأحكام الواردة في هذه اللائحة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الرابعة عشرة
+  article_text_ar: تلغي هذه اللائحة اللائحة الأساسية لدور التربية الاجتماعية الصادرة بقرار مجلس الوزراء رقم (185) وتاريخ 1387/2/5هـ ولائحة دار الحضانة الصادرة بقرار مجلس الوزراء رقم (156) وتاريخ 8/ 2 /1395هـ.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة الخامسة عشرة
+  article_text_ar: يصدر الوزير القواعد خلال مدة أقصاها (تسعون) يوماً من تاريخ صدور هذه اللائحة.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
+- article_ref: المادة السادسة عشرة
+  article_text_ar: يعمل بهذه اللائحة بعد (تسعين) يوماً من تاريخ نشرها في الجريدة الرسمية.
+  source_url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f9ad230e-bae1-47f7-a9f2-a9a700f2bf96/1
+  verified: false
