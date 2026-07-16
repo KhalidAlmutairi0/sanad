@@ -17,7 +17,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # libraries Chromium needs on the slim base. Single sequential page per fetch keeps RAM bounded.
 # World-readable browser path so it resolves regardless of the runtime user.
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
-RUN python -m playwright install --with-deps chromium \
+# apt-get update first: the base image's earlier RUN cleared /var/lib/apt/lists, and
+# `playwright install --with-deps` runs apt-get install (which needs a fresh package index).
+RUN apt-get update \
+    && python -m playwright install --with-deps chromium \
     && chmod -R a+rX /ms-playwright \
     && rm -rf /var/lib/apt/lists/*
 
