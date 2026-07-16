@@ -57,4 +57,4 @@ async def test_gate_rejects_citation_of_quarantined_tier(
     audits = (
         await session.execute(select(AuditLog).where(AuditLog.action == "citation_rejected"))
     ).scalars().all()
-    assert any((a.detail or {}).get("reason") == "uncitable_tier" for a in audits)
+    assert any((a.detail_json or {}).get("reason") == "uncitable_tier" for a in audits)
