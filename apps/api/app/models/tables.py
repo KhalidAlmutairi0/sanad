@@ -92,6 +92,8 @@ class Contract(Base):
     ocr_used: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
     # spec #3: an OCR'd page scored below the confidence floor — flag for manual verification.
     low_ocr_confidence: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="false")
+    # When the contract was signed — drives the applicability engine (prior vs. new contract).
+    signed_date: Mapped[dt.date | None] = mapped_column(Date)
     created_at: Mapped[dt.datetime] = _created_at()
     updated_at: Mapped[dt.datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now()
@@ -194,6 +196,29 @@ class MonitoringEvent(Base):
     )
     impact_summary_ar: Mapped[str | None] = mapped_column(Text)
     status: Mapped[str] = mapped_column(Text, nullable=False, server_default="detected")
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class RegulationApplicability(Base):
+    """Mutable classification of ONE regulation article's applicability scope (spec: applicability
+    engine). Moves llm_draft -> human_reviewed via the review gate; only human_reviewed feeds the
+    production decision engine. Never stored on append-only regulation_versions."""
+
+    __tablename__ = "regulation_applicability"
+    id: Mapped[uuid.UUID] = _pk()
+    regulation_version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("regulation_versions.id"), nullable=False, unique=True
+    )
+    applicability_type: Mapped[str] = mapped_column(Text, nullable=False)
+    effective_date: Mapped[dt.date] = mapped_column(Date, nullable=False)
+    deadline_date: Mapped[dt.date | None] = mapped_column(Date)
+    classification_confidence: Mapped[str] = mapped_column(
+        Text, nullable=False, server_default="llm_draft"
+    )
+    classification_citation_version_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("regulation_versions.id")
+    )
+    reviewed_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
     created_at: Mapped[dt.datetime] = _created_at()
 
 
