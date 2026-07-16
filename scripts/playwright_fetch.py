@@ -111,14 +111,15 @@ class BrowserFetcher:
                 time.sleep(self._crawl_delay - elapsed)
         self._last_fetch = time.monotonic()
 
-    def fetch(self, url: str) -> FetchOutcome:
+    def fetch(self, url: str, content_selector: str | None = None) -> FetchOutcome:
         if self._context is None:
             raise RuntimeError("BrowserFetcher must be used as a context manager")
         self._respect_delay()
+        selector = content_selector or self._content_selector  # per-source override (adapters)
         page = self._context.new_page()
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=self._nav_timeout_ms)
-            page.wait_for_selector(self._content_selector, timeout=self._nav_timeout_ms)
+            page.wait_for_selector(selector, timeout=self._nav_timeout_ms)
             return FetchOutcome(url=url, html=page.content(), error=None)
         except Exception as e:  # noqa: BLE001 — one bad source must not abort the run
             return FetchOutcome(url=url, html=None, error=f"{type(e).__name__}: {e}")
