@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -65,7 +66,13 @@ export function ReviewWorkspace({ contract, clauses, findings, verdict }: Props)
           <MonoChip className="text-muted-foreground">{contract.ocr_used ? "مستند ممسوح · OCR" : "مستند رقمي"}</MonoChip>
           <DealBreakerPill state={verdict} />
         </div>
-        <ReadinessGauge value={contract.readiness_score ?? 0} className="scale-90 origin-right" />
+        <div className="flex items-center gap-4">
+          <Link href={`/contracts/${contract.id}/applicability`}
+            className="text-[13px] text-muted-foreground hover:text-primary transition-colors border border-border rounded-md px-3 py-1.5">
+            انطباق التحديثات
+          </Link>
+          <ReadinessGauge value={contract.readiness_score ?? 0} className="scale-90 origin-right" />
+        </div>
       </div>
 
       {contract.low_ocr_confidence && (
