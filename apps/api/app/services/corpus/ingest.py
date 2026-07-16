@@ -162,7 +162,7 @@ async def ingest_regulation(
     (owner-policy trust of the official source). The distinction is stored on the row so the
     UI can label auto-fetched citations.
     """
-    if tier not in ("human_verified", "official_fetch"):
+    if tier not in ("human_verified", "official_fetch", "unverified_third_party"):
         raise ValueError(f"unknown tier: {tier}")
     stats = IngestStats(code=reg.code)
     row = await _get_or_create_regulation(session, reg)

@@ -128,7 +128,9 @@ async def generate_findings_for_contract(session: AsyncSession, contract_id: uui
         clause_text = clause.text_ar or clause.text_en
         if not clause_text:
             continue
-        candidates = await retrieve_candidates(session, clause_text, k=4)
+        # citable_only: a finding may only cite verified/official text, never quarantined
+        # third-party imports (they stay searchable in evidence but out of findings).
+        candidates = await retrieve_candidates(session, clause_text, k=4, citable_only=True)
         # spec #2: nothing relevant retrieved -> flag the clause as unassessed and skip the
         # LLM entirely (no forced finding from irrelevant candidates, and no wasted tokens).
         best_distance = candidates[0].distance if candidates else None
