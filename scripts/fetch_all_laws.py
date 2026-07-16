@@ -33,6 +33,10 @@ def main() -> int:
     for i, src in enumerate(sources):
         if only and src["code"] not in only:
             continue
+        # Skip disabled / adapter-only sources (moj/cma/uqn): this batch writer is the boe
+        # gazette path and those have no corpus_file — they're fetched via their own adapter.
+        if not src.get("enabled", True) or not src.get("corpus_file"):
+            continue
         out = CORPUS_DIR / src["corpus_file"]
         if args.skip_existing and out.exists():
             print(f"skip (exists): {src['code']}")

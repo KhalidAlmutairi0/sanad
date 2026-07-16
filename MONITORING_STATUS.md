@@ -72,6 +72,53 @@ placeholder scaffold exists at `scripts/seed_data/corpus/sama/` but is not fetch
 7. Everything downstream — hashing, `build_changes` diff, `monitoring_diffs`, promote → LLM impact,
    verify gate, pgvector ingest, retrieval + citation — is source-agnostic and needs no changes.
 
+## Ingest runbook (fill the corpus)
+
+All ingestion runs on the VM (needs the DB + embedder). Migrations 0007–0012 must be applied
+first. Replace the compose prefix `CC` below:
+`CC = docker compose -f docker-compose.yml -f docker-compose.prod.yml`
+
+### 0. Pull + migrate + rebuild (once)
+```bash
+ssh ydet@20.244.108.2
+cd ~/sanad && git pull --ff-only
+cd infra
+$CC build migrate && $CC run --rm migrate          # apply 0007–0012
+$CC build api                                       # bake new _sources.yaml + lxml into the image
+```
+
+### A. Official BOE laws (verbatim, tier=official_fetch — CITABLE)
+Fetches the 13 new laws from the gazette (10s crawl-delay each ≈ 3 min) and ingests them; the
+existing 14 dedup-skip by content hash. Runs fetch+ingest in one container so the fetched YAMLs
+are visible to the ingest step:
+```bash
+$CC run --rm api bash -lc "\
+  python scripts/fetch_all_laws.py --only VAT,INCTAX,CUSTOMS,COMPET,BANKRUPT,COMCOURT,GOVPROC,INSURANCE,COMREG,COMPLEDGE,FRANCHISE,TASATTUR,COMAGENCY && \
+  python scripts/ingest_regulations.py --trust-official-source scripts/seed_data/corpus/"
+```
+(If the api container has no outbound internet, run `fetch_all_laws.py` on the VM host in a venv
+with `pip install lxml pyyaml`, commit the YAMLs, rebuild api, then run only the ingest step.)
+Verify: `curl -s https://oursanad.dev/api/backend/admin/corpus` (or the Admin → Corpus screen)
+should show ~27 regulations.
+
+### B. Kaggle / third-party dataset (tier=unverified_third_party — SEARCHABLE, NOT citable)
+Needs your Kaggle token at `~/.kaggle/kaggle.json`.
+```bash
+pip install kaggle
+kaggle datasets download -d <owner>/<slug> -p ~/kag --unzip
+cd ~/sanad/infra
+$CC run --rm -v ~/kag:/data api python scripts/ingest_kaggle.py /data/<file>.csv \
+  --code KAG-BOG --name-ar "قضايا ديوان المظالم" --text-col <text_column> \
+  --dataset-url https://www.kaggle.com/datasets/<owner>/<slug>
+```
+These rows are searchable in Evidence but the citation gate blocks them from findings until a
+reviewer verifies them against the official text (promoting the tier).
+
+### C. Re-check allowed domains (before/after adding sources)
+```bash
+$CC run --rm api python scripts/check_allowlist_robots.py
+```
+
 ## Architecture reference
 
 - Adapters: `apps/api/app/services/monitoring/adapters/` (`base.py`, `boe.py`, `moj.py`, `cma.py`,

@@ -94,6 +94,86 @@ sources:
     url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/655fdb42-8c96-422b-b8c4-b04f0095c94c/1
     corpus_file: CIVIL.yaml
 
+  # ── Additional BOE laws (verified LawDetails URLs; boe adapter; fetch+ingest on the VM) ──
+  - code: VAT
+    name_ar: نظام ضريبة القيمة المضافة
+    name_en: Value Added Tax Law
+    authority: ZATCA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/f98f4238-0289-4891-8a22-a9a700f1f538/1
+    corpus_file: VAT.yaml
+  - code: INCTAX
+    name_ar: نظام ضريبة الدخل
+    name_en: Income Tax Law
+    authority: ZATCA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/23576008-1ce4-4685-ac3e-a9a700f2cb02/1
+    corpus_file: INCTAX.yaml
+  - code: CUSTOMS
+    name_ar: نظام (قانون) الجمارك الموحد لدول مجلس التعاون
+    name_en: GCC Unified Customs Law
+    authority: ZATCA
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b93d0275-775f-482a-9d52-a9a700f2ca15/1
+    corpus_file: CUSTOMS.yaml
+  - code: COMPET
+    name_ar: نظام المنافسة
+    name_en: Competition Law
+    authority: General Authority for Competition
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/6b615a05-f637-41cf-8419-a9a700f1afd7/1
+    corpus_file: COMPET.yaml
+  - code: BANKRUPT
+    name_ar: نظام الإفلاس
+    name_en: Bankruptcy Law
+    authority: Ministry of Commerce
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/68204119-84f1-4789-8fad-a9ec014c3788/1
+    corpus_file: BANKRUPT.yaml
+  - code: COMCOURT
+    name_ar: نظام المحاكم التجارية
+    name_en: Commercial Courts Law
+    authority: Ministry of Justice
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/38334008-3b70-4c6c-b3af-aba3016a8061/1
+    corpus_file: COMCOURT.yaml
+  - code: GOVPROC
+    name_ar: نظام المنافسات والمشتريات الحكومية
+    name_en: Government Tenders and Procurement Law
+    authority: Ministry of Finance
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/c2c05ee1-201a-48de-91e7-a9a700f2d14f/1
+    corpus_file: GOVPROC.yaml
+  - code: INSURANCE
+    name_ar: نظام مراقبة شركات التأمين التعاوني
+    name_en: Cooperative Insurance Companies Control Law
+    authority: Insurance Authority
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/3e3c6fc3-9a45-4a0e-b28e-a9a700f1ad14/1
+    corpus_file: INSURANCE.yaml
+  - code: COMREG
+    name_ar: نظام السجل التجاري
+    name_en: Commercial Register Law
+    authority: Ministry of Commerce
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/d0e0ea69-e88b-471a-9773-b20900a51be6/1
+    corpus_file: COMREG.yaml
+  - code: COMPLEDGE
+    name_ar: نظام الرهن التجاري
+    name_en: Commercial Pledge Law
+    authority: Ministry of Commerce
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/e7bd6fcc-c29c-4696-8032-aae9009b113a/1
+    corpus_file: COMPLEDGE.yaml
+  - code: FRANCHISE
+    name_ar: نظام الامتياز التجاري
+    name_en: Commercial Franchise Law
+    authority: Ministry of Commerce
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/af2a6b93-51dd-4f16-b781-aafd00d9fbbc/1
+    corpus_file: FRANCHISE.yaml
+  - code: TASATTUR
+    name_ar: نظام مكافحة التستر
+    name_en: Anti-Commercial-Concealment Law
+    authority: Ministry of Commerce
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/bf9e0aae-6df6-4785-a305-ac2300bd0856/1
+    corpus_file: TASATTUR.yaml
+  - code: COMAGENCY
+    name_ar: نظام الوكالات التجارية
+    name_en: Commercial Agencies Law
+    authority: Ministry of Commerce
+    url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/b19a8aa6-7b50-43f0-ab8c-a9a700f1a446/1
+    corpus_file: COMAGENCY.yaml
+
   # ── New per-source adapters (robots-checked; DISABLED pending live-structure verification) ──
   # Each adapter's fetch mechanism + robots status is verified; the article-level PARSE selectors
   # are best-effort until confirmed against live pages. Set enabled: true after verifying, and
