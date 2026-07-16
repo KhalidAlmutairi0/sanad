@@ -1,7 +1,13 @@
-# Tracked official-gazette laws (laws.boe.gov.sa — robots permits law pages, 10s crawl-delay).
-# Drives both the batch fetcher (scripts/fetch_all_laws.py) and the update checker
-# (scripts/check_law_updates.py). Every law here is fetched VERBATIM; ingested as
-# official_fetch until human-reviewed.
+# Tracked regulatory sources. Drives the batch fetcher (scripts/fetch_all_laws.py), the update
+# checker (scripts/check_law_updates.py), and the API run-check (app/services/monitoring).
+# Every source is fetched VERBATIM; ingested as official_fetch until human-reviewed.
+#
+# Per-source fields (spec: per-source adapters):
+#   adapter: which adapter parses this source (app/services/monitoring/adapters). Default 'boe'.
+#            boe = laws.boe.gov.sa (verified). moj/cma = html. uqn = pdf gazette.
+#   enabled: default true. Set false to register a source whose live structure is not yet
+#            verified — it will NOT run in run-check until enabled.
+# robots.txt was checked per source before adding it (see MONITORING_STATUS.md).
 sources:
   - code: PDPL
     name_ar: نظام حماية البيانات الشخصية
@@ -87,3 +93,29 @@ sources:
     authority: Ministry of Justice
     url: https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/655fdb42-8c96-422b-b8c4-b04f0095c94c/1
     corpus_file: CIVIL.yaml
+
+  # ── New per-source adapters (robots-checked; DISABLED pending live-structure verification) ──
+  # Each adapter's fetch mechanism + robots status is verified; the article-level PARSE selectors
+  # are best-effort until confirmed against live pages. Set enabled: true after verifying, and
+  # fill in a real content URL. See MONITORING_STATUS.md for the checklist.
+  - code: MOJ-UPDATES
+    name_ar: تحديثات وزارة العدل
+    name_en: Ministry of Justice — regulatory updates
+    authority: Ministry of Justice
+    adapter: moj
+    enabled: false
+    url: https://www.moj.gov.sa/ar/SystemsAndRegulations
+  - code: CMA-RULEBOOK
+    name_ar: لوائح هيئة السوق المالية
+    name_en: Capital Market Authority — rulebook
+    authority: CMA
+    adapter: cma
+    enabled: false
+    url: https://cma.gov.sa/en/RulesRegulations/Regulations/Pages/default.aspx
+  - code: UQN-GAZETTE
+    name_ar: جريدة أم القرى
+    name_en: Umm Al-Qura official gazette
+    authority: Umm Al-Qura
+    adapter: uqn
+    enabled: false
+    url: https://www.uqn.gov.sa/
