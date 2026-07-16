@@ -124,7 +124,11 @@ async def main() -> int:
             stats = await ingest_regulation(session, reg, verifier_id=verifier.id,
                                             embed_fn=_embed, tier=tier)
             all_stats.append(stats)
-        await session.commit()
+            # Commit per regulation so a long batch is durable + resumable (idempotent re-runs
+            # skip what's already committed) and the session's memory doesn't grow unbounded.
+            await session.commit()
+            session.expunge_all()
+            print(f"  committed {stats.code}: +{stats.inserted} inserted", flush=True)
 
     print(f"Tier: {tier}")
 
