@@ -72,7 +72,8 @@ async def generate_idea_report(session: AsyncSession, idea_check_id: uuid.UUID) 
     if not idea or idea.status != "submitted":
         return 0
 
-    candidates = await retrieve_candidates(session, idea.idea_text, k=6)
+    # Idea-check citations must also rest on citable text only (no quarantined third-party).
+    candidates = await retrieve_candidates(session, idea.idea_text, k=6, citable_only=True)
     if not candidates:
         idea.report_ar = "لا توجد مواد نظامية مطابقة في المخزن الحالي."
         idea.report_en = "No matching regulatory articles in the current cache."

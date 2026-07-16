@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.errors import SanadError
 from app.models import Finding, RegulationVersion
 from app.services.audit import write_audit
+from app.services.corpus.tiers import CITABLE_TIERS
 
 
 async def resolve_citation(
@@ -51,6 +52,24 @@ async def create_finding_guarded(
                 "reason": "citation_required",
                 "clause_id": str(clause_id) if clause_id else None,
                 "attempted_version_id": str(regulation_version_id) if regulation_version_id else None,
+            },
+        )
+        await session.flush()
+        raise SanadError("citation_required")
+
+    # Backstop: quarantined third-party text (e.g. Kaggle) is searchable but never citable.
+    # Retrieval already excludes it from the finding candidate list; this is defense in depth.
+    # Only an EXPLICIT non-citable tier blocks — a NULL tier (in-memory row before the DB
+    # default populates) defaults citable, matching the human_verified server_default.
+    if version.verification_tier and version.verification_tier not in CITABLE_TIERS:
+        await write_audit(
+            session, actor=actor, action="citation_rejected",
+            target=str(contract_id), verdict="denied",
+            detail={
+                "reason": "uncitable_tier",
+                "verification_tier": version.verification_tier,
+                "clause_id": str(clause_id) if clause_id else None,
+                "attempted_version_id": str(regulation_version_id),
             },
         )
         await session.flush()
