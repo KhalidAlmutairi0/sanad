@@ -1,4 +1,7 @@
-FROM python:3.12-slim
+# Pinned to Debian 12 (bookworm): Playwright 1.49 officially supports it, so
+# `playwright install --with-deps chromium` resolves Chromium's OS libs cleanly. (Bare
+# python:3.12-slim now tracks Debian 13/trixie, which Playwright's dep installer can't match.)
+FROM python:3.12-slim-bookworm
 
 # bubblewrap: the sanitizer worker executes extraction inside a bwrap sandbox.
 # tesseract-ocr (+ Arabic data) and poppler-utils: offline OCR fallback for scanned PDFs.
