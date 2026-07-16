@@ -120,6 +120,30 @@ export interface MonitoringEvent {
   new_version_id: string | null;
 }
 
+export interface ApplicabilityArticleRef {
+  regulation_version_id: string;
+  regulation_code: string;
+  article_ref: string;
+  source_url: string;
+}
+
+export interface ApplicabilityFinding {
+  flag: "NEEDS_REMEDIATION" | "ALREADY_COMPLIANT" | "MUST_COMPLY" | "NOT_APPLICABLE" | "EXEMPT_GRANDFATHERED";
+  due_date: string | null;
+  source_article: ApplicabilityArticleRef;
+  classification_citation: ApplicabilityArticleRef | null;
+  clause: { clause_id: string; ordinal: number; text_ar: string | null } | null;
+}
+
+export interface ContractApplicability {
+  contract_id: string;
+  signed_date: string | null;
+  needs_remediation: ApplicabilityFinding[];
+  grandfathered: ApplicabilityFinding[];
+  compliant: ApplicabilityFinding[];
+  pending_review: number;
+}
+
 export interface MonitoringDiff {
   id: string;
   regulation_code: string;
