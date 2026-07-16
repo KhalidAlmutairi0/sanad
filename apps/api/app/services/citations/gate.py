@@ -59,7 +59,9 @@ async def create_finding_guarded(
 
     # Backstop: quarantined third-party text (e.g. Kaggle) is searchable but never citable.
     # Retrieval already excludes it from the finding candidate list; this is defense in depth.
-    if version.verification_tier not in CITABLE_TIERS:
+    # Only an EXPLICIT non-citable tier blocks — a NULL tier (in-memory row before the DB
+    # default populates) defaults citable, matching the human_verified server_default.
+    if version.verification_tier and version.verification_tier not in CITABLE_TIERS:
         await write_audit(
             session, actor=actor, action="citation_rejected",
             target=str(contract_id), verdict="denied",
