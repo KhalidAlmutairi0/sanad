@@ -9,6 +9,7 @@ from app.core.errors import SanadError, sanad_error_handler
 from app.core.ratelimit import limiter, rate_limit_handler
 from app.routers import (
     admin,
+    applicability,
     auth,
     contracts,
     evidence,
@@ -46,4 +47,5 @@ app.include_router(register.router, prefix=API_PREFIX)
 app.include_router(monitoring.router, prefix=API_PREFIX)
 app.include_router(evidence.router, prefix=API_PREFIX)
 app.include_router(admin.router, prefix=API_PREFIX)
+app.include_router(applicability.router, prefix=API_PREFIX)
 app.include_router(internal.router, prefix=API_PREFIX)
