@@ -161,6 +161,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   async function doLogout() { await logout(); router.push("/login"); router.refresh(); }
   const navLinks = [
     { href: "/contracts", label: "العقود" },
+    { href: "/vendors", label: "تقييم الموردين" },
     { href: "/idea-check", label: "فحص الفكرة" },
     { href: "/register", label: "الالتزامات" },
     { href: "/monitoring", label: "الرصد" },
