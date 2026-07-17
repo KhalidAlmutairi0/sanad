@@ -128,7 +128,7 @@ async def explain_finding(
 async def review_finding(
     finding_id: uuid.UUID,
     body: ReviewRequest,
-    user: User = Depends(require_roles("reviewer", "admin")),
+    user: User = Depends(require_roles("reviewer", "admin", "guest")),
     session: AsyncSession = Depends(get_session),
 ) -> ReviewResponse:
     if body.decision not in ("accepted", "rejected"):
@@ -217,7 +217,7 @@ async def _clause_text(session: AsyncSession, clause_id: uuid.UUID | None) -> st
 @router.get("/findings/{finding_id}/kit", response_model=KitResponse)
 async def finding_kit(
     finding_id: uuid.UUID,
-    _: User = Depends(require_roles("reviewer", "admin")),
+    _: User = Depends(require_roles("reviewer", "admin", "guest")),
     session: AsyncSession = Depends(get_session),
 ) -> KitResponse:
     row = await _finding_row(session, finding_id)
@@ -278,7 +278,7 @@ def _build_annex(kit: dict, code: str, article_ref: str, fmt: str) -> tuple[byte
 async def finding_kit_export(
     finding_id: uuid.UUID,
     body: KitExportRequest,
-    user: User = Depends(require_roles("reviewer", "admin")),
+    user: User = Depends(require_roles("reviewer", "admin", "guest")),
     session: AsyncSession = Depends(get_session),
 ) -> KitExportResponse:
     import io

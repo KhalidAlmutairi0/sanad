@@ -8,6 +8,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from pydantic import BaseModel
 
+import secrets
+
 from app.core.deps import get_session
 from app.core.errors import SanadError
 from app.core.ratelimit import limiter
@@ -17,6 +19,10 @@ from app.schemas.auth import LoginRequest, LoginResponse, UserPublic
 from app.services.audit import write_audit
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+
+# Shared demo identity for public "try it now" access. Role is reviewer, so it can run
+# Contract Review + Idea Check but never reaches admin / source-verification endpoints.
+GUEST_EMAIL = "guest@sanad.local"
 
 
 class RegisterRequest(BaseModel):
@@ -35,6 +41,35 @@ async def login(request: Request, body: LoginRequest, session: AsyncSession = De
     # Same error whether the email is unknown or the password is wrong (no user enumeration).
     if not user or not user.is_active or not verify_password(body.password, user.password_hash):
         raise SanadError("unauthorized", "بيانات الدخول غير صحيحة", "Your email or password is incorrect")
+    token = create_access_token(user_id=str(user.id), role=user.role)
+    return LoginResponse(
+        token=token,
+        user=UserPublic(id=user.id, display_name=user.display_name, role=user.role),
+    )
+
+
+@router.post("/guest", response_model=LoginResponse)
+@limiter.limit("20/minute")
+async def guest(request: Request, session: AsyncSession = Depends(get_session)) -> LoginResponse:
+    """Public demo access: sign in as the shared guest reviewer (created on first use).
+    No password is accepted from the client; the account is provisioned server-side."""
+    user = (
+        await session.execute(select(User).where(User.email == GUEST_EMAIL))
+    ).scalar_one_or_none()
+    if not user:
+        user = User(
+            email=GUEST_EMAIL,
+            display_name="ضيف تجريبي",
+            role="guest",
+            password_hash=hash_password(secrets.token_urlsafe(32)),
+        )
+        session.add(user)
+        await session.flush()
+        await write_audit(session, actor=str(user.id), action="guest_provisioned", verdict="n-a",
+                          detail={"role": "guest"})
+        await session.commit()
+    if not user.is_active:
+        raise SanadError("unauthorized", "الوصول التجريبي معطّل حالياً", "Guest access is disabled")
     token = create_access_token(user_id=str(user.id), role=user.role)
     return LoginResponse(
         token=token,
