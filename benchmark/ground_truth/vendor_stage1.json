@@ -1,0 +1,8 @@
+{
+  "_meta": {"source": "synthetic", "composition": "3 synthetic vendor proposals, labeled synthetic", "count": 3,
+            "note": "Same caveat as contract_review — replace with real proposals before client-facing numbers."},
+  "cases": [
+    {"vendor": "synthetic-A", "expected_pass": true,  "expected_status": {"SAMA-OUTS-I": "present"}},
+    {"vendor": "synthetic-B", "expected_pass": false, "expected_status": {"SAMA-OUTS-K": "missing"}}
+  ]
+}
