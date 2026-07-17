@@ -15,7 +15,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile all Python
-        run: find apps/api/app scripts sandboxes apps/api/tests -name '*.py' | xargs python -m py_compile
+        run: find apps/api/app scripts sandboxes apps/api/tests benchmark -name '*.py' | xargs python -m py_compile
+      - name: Benchmark metrics + honesty tests (pure)
+        run: pip install pytest && python -m pytest benchmark/tests -v
       - name: Invariant — provider SDK only under services/llm
         run: |
           if grep -rEn "^\s*(from|import)\s+(anthropic|openai)\b" apps/api/app | grep -v "services/llm"; then

@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "source": "synthetic",
+    "composition": "synthetic-but-realistic (SAMA-outsourcing style), 100% synthetic — labeled synthetic",
+    "count": 2,
+    "note": "Answer keys hand-labeled. REPLACE with real SAMA-regulated contracts (and re-label) before quoting numbers to a client."
+  },
+  "cases": [
+    {"case_id": "synthetic-001",
+     "clause_status": {"SAMA-OUTS-I": "present", "SAMA-OUTS-K": "missing", "SAMA-OUTS-N": "weak"},
+     "citations": {"finding-K": "SAMA-OUTS-K"}},
+    {"case_id": "synthetic-002",
+     "clause_status": {"SAMA-OUTS-I": "present", "SAMA-OUTS-K": "present", "SAMA-OUTS-Q": "missing"},
+     "citations": {"finding-Q": "SAMA-OUTS-Q"}}
+  ]
+}
