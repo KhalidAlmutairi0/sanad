@@ -38,6 +38,11 @@ export async function login(email: string, password: string): Promise<void> {
   if (!res.ok) throw await toError(res);
 }
 
+export async function guestLogin(): Promise<void> {
+  const res = await fetch(`/api/guest`, { method: "POST" });
+  if (!res.ok) throw await toError(res);
+}
+
 export async function register(email: string, password: string, code: string): Promise<void> {
   const res = await fetch(`/api/register`, {
     method: "POST",

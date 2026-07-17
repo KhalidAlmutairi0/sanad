@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { guestLogin } from "@/lib/api";
 import { Button, MonoChip, SourceChip, FindingCard, ReadinessGauge, FadeIn, AnimatedNumber } from "@/components/design/Shared";
 
 type Lang = "ar" | "en";
@@ -10,12 +11,13 @@ type Lang = "ar" | "en";
 const T = {
   ar: {
     dir: "rtl" as const,
-    nav: { product: "المنتج", paths: "المسارات الخمسة", sovereignty: "السيادة", login: "دخول", cta: "ابدأ الآن" },
+    nav: { product: "المنتج", paths: "المسارات الخمسة", sovereignty: "السيادة", login: "دخول", cta: "جرّب الآن" },
     hero: {
       badge: "امتثال سيادي للقطاع المالي",
       title: "كل بندٍ وله سَنَد.",
       body: "سند يراجع عقودك ويراقب التزاماتك تجاه ساما، يربط كل نتيجة بمرجعها النظامي، ويعمل بالكامل داخل بنيتك التحتية دون أن تغادر بياناتك المنشأة.",
-      cta: "ابدأ الآن",
+      cta: "جرّب الآن",
+      ctaBusy: "جارٍ التجهيز…",
       secondary: "شاهد كيف يعمل",
       footnote: "استضافة ذاتية كاملة · لا نتائج بدون مصدر",
       file: "اتفاقية_خدمات_سحابية_v3.pdf",
@@ -77,12 +79,13 @@ const T = {
   },
   en: {
     dir: "ltr" as const,
-    nav: { product: "Product", paths: "Five Paths", sovereignty: "Sovereignty", login: "Sign in", cta: "Get started" },
+    nav: { product: "Product", paths: "Five Paths", sovereignty: "Sovereignty", login: "Sign in", cta: "Try it now" },
     hero: {
       badge: "Sovereign compliance for the financial sector",
       title: "Every clause has its سَنَد.",
       body: "SANAD reviews your contracts and monitors your SAMA obligations, binds every finding to its exact regulatory source, and runs entirely inside your own infrastructure — your data never leaves the institution.",
-      cta: "Get started",
+      cta: "Try it now",
+      ctaBusy: "Preparing…",
       secondary: "See how it works",
       footnote: "Fully self-hosted · No unsourced findings",
       file: "cloud_services_agreement_v3.pdf",
@@ -181,6 +184,18 @@ export function LandingView() {
   }, [pathIdx]);
 
   const goLogin = () => router.push("/login");
+  const [guestBusy, setGuestBusy] = useState(false);
+  const goGuest = async () => {
+    if (guestBusy) return;
+    setGuestBusy(true);
+    try {
+      await guestLogin();
+      router.push("/contracts");
+      router.refresh();
+    } catch {
+      router.push("/login");
+    }
+  };
   const currentFinding = heroFindings[findingIdx]!;
   const p = t.paths;
 
@@ -297,7 +312,7 @@ export function LandingView() {
               {lang === "ar" ? "EN" : "ع"}
             </button>
             <Link href="/login" className="text-[15px] font-medium hover:text-primary transition-colors">{t.nav.login}</Link>
-            <Button onClick={goLogin}>{t.nav.cta}</Button>
+            <Button onClick={goGuest} disabled={guestBusy}>{t.nav.cta}</Button>
           </div>
         </div>
       </header>
@@ -314,7 +329,7 @@ export function LandingView() {
               <h1 className="text-[34px] md:text-[56px] leading-[1.2] font-bold">{t.hero.title}</h1>
               <p className="text-[17px] text-muted-foreground max-w-[480px]">{t.hero.body}</p>
               <div className="flex flex-wrap items-center gap-4 mt-4">
-                <Button onClick={goLogin}>{t.hero.cta}</Button>
+                <Button onClick={goGuest} disabled={guestBusy}>{guestBusy ? t.hero.ctaBusy : t.hero.cta}</Button>
                 <a href="#paths"><Button variant="ghost">{t.hero.secondary}</Button></a>
               </div>
               <div className="mt-8 text-[13px] font-mono text-muted-foreground">{t.hero.footnote}</div>
@@ -530,7 +545,7 @@ export function LandingView() {
             <FadeIn>
               <h2 className="text-[40px] md:text-[56px] font-bold mb-8">{t.finalCta.heading}</h2>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-                <Button className="w-full sm:w-auto text-lg px-8 py-4" onClick={goLogin}>{t.finalCta.cta}</Button>
+                <Button className="w-full sm:w-auto text-lg px-8 py-4" onClick={goGuest} disabled={guestBusy}>{guestBusy ? t.hero.ctaBusy : t.finalCta.cta}</Button>
                 <Link href="/join" className="w-full sm:w-auto"><Button variant="ghost" className="w-full text-lg px-8 py-4">{t.finalCta.join}</Button></Link>
               </div>
             </FadeIn>

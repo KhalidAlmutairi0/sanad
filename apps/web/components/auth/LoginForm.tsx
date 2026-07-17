@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/lib/i18n";
-import { login } from "@/lib/api";
+import { login, guestLogin } from "@/lib/api";
 import { Button } from "@/components/design/Shared";
 
 export function LoginForm() {
@@ -21,6 +21,19 @@ export function LoginForm() {
     setError(false);
     try {
       await login(email, password);
+      router.push("/contracts");
+      router.refresh();
+    } catch {
+      setError(true);
+      setBusy(false);
+    }
+  }
+
+  async function enterAsGuest() {
+    setBusy(true);
+    setError(false);
+    try {
+      await guestLogin();
       router.push("/contracts");
       router.refresh();
     } catch {
@@ -58,6 +71,10 @@ export function LoginForm() {
           {error && <p className="text-[13px] text-destructive">بيانات الدخول غير صحيحة</p>}
           <Button type="submit" disabled={busy} className="w-full mt-2">{busy ? "جارٍ الدخول…" : "تسجيل الدخول"}</Button>
         </form>
+        <button onClick={enterAsGuest} disabled={busy}
+          className="w-full mt-3 text-[14px] font-medium text-primary hover:underline disabled:opacity-50">
+          الدخول كضيف للتجربة
+        </button>
         <div className="mt-8 pt-6 border-t border-border text-center text-[15px]">
           <span className="text-muted-foreground">ليس لديك حساب؟ </span>
           <Link href="/join" className="text-primary hover:underline font-medium">إنشاء حساب بدعوة</Link>

@@ -159,7 +159,14 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || "";
   const router = useRouter();
   async function doLogout() { await logout(); router.push("/login"); router.refresh(); }
-  const navLinks = [
+  const [role, setRole] = useState("");
+  useEffect(() => {
+    const m = document.cookie.match(/(?:^|; )sanad_role=([^;]*)/);
+    setRole(m && m[1] ? decodeURIComponent(m[1]) : "");
+  }, []);
+  // Guests get only the endpoints their role can actually reach (no corpus writes / admin).
+  const guestNav = new Set(["/contracts", "/idea-check", "/evidence"]);
+  const allLinks = [
     { href: "/contracts", label: "العقود" },
     { href: "/vendors", label: "تقييم الموردين" },
     { href: "/idea-check", label: "فحص الفكرة" },
@@ -168,6 +175,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     { href: "/evidence", label: "الأدلة" },
     { href: "/admin", label: "الإدارة" },
   ];
+  const navLinks = role === "guest" ? allLinks.filter((l) => guestNav.has(l.href)) : allLinks;
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground">
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
