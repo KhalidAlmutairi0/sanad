@@ -70,20 +70,22 @@ async def test_compute_results_excludes_and_compares(session: AsyncSession) -> N
 
 @pytest.mark.asyncio
 async def test_run_comparison_requires_submissions_and_is_explicit(
-    api_client: AsyncClient, auth_headers: dict[str, str]
+    api_client: AsyncClient, session: AsyncSession, auth_headers: dict[str, str]
 ) -> None:
     created = await api_client.post("/api/v1/vendor-evaluations", headers=auth_headers,
                                     json={"title": "Cloud RFP"})
     assert created.status_code == 201, created.text
     eval_id = created.json()["id"]
 
-    # no submissions yet -> run-comparison refused
+    # no submissions yet -> run-comparison refused (explicit, never auto-runs)
     empty = await api_client.post(f"/api/v1/vendor-evaluations/{eval_id}/run-comparison", headers=auth_headers)
     assert empty.status_code in (400, 422)
 
-    add = await api_client.post(f"/api/v1/vendor-evaluations/{eval_id}/submissions", headers=auth_headers,
-                                json={"vendor_name": "Acme", "filename": "acme.pdf"})
-    assert add.status_code == 201 and "upload_url" in add.json()
+    # add a submission directly (the API's add_submission mints a presigned upload URL, which
+    # needs a reachable public MinIO — out of scope for this unit test).
+    session.add(VendorSubmission(evaluation_id=uuid.UUID(eval_id), vendor_name="Acme",
+                                 status="uploaded", raw_object_key="vendor/x/raw"))
+    await session.flush()
 
     run = await api_client.post(f"/api/v1/vendor-evaluations/{eval_id}/run-comparison", headers=auth_headers)
     assert run.status_code == 202 and run.json()["status"] == "comparing"
