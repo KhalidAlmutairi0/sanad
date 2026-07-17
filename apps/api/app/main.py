@@ -19,6 +19,7 @@ from app.routers import (
     internal,
     monitoring,
     register,
+    vendor,
 )
 
 API_PREFIX = "/api/v1"
@@ -48,4 +49,5 @@ app.include_router(monitoring.router, prefix=API_PREFIX)
 app.include_router(evidence.router, prefix=API_PREFIX)
 app.include_router(admin.router, prefix=API_PREFIX)
 app.include_router(applicability.router, prefix=API_PREFIX)
+app.include_router(vendor.router, prefix=API_PREFIX)
 app.include_router(internal.router, prefix=API_PREFIX)

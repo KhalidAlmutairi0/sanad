@@ -14,6 +14,7 @@ from app.workers.jobs.extract import extract_clauses
 from app.workers.jobs.findings import generate_findings
 from app.workers.jobs.idea import generate_idea_report_job
 from app.workers.jobs.sanitize import sanitize_contract
+from app.workers.jobs.vendor import evaluate_vendor_batch
 
 
 def assert_safe_sanitizer(settings: Settings) -> None:
@@ -42,7 +43,8 @@ async def shutdown(ctx: dict) -> None:  # noqa: ARG001
 
 class WorkerSettings:
     # Job types (architecture.md 7c).
-    functions = [sanitize_contract, extract_clauses, generate_findings, generate_idea_report_job]
+    functions = [sanitize_contract, extract_clauses, generate_findings, generate_idea_report_job,
+                 evaluate_vendor_batch]
     on_startup = startup
     on_shutdown = shutdown
     max_tries = 3
