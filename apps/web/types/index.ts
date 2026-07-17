@@ -120,6 +120,55 @@ export interface MonitoringEvent {
   new_version_id: string | null;
 }
 
+export interface VendorScorecardItem {
+  requirement_id: string;
+  section: string;
+  description_ar: string;
+  mandatory: boolean;
+  status: "present" | "weak" | "missing";
+  document_location: string | null;
+  sama_source_pending: boolean;
+}
+
+export interface VendorView {
+  submission_id: string;
+  vendor_name: string;
+  status: string;
+  stage1_passed: boolean | null;
+  scorecard: VendorScorecardItem[];
+  exclusions: VendorScorecardItem[];
+  security_flag_count: number;
+}
+
+export interface VendorComparisonRow {
+  dimension: string;
+  values: Record<string, unknown>;
+  delta_note: string | null;
+}
+
+export interface VendorResults {
+  evaluation_id: string;
+  title: string;
+  status: string;
+  banner: string;
+  vendors: VendorView[];
+  comparison: {
+    vendor_ids: string[];
+    rows: VendorComparisonRow[];
+    currency_mismatch: boolean;
+    composite_score: null;
+  } | null;
+  self_reported: { vendor_name: string; background: Record<string, unknown> }[];
+}
+
+export interface VendorEvaluationListItem {
+  id: string;
+  title: string;
+  status: string;
+  vendor_count: number;
+  created_at: string;
+}
+
 export interface ApplicabilityArticleRef {
   regulation_version_id: string;
   regulation_code: string;

@@ -41,7 +41,13 @@ export default async function ContractsPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between border-b border-border pb-6">
           <h1 className="text-2xl font-bold">العقود</h1>
-          <UploadContract />
+          <div className="flex items-center gap-3">
+            <Link href="/vendors/new"
+              className="text-[13px] text-muted-foreground hover:text-primary transition-colors border border-border rounded-md px-3 py-2">
+              تقييم الموردين
+            </Link>
+            <UploadContract />
+          </div>
         </div>
 
         <div className="bg-card border border-border rounded-xl overflow-hidden">
