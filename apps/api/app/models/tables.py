@@ -199,6 +199,33 @@ class MonitoringEvent(Base):
     created_at: Mapped[dt.datetime] = _created_at()
 
 
+class VendorEvaluation(Base):
+    """An RFP batch: N vendor submissions compared together (dual-sandbox vendor evaluation)."""
+
+    __tablename__ = "vendor_evaluations"
+    id: Mapped[uuid.UUID] = _pk()
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    created_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="uploading")
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
+class VendorSubmission(Base):
+    """One vendor's file in an evaluation. `extraction` is the Sandbox-1 JSON only — no raw
+    document text is stored; Sandbox-2 gate/compare reads this JSON."""
+
+    __tablename__ = "vendor_submissions"
+    id: Mapped[uuid.UUID] = _pk()
+    evaluation_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("vendor_evaluations.id"), nullable=False)
+    vendor_name: Mapped[str] = mapped_column(Text, nullable=False)
+    source_filename: Mapped[str | None] = mapped_column(Text)
+    raw_object_key: Mapped[str | None] = mapped_column(Text)
+    extraction: Mapped[dict | None] = mapped_column(JSONB)
+    stage1_passed: Mapped[bool | None] = mapped_column(Boolean)
+    status: Mapped[str] = mapped_column(Text, nullable=False, server_default="uploaded")
+    created_at: Mapped[dt.datetime] = _created_at()
+
+
 class RegulationApplicability(Base):
     """Mutable classification of ONE regulation article's applicability scope (spec: applicability
     engine). Moves llm_draft -> human_reviewed via the review gate; only human_reviewed feeds the

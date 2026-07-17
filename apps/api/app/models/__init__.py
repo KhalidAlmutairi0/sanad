@@ -17,6 +17,8 @@ from app.models.tables import (
     RegulationVersion,
     Setting,
     User,
+    VendorEvaluation,
+    VendorSubmission,
 )
 
 __all__ = [
@@ -35,4 +37,6 @@ __all__ = [
     "RegulationVersion",
     "Setting",
     "User",
+    "VendorEvaluation",
+    "VendorSubmission",
 ]
